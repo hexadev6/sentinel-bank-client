@@ -2,11 +2,11 @@
 
 
 ## Ininital instruction
-- Clone the development branch code
+- Clone the stage branch code
 
 ```javaScript
 
-git clone -b development repository_url
+git clone -b stage repository_url
 
 ```
 
@@ -18,11 +18,11 @@ npm install
 
 ```
 
-- Always pull from development branch before and after you coding session
+- Always pull from stage branch before and after you coding session
 
 ```javaScript
 
-git pull origin development
+git pull origin stage
 
 ```
 
