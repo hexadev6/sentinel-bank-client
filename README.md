@@ -22,7 +22,7 @@ npm install
 
 ```javaScript
 
-git pull origin development
+git pull origin stage
 
 ```
 
