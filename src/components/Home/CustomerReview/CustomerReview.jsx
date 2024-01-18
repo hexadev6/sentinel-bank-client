@@ -3,7 +3,7 @@
 const CustomerReview = () => {
     return (
         <div>
-            This is customer review section
+            working on custom feedback 
         </div>
     );
 };
