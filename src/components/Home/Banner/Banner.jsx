@@ -28,43 +28,46 @@ const Banner = () => {
   const [email, setEmail] = useState("");
   const onChange = ({ target }) => setEmail(target.value);
   return (
-    <div style={outerDivStyle}>
+    <div style={outerDivStyle} className="-mt-24">
       <div
-        className='-bottom-24 md:-bottom-52 lg:-bottom-[28rem]'
-        style={innerDivStyle}></div>
-      <div className='max-w-7xl mx-auto flex items-center justify-center text-center mt-20'>
-        <div className=' flex items-center justify-center flex-col text-center'>
-          <h4 className='text-xl font-medium text-green-100'>
+        className="-bottom-24 md:-bottom-52 lg:-bottom-[28rem]"
+        style={innerDivStyle}
+      ></div>
+      <div className="max-w-7xl mx-auto flex items-center justify-center text-center mt-20">
+        <div className=" flex items-center justify-center flex-col text-center">
+          <h4 className="text-xl font-medium text-green-100">
             All in one banking for explore
           </h4>
-          <h1 className='text-6xl font-bold text-white mt-3'>
+          <h1 className="text-6xl font-bold text-white mt-3">
             Smart and simple <br />
             online banking
           </h1>
-          <p className='text-lg mt-6 text-gray-400'>
+          <p className="text-lg mt-6 text-gray-400">
             With our simple online banking services, you can manage <br />
             your finances from anywhere, at any time
           </p>
 
-
           {/* search box */}
-          <div className='relative flex items-center justify-center w-full mt-8'>
+          <div className="relative flex items-center justify-center w-full mt-8">
             <Input
-              type='email'
-              label='Email Address'
+              type="email"
+              label="Email Address"
               value={email}
               onChange={onChange}
               size="lg"
-              className='pr-20 text-white border-2'
+              className="pr-20 text-white border-2"
               containerProps={{
                 className: "min-w-0",
               }}
             />
             <Button
-              size='sm'
-            //   color={email ? "gray" : "blue-gray"}
+              size="sm"
+              //   color={email ? "gray" : "blue-gray"}
               disabled={!email}
-              className={`!absolute right-1  rounded ${!email ? 'bg-gray-400': 'bg-natural-yellow'}`}>
+              className={`!absolute right-1  rounded ${
+                !email ? "bg-gray-400" : "bg-natural-yellow"
+              }`}
+            >
               Sign Up
             </Button>
           </div>

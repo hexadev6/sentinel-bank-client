@@ -4,14 +4,13 @@ import CustomerReview from "../../../components/Home/CustomerReview/CustomerRevi
 import Footer from "../../../components/Shared/Footer/Footer";
 import Navbar from "../../../components/Shared/Navbar/Navbar";
 
-
 const Home = () => {
   return (
     <>
       <Navbar />
       <Banner />
       <CustomerReview />
-      <FaqSection/>
+      <FaqSection />
       <Footer />
     </>
   );
