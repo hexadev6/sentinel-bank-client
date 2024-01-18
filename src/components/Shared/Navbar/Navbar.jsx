@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import NavList from "./NavList";
 import { Link, useLocation } from "react-router-dom";
 import { Avatar } from "../../../lib/materialClass";
-
-// import Dawer from "../Drawer/Dawer";
-
 import Icons from "../../../utility/Icons";
 import Logo from "../../../utility/Logo";
+import Drawer from "../../Drawer/Drawer";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const locattion = useLocation();
@@ -77,8 +75,7 @@ const Navbar = () => {
         </div>
 
         <div className="md:hidden">
-          <p>dawer</p>
-          {/* <Dawer></Dawer> */}
+          <Drawer />
         </div>
       </div>
     </div>
