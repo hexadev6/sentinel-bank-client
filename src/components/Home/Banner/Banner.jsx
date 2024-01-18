@@ -2,7 +2,7 @@
 const Banner = () => {
     return (
         <div>
-            This is banner
+            Banner section will be added
         </div>
     );
 };
