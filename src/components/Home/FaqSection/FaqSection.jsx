@@ -33,34 +33,36 @@ const FaqSection = () => {
    
   
     return (
-        <div className="my-10 mx-16 w-full min-h-screen">
+       <div className="max-w-7xl mx-auto">
+         <div className=" my-10 mx-16 w-full min-h-screen">
 
 
-      <img
-        src={picbg}
-        alt="image 1"
-        className="relative h-96 w-[900px] rounded-2xl object-cover"
-      />
+<img
+  src={picbg}
+  alt="image 1"
+  className="relative h-96 w-[900px] rounded-2xl object-cover"
+/>
+
+
+<h2 className="absolute lg:-mt-72 text-center w-full font-bold text-white text-4xl my-4">Freqently Asked Questions</h2>
+    
+    <div className="absolute w-[900px] bg-blue-gray-900 -mt-52">
+    
+  
+  <div className="p-4">
+ {
+  faq?.map((item,index)=><Accordion className="bg-black rounded-lg px-2 my-4" key={item.id} open={open === index} icon={<Icon id={index} open={open} />}>
+  <AccordionHeader className="text-[#4d774e] hover:text-[#4d774e]" onClick={() => handleOpen(index)}>{item?.question}</AccordionHeader>
+  <AccordionBody className="text-lg text-white">
+   {item?.answer}
+  </AccordionBody>
+</Accordion> )
+ }
  
-
- <h2 className="absolute lg:-mt-72 text-center w-full font-bold text-white text-4xl my-4">Freqently Asked Questions</h2>
-          
-          <div className="absolute w-[900px] bg-blue-gray-900 -mt-52">
-          
-        
-        <div className="p-4">
-       {
-        faq?.map((item,index)=><Accordion className="bg-black rounded-lg px-2 my-4" key={item.id} open={open === index} icon={<Icon id={index} open={open} />}>
-        <AccordionHeader className="text-[#4d774e] hover:text-[#4d774e]" onClick={() => handleOpen(index)}>{item?.question}</AccordionHeader>
-        <AccordionBody className="text-lg text-white">
-         {item?.answer}
-        </AccordionBody>
-      </Accordion> )
-       }
-       
-      </div>
-          </div>
-      </div>
+</div>
+    </div>
+</div>
+       </div>
     );
 }
 
