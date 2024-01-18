@@ -38,13 +38,13 @@ const Navbar = () => {
           : ""
       }  duration-1000 ease-linear    ${
         issticky
-          ? "sticky bg-gray-400 bg-opacity-30   top-0 ease-linear duration-700 "
+          ? "sticky bg-white   top-0 ease-linear duration-700 "
           : "sticky"
       }`}
     >
       <div className="flex justify-between items-center md:px-10  lg:px-20">
         <Logo />
-        <div className="md:flex  gap-5 text-sm lg:text-base  font-bold hidden ">
+        <div className="md:flex  gap-5 text-sm lg:text-base  font-bold hidden lg:ml-32">
           {/* navLink */}
           <NavList></NavList>
         </div>
