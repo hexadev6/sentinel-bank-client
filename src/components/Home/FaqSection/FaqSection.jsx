@@ -43,7 +43,7 @@ const FaqSection = () => {
       />
  
 
- <h2 className="absolute -mt-72 text-center w-full font-bold text-white text-4xl my-4">Freqently Asked Questions</h2>
+ <h2 className="absolute lg:-mt-72 text-center w-full font-bold text-white text-4xl my-4">Freqently Asked Questions</h2>
           
           <div className="absolute w-[900px] bg-blue-gray-900 -mt-52">
           
