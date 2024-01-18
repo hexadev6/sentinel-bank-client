@@ -1,0 +1,44 @@
+[
+    {
+      "customerImg": "https://static.tvmaze.com/uploads/images/medium_portrait/186/467332.jpg",
+      "reviewHeadline": "Exceptional Service!",
+      "detailsReview": "I am extremely satisfied with the banking services provided. The online platform is user-friendly, and the customer support is responsive. It has made managing my finances a breeze!",
+      "name": "Alice Johnson",
+      "country": "United States"
+    },
+    {
+      "customerImg": "https://media.licdn.com/dms/image/C5603AQF3-d7NkceS9w/profile-displayphoto-shrink_400_400/0/1647528928529?e=2147483647&v=beta&t=mBeXZAK_3z4xBVbIhfSOQx4Hj3kITg27NixgWucT1jA",
+      "reviewHeadline": "Efficient and Reliable",
+      "detailsReview": "The banking website is reliable and efficient. Transactions are processed quickly, and I appreciate the security measures in place. A top-notch experience overall!",
+      "name": "Bob Anderson",
+      "country": "Canada"
+    },
+    {
+      "customerImg": "https://www.mhs.net/-/media/images/modules/physician-directory/physicians/j/jorge-rodriguez-natalie.jpg",
+      "reviewHeadline": "Smooth Transactions",
+      "detailsReview": "The seamless integration of services has made my banking experience smooth and hassle-free. Kudos to the team for creating a platform that's both user-friendly and efficient!",
+      "name": "Elena Rodriguez",
+      "country": "Spain"
+    },
+    {
+      "customerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMZtG3blKyZ-Zpe5cFKglq_dVQ6YnjcUIBXg&usqp=CAU",
+      "reviewHeadline": "Great User Interface",
+      "detailsReview": "I love the modern and intuitive user interface. Navigating through the website is a pleasure, and the layout is well-designed. Keep up the good work!",
+      "name": "David Lee",
+      "country": "South Korea"
+    },
+    {
+      "customerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ87omOeDLO4cvI6LMnL5FxzCrclqV6AIEnWYER9Y4lFYr8zA__m5MNjRDjkunX6Qdg7YQ&usqp=CAU",
+      "reviewHeadline": "Prompt Customer Support",
+      "detailsReview": "Had an issue with my account, and the customer support team resolved it swiftly. The prompt response and efficient resolution exceeded my expectations!",
+      "name": "Sophie Martin",
+      "country": "France"
+    },
+    {
+      "customerImg": "https://www.codina.com/wp-content/uploads/2021/10/Carlos-Hernandez-website-420x630.jpg",
+      "reviewHeadline": "Secure and Trustworthy",
+      "detailsReview": "Security is a top priority for me, and this banking website meets my expectations. I feel confident in the safety of my financial transactions. Well done!",
+      "name": "Carlos Hernandez",
+      "country": "Mexico"
+    }
+  ]
