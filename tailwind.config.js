@@ -13,7 +13,7 @@ export default withMT({
           'dark-green': '#4D774E',
           'medium-green': '#4D774E',
           'light-green': '#9DC88D',
-          'natural-yello': '#F1B24A',
+          'natural-yellow': '#F1B24A',
         }
     },
   },
