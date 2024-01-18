@@ -34,7 +34,7 @@ const Banner = () => {
         style={innerDivStyle}
       ></div>
       <div className="max-w-7xl mx-auto flex items-center justify-center text-center mt-20">
-        <div className=" flex items-center justify-center flex-col text-center">
+        <div className=" flex items-center justify-center flex-col text-center pt-20 px-5 md:px-0">
           <h4 className="text-xl font-medium text-green-100">
             All in one banking for explore
           </h4>
@@ -53,9 +53,10 @@ const Banner = () => {
               type="email"
               label="Email Address"
               value={email}
+              color="white"
               onChange={onChange}
               size="lg"
-              className="pr-20 text-white border-2"
+              className="pr-20 text-white  border-white"
               containerProps={{
                 className: "min-w-0",
               }}
