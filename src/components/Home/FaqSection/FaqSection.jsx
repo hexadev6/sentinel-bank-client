@@ -1,7 +1,7 @@
 import { Accordion, AccordionBody, AccordionHeader } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import { BiDownArrow } from "react-icons/bi";
-import { BiUpArrow } from "react-icons/bi";
+import picbg from '../../../assets/banner/Faq.jpg'
+
 function Icon({ id, open }) {
     return (
       <svg
@@ -16,7 +16,6 @@ function Icon({ id, open }) {
       </svg>
     );
   }
-
 
 const FaqSection = () => {
     
@@ -34,19 +33,33 @@ const FaqSection = () => {
    
   
     return (
-        <div className="m-10">
-            <h2 className="text-4xl">Freqently Asked Questions</h2>
-        <div className="border p-4">
+        <div className="my-10 mx-16 w-full min-h-screen">
+
+
+      <img
+        src={picbg}
+        alt="image 1"
+        className="relative h-96 w-[900px] rounded-2xl object-cover"
+      />
+ 
+
+ <h2 className="absolute -mt-72 text-center w-full font-bold text-white text-4xl my-4">Freqently Asked Questions</h2>
+          
+          <div className="absolute w-[900px] bg-blue-gray-900 -mt-52">
+          
+        
+        <div className="p-4">
        {
-        faq?.map((item,index)=><Accordion key={item.id} open={open === index} icon={<Icon id={index} open={open} />}>
-        <AccordionHeader onClick={() => handleOpen(index)}>{item?.question}</AccordionHeader>
-        <AccordionBody>
+        faq?.map((item,index)=><Accordion className="bg-black rounded-lg px-2 my-4" key={item.id} open={open === index} icon={<Icon id={index} open={open} />}>
+        <AccordionHeader className="text-[#4d774e] hover:text-[#4d774e]" onClick={() => handleOpen(index)}>{item?.question}</AccordionHeader>
+        <AccordionBody className="text-lg text-white">
          {item?.answer}
         </AccordionBody>
       </Accordion> )
        }
        
       </div>
+          </div>
       </div>
     );
 }

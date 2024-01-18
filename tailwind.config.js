@@ -14,11 +14,5 @@ export default withMT({
         }
     },
   },
-<<<<<<< HEAD
-  plugins: [require("daisyui")],
-})
-
-=======
   plugins: [],
 });
->>>>>>> b798e911c0b6923d288a7b0312a42fc44d306dea
