@@ -1,3 +1,9 @@
-import { Avatar } from "@material-tailwind/react";
+import {
+  Avatar,
+  Drawer,
+  Button,
+  Typography,
+  IconButton,
+} from "@material-tailwind/react";
 
-export { Avatar };
+export { Avatar, Drawer, Button, Typography, IconButton };
