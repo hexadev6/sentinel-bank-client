@@ -1,5 +1,7 @@
 import { Input, Typography } from "@material-tailwind/react";
 import { FaPaperPlane } from "react-icons/fa";
+import Featured from "../../Home/Featured/Featured";
+import { Button } from "@material-tailwind/react";
 
 const Footer = () => {
   const LINKS = [
@@ -19,7 +21,8 @@ const Footer = () => {
     <div>
       <footer className="relative w-full mt-20 py-10 text-white bg-gradient-to-r from-[#164a41] via-[#4d774e] to-[#9dc88d]">
         <div className="mx-auto w-full max-w-7xl px-8 ">
-          <div className="grid grid-cols-1 justify-between gap-10 md:grid-cols-2">
+          <Featured />
+          <div className="grid grid-cols-1 justify-between gap-10 lg:grid-cols-2">
             <div>
               <Typography variant="h5" className="mb-3">
                 SentinelTrust Bank
@@ -122,7 +125,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 justify-between gap-4 t">
+            <div className=" flex flex-wrap sm:grid grid-cols-3 justify-between gap-4 t">
               {LINKS.map(({ title, items }) => (
                 <ul key={title}>
                   <Typography
@@ -146,6 +149,7 @@ const Footer = () => {
                   ))}
                 </ul>
               ))}
+
               <div>
                 <Typography
                   variant="small"
@@ -158,18 +162,21 @@ const Footer = () => {
                   Dont miss to subscribe our news feed, Kindly fill the form
                   below
                 </p>
-                <div className="mt-2 flex items-center">
+                <div className="relative flex w-full mt-4">
                   <Input
-                    size="lg"
+                    type="email"
+                    className="p-4 rounded-none focus:!border-white  w-5/6"
                     placeholder="name@mail.com"
-                    className=" rounded-none focus:!border-white  "
                     labelProps={{
-                        className: "before:content-none after:content-none",
-                      }}
+                      className: "before:content-none after:content-none",
+                    }}
                   />
-                  <div className=" h-full">
-                  <FaPaperPlane className='text-4xl bg-white text-[#4d774e] p-2'/>
-                  </div>
+                  <Button
+                    size="sm"
+                    className="!absolute right-0 top-0  rounded-none bg-white text-[#4d774e]"
+                  >
+                    <FaPaperPlane className="text-2xl h-full" />
+                  </Button>
                 </div>
               </div>
             </div>
