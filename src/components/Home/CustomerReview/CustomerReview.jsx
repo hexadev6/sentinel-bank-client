@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from "swiper/modules";
+import Container from "../../Shared/container/Container";
 
 const CustomerReview = () => {
   const [customerFeedback, setCustomerFeedback] = useState([]);
@@ -23,7 +24,8 @@ const CustomerReview = () => {
   return (
     <>
 
-      {/* feedback heading */}
+      <Container>
+        {/* feedback heading */}
       <div className="text-center px-2">
         <p className="font-semibold text-xl">Customer feedback</p>
         <h1 className="max-w-2xl   mx-auto  text-[#4d774e] text-2xl md:text-5xl font-bold my-3">
@@ -73,6 +75,7 @@ const CustomerReview = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      </Container>
     </>
   );
 };
