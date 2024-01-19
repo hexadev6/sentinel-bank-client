@@ -4,8 +4,9 @@ import {
   AccordionHeader,
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import picbg from "../../../assets/banner/Faq.jpg";
-
+import picbg from "../../../assets/banner/confused.jpg";
+import Container from "../../Shared/container/Container";
+import PropTypes from "prop-types";
 function Icon({ id, open }) {
   return (
     <svg
@@ -32,6 +33,7 @@ const FaqSection = () => {
 
   const handleOpen = (value) => setOpen(open === value ? null : value);
 
+  const [showAll, setShowAll] = useState(false);
   const [faq, setFaq] = useState([]);
   useEffect(() => {
     fetch("/FAQ.json")
@@ -39,44 +41,70 @@ const FaqSection = () => {
       .then((data) => setFaq(data));
   }, []);
 
-  return (
-    <div className="max-w-7xl mx-auto">
-      <div className=" my-10 mx-16 w-full min-h-screen">
-        <img
-          src={picbg}
-          alt="image 1"
-          className="relative h-96 w-[900px] rounded-2xl object-cover"
-        />
+  const handleShow = () => {
+    setShowAll(!showAll);
+  };
 
-        <h2 className="absolute lg:-mt-72 text-center w-full font-bold text-white text-4xl my-4">
+  return (
+    <Container>
+      <div className=" my-10 w-full min-h-sceen">
+        <h2 className="text-4xl font-bold text-center text-[#4d774e] ">
           Freqently Asked Questions
         </h2>
-
-        <div className="absolute w-[900px] bg-blue-gray-900 -mt-52">
-          <div className="p-4">
-            {faq?.map((item, index) => (
-              <Accordion
-                className="bg-black rounded-lg px-2 my-4"
-                key={item.id}
-                open={open === index}
-                icon={<Icon id={index} open={open} />}
+        <p className="text-xl text-center py-2">
+          Navigating the Uncharted: Your Curated FAQ Expedition with Sentinel
+          Trust Bank
+        </p>
+        <div className="flex gap-20 flex-col md:flex-row-reverse mt-8">
+          <div className="w-[max-content] mx-auto">
+            <img className="w-96 h-96" src={picbg} alt="" />
+          </div>
+          <div className="flex-1">
+            <div className="p-4">
+              <div
+                className={` ${
+                  showAll ? "max-h-full" : "max-h-96"
+                } overflow-hidden transition-max-height`}
               >
-                <AccordionHeader
-                  className="text-[#4d774e] hover:text-[#4d774e]"
-                  onClick={() => handleOpen(index)}
+                {faq?.map((item, index) => (
+                  <Accordion
+                    className="rounded-lg px-2 mx-2 mb-4"
+                    key={item.id}
+                    open={open === index}
+                    icon={<Icon id={index} open={open} />}
+                  >
+                    <AccordionHeader
+                      className="text-[#4d774e] hover:text-[#4d774e]"
+                      onClick={() => handleOpen(index)}
+                    >
+                      {item?.question}
+                    </AccordionHeader>
+                    <AccordionBody className="text-lg ">
+                      {item?.answer}
+                    </AccordionBody>
+                  </Accordion>
+                ))}
+              </div>
+
+              <div className="w-[max-content] mx-auto">
+                <button
+                  className="btn rounded-lg border p-2 border-[#4d774e]"
+                  onClick={handleShow}
                 >
-                  {item?.question}
-                </AccordionHeader>
-                <AccordionBody className="text-lg text-white">
-                  {item?.answer}
-                </AccordionBody>
-              </Accordion>
-            ))}
+                  {showAll ? "Show Less" : "Show More"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
 export default FaqSection;
+
+Icon.propTypes = {
+  id: PropTypes.number,
+  open: PropTypes.bool,
+};
