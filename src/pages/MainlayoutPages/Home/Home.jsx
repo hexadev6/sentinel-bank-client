@@ -7,11 +7,11 @@ import Navbar from "../../../components/Shared/Navbar/Navbar";
 const Home = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Banner />
       <CustomerReview />
       <FaqSection />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
