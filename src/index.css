@@ -7,3 +7,10 @@
 .swiper-pagination-bullet-active{
     background-color: #4d774e!important;
 }
+
+@media only screen and (min-width: 720px) {
+    .team-card:nth-child(even){
+        position: relative;
+        top: 30px;
+    }
+  }

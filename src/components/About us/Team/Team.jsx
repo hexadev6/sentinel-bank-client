@@ -13,13 +13,14 @@ import {
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
+import Container from "../../Shared/container/Container";
 
 const Team = () => {
   const teams = [
     {
       name: "Diana Patel",
       position: "Security Officer",
-      img: "https://img-b.udemycdn.com/user/200_H/119018536_f1df.jpg",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsS0fYx5QaeXlcgCkTYSx_2Bb6M0W-OkmYWQ&usqp=CAU",
     },
     {
       name: "Charlie Rodriguez",
@@ -32,11 +33,6 @@ const Team = () => {
       img: "https://resize.elle.fr/square/var/plain_site/storage/images/beaute/cheveux/stars/eva-longoria-change-radicalement-de-tete-et-adopte-l-une-des-coiffures-les-plus-populaires-de-la-saison-4146918/100212514-1-fre-FR/Eva-Longoria-change-radicalement-de-tete-et-adopte-l-une-des-coiffures-les-plus-populaires-de-la-saison.jpg",
     },
     {
-      name: "Alice Smith",
-      position: "Product Manager",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsS0fYx5QaeXlcgCkTYSx_2Bb6M0W-OkmYWQ&usqp=CAU",
-    },
-    {
       name: "John Doe",
       position: "Software Engineer",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdSGVuStFxj_Dnv9V9qlzkor22IRPIglGkVA&usqp=CAU",
@@ -44,16 +40,17 @@ const Team = () => {
   ];
 
   return (
-    <div className="container mx-auto px-2 py-20">
+    <Container>
+    <div className=" px-2 py-20">
       <SubHeading title="Meet Our Team" />
       <Heading title="Discover the Faces Behind Our Success" />
 
-      <div className=" flex flex-wrap md:grid-cols-3 md:grid lg:grid-cols-5 gap-5 justify-center mt-10 items-center">
+      <div className=" flex flex-wrap md:grid-cols-2 md:grid lg:grid-cols-4 gap-5 justify-center mt-10 items-center">
         {teams.map((member, indx) => (
           <Card
             key={indx}
             shadow={false}
-            className="relative  grid h-96 w-full max-w-[28rem] items-end justify-center overflow-hidden text-center rounded group"
+            className="team-card  relative  grid h-96 w-full max-w-[28rem] items-end justify-center overflow-hidden text-center rounded group"
           >
             <CardHeader
               floated={false}
@@ -95,6 +92,7 @@ const Team = () => {
         ))}
       </div>
     </div>
+    </Container>
   );
 };
 
