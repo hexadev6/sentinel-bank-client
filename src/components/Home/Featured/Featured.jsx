@@ -27,9 +27,9 @@ const Featured = () => {
   return (
     <>
 
-      <div className="flex gap-5 mb-10 overflow-auto lg:overflow-hidden">
+      <div className="flex gap-5 mb-10 overflow-auto ">
         {featuredImage.map((item) => (
-          <div className="h-20 w-40  bg-white p-3 flex-shrink-0">
+          <div className="h-20 w-40  bg-white p-3 flex-shrink-0 md:flex-shrink">
             <img src={item.img} alt="" className="grayscale w-full h-full" />
           </div>
         ))}
