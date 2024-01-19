@@ -16,7 +16,7 @@ const NavList = () => {
       </NavLink>
 
       <NavLink
-        to="/aboutUs"
+        to="/about"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending "

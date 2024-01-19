@@ -1,6 +1,7 @@
+import AboutCompany from "../../../components/About us/AboutCompany/AboutCompany";
+import ReadyToTalk from "../../../components/About us/ReadyToTalk.jsx/ReadyToTalk";
 import Team from "../../../components/About us/Team/Team";
-import AboutCompany from "../../../components/AboutUS/AboutCompany";
-import ReadyToTalk from "../../../components/AboutUS/ReadyToTalk";
+
 
 const AboutUs = () => {
     return (
