@@ -16,6 +16,8 @@ import {
   Autoplay,
 } from "swiper/modules";
 import Container from "../../Shared/container/Container";
+import SubHeading from "../../Shared/Heading Title/SubHeading";
+import Heading from "../../Shared/Heading Title/Heading";
 
 const CustomerReview = () => {
   const [customerFeedback, setCustomerFeedback] = useState([]);
@@ -32,10 +34,8 @@ const CustomerReview = () => {
       <Container>
         {/* feedback heading */}
         <div className="text-center px-2">
-          <p className="font-semibold text-xl">Customer feedback</p>
-          <h1 className="max-w-2xl   mx-auto  text-[#4d774e] text-2xl md:text-5xl font-bold my-3">
-            Unleash Your Opinions with Our New Feedback Service!
-          </h1>
+          <SubHeading title='Customer feedback'/>
+          <Heading title='Unleash Your Opinions with Our New Feedback Service!'/>
           <p className="text-lg">
             Your feedback is the key to shaping a banking experience tailored
             just for you!
