@@ -26,7 +26,7 @@ const CustomerReview = () => {
 
       <Container>
         {/* feedback heading */}
-      <div className="text-center px-2 mt-14">
+      <div className="text-center px-2">
         <p className="font-semibold text-xl">Customer feedback</p>
         <h1 className="max-w-2xl   mx-auto  text-[#4d774e] text-2xl md:text-5xl font-bold my-3">
           Unleash Your Opinions with Our New Feedback Service!
