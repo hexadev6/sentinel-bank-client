@@ -4,6 +4,28 @@ import {
   Button,
   Typography,
   IconButton,
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+  Card,
+  CardBody,
+  CardFooter,
 } from "@material-tailwind/react";
 
-export { Avatar, Drawer, Button, Typography, IconButton };
+export {
+  Avatar,
+  Drawer,
+  Button,
+  Typography,
+  IconButton,
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+  Card,
+  CardBody,
+  CardFooter,
+};
