@@ -6,6 +6,7 @@ import {
 import React, { useEffect, useState } from "react";
 import picbg from "../../../assets/banner/confused.jpg";
 import Container from "../../Shared/container/Container";
+import PropTypes from 'prop-types';
 
 function Icon({ id, open }) {
   return (
@@ -97,3 +98,8 @@ const FaqSection = () => {
 };
 
 export default FaqSection;
+
+Icon.propTypes = {
+  id: PropTypes.number,
+  open: PropTypes.bool
+}
