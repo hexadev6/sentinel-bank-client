@@ -1,6 +1,6 @@
-import img1 from '../../../assets/banner/teamwork (3).jpg'
-import img2 from '../../../assets/banner/teamwork.jpg'
-import Container from '../../Shared/container/Container';
+import img1 from "../../../assets/banner/teamwork (3).jpg";
+import img2 from "../../../assets/banner/teamwork.jpg";
+import Container from "../../Shared/container/Container";
 
 const AboutCompany = () => {
     return (

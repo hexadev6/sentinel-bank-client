@@ -17,7 +17,7 @@ const Navbar = () => {
       } else {
         setSticky(false);
       }
-    }, 1000);
+    }, 500);
   };
 
   useEffect(() => {
@@ -38,41 +38,43 @@ const Navbar = () => {
           : ""
       }  duration-1000 ease-linear    ${
         issticky
-          ? "sticky bg-white  top-0 ease-linear duration-700 "
+          ? "sticky bg-white  top-0 ease-linear duration-700 shadow-md"
           : "sticky"
-      }`}>
-      <div className='flex justify-between items-center px-5 md:px-10  lg:px-20 py-4 md:py-0'>
+      }`}
+    >
+      <div className="flex justify-between items-center px-5 md:px-10  lg:px-20 py-4 md:py-0">
         <Logo />
-        <div className='md:flex  gap-5 text-sm lg:text-base  font-bold hidden lg:ml-32'>
+        <div className="md:flex  gap-5 text-sm lg:text-base  font-bold hidden lg:ml-32">
           {/* navLink */}
           <NavList></NavList>
         </div>
-        <div className='hidden md:flex items-center gap-5'>
+        <div className="hidden md:flex items-center gap-5">
           {/* Icon social */}
 
-          <div className='md:hidden lg:block'>
+          <div className="md:hidden lg:block">
             <Icons></Icons>
           </div>
 
           {/* deshbord */}
           <Link
             to={"/"}
-            className='bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md'>
+            className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
+          >
             Acount
           </Link>
 
           {/* login */}
           <Link to={"/"}>
-            <div className=' rounded-full '>
+            <div className=" rounded-full ">
               <Avatar
-                src='https://docs.material-tailwind.com/img/face-2.jpg'
-                alt='avatar'
+                src="https://docs.material-tailwind.com/img/face-2.jpg"
+                alt="avatar"
               />
             </div>
           </Link>
         </div>
 
-        <div className='md:hidden'>
+        <div className="md:hidden">
           <Drawer />
         </div>
       </div>
