@@ -1,6 +1,6 @@
 const ReadyToTalk = () => {
     return (
-        <div className='h-60 w-full text-white bg-[#4d774e]'>
+        <div className='w-full text-white bg-[#4d774e] pt-10 pb-36'>
             <h2 className='text-3xl py-4  text-center'>
                 Ready To Talk?</h2>
                 <p className='text-center text-lg'>Our team is here to answer your question about Sentinel Trust Bank.</p>
