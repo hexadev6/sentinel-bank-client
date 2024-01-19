@@ -1,15 +1,13 @@
+import { useState } from "react";
 import Heading from "../Shared/Heading Title/Heading";
 import SubHeading from "../Shared/Heading Title/SubHeading";
 import Container from "../Shared/container/Container";
-import {
-  Tab,
-  TabPanel,
-  Tabs,
-  TabsBody,
-  TabsHeader,
-} from "../../lib/materialClass";
+
 import SectionTowCard from "./SectionTowCard";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+
 const Section2 = () => {
+  const [activ, setActive] = useState("Employee");
   const data = [
     {
       label: "Employee",
@@ -175,36 +173,52 @@ const Section2 = () => {
     },
   ];
 
+  const { desc } = data.find((info) => info.value === "Employee") || {};
+
   return (
     <Container>
       <Heading title="Our offices aeound the world" />
       <SubHeading title="Beyond Boundaries: Your Global Banking Partner" />
 
-      <Tabs value="html">
-        <TabsHeader className="md:w-96 mx-auto my-10 bg-white">
-          {data.map(({ label, value }) => (
-            <Tab
-              className="border mx-3 rounded-full "
-              key={value}
-              value={value}
-            >
-              {label}
-            </Tab>
+      <Tabs>
+        <TabList className="flex w-96 mx-auto  justify-center gap-5 my-10">
+          <Tab
+            className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
+              activ === "Employee" ? "bg-green-500" : "bg-white"
+            } `}
+            onClick={() => setActive("Employee")}
+          >
+            Employee
+          </Tab>
+          <Tab
+            className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none  ${
+              activ === "title2" ? "bg-green-500" : "bg-white"
+            } `}
+            onClick={() => setActive("title2")}
+          >
+            Title 2
+          </Tab>
+          <Tab
+            className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
+              activ === "title3" ? "bg-green-500" : "bg-white"
+            } `}
+            onClick={() => setActive("title3")}
+          >
+            Title 3
+          </Tab>
+        </TabList>
+
+        <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
+          {desc?.map((info, i) => (
+            <SectionTowCard key={i} info={info}></SectionTowCard>
           ))}
-        </TabsHeader>
-        <TabsBody>
-          {data.map(({ value, desc }) => (
-            <TabPanel
-              key={value}
-              value={value}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  "
-            >
-              {desc.map((info, i) => (
-                <SectionTowCard key={i} info={info}></SectionTowCard>
-              ))}
-            </TabPanel>
-          ))}
-        </TabsBody>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 3</h2>
+        </TabPanel>
       </Tabs>
     </Container>
   );
