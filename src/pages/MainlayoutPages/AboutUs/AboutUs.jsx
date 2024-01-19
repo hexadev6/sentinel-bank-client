@@ -1,11 +1,11 @@
+import Team from "../../../components/About us/Team/Team";
 import AboutCompany from "../../../components/AboutUS/AboutCompany";
-
 
 const AboutUs = () => {
     return (
         <div>
-            This is about us page
             <AboutCompany/>
+            <Team />
         </div>
     );
 };
