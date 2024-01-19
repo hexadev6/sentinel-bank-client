@@ -3,16 +3,15 @@ import ReadyToTalk from "../../../components/About us/ReadyToTalk.jsx/ReadyToTal
 import Statistics from "../../../components/About us/Statistics/Statistics";
 import Team from "../../../components/About us/Team/Team";
 
-
 const AboutUs = () => {
-    return (
-        <div>
-            <AboutCompany/>
-            <Team />
-            <ReadyToTalk/>
-            <Statistics />
-        </div>
-    );
+  return (
+    <div>
+      <AboutCompany />
+      <Team />
+      <ReadyToTalk />
+      <Statistics />
+    </div>
+  );
 };
 
 export default AboutUs;
