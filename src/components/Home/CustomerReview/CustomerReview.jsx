@@ -8,7 +8,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Keyboard,
+  Autoplay,
+} from "swiper/modules";
 
 const CustomerReview = () => {
   const [customerFeedback, setCustomerFeedback] = useState([]);
@@ -22,7 +28,6 @@ const CustomerReview = () => {
 
   return (
     <>
-
       {/* feedback heading */}
       <div className="text-center px-2">
         <p className="font-semibold text-xl">Customer feedback</p>
@@ -43,19 +48,19 @@ const CustomerReview = () => {
         mousewheel={true}
         keyboard={true}
         autoplay={true}
-        modules={[Pagination, Mousewheel, Keyboard,Autoplay]}
+        modules={[Pagination, Mousewheel, Keyboard, Autoplay]}
         className="mySwiper mt-10 md:mt-20  container mx-auto"
       >
         {customerFeedback.map((feedback, index) => (
           <SwiperSlide key={index}>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-0 md:gap-10 justify-center items-center  px-2">
-           <div className="col-span-2  flex justify-end">
-           <img
-                src={feedback?.customerImg}
-                alt="image 1"
-                className="h-96 w-96 object-cover rounded-full"
-              />
-           </div>
+              <div className="col-span-2  flex justify-end">
+                <img
+                  src={feedback?.customerImg}
+                  alt="image 1"
+                  className="h-96 w-96 object-cover rounded-full"
+                />
+              </div>
               <div className="col-span-3 py-10">
                 <ImQuotesLeft className="text-5xl mb-5 text-[#4d774e] " />
                 <p className="text-2xl font-semibold my-7">

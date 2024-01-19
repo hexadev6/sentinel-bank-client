@@ -17,7 +17,7 @@ const Navbar = () => {
       } else {
         setSticky(false);
       }
-    }, 1000);
+    }, 500);
   };
 
   useEffect(() => {
