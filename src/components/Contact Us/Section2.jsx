@@ -64,8 +64,8 @@ const Section2 = () => {
       ],
     },
     {
-      label: "React",
-      value: "react",
+      label: "Branch Manager",
+      value: "Branch Manager",
       desc: [
         {
           name: "Grace Operations Manager",
@@ -118,8 +118,8 @@ const Section2 = () => {
       ],
     },
     {
-      label: "Vue",
-      value: "vue",
+      label: "Loan Officer",
+      value: "Loan Officer",
       desc: [
         {
           name: "Emily Branch Manager",
@@ -173,15 +173,17 @@ const Section2 = () => {
     },
   ];
 
-  const { desc } = data.find((info) => info.value === "Employee") || {};
+  const info1 = data.find((info) => info.value === "Employee") || {};
+  const info2 = data.find((info) => info.value === "Branch Manager") || {};
+  const info3 = data.find((info) => info.value === "Loan Officer") || {};
 
   return (
     <Container>
-      <Heading title="Our offices aeound the world" />
-      <SubHeading title="Beyond Boundaries: Your Global Banking Partner" />
+      <Heading title="All employee information of our office" />
+      <SubHeading title=" Your Global Banking Partner" />
 
       <Tabs>
-        <TabList className="flex w-96 mx-auto  justify-center gap-5 my-10">
+        <TabList className="flex w-[500px] mx-auto  justify-center gap-5 my-10">
           <Tab
             className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
               activ === "Employee" ? "bg-green-500" : "bg-white"
@@ -192,32 +194,36 @@ const Section2 = () => {
           </Tab>
           <Tab
             className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none  ${
-              activ === "title2" ? "bg-green-500" : "bg-white"
+              activ === "Branch Manager" ? "bg-green-500" : "bg-white"
             } `}
-            onClick={() => setActive("title2")}
+            onClick={() => setActive("Branch Manager")}
           >
-            Title 2
+            Branch Manager
           </Tab>
           <Tab
             className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
-              activ === "title3" ? "bg-green-500" : "bg-white"
+              activ === "Loan Officer" ? "bg-green-500" : "bg-white"
             } `}
-            onClick={() => setActive("title3")}
+            onClick={() => setActive("Loan Officer")}
           >
-            Title 3
+            Loan Officer
           </Tab>
         </TabList>
 
         <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
-          {desc?.map((info, i) => (
+          {info1?.desc?.map((info, i) => (
             <SectionTowCard key={i} info={info}></SectionTowCard>
           ))}
         </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
+        <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
+          {info2?.desc?.map((info, i) => (
+            <SectionTowCard key={i} info={info}></SectionTowCard>
+          ))}
         </TabPanel>
-        <TabPanel>
-          <h2>Any content 3</h2>
+        <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
+          {info3?.desc?.map((info, i) => (
+            <SectionTowCard key={i} info={info}></SectionTowCard>
+          ))}
         </TabPanel>
       </Tabs>
     </Container>
