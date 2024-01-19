@@ -6,7 +6,7 @@ const AboutCompany = () => {
     return (
         <Container>
              <p className=' text-[#4d774e] text-center mb-4 text-lg'>About Company</p>
-           <div className='flex flex-col lg:flex-row mx-6 justify-around gap-6'>
+           <div className='flex flex-col lg:flex-row mx-6 justify-evenly gap-6'>
            
            <div  className='sm:mx-10'>
                 <div className='relative'>
@@ -19,7 +19,7 @@ const AboutCompany = () => {
                 </div>
 
             </div>
-            <div className='w-full lg:w-1/2 px-10'>
+            <div className='w-full lg:w-96 px-10'>
                   <h2 className='text-2xl font-bold'>Crafting Excellence Since 25 Years</h2>
                   <p className='text-xl font-medium'>For 25 years, Sentinel Trust Bank has been synonymous with excellence. Since our inception, we have continually evolved to meet the dynamic needs. Our seasoned team of professionals brings a wealth of experience, ensuring that every project we undertake is executed with precision, creativity, and a commitment to surpassing expectations.</p>
             </div>
