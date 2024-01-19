@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="relative w-full mt-20 py-10 text-white bg-gradient-to-r from-[#164a41] via-[#4d774e] to-[#9dc88d]">
+      <footer className="relative w-full mt-20 py-10 text-white bg-blue-gray-900">
         <div className="mx-auto w-full max-w-7xl px-8 ">
           <Featured />
           <div className="grid grid-cols-1 justify-between gap-10 lg:grid-cols-2">
