@@ -51,22 +51,22 @@ const CustomerReview = () => {
         {customerFeedback.map((feedback, index) => (
           <SwiperSlide key={index}>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-0 md:gap-10 justify-center items-center  px-2">
-           <div className="col-span-2  flex justify-end">
+           <div className="col-span-2  flex justify-center md:justify-end">
            <img
                 src={feedback?.customerImg}
                 alt="image 1"
-                className="h-96 w-96 object-cover rounded-full"
+                className="h-60 w-60 object-cover rounded-full"
               />
            </div>
               <div className="col-span-3 py-10">
-                <ImQuotesLeft className="text-5xl mb-5 text-[#4d774e] " />
-                <p className="text-2xl font-semibold my-7">
+                <ImQuotesLeft className="text-3xl mb-5 text-[#4d774e] " />
+                <p className="text-xl font-semibold my-7">
                   {feedback?.reviewHeadline}
                 </p>
-                <p className="text-xl text-gray-700 font-normal">
+                <p className="text-lg text-gray-700 font-normal">
                   {feedback?.detailsReview}
                 </p>
-                <p className="text-2xl font-semibold mt-4">{feedback.name}</p>
+                <p className="text-xl font-semibold mt-4">{feedback.name}</p>
                 <p className="text-[#4d774e] font-light mt-2">
                   {feedback?.country}
                 </p>
