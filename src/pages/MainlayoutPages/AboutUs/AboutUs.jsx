@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import AboutCompany from "../../../components/About us/AboutCompany/AboutCompany";
 import ReadyToTalk from "../../../components/About us/ReadyToTalk.jsx/ReadyToTalk";
 import Statistics from "../../../components/About us/Statistics/Statistics";
