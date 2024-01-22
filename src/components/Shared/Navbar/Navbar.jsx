@@ -29,14 +29,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={` md:py-5  w-full z-50  ${
-        locattion?.pathname === "/" ||
-        locattion?.pathname === "/subscribe" ||
-        locattion?.pathname === "/payment" ||
-        locattion?.pathname === "/about"
-          ? "text-black"
-          : ""
-      }  duration-1000 ease-linear    ${
+      className={` md:py-5  w-full z-50 duration-1000 ease-linear ${
         issticky
           ? "sticky bg-white  top-0 ease-linear duration-700 shadow-md"
           : "sticky"
