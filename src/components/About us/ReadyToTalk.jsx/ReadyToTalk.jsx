@@ -2,6 +2,10 @@ import call from '../../../assets/banner/icons8-calling-66.png'
 
 const ReadyToTalk = () => {
     return (
+<<<<<<< HEAD
+        <div className='w-full text-white bg-[#4d774e] pt-10 pb-36'>
+            <h2 className='text-3xl py-4  text-center'>
+=======
         <div className='h-80 w-full bg-gray-300 border-2 '>
             <div className='flex flex-col lg:flex-row mt-4 justify-center lg:gap-10 items-center'>
             <div>
@@ -9,6 +13,7 @@ const ReadyToTalk = () => {
             </div>
             <div>
             <h2 className='text-3xl text-red-500 py-4 text-center'>
+>>>>>>> 49d34ecdb90c9ddb8b41c3eacbad381308cb4270
                 Ready To Talk?</h2>
                 <p className='text-center text-lg'>Our team is here to answer your question about Sentinel Trust Bank.</p>
                <div className='my-2 flex flex-col lg:flex-row justify-center items-center gap-2'>
@@ -20,8 +25,8 @@ const ReadyToTalk = () => {
                </div>
                <h2 className="text-xl text-center">More Than 1.5 million business and organization use STB.</h2>
                </div>
-        </div>
-        </div>
+    
+       
     );
 };
 
