@@ -2,8 +2,8 @@ import call from '../../../assets/banner/icons8-calling-66.png'
 
 const ReadyToTalk = () => {
     return (
-        <div className='h-72 w-full bg-gray-300 border-2 '>
-            <div className='flex mt-10 justify-center gap-10 items-center'>
+        <div className='h-80 w-full bg-gray-300 border-2 '>
+            <div className='flex flex-col lg:flex-row mt-4 justify-center lg:gap-10 items-center'>
             <div>
                   <img className='h-40 w-40 rounded-full bg-green-600 p-4' src={call} alt="" />
             </div>
