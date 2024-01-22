@@ -6,7 +6,7 @@ const AboutCompany = () => {
     return (
         <Container>
           
-           <div className='flex flex-col lg:flex-row mx-6 justify-evenly gap-6'>
+           <div className='flex flex-col items-center lg:flex-row mx-6 justify-evenly gap-6'>
            
            
            <div  className='sm:mx-10'>

@@ -6,6 +6,9 @@ export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily:{
+        Poppins: "'Poppins', 'sans-serif'"
+      },
       colors: {
         "dark-green": "#4D774E",
         "medium-green": "#4D774E",

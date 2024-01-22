@@ -53,7 +53,11 @@ const NavList = () => {
         Help Center
       </NavLink>
       <NavLink
+<<<<<<< HEAD
         to="/dashboard"
+=======
+        to="/registration"
+>>>>>>> cc7e65c9ee843aa6a90c50fbeb3433db16366bfa
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -62,7 +66,23 @@ const NavList = () => {
             : "hover:border-b hover:border-b-green-400 ease-in duration-500 "
         }
       >
+<<<<<<< HEAD
         Dashboard
+=======
+        Register
+      </NavLink>
+      <NavLink
+        to="/login"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-primary_Colors border-b border-primary_Colors"
+            : "hover:border-b hover:border-b-green-400 ease-in duration-500 "
+        }
+      >
+        Login
+>>>>>>> cc7e65c9ee843aa6a90c50fbeb3433db16366bfa
       </NavLink>
     </>
   );
