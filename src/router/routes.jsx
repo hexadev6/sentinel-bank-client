@@ -3,8 +3,12 @@ import MainLayout from "../layouts/MainLayout/MainLayout";
 import Home from "../pages/MainlayoutPages/Home/Home";
 import AboutUs from "../pages/MainlayoutPages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
+<<<<<<< HEAD
+import Dashboard from "../pages/Dashboard/Dashboard";
+=======
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
+>>>>>>> cc7e65c9ee843aa6a90c50fbeb3433db16366bfa
 
 const router = createBrowserRouter([
   {
@@ -32,6 +36,11 @@ const router = createBrowserRouter([
         element: <Login></Login>
       }
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    
   },
 ]);
 
