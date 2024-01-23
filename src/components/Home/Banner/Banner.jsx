@@ -28,7 +28,7 @@ const Banner = () => {
   const [email, setEmail] = useState("");
   const onChange = ({ target }) => setEmail(target.value);
   return (
-    <div style={outerDivStyle} className="-mt-24">
+    <div style={outerDivStyle} className="">
       <div
         className="-bottom-24 md:-bottom-52 lg:-bottom-[28rem]"
         style={innerDivStyle}
