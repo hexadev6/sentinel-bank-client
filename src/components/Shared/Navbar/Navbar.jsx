@@ -47,7 +47,7 @@ const Navbar = () => {
         >
           <Logo />
         </div>
-        <div className="lg:flex items-center  gap-5 text-sm lg:text-base  font-bold hidden lg:ml-32 text-white">
+        <div className="lg:flex items-center  gap-5 text-sm lg:text-base  font-bold hidden  text-white z-50">
           {/* navLink */}
           <NavList></NavList>
         </div>
