@@ -6,6 +6,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
+import Overview from "../pages/Dashboard/Overview";
 
 const router = createBrowserRouter([
   {
@@ -25,19 +26,19 @@ const router = createBrowserRouter([
         element: <ContactUs></ContactUs>,
       },
       {
-        path: '/registration',
-        element: <Registration></Registration>
+        path: "/registration",
+        element: <Registration></Registration>,
       },
       {
-        path: '/login',
-        element: <Login></Login>
-      }
+        path: "/login",
+        element: <Login></Login>,
+      },
     ],
   },
   {
     path: "/dashboard",
     element: <Dashboard />,
-    
+    children: [{ path: "/dashboard", element: <Overview /> }],
   },
 ]);
 
