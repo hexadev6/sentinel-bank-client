@@ -63,6 +63,17 @@ const NavList = () => {
         }
       >
         Dashboard
+      </NavLink>
+      <NavLink
+        to="/registration"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-primary_Colors border-b border-primary_Colors"
+            : "hover:border-b hover:border-b-green-400 ease-in duration-500 "
+        }
+      >
         Register
       </NavLink>
       <NavLink
