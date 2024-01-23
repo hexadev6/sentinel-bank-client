@@ -63,7 +63,10 @@ const NavList = () => {
         }
       >
         Dashboard
+<<<<<<< HEAD
         
+=======
+>>>>>>> ae051e470f46edde31a0459a8c4068c0e06ceb28
       </NavLink>
       <NavLink
         to="/registration"
