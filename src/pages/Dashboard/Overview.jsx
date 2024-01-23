@@ -4,8 +4,8 @@ import Cards from '../../components/Overview/Cards/Cards';
 
 const Overview = () => {
     return (
-        <div className=' gap-5 justify-between'>
-            <div className=''>
+        <div className='grid grid-cols-4 gap-5 overflow-auto justify-between'>
+            <div className='col-span-3'>
             <Cards />
             <Transaction />
             </div>

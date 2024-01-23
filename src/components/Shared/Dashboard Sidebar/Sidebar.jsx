@@ -14,7 +14,7 @@ const Sidebar = () => {
   return (
 
     // sidebar
-    <div className="hidden sticky top-0 sm:w-fit lg:w-72 bg-white  shadow-xl h-screen sm:flex flex-col items-center justify-center p-4 ">
+    <div className="hidden sticky left-0 top-0 sm:w-fit lg:w-72 bg-white  shadow-xl h-screen sm:flex flex-col items-center justify-center p-4 ">
     {/* top logo */}
     <div className="">
       <Typography variant="h5" color="blue-gray" className="hidden lg:flex">
