@@ -187,7 +187,7 @@ const Section2 = () => {
         <SubHeading title=" Your Global Banking Partner" />
 
         <Tabs>
-          <TabList className="flex flex-col md:flex-row md:w-[500px] mx-auto  justify-center gap-5 my-10">
+          <TabList className="flex flex-col md:flex-row md:w-[700px] mx-auto  justify-center gap-5 my-10">
             <Tab
               className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
                 activ === "Employee" ? "bg-green-500" : "bg-white"

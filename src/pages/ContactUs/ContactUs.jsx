@@ -1,9 +1,11 @@
+import ContactInfo from "../../components/Contact Us/ContactInfo";
 import Section2 from "../../components/Contact Us/Section2";
 
 const ContactUs = () => {
   return (
     <div>
       <Section2></Section2>
+      <ContactInfo />
       <div className="container mx-auto mt-10 p-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Part 1: GET IN TOUCH */}
