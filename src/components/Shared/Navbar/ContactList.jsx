@@ -130,8 +130,8 @@ const ContactList = () => {
             </div>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-screen  lg:block rounded-none mt-3 pb-20 px-20 ease-linear duration-200">
-          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+        <MenuList className="hidden w-screen  lg:block rounded-none mt-3 pb-20 px-20 ease-linear duration-200 z-50">
+          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0 z-50">
             {renderItems}
           </ul>
         </MenuList>
