@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
 import { Button } from '@material-tailwind/react';
+import useAuth from '../../Hooks/useAuth';
 
 const FormContainer = styled.div`
   display: flex;
@@ -85,12 +86,20 @@ const PasswordIcon = styled.span`
 
 
 const RegistrationForm = () => {
+  const {userSignUp}=useAuth()
   const { register, handleSubmit, setValue } = useForm();
   
 
   const onSubmit = (data) => {
     console.log(data);
-    // You can handle form submission logic here
+    userSignUp(data.email,data.password)
+    .then(result=>{
+      console.log(result.user);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+    
   };
 
   const handleImageChange = (e) => {
