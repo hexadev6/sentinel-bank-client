@@ -74,10 +74,10 @@ const Transaction = () => {
     },
   ];
   return (
-    <Card className="h-full rounded  w-full shadow-xl">
+    <Card className="rounded border shadow-xl overflow-auto">
 
       <CardBody className="py-0 px-0">
-        <table className="w-full min-w-max table-auto text-left">
+        <table className="w-full table-auto text-left overflow-auto">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (

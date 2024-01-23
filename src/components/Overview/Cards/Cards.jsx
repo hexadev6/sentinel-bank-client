@@ -30,9 +30,9 @@ const Cards = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-3 gap-3 overflow-auto ">
+    <div className="flex gap-3 overflow-auto mb-5 w-auto">
       {cardNumber.map((item) => (
-        <Card className="flex-shrink-0 text-white  bg-gradient-to-r from-dark-green via-medium-green to-light-green rounded">
+        <Card className="flex-shrink-0 w-[450px]  text-white  bg-gradient-to-r from-dark-green via-medium-green to-light-green rounded">
              <CardBody>
             <Logo />
             <Typography variant="h3" className="text-white mt-5 font-medium flex justify-between">

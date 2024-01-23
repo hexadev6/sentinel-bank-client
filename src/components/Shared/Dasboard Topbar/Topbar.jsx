@@ -18,7 +18,7 @@ const Topbar = () => {
       color="blue-gray"
       className="w-full h-fit"
     >
-      <div className="flex w-full h-fit z-50 sticky top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
+      <div className="flex w-full h-fit z-50 sticky bottom-0 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
         {/* side bar will open  */}
         <HidedMenu />
         {/* top menu start from here  */}
@@ -73,7 +73,7 @@ const Topbar = () => {
           </div>
         </div>
       </div>
-      <div className="p-10">
+      <div className="p-5 ">
       <Outlet />
       </div>
     </div>
