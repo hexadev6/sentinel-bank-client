@@ -63,19 +63,9 @@ const NavList = () => {
         }
       >
         Dashboard
-<<<<<<< HEAD
-      </NavLink>
-      <NavLink
-         to="/registration"
-=======
-<<<<<<< HEAD
-        
-=======
->>>>>>> ae051e470f46edde31a0459a8c4068c0e06ceb28
       </NavLink>
       <NavLink
         to="/registration"
->>>>>>> 1ce6f5d1bf3de529d8d121bd38cc8c48dd52a76e
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
