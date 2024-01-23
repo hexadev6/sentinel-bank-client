@@ -10,9 +10,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 
     <AuthProvider>
+
       <ThemeProvider>
         <RouterProvider router={routes} />
       </ThemeProvider>
+  
     </AuthProvider>
   </React.StrictMode>,
 )
