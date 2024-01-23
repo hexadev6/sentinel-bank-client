@@ -1,9 +1,16 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState} from "react";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import app from "../../../../Firebase/Firebase.config";
+// import auth from "../../../../Firebase/Firebase.config";
 
-const AuthContext = createContext()
-const auth = getAuth();
+
+
+
+export const AuthContext = createContext()
+
 const AuthProvider = ({children}) => {
+    const auth = getAuth(app)
+  
     const [user,setUser] = useState(null)
     const [loading,setLoading] = useState(true)
 
@@ -18,17 +25,12 @@ const AuthProvider = ({children}) => {
     }
 
 
-
-
-
-
-
-
     const authInfo ={
-        user,
-        loading,
-        userSignUp,
-        userLogin,
+       
+       user,
+       loading,
+       userSignUp,
+       userLogin
 
 
     }
