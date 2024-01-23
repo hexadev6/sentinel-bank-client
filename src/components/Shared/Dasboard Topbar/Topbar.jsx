@@ -1,16 +1,14 @@
 import React from "react";
 import {
-  Navbar,
   Typography,
   IconButton,
   Button,
-  Input,
   Avatar,
 } from "@material-tailwind/react";
-import { BellIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { IoSearch } from "react-icons/io5";
 import { FaBell } from "react-icons/fa";
 import HidedMenu from "./HidedMenu";
+import { Outlet } from "react-router-dom";
 
 const Topbar = () => {
   return (
@@ -18,9 +16,9 @@ const Topbar = () => {
     <div
       variant="gradient"
       color="blue-gray"
-      className="w-full h-fit sticky top-0  bg-white border-b  rounded-none px-4 py-3"
+      className="w-full h-fit"
     >
-      <div className="flex  items-center justify-between gap-y-4 text-black">
+      <div className="flex w-full h-fit z-50 sticky top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
         {/* side bar will open  */}
         <HidedMenu />
         {/* top menu start from here  */}
@@ -74,6 +72,9 @@ const Topbar = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="p-10">
+      <Outlet />
       </div>
     </div>
   );

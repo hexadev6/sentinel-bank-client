@@ -1,19 +1,18 @@
-import { List, ListItem, ListItemPrefix } from "@material-tailwind/react";
 import React from "react";
 import { BsBank2 } from "react-icons/bs";
 import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
-import { IoDownloadOutline, IoLogOutOutline } from "react-icons/io5";
+import {  IoLogOutOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 
 const SidebarList = () => {
   return (
     <div className="w-full flex flex-col gap-2 items-center lg:items-start">
-      <NavLink to='/' className={({ isActive, isPending }) =>
+      <NavLink to='/dashboard' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-black bg-light-green rounded w-full"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }
         >
@@ -31,7 +30,7 @@ const SidebarList = () => {
               />
             </svg>
           <span className="lg:flex hidden ">
-          Dashboard
+          Overview
           </span>
           </div>
       </NavLink>

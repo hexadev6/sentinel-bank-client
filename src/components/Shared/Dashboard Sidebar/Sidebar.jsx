@@ -1,20 +1,9 @@
 import React from "react";
 import {
-  Drawer,
-  Button,
   Typography,
-  IconButton,
-  List,
-  ListItem,
-  ListItemPrefix,
-  ListItemSuffix,
-  Chip,
   Switch,
 } from "@material-tailwind/react";
-import { BsBank2 } from "react-icons/bs";
-import { GrTransaction } from "react-icons/gr";
-import { TfiWrite } from "react-icons/tfi";
-import { IoDownloadOutline, IoLogOutOutline } from "react-icons/io5";
+import { IoDownloadOutline } from "react-icons/io5";
 import SidebarList from "./SidebarList";
 import Logo from "../../../utility/Logo";
 import logo from '../../../assets/icons/bank.svg'
@@ -25,7 +14,7 @@ const Sidebar = () => {
   return (
 
     // sidebar
-    <div className="hidden sm:w-fit lg:w-72 bg-white  shadow-md h-screen sm:flex flex-col items-center justify-center p-4 ">
+    <div className="hidden sticky top-0 sm:w-fit lg:w-72 bg-white  shadow-xl h-screen sm:flex flex-col items-center justify-center p-4 ">
     {/* top logo */}
     <div className="">
       <Typography variant="h5" color="blue-gray" className="hidden lg:flex">

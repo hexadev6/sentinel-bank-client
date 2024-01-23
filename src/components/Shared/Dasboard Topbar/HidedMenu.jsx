@@ -12,10 +12,7 @@ import { TfiWrite } from "react-icons/tfi";
 import { GrTransaction } from "react-icons/gr";
 import { BsBank2 } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-import { RxCross1 } from "react-icons/rx";
-import SidebarList from "../Dashboard Sidebar/SidebarList";
 import Logo from "../../../utility/Logo";
-import logo from "../../../assets/icons/bank.svg";
 
 const HidedMenu = () => {
   const [open, setOpen] = React.useState(false);
@@ -91,10 +88,9 @@ const HidedMenu = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="flex">Dashboard</span>
+                <span className="flex">Overview</span>
               </div>
             </NavLink>
-
             <NavLink
               to="/"
               className={({ isActive, isPending }) =>
