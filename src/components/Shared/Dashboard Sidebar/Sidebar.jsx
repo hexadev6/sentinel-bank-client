@@ -16,28 +16,30 @@ import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
 import { IoDownloadOutline, IoLogOutOutline } from "react-icons/io5";
 import SidebarList from "./SidebarList";
+import Logo from "../../../utility/Logo";
+import logo from '../../../assets/icons/bank.svg'
+
 
 const Sidebar = () => {
 
   return (
 
     // sidebar
-    <div className="sm:grid hidden sm:col-span-1 lg:col-span-2 shadow-md min-h-screen items-center justify-center p-4 ">
-    <div className="mb-5">
+    <div className="hidden sm:w-fit lg:w-72 bg-white  shadow-md h-screen sm:flex flex-col items-center justify-center p-4 ">
+    {/* top logo */}
+    <div className="">
       <Typography variant="h5" color="blue-gray" className="hidden lg:flex">
-        Sentinel Trust Bank
+        <Logo/> 
       </Typography>
-      <Typography variant="h5" color="blue-gray" className="flex lg:hidden">
-        STB
-      </Typography>
+      <img src={logo} alt="" srcset=""  className="flex lg:hidden w-16"/>
     </div>
     {/* menu */}
-    <div className="flex-grow">
+    <div className="flex-grow mt-12">
       <SidebarList />
     </div>
-
-    {/* bottom */}
+    {/* bottom menu */}
     <div className="w-full">
+        {/* bank statement download */}
       <div>
         <h1 className="lg:flex hidden font-semibold my-2 ">Bank Statement</h1>
         <button  
@@ -47,9 +49,9 @@ const Sidebar = () => {
         </button>
       </div>
       <hr className="w-full bg-gray-500 my-5" />
-
+      {/* dark mode */}
       <div className=" flex justify-between gap-2 items-center">
-        <h1  className="lg:flex hidden">Dark mood</h1>
+        <h1  className="lg:flex hidden">Dark mode</h1>
         <Switch
           id="custom-switch-component"
           ripple={false}

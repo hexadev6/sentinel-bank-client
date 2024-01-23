@@ -14,15 +14,15 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }
         >
-          <div className="flex  items-center gap-3 px-2 py-1">
+          <div className="flex  items-center gap-3 px-2 py-1 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="h-5 lg:w-5 w-full"
+              className="h-5 w-5"
             >
               <path
                 fillRule="evenodd"
@@ -30,7 +30,7 @@ const SidebarList = () => {
                 clipRule="evenodd"
               />
             </svg>
-          <span className="lg:flex hidden">
+          <span className="lg:flex hidden ">
           Dashboard
           </span>
           </div>
@@ -40,7 +40,7 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <svg
@@ -65,7 +65,7 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <BsBank2 />
@@ -79,7 +79,7 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <GrTransaction />
@@ -93,7 +93,7 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <TfiWrite />
@@ -107,7 +107,7 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <svg
@@ -132,7 +132,7 @@ const SidebarList = () => {
             ? "pending"
             : isActive
             ? "text-black bg-medium-green rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 "
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <IoLogOutOutline />

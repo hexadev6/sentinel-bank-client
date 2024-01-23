@@ -5,9 +5,9 @@ import Topbar from "../../components/Shared/Dasboard Topbar/Topbar";
 const Dashboard = () => {
   return (
     <div>
-      <div className="grid grid-cols-8">
-      <Sidebar />
-      <Topbar />
+      <div className="flex ">
+        <Sidebar />
+        <Topbar />
       </div>
     </div>
   );

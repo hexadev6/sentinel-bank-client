@@ -14,16 +14,16 @@ import HidedMenu from "./HidedMenu";
 
 const Topbar = () => {
   return (
+    // topbard
     <div
       variant="gradient"
       color="blue-gray"
-      className="col-span-8 sm:col-span-7 h-fit sticky top-0  bg-white border-b lg:col-span-6 rounded-none px-4 py-3"
+      className="w-full h-fit sticky top-0  bg-white border-b  rounded-none px-4 py-3"
     >
       <div className="flex  items-center justify-between gap-y-4 text-black">
         {/* side bar will open  */}
-
         <HidedMenu />
-        {/* menu start from here  */}
+        {/* top menu start from here  */}
         <Typography
           as="a"
           href="#"
@@ -32,7 +32,8 @@ const Topbar = () => {
         >
           Dashboard
         </Typography>
-        <div className="relative md:flex hidden gap-2 md:w-max ">
+        {/* search bar */}
+        <div className="relative md:flex hidden gap-2 md:max-w">
           <input
             type="search"
             color="white"
@@ -47,8 +48,9 @@ const Topbar = () => {
             <IoSearch className="text-lg" />
           </Button>
         </div>
-
+        {/* bell icon & avatar */}
         <div className="flex gap-2 md:gap-5 items-center ">
+          {/* search icon for sm device */}
           <IconButton
             variant="text"
             color="white"
@@ -56,6 +58,7 @@ const Topbar = () => {
           >
             <IoSearch className="text-lg" />
           </IconButton>
+          {/* bell icon */}
           <IconButton
             variant="text"
             color="white"
@@ -63,6 +66,7 @@ const Topbar = () => {
           >
             <FaBell className="text-lg" />
           </IconButton>
+          {/* avatar */}
           <div className=" rounded-full ">
             <Avatar
               src="https://docs.material-tailwind.com/img/face-2.jpg"
