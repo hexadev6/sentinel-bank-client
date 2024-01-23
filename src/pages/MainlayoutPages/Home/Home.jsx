@@ -1,11 +1,13 @@
-import Banner from "../../../components/Home/Banner/Banner";
+
 import FaqSection from "../../../components/Home/FaqSection/FaqSection";
 import CustomerReview from "../../../components/Home/CustomerReview/CustomerReview";
+import UpdatedBanner from "../../../components/Home/UpdatedBannner/UpdatedBanner";
 
 const Home = () => {
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
+      <UpdatedBanner/>
       <CustomerReview />
       <FaqSection />
     </>
