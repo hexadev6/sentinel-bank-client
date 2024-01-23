@@ -53,7 +53,7 @@ const Navbar = () => {
             to={"/"}
             className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
           >
-            Acount
+            Account
           </Link>
 
           {/* login */}

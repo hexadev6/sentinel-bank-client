@@ -5,7 +5,7 @@ import Container from "../Shared/container/Container";
 
 import SectionTowCard from "./SectionTowCard";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-
+import bgContact from "../../assets/banner/contact-bg.png";
 const Section2 = () => {
   const [activ, setActive] = useState("Employee");
   const data = [
@@ -178,55 +178,60 @@ const Section2 = () => {
   const info3 = data.find((info) => info.value === "Loan Officer") || {};
 
   return (
-    <Container>
-      <Heading title="All employee information of our office" />
-      <SubHeading title=" Your Global Banking Partner" />
+    <div
+      className="object-contain bg-cover bg-center bg-no-repeat py-10 "
+      style={{ backgroundImage: `url("${bgContact}")` }}
+    >
+      <Container>
+        <Heading title="All employee information of our office" />
+        <SubHeading title=" Your Global Banking Partner" />
 
-      <Tabs>
-        <TabList className="flex w-[500px] mx-auto  justify-center gap-5 my-10">
-          <Tab
-            className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
-              activ === "Employee" ? "bg-green-500" : "bg-white"
-            } `}
-            onClick={() => setActive("Employee")}
-          >
-            Employee
-          </Tab>
-          <Tab
-            className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none  ${
-              activ === "Branch Manager" ? "bg-green-500" : "bg-white"
-            } `}
-            onClick={() => setActive("Branch Manager")}
-          >
-            Branch Manager
-          </Tab>
-          <Tab
-            className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
-              activ === "Loan Officer" ? "bg-green-500" : "bg-white"
-            } `}
-            onClick={() => setActive("Loan Officer")}
-          >
-            Loan Officer
-          </Tab>
-        </TabList>
+        <Tabs>
+          <TabList className="flex flex-col md:flex-row md:w-[700px] mx-auto  justify-center gap-5 my-10">
+            <Tab
+              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
+                activ === "Employee" ? "bg-green-500" : "bg-white"
+              } `}
+              onClick={() => setActive("Employee")}
+            >
+              Employee
+            </Tab>
+            <Tab
+              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none  ${
+                activ === "Branch Manager" ? "bg-green-500" : "bg-white"
+              } `}
+              onClick={() => setActive("Branch Manager")}
+            >
+              Branch Manager
+            </Tab>
+            <Tab
+              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
+                activ === "Loan Officer" ? "bg-green-500" : "bg-white"
+              } `}
+              onClick={() => setActive("Loan Officer")}
+            >
+              Loan Officer
+            </Tab>
+          </TabList>
 
-        <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
-          {info1?.desc?.map((info, i) => (
-            <SectionTowCard key={i} info={info}></SectionTowCard>
-          ))}
-        </TabPanel>
-        <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
-          {info2?.desc?.map((info, i) => (
-            <SectionTowCard key={i} info={info}></SectionTowCard>
-          ))}
-        </TabPanel>
-        <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
-          {info3?.desc?.map((info, i) => (
-            <SectionTowCard key={i} info={info}></SectionTowCard>
-          ))}
-        </TabPanel>
-      </Tabs>
-    </Container>
+          <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
+            {info1?.desc?.map((info, i) => (
+              <SectionTowCard key={i} info={info}></SectionTowCard>
+            ))}
+          </TabPanel>
+          <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
+            {info2?.desc?.map((info, i) => (
+              <SectionTowCard key={i} info={info}></SectionTowCard>
+            ))}
+          </TabPanel>
+          <TabPanel className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-10  ">
+            {info3?.desc?.map((info, i) => (
+              <SectionTowCard key={i} info={info}></SectionTowCard>
+            ))}
+          </TabPanel>
+        </Tabs>
+      </Container>
+    </div>
   );
 };
 
