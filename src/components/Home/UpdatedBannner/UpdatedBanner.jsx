@@ -22,15 +22,18 @@ const UpdatedBanner = () => {
       progressCircle.current.style.setProperty('--progress', 1 - progress);
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
-    
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+      };
   return (
     <div className=''>
       <Swiper
         direction='vertical'
         // direction={"vertical"}
-        pagination={{
-          clickable: true,
-        }}
+        pagination={pagination}
         autoplay={{
           delay: 3500,
           disableOnInteraction: false,
