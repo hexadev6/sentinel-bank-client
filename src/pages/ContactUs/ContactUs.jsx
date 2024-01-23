@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import ContactInfo from "../../components/Contact Us/ContactInfo";
 import Section2 from "../../components/Contact Us/Section2";
 
 const ContactUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <Section2></Section2>

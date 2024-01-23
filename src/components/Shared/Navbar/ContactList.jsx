@@ -1,46 +1,142 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
-  Button,
   Menu,
   MenuHandler,
   MenuItem,
   MenuList,
   Typography,
 } from "../../../lib/materialClass";
+import {
+  Bars4Icon,
+  GlobeAmericasIcon,
+  NewspaperIcon,
+  PhoneIcon,
+  RectangleGroupIcon,
+  SquaresPlusIcon,
+  SunIcon,
+  TagIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 const ContactList = () => {
-  const menuItems = [
+  const navListMenuItems = [
+    {
+      title: "contact",
+      link: "contact",
+      description: "Find the perfect solution for your needs.",
+      icon: SquaresPlusIcon,
+    },
+    {
+      title: "About Us",
+      link: "contact",
+      description: "Meet and learn about our dedication",
+      icon: UserGroupIcon,
+    },
+    {
+      title: "Blog",
+      link: "contact",
+      description: "Find the perfect solution for your needs.",
+      icon: Bars4Icon,
+    },
+    {
+      title: "Services",
+      link: "contact",
+      description: "Learn how we can help you achieve your goals.",
+      icon: SunIcon,
+    },
+    {
+      title: "Support",
+      link: "contact",
+      description: "Reach out to us for assistance or inquiries",
+      icon: GlobeAmericasIcon,
+    },
     {
       title: "Contact",
       link: "contact",
+      description: "Find the perfect solution for your needs.",
+      icon: PhoneIcon,
+    },
+    {
+      title: "News",
+      link: "contact",
+      description: "Read insightful articles, tips, and expert opinions.",
+      icon: NewspaperIcon,
+    },
+    {
+      title: "Products",
+      link: "contact",
+      description: "Find the perfect solution for your needs.",
+      icon: RectangleGroupIcon,
+    },
+    {
+      title: "Special Offers",
+      link: "contact",
+      description: "Explore limited-time deals and bundles",
+      icon: TagIcon,
     },
   ];
-  const [openMenu, setOpenMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const renderItems = navListMenuItems.map(
+    ({ icon, title, description, link }, key) => (
+      <Link to={link} key={key}>
+        <MenuItem className="flex items-center gap-3 rounded-lg">
+          <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
+            {" "}
+            {React.createElement(icon, {
+              strokeWidth: 2,
+              className: "h-6 text-gray-900 w-6",
+            })}
+          </div>
+          <div>
+            <Typography
+              variant="h6"
+              color="blue-gray"
+              className="flex items-center text-sm font-bold"
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="paragraph"
+              className="text-xs !font-medium text-blue-gray-500"
+            >
+              {description}
+            </Typography>
+          </div>
+        </MenuItem>
+      </Link>
+    )
+  );
+
   return (
-    <Menu lockScroll={true} open={openMenu} handler={setOpenMenu} allowHover>
-      <MenuHandler>
-        <Button
-          variant="text"
-          className=" flex items-center gap-3 text-sm font-bold text-white    capitalize  hover:bg-transparent hover:border-b hover:border-b-green-400 ease-in duration-500 rounded-none  p-0 pb-1"
-        >
-          Contact
-        </Button>
-      </MenuHandler>
-      <MenuList className="hidden w-full h-[500px] grid-cols-12 gap-3 ease-linear rounded-none duration-100  md:grid px-10 lg:px-20  mt-5">
-        <div className="col-span-4 flex w-full flex-col gap-1 border-none">
-          {menuItems.map(({ title, link }) => (
-            <a href="#" key={title}>
-              <MenuItem>
-                <Typography variant="h6" color="blue-gray" className="mb-1">
-                  <Link to={link}>{title}</Link>
-                </Typography>
-              </MenuItem>
-            </a>
-          ))}
-        </div>
-      </MenuList>
-    </Menu>
+    <>
+      <Menu
+        lockScroll={true}
+        open={isMenuOpen}
+        handler={setIsMenuOpen}
+        offset={{ mainAxis: 20 }}
+        placement="top-start"
+        allowHover={true}
+      >
+        <MenuHandler>
+          <Typography as="div" variant="small" className="font-medium ">
+            <div
+              className="flex items-center gap-3 text-sm font-bold text-white    capitalize  hover:bg-none hover:border-b hover:border-b-green-400 ease-in duration-500 rounded-none  p-0 pb-1 cursor-pointer"
+              selected={isMenuOpen || isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen((cur) => !cur)}
+            >
+              Contact
+            </div>
+          </Typography>
+        </MenuHandler>
+        <MenuList className="hidden w-screen  lg:block rounded-none mt-3 pb-20 px-20 ease-linear duration-200">
+          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+            {renderItems}
+          </ul>
+        </MenuList>
+      </Menu>
+    </>
   );
 };
 
