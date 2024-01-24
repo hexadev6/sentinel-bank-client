@@ -12,7 +12,7 @@ const MainBranch = () => {
       <div className="max-w-[500px] mx-auto mb-20">
         <SubHeading title="Our experienced team ensures personalized financial guidance, fostering trust and building lasting relationships. " />
       </div>
-      <div className="flex justify-center gap-20 items-center font-bold">
+      <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-32 items-center font-bold px-5">
         <div className="">
           <Logo />
           <p className="max-w-[500px] font-normal mt-5">
