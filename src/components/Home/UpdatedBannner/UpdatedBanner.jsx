@@ -45,7 +45,7 @@ const UpdatedBanner = () => {
             className="w-full h-full  bg-center bg-cover bg-no-repeat "
             style={{ backgroundImage: `url(${bg1})` }}
           >
-            <div className="w-full h-full backdrop-blur-md">
+            <div className="w-full h-full backdrop-blur-md ">
               <div className="max-w-7xl mx-auto text-center flex justify-center items-center h-full">
                 <div>
                   <h1 className="text-6xl font-bold">

@@ -31,10 +31,10 @@ const Navbar = () => {
   return (
     <div
       style={linearGradientStyle}
-      className={` md:py-5  w-full z-50 duration-1000 ease-linear text-white ${
+      className={`md:py-5   w-full z-50  text-white ${
         issticky
           ? "sticky bg-white  top-0 ease-linear duration-700 shadow-md text-white "
-          : "sticky text-white "
+          : " "
       }`}
     >
       <div className="flex justify-between items-center px-5 md:px-10  lg:px-20 py-4 md:py-0">

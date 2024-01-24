@@ -16,8 +16,9 @@ const NavList = () => {
       >
         Home
       </NavLink>
-
+      <p className="border h-5"></p>
       <AboutList />
+      <p className="border h-5"></p>
       <ContactList />
     </>
   );
