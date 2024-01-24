@@ -63,10 +63,7 @@ const NavList = () => {
         }
       >
         Dashboard
-<<<<<<< HEAD
         
-=======
->>>>>>> 8bfe63ef8469215fa5cf3d1398f15f8bb632f636
       </NavLink>
       <NavLink
         to="/registration"
