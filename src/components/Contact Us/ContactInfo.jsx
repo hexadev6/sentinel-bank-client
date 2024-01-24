@@ -6,7 +6,10 @@ import { FcBusinesswoman } from "react-icons/fc";
 const ContactInfo = () => {
   return (
     <Container>
-      <div className=" w-full flex items-center justify-center gap-10 mb-20">
+      <div
+        id="livechat"
+        className=" w-full flex items-center justify-center gap-10 mb-20"
+      >
         <div className="flex flex-col md:flex-row justify-between gap-20 lg:gap-64 ">
           <div className="text-center font-extrabold">
             <FcBusinesswoman className="text-7xl mx-auto" />

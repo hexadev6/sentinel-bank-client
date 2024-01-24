@@ -1,16 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ContactInfo from "../../components/Contact Us/ContactInfo";
 import Section2 from "../../components/Contact Us/Section2";
+import { useLocation } from "react-router-dom";
+import MainBranch from "../../components/Contact Us/MainBranch";
 
 const ContactUs = () => {
+  const location = useLocation();
+  const [position, setPosition] = useState(0);
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (location.pathname === "/contact/information") {
+      setPosition(150);
+    } else if (location.pathname === "/contact/livechat") {
+      setPosition(1320);
+    } else if (location.pathname === "/contact/contactfrom") {
+      setPosition(1700);
+    }
+    window.AnimationEffect;
+    window.scrollTo({
+      top: position,
+      behavior: "smooth",
+    });
+  }, [position, location.pathname]);
   return (
     <div>
-      <Section2></Section2>
+      <Section2 />
       <ContactInfo />
-      <div className="container mx-auto mt-10 p-6">
+      <div id="contactfrom" className="container mx-auto mt-10 p-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Part 1: GET IN TOUCH */}
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -90,6 +105,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <MainBranch />
     </div>
   );
 };
