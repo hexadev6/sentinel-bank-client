@@ -9,6 +9,7 @@ import bg3 from "../../../assets/banner/3.jpg";
 import bg4 from "../../../assets/banner/4.jpg";
 import bg5 from "../../../assets/banner/5.jpg";
 
+
 // import required modules
 import { Autoplay, Pagination } from "swiper/modules";
 import { useRef } from "react";
@@ -23,7 +24,7 @@ const UpdatedBanner = () => {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
+      return '<span class="' + className + '">' + '<div class="dot"></div>' + "</span>";
     },
   };
   return (
