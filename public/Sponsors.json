@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "name": "Oracle",
+      "image": "https://i.ibb.co/TwBmSbt/oracle-logo-icon-168919.png"
+    },
+    {
+      "id": 2,
+      "name": "Norton",
+      "image": "https://i.ibb.co/cgsG91X/Norton-Logo.png"
+    },
+    {
+      "id": 3,
+      "name": "Workday",
+      "image": "https://i.ibb.co/8743dPh/kisspng-workday-inc-management-company-computer-software-consultancy-group-5af1245069b090-1085267515.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Earnix",
+      "image": "https://i.ibb.co/Fqdr7YJ/Earnix-logo-1.png"
+    },
+    {
+      "id": 5,
+      "name": "Stripe",
+      "image": "https://i.ibb.co/41r94cW/1280px-Stripe-logo-revised-2014.png"
+    }
+  ]
+  
