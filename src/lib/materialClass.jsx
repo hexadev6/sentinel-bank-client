@@ -12,6 +12,10 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
 } from "@material-tailwind/react";
 
 export {
@@ -28,4 +32,8 @@ export {
   Card,
   CardBody,
   CardFooter,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
 };

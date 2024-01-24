@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import NavList from "./NavList";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Avatar } from "../../../lib/materialClass";
-import Icons from "../../../utility/Icons";
 import Logo from "../../../utility/Logo";
 import Drawer from "../../Drawer/Drawer";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
-  const locattion = useLocation();
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
@@ -26,38 +24,44 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleStickey);
     };
   }, []);
-
+  const linearGradientStyle = {
+    background:
+      "linear-gradient(90deg, rgba(8,8,69,1) 21%, rgba(68,9,57,1) 100%)",
+  };
   return (
     <div
-      className={` md:py-5  w-full z-50 duration-1000 ease-linear ${
+      style={linearGradientStyle}
+      className={` md:py-5  w-full z-50 duration-1000 ease-linear text-white ${
         issticky
-          ? "sticky bg-white  top-0 ease-linear duration-700 shadow-md"
-          : "sticky"
+          ? "sticky bg-white  top-0 ease-linear duration-700 shadow-md text-white "
+          : "sticky text-white "
       }`}
     >
       <div className="flex justify-between items-center px-5 md:px-10  lg:px-20 py-4 md:py-0">
-        <Logo />
-        <div className="md:flex  gap-5 text-sm lg:text-base  font-bold hidden lg:ml-32">
+        <div
+          className={`${
+            issticky
+              ? "block ease-linear duration-300"
+              : "hidden ease-linear duration-300"
+          }`}
+        >
+          <Logo />
+        </div>
+        <div className="lg:flex items-center  gap-5 text-sm lg:text-base  font-bold hidden  text-white z-50">
           {/* navLink */}
           <NavList></NavList>
         </div>
-        <div className="hidden md:flex items-center gap-5">
-          {/* Icon social */}
-
-          <div className="md:hidden lg:block">
-            <Icons></Icons>
-          </div>
-
+        <div className="hidden lg:flex items-center gap-5">
           {/* deshbord */}
           <Link
-            to={"/"}
+            to={"/dashboard"}
             className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
           >
-            Account
+            Dashboard
           </Link>
 
           {/* login */}
-          <Link to={"/"}>
+          <Link to={"/login"}>
             <div className=" rounded-full ">
               <Avatar
                 src="https://docs.material-tailwind.com/img/face-2.jpg"
@@ -67,7 +71,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Drawer />
         </div>
       </div>

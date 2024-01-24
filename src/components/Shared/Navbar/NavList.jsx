@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import AboutList from "./AboutList";
+import ContactList from "./ContactList";
 const NavList = () => {
   return (
     <>
@@ -8,8 +10,8 @@ const NavList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "border-b border-green-400 "
-            : "hover:border-b hover:border-b-green-400 ease-in duration-500"
+            ? "border-b border-green-400 pb-1 "
+            : "hover:border-b hover:border-b-green-400 ease-in duration-500 pb-1"
         }
       >
         Home
@@ -89,6 +91,8 @@ const NavList = () => {
       >
         Login
       </NavLink>
+      <AboutList />
+      <ContactList />
     </>
   );
 };
