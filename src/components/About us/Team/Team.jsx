@@ -5,7 +5,6 @@ import {
   Typography,
   Avatar,
 } from "@material-tailwind/react";
-import Heading from "../../Shared/Heading Title/Heading";
 import SubHeading from "../../Shared/Heading Title/SubHeading";
 import {
   FaFacebookF,
@@ -43,7 +42,6 @@ const Team = () => {
     <Container>
     <div className=" px-2 py-20">
       <SubHeading title="Meet Our Team" />
-      <Heading title="Discover the Faces Behind Our Success" />
 
       <div className=" flex flex-wrap md:grid-cols-2 md:grid lg:grid-cols-4 gap-5 justify-center mt-10 items-center">
         {teams.map((member, indx) => (
