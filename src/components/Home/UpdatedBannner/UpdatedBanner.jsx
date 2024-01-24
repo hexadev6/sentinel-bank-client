@@ -27,7 +27,7 @@ const UpdatedBanner = () => {
     },
   };
   return (
-    <div className="">
+    <div className="relative -z-10">
       <Swiper
         direction="vertical"
         // direction={"vertical"}
