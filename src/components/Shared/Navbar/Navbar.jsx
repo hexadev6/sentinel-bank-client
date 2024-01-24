@@ -31,23 +31,23 @@ const Navbar = () => {
   return (
     <div
       style={linearGradientStyle}
-      className={`md:py-5   w-full z-50  text-white ${
+      className={`   w-full z-50  text-white ${
         issticky
-          ? "sticky bg-white  top-0 ease-linear duration-700 shadow-md text-white "
-          : " "
+          ? "sticky bg-white  top-0 ease-in duration-100 shadow-md text-white "
+          : "py-5 "
       }`}
     >
-      <div className="flex justify-between items-center px-5 md:px-10  lg:px-20 py-4 md:py-0">
+      <div className="flex  gap-10 items-center px-5 md:px-10  lg:px-20 py-4 md:py-0">
         <div
           className={`${
             issticky
-              ? "block ease-linear duration-300 bg-white text-black h-full"
+              ? "block ease-linear duration-300 bg-white text-black h-full -ml-20 p-5"
               : "hidden ease-linear duration-300"
           }`}
         >
           <Logo />
         </div>
-        <div className="lg:flex items-center  gap-5 text-sm lg:text-base  font-bold hidden  text-white z-50">
+        <div className="lg:flex items-center  gap-5 text-sm lg:text-base  font-bold hidden  text-white z-50 flex-1">
           {/* navLink */}
           <NavList></NavList>
         </div>
