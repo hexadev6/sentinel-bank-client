@@ -1,6 +1,7 @@
 import FaqSection from "../../../components/Home/FaqSection/FaqSection";
 import CustomerReview from "../../../components/Home/CustomerReview/CustomerReview";
 import UpdatedBanner from "../../../components/Home/UpdatedBannner/UpdatedBanner";
+
 import { useEffect } from "react";
 
 const Home = () => {
@@ -10,8 +11,8 @@ const Home = () => {
   return (
     <>
       {/* <Banner /> */}
-      <UpdatedBanner />
 
+      <UpdatedBanner />
       <CustomerReview />
       <FaqSection />
     </>
