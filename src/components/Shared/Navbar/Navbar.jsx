@@ -41,7 +41,7 @@ const Navbar = () => {
         <div
           className={`${
             issticky
-              ? "block ease-linear duration-300"
+              ? "block ease-linear duration-300 bg-white text-black h-full"
               : "hidden ease-linear duration-300"
           }`}
         >
