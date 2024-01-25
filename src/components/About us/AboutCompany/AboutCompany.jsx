@@ -1,10 +1,12 @@
 import img1 from "../../../assets/banner/teamwork (3).jpg";
 import img2 from "../../../assets/banner/teamwork.jpg";
+import SubHeading from "../../Shared/Heading Title/SubHeading";
 import Container from "../../Shared/container/Container";
 
 const AboutCompany = () => {
     return (
         <Container>
+            <SubHeading title={'About Company'}></SubHeading>
           
            <div className='flex flex-col items-center lg:flex-row mx-6 justify-evenly gap-6'>
            
@@ -21,7 +23,6 @@ const AboutCompany = () => {
 
             </div>
             <div className='w-full lg:w-96 px-10'>
-            <p className='text-[#4d774e] mb-4 text-lg'>About Company</p>
                   <h2 className='text-2xl font-bold mb-4'>Crafting Excellence Since 25 Years</h2>
                   <p className='text-xl font-medium'>For 25 years, Sentinel Trust Bank has been synonymous with excellence. Since our inception, we have continually evolved to meet the dynamic needs. Our seasoned team of professionals brings a wealth of experience, ensuring that every project we undertake is executed with precision, creativity, and a commitment to surpassing expectations.</p>
             </div>
