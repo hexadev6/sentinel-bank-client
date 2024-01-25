@@ -37,7 +37,7 @@ const Navbar = () => {
           : "py-5 "
       }`}
     >
-      <div className="flex  gap-10 items-center px-5 md:px-10  lg:px-20 py-4 md:py-0">
+      <div className="flex  gap-10 items-center justify-end md:justify-between px-5 md:px-10  lg:px-20">
         <div
           className={`${
             issticky
@@ -71,7 +71,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="lg:hidden">
+        <div className="lg:hidden ml-20 md:ml-0">
           <Drawer />
         </div>
       </div>

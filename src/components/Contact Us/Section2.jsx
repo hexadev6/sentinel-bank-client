@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SubHeading from "../Shared/Heading Title/SubHeading";
 import Container from "../Shared/container/Container";
-import { FaPhoneAlt } from "react-icons/fa";
 import SectionTowCard from "./SectionTowCard";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import bgContact from "../../assets/banner/contact-bg.png";
@@ -20,6 +19,7 @@ const Section2 = () => {
           description:
             "Our main branch is the headquarters and central hub for all banking operations.",
           location: "567 Waterfront Road, Waterfront City, State, ZIP",
+          image: "https://i.ibb.co/q0PDdG9/images-10.jpg",
         },
         {
           name: "Waterfront Branch",
@@ -29,6 +29,7 @@ const Section2 = () => {
           description:
             "Situated by the waterfront, our branch provides excellent service with a scenic view.",
           location: "123 Main Street, Cityville, State, ZIP",
+          image: "https://i.ibb.co/M2ycZJr/images-8.jpg",
         },
         {
           name: "Downtown Branch",
@@ -38,6 +39,7 @@ const Section2 = () => {
           description:
             "Located in the heart of downtown, our branch serves the local business community.",
           location: "456 Business Avenue, Downtown City, State, ZIP",
+          image: "https://i.ibb.co/ZVzJDmq/images-7.jpg",
         },
         {
           name: "Suburb Branch",
@@ -47,6 +49,7 @@ const Section2 = () => {
           description:
             "Providing convenient banking services to our customers in the suburban area.",
           location: "789 Suburb Street, Suburbville, State, ZIP",
+          image: "https://i.ibb.co/h8bz5zF/download-9.jpg",
         },
         {
           name: "Tech Park Branch",
@@ -56,6 +59,7 @@ const Section2 = () => {
           description:
             "Focused on serving the technology park community with specialized banking solutions.",
           location: "234 Tech Avenue, Tech Park City, State, ZIP",
+          image: "https://i.ibb.co/1KWtdWT/download-8.jpg",
         },
         {
           name: "University Branch",
@@ -65,6 +69,7 @@ const Section2 = () => {
           description:
             "Tailored banking services for students and faculty in the university area.",
           location: "567 Waterfront Road, Waterfront City, State, ZIP",
+          image: "https://i.ibb.co/6t2gk8k/download-7.jpg",
         },
       ],
     },
