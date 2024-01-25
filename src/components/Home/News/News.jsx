@@ -66,8 +66,7 @@ const News = () => {
                 <Typography color="gray" className="mb-8 font-normal flex-1">
                   {news.content}
                 </Typography>
-
-                {/* condititon button */}
+                {/*  button */}
                 <a href="#" className="inline-block">
                   <Button
                     variant="text"
@@ -94,6 +93,8 @@ const News = () => {
             </Card>
           ))}
         </div>
+
+        {/* conditional button */}
         <div className="text-center">
           <Button
             onClick={HandleShow}

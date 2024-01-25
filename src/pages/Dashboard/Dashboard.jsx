@@ -5,12 +5,11 @@ import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div>
-      <div className="flex ">
+      <div className="flex">
         <Sidebar />
         <Topbar />
+      
       </div>
-    </div>
   );
 };
 

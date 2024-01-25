@@ -12,13 +12,10 @@ import { Outlet } from "react-router-dom";
 
 const Topbar = () => {
   return (
-    // topbard
-    <div
-      variant="gradient"
-      color="blue-gray"
-      className="w-full h-fit"
-    >
-      <div className="flex w-full h-fit z-50 sticky bottom-0 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
+    // topbar
+
+    <div className="w-full">
+    <div className="flex w-full h-fit sticky z-50 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-nevy-blue">
         {/* side bar will open  */}
         <HidedMenu />
         {/* top menu start from here  */}
@@ -73,10 +70,9 @@ const Topbar = () => {
           </div>
         </div>
       </div>
-      <div className="p-5 ">
-      <Outlet />
-      </div>
+    <Outlet />
     </div>
+   
   );
 };
 

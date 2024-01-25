@@ -7,6 +7,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import Logo from "../../../utility/Logo";
+import { RiMastercardFill, RiVisaLine } from "react-icons/ri";
 
 const Cards = () => {
   const cardNumber = [
@@ -30,51 +31,69 @@ const Cards = () => {
     },
   ];
   return (
-    <div className="flex gap-3 overflow-auto mb-5 w-auto">
-      {cardNumber.map((item) => (
-        <Card className="flex-shrink-0 w-[450px]  text-white  bg-gradient-to-r from-dark-green via-medium-green to-light-green rounded">
-             <CardBody>
-            <Logo />
-            <Typography variant="h3" className="text-white mt-5 font-medium flex justify-between">
-              {item.number.map((index, i) => (
-                <span key={i}>{index}</span>
-              ))}
-            </Typography>
-          
-          </CardBody>
-          <div className="flex justify-center gap-2 items-center">
-            <Typography className="text-white  uppercase text-xs">
-              Valid 
-            </Typography>
-            <Typography className="text-white text-center text-2xl ">
-              {item.valid}
-            </Typography>
-          </div>
-          <CardFooter className="pt-0 flex gap-3 justify-between  items-center">
-            <Typography className="text-white uppercase  text-center py-4">
-              {item.holder}
-            </Typography>
-            <Typography
-              variant="h3"
-              color="blue-gray"
-              className="mb-2 uppercase text-end text-white"
-            >
-              {item.name === "visa" ? (
-                <img
-                  className="w-36"
-                  src="https://i.ibb.co/4S3FhY0/212-2128294-visa-logo-png-image-visa-logo-white-png-removebg-preview.png"
-                />
-              ) : (
-                <img
-                  className="w-36"
-                  src="https://download.logo.wine/logo/Mastercard/Mastercard-Logo.wine.png"
-                />
-              )}
-            </Typography>
-          </CardFooter>
-        </Card>
-      ))}
-    </div>
+    <>
+      <div className="flex justify-between gap-5 mb-5 mt-10 items-center px-4">
+        {/* title */}
+        <h1 className="py-2 text-nevy-blue font-bold text-lg  px-3">
+          My Cards
+        </h1>
+        <Button
+          variant="text"
+          className="border hover:bg-nevy-blue hover:text-text-white rounded-none bg-nevy-blue text-white"
+        >
+          Get new card
+        </Button>
+      </div>
+      <div className="flex md:flex-nowrap flex-wrap gap-3 justify-between xl:justify-start  overflow-auto mb-5 px-4">
+        {cardNumber.map((item) => (
+          <Card className=" w-full md:w-fit lg:flex-shrink-0  text-white  bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded">
+            <CardBody>
+              <div className="flex  gap-2 flex-col justify-between ">
+                {/* logo */}
+                <Logo />
+                <Typography
+                  variant="h3"
+                  className="text-white mt-5 font-medium flex flex-shrink sm:flex-shrink-0 gap-1 sm:gap-5 text-xl sm:text-2xl justify-between"
+                >
+                  {item.number.map((index, i) => (
+                    <span key={i}>{index}</span>
+                  ))}
+                </Typography>
+
+                <div className="flex justify-between gap-5 items-end ">
+                  <div>
+                    <Typography className="text-white uppercase text-sm ">
+                      {item.holder}
+                    </Typography>
+                    <div className="flex gap-2 items-center">
+                      <Typography className="text-white  uppercase text-xs">
+                        Valid
+                      </Typography>
+                      <Typography className="text-white text-center text-base sm:text-xl ">
+                        {item.valid}
+                      </Typography>
+                    </div>
+                  </div>
+                  <div className="flex items-end">
+                    <Typography
+                      variant="h3"
+                      color="blue-gray"
+                      className="uppercase text-end text-white flex items-end"
+                    >
+                      {item.name === "visa" ? (
+                        <RiVisaLine className="text-8xl" />
+                      ) : (
+                        <RiMastercardFill className="text-8xl" />
+                      )}
+                    </Typography>
+                  </div>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
+        ))}
+      </div>
+    </>
   );
 };
 

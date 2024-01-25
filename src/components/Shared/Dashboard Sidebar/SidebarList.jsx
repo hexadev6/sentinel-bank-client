@@ -12,7 +12,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-light-green rounded w-full"
+            ? "text-white bg-nevy-blue rounded w-full"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }
         >
@@ -38,7 +38,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-black bg-nevy-blue rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -63,7 +63,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -77,7 +77,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -91,7 +91,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -105,7 +105,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -130,7 +130,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">

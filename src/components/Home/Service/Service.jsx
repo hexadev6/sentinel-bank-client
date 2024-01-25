@@ -52,7 +52,7 @@ const Service = () => {
                   <Typography className="flex-1">{item.description}</Typography>
                 </CardBody>
 
-                <CardBody className="bg-gray-300 flex w-fit flex-wrap h-full right-0 absolute top-0 opacity-0 group-hover:opacity-100 flex-col justify-center translate-x-20 group-hover:translate-x-0 -z-1 transition-all ease-in-out duration-700 z-30">
+                <CardBody className="bg-gray-300 flex w-full flex-wrap h-full right-0 absolute top-0 opacity-0 group-hover:opacity-100 flex-col justify-center translate-x-10 group-hover:translate-x-0 -z-1 transition-all ease-in-out duration-700 z-30">
                   {item.type.map((type) => (
                     <p className="flex gap-2 group-[menu] ">
                       <span>
