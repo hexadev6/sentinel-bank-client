@@ -14,6 +14,8 @@ export default withMT({
         "medium-green": "#4D774E",
         "light-green": "#9DC88D",
         "natural-yellow": "#F1B24A",
+        "nevy-blue":"#073871",
+        "light-gray" :"#333"
       },
     },
   },
