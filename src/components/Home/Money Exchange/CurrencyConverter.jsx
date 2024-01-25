@@ -1,7 +1,8 @@
 import { Option, Select, Slider } from "@material-tailwind/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useExchangeRate from "../../../Hooks/UseExchangeRate";
+import useExchangeRate from "../../../Hooks/useExchangeRate";
+
 
 const CurrencyConverter = () => {
   // all states

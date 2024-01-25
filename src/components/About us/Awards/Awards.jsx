@@ -8,10 +8,16 @@ import SubHeading from '../../Shared/Heading Title/SubHeading';
 const Awards = () => {
     return (
         <Container>
+<<<<<<< HEAD
+            <SubHeading title={'Our Awards'}></SubHeading>
+            <div className='my-4 grid grid-cols-4'>
+           <div className='w-60 text-center text-xl font-bold'>
+=======
            <SubHeading title={'Our Awards'}></SubHeading>
             <div className='my-4 grid grid-cols-2 lg:grid-cols-4 mx-6'>
             
         <div className='w-60 text-center text-xl font-bold'>
+>>>>>>> 5f5e8c1b3060e0a5e4ae592cc054d9bd75b9f1ef
            <img className='h-60 w-60' src={award1} alt="" />
           
            <h2 className='text-xl font-bold'>Customer satisfaction Award</h2>
