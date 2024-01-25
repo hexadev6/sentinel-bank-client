@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "title": "New Online Banking Features",
+      "date": "2024-01-25",
+      "category": "Digital Services",
+      "content": "We are excited to announce the launch of new features in our online banking platform, providing you with enhanced functionality and a seamless banking experience.",
+      "image": "https://www.nj.com/personal-finance/static/6eec9309dcdebfa98067372c199ddc1a/48efe/online-banking-chime-varo-sofi.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Branch Expansion",
+      "date": "2024-01-20",
+      "category": "Branch Updates",
+      "content": "We are pleased to inform you about the opening of our new branch in [City Name]. This expansion is part of our commitment to better serve our customers and communities.",
+      "image": "https://www.shutterstock.com/image-photo/franchise-business-ecommerce-online-emarketplace-600nw-2302759597.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Financial Literacy Webinar",
+      "date": "2024-01-15",
+      "category": "Community Engagement",
+      "content": "Join our upcoming webinar on financial literacy. Learn valuable insights about budgeting, investments, and planning for a secure financial future. Reserve your spot now!",
+      "image": "https://cdn.lumapps.com/2021/08/Webinar-with-Forrester.png?twic=v1/cover=820x410"
+    },
+    {
+      "id": 4,
+      "title": "COVID-19 Relief Measures",
+      "date": "2024-01-10",
+      "category": "Community Support",
+      "content": "In response to the ongoing COVID-19 situation, we have implemented relief measures to assist our customers. Contact us to learn more about available support options.",
+      "image": "https://www.timeshighereducation.com/sites/default/files/styles/the_breaking_news_image_style/public/donation_charity_food_in_bag_for_needy.jpg?itok=j7e4NK_y"
+    },
+    {
+      "id": 5,
+      "title": "Mobile App Update",
+      "date": "2024-01-05",
+      "category": "Digital Services",
+      "content": "Exciting news! Our mobile banking app has been updated with new features and a refreshed user interface. Download the latest version to enjoy an even better mobile banking experience.",
+      "image": "https://centogram.com/wp-content/uploads/2018/12/Android-APKUpdater-Updates-Featured-670x335-1.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Customer Appreciation Day",
+      "date": "2024-01-01",
+      "category": "Customer Relations",
+      "content": "As a token of our gratitude, we are celebrating Customer Appreciation Day. Visit any of our branches for special offers, giveaways, and a chance to win exciting prizes.",
+      "image": "https://www.hospiceeastbay.org/wp-content/uploads/2023/05/Customer-Appreciation-1200x1200-1.jpg"
+    }
+  ]
+  

@@ -3,12 +3,11 @@ import Logo from "../../utility/Logo";
 import Container from "../Shared/container/Container";
 import { SiMinutemailer } from "react-icons/si";
 import { CgWebsite } from "react-icons/cg";
-import Heading from "../Shared/Heading Title/Heading";
 import SubHeading from "../Shared/Heading Title/SubHeading";
 const MainBranch = () => {
   return (
     <Container>
-      <Heading title="Main Branch" />
+      <SubHeading title="Main Branch" />
       <div className="max-w-[500px] mx-auto mb-20">
         <SubHeading title="Our experienced team ensures personalized financial guidance, fostering trust and building lasting relationships. " />
       </div>
