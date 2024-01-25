@@ -32,19 +32,19 @@ const Cards = () => {
   ];
   return (
     <>
-      <div className="flex justify-between gap-5 mb-5 mt-10 items-center px-4">
+      <div className="flex justify-between gap-5 mb-5  items-center ">
         {/* title */}
-        <h1 className="py-2 text-nevy-blue font-bold text-lg  px-3">
+        <h1 className="py-2 text-nevy-blue font-bold text-lg  ">
           My Cards
         </h1>
         <Button
           variant="text"
-          className="border hover:bg-nevy-blue hover:text-text-white rounded-none bg-nevy-blue text-white"
+          className="border hover:bg-nevy-blue hover:text-text-white rounded bg-nevy-blue text-white"
         >
           Get new card
         </Button>
       </div>
-      <div className="flex md:flex-nowrap flex-wrap gap-3 justify-between xl:justify-start  overflow-auto mb-5 px-4">
+      <div className="flex md:flex-nowrap flex-wrap gap-3 justify-between xl:justify-start  overflow-auto mb-5">
         {cardNumber.map((item) => (
           <Card className=" w-full md:w-fit lg:flex-shrink-0  text-white  bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded">
             <CardBody>
