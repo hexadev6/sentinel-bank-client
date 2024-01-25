@@ -2,6 +2,7 @@ import { Input, Typography } from "@material-tailwind/react";
 import { FaPaperPlane } from "react-icons/fa";
 import Featured from "../../Home/Featured/Featured";
 import { Button } from "@material-tailwind/react";
+import Logo from "../../../utility/Logo";
 
 const Footer = () => {
   const LINKS = [
@@ -19,14 +20,15 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="relative w-full mt-20 py-10 text-white bg-blue-gray-900">
+      <footer className="relative w-full mt-20 py-10 text-white bg-gray-900">
         <div className="mx-auto w-full max-w-7xl px-8 ">
-          <Featured />
+          {/* <Featured /> */}
           <div className="grid grid-cols-1 justify-between gap-10 lg:grid-cols-2">
             <div>
-              <Typography variant="h5" className="mb-3">
+              {/* <Typography variant="h5" className="mb-3">
                 SentinelTrust Bank
-              </Typography>
+              </Typography> */}
+              <Logo/>
 
               <p className="text-gray-400">
                 It is a leading financial institution committed to providing
