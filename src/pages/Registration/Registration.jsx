@@ -4,6 +4,7 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from "react-icons/fa";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FormContainer = styled.div`
   display: flex;
@@ -88,6 +89,8 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const RegistrationForm = () => {
   const { userSignUp, UserProfileUpdate} = useAuth();
   const { register, handleSubmit, setValue } = useForm();
+  const location = useLocation()
+  const navigate= useNavigate()
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -111,7 +114,9 @@ const RegistrationForm = () => {
             .then(res => console.log(res))
             .catch(error => console.log(error))
           }
+          navigate(location?.state ? location.state : "/")
         })
+
         .catch((err) => {
           console.log(err);
         });

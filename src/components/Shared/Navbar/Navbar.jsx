@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import NavList from "./NavList";
 import { Link } from "react-router-dom";
-import { Avatar } from "../../../lib/materialClass";
+import { Avatar, Menu, MenuHandler, MenuItem, MenuList } from "../../../lib/materialClass";
 import Logo from "../../../utility/Logo";
 import Drawer from "../../Drawer/Drawer";
+import useAuth from "../../../Hooks/useAuth";
+import { Button } from "react-scroll";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
+  const {user} = useAuth()
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
@@ -51,7 +54,9 @@ const Navbar = () => {
           {/* navLink */}
           <NavList></NavList>
         </div>
-        <div className="hidden lg:flex items-center gap-5">
+        {
+          user?
+          <div className="hidden lg:flex items-center gap-5">
           {/* deshbord */}
           <Link
             to={"/dashboard"}
@@ -60,16 +65,16 @@ const Navbar = () => {
             Dashboard
           </Link>
 
-          {/* login */}
-          <Link to={"/login"}>
             <div className=" rounded-full ">
               <Avatar
-                src="https://docs.material-tailwind.com/img/face-2.jpg"
+                src={user.photoURL}
                 alt="avatar"
               />
             </div>
-          </Link>
-        </div>
+         
+        </div>: <h2><Link className="hover:underline" to='/login'>Login</Link>/<Link className="hover:underline" to='/registration'>Registration</Link>
+       </h2> 
+        }
 
         <div className="lg:hidden ml-20 md:ml-0">
           <Drawer />

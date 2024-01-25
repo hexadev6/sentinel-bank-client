@@ -16,7 +16,7 @@ const AboutCompany = () => {
                 <img className='h-60 w-96' src={img2} alt="" />
                 <img className='lg:ml-40 lg:-mt-32 mt-4 h-60 w-96' src={img1} alt="" />
                 </div>
-                <div className='lg:absolute hover:scale-110 lg:-mt-32 lg:mx-6 mx-auto mt-4 flex gap-2 p-6 bg-white border-4 w-60 lg:w-1/4 border-l-[#4d774e]'>
+                <div className='lg:absolute hover:scale-110 lg:-mt-32 lg:mx-6 mx-auto mt-4 flex gap-2 p-6 bg-white border-4 w-60 lg:w-1/4 border-l-nevy-blue'>
                     <h2 className='text-3xl text-red-600 font-bold' >25</h2>
                     <h2 className='w-40 text-center'>We Have More Than years of Experience</h2>
                 </div>

@@ -27,7 +27,7 @@ const AboutList = () => {
   // </>
   const navListMenuItems = [
     {
-      title: "awards",
+      title: "Awards",
       link: "awards",
       description: "Find the perfect solution for your needs.",
       icon: SquaresPlusIcon,
@@ -51,8 +51,8 @@ const AboutList = () => {
       icon: SunIcon,
     },
     {
-      title: "Support",
-      link: "aboutus",
+      title: "Branches",
+      link: "branch",
       description: "Reach out to us for assistance or inquiries",
       icon: GlobeAmericasIcon,
     },
