@@ -22,14 +22,15 @@ import { Link } from "react-router-dom";
 const ContactList = () => {
   const navListMenuItems = [
     {
-      title: "contact",
-      link: "contact",
-      description: "Find the perfect solution for your needs.",
+      title: "General Information",
+      link: "information",
+      description:
+        "Provide a brief overview of the bank's background, its mission, and values",
       icon: SquaresPlusIcon,
     },
     {
-      title: "About Us",
-      link: "contact",
+      title: "Live Chat",
+      link: "livechat",
       description: "Meet and learn about our dedication",
       icon: UserGroupIcon,
     },
@@ -58,9 +59,9 @@ const ContactList = () => {
       icon: PhoneIcon,
     },
     {
-      title: "News",
-      link: "contact",
-      description: "Read insightful articles, tips, and expert opinions.",
+      title: "Contact from",
+      link: "contactfrom",
+      description: "Read insightful articles",
       icon: NewspaperIcon,
     },
     {
@@ -80,7 +81,7 @@ const ContactList = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const renderItems = navListMenuItems.map(
     ({ icon, title, description, link }, key) => (
-      <Link to={link} key={key}>
+      <Link to={`/contact/${link}`} key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
@@ -130,7 +131,7 @@ const ContactList = () => {
             </div>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-screen  lg:block rounded-none mt-3 pb-20 px-20 ease-linear duration-200 z-50">
+        <MenuList className="hidden w-screen mt-3  lg:block rounded-none  pb-20 px-20 ease-linear duration-200 z-50">
           <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0 z-50">
             {renderItems}
           </ul>

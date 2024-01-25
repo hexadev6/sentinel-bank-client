@@ -18,22 +18,22 @@ const Team = () => {
   const teams = [
     {
       name: "Diana Patel",
-      position: "Security Officer",
+      position: "CEO",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsS0fYx5QaeXlcgCkTYSx_2Bb6M0W-OkmYWQ&usqp=CAU",
     },
     {
       name: "Charlie Rodriguez",
-      position: "Financial Officer",
+      position: "CMO",
       img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Charlie_Sheen_March_2009.JPG/1200px-Charlie_Sheen_March_2009.JPG",
     },
     {
       name: "Eva Williams",
-      position: "UX Designer",
+      position: "Manager",
       img: "https://resize.elle.fr/square/var/plain_site/storage/images/beaute/cheveux/stars/eva-longoria-change-radicalement-de-tete-et-adopte-l-une-des-coiffures-les-plus-populaires-de-la-saison-4146918/100212514-1-fre-FR/Eva-Longoria-change-radicalement-de-tete-et-adopte-l-une-des-coiffures-les-plus-populaires-de-la-saison.jpg",
     },
     {
       name: "John Doe",
-      position: "Software Engineer",
+      position: "Manager",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdSGVuStFxj_Dnv9V9qlzkor22IRPIglGkVA&usqp=CAU",
     },
   ];

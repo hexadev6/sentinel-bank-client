@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SubHeading from "../Shared/Heading Title/SubHeading";
 import Container from "../Shared/container/Container";
-
+import { FaPhoneAlt } from "react-icons/fa";
 import SectionTowCard from "./SectionTowCard";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import bgContact from "../../assets/banner/contact-bg.png";
@@ -9,56 +9,62 @@ const Section2 = () => {
   const [activ, setActive] = useState("Employee");
   const data = [
     {
-      label: "Employee",
-      value: "Employee",
+      label: "Branch Locator",
+      value: "Branch Locator",
       desc: [
         {
-          name: "John Manager",
+          name: "Main Branch",
           title: "Branch Manager",
-          number: "+1 (555) 123-4567",
-          email: "john.manager@fakebank.com",
+          email: "mainbranch@example.com",
+          number: "+1 (123) 456-7890",
           description:
-            "Responsible for overseeing day-to-day operations at the branch.",
+            "Our main branch is the headquarters and central hub for all banking operations.",
+          location: "567 Waterfront Road, Waterfront City, State, ZIP",
         },
         {
-          name: "Jane Employee",
+          name: "Waterfront Branch",
           title: "Customer Service Representative",
-          number: "+1 (555) 234-5678",
-          email: "jane.employee@fakebank.com",
+          email: "waterfrontbranch@example.com",
+          number: "+1 (567) 890-1234",
           description:
-            "Assists customers with account inquiries and resolves issues.",
+            "Situated by the waterfront, our branch provides excellent service with a scenic view.",
+          location: "123 Main Street, Cityville, State, ZIP",
         },
         {
-          name: "Alex CEO",
-          title: "Chief Executive Officer",
-          number: "+1 (555) 345-6789",
-          email: "alex.ceo@fakebank.com",
+          name: "Downtown Branch",
+          title: "Assistant Manager",
+          email: "downtownbranch@example.com",
+          number: "+1 (456) 789-0123",
           description:
-            "Provides strategic leadership and direction for the entire organization.",
+            "Located in the heart of downtown, our branch serves the local business community.",
+          location: "456 Business Avenue, Downtown City, State, ZIP",
         },
         {
-          name: "Mark Senior Analyst",
-          title: "Senior Financial Analyst",
-          number: "+1 (555) 456-7890",
-          email: "mark.analyst@fakebank.com",
+          name: "Suburb Branch",
+          title: "Branch Supervisor",
+          email: "suburbbranch@example.com",
+          number: "+1 (789) 012-3456",
           description:
-            "Analyzes financial data and prepares reports for decision-making.",
+            "Providing convenient banking services to our customers in the suburban area.",
+          location: "789 Suburb Street, Suburbville, State, ZIP",
         },
         {
-          name: "Sarah Operations Manager",
-          title: "Operations Manager",
-          number: "+1 (555) 567-8901",
-          email: "sarah.manager@fakebank.com",
+          name: "Tech Park Branch",
+          title: "Technology Specialist",
+          email: "techparkbranch@example.com",
+          number: "+1 (234) 567-8901",
           description:
-            "Manages day-to-day operations and ensures efficiency in processes.",
+            "Focused on serving the technology park community with specialized banking solutions.",
+          location: "234 Tech Avenue, Tech Park City, State, ZIP",
         },
         {
-          name: "David IT Specialist",
-          title: "IT Specialist",
-          number: "+1 (555) 678-9012",
-          email: "david.it@fakebank.com",
+          name: "University Branch",
+          title: "Student Accounts Specialist",
+          email: "universitybranch@example.com",
+          number: "+1 (890) 123-4567",
           description:
-            "Handles IT-related issues and supports the bank's technology infrastructure.",
+            "Tailored banking services for students and faculty in the university area.",
+          location: "567 Waterfront Road, Waterfront City, State, ZIP",
         },
       ],
     },
@@ -71,8 +77,10 @@ const Section2 = () => {
           title: "Operations Manager",
           number: "+1 (555) 123-4567",
           email: "grace.manager@fakebank.com",
+
           description:
             "Oversees day-to-day operations, ensuring smooth and efficient processes.",
+          location: "123 Main Street, Cityville, State, ZIP",
         },
         {
           name: "Liam Financial Analyst",
@@ -172,12 +180,13 @@ const Section2 = () => {
     },
   ];
 
-  const info1 = data.find((info) => info.value === "Employee") || {};
+  const info1 = data.find((info) => info.value === "Branch Locator") || {};
   const info2 = data.find((info) => info.value === "Branch Manager") || {};
   const info3 = data.find((info) => info.value === "Loan Officer") || {};
 
   return (
     <div
+      id="information"
       className="object-contain bg-cover bg-center bg-no-repeat py-10 "
       style={{ backgroundImage: `url("${bgContact}")` }}
     >
@@ -193,7 +202,7 @@ const Section2 = () => {
               } `}
               onClick={() => setActive("Employee")}
             >
-              Employee
+              Branch Locator
             </Tab>
             <Tab
               className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none  ${
