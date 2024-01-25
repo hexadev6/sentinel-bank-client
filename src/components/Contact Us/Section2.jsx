@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Heading from "../Shared/Heading Title/Heading";
 import SubHeading from "../Shared/Heading Title/SubHeading";
 import Container from "../Shared/container/Container";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -192,7 +191,7 @@ const Section2 = () => {
       style={{ backgroundImage: `url("${bgContact}")` }}
     >
       <Container>
-        <Heading title="All employee information of our office" />
+        {/* <Heading title="All employee information of our office" /> */}
         <SubHeading title=" Your Global Banking Partner" />
 
         <Tabs>
