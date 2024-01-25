@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Typography } from "@material-tailwind/react";
 import "./scroll.css";
-import useExchangeRate from "../../../Hooks/UseExchangeRate";
+import useExchangeRate from "../../../Hooks/useExchangeRate";
+
 
 const CurrencyRate = () => {
   const { currencyRate, publishedDate } = useExchangeRate() || {
