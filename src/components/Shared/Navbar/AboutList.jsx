@@ -17,31 +17,36 @@ import {
   TagIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
+
 
 const AboutList = () => {
+  // const links = <>
+  // <li><Link to='home'>Home</Link></li>
+  // <li><Link to='awards'>Awards</Link></li>
+  // </>
   const navListMenuItems = [
     {
-      title: "contact",
-      link: "aboutus",
+      title: "awards",
+      link: "awards",
       description: "Find the perfect solution for your needs.",
       icon: SquaresPlusIcon,
     },
     {
-      title: "About Us",
-      link: "aboutus",
+      title: "Team",
+      link: "team",
       description: "Meet and learn about our dedication",
       icon: UserGroupIcon,
     },
     {
-      title: "Blog",
-      link: "aboutus",
+      title: "Sponsors & Partners",
+      link: "sponsors",
       description: "Find the perfect solution for your needs.",
       icon: Bars4Icon,
     },
     {
-      title: "Services",
-      link: "aboutus",
+      title: "Mission & Vision",
+      link: "mission",
       description: "Learn how we can help you achieve your goals.",
       icon: SunIcon,
     },
