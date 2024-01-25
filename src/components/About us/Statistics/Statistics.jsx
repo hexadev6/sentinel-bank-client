@@ -31,7 +31,7 @@ const Statistics = () => {
       <div className="bg-nevy-blue p-10   mx-auto container relative -top-16 text-white">
         <div className="grid grid-cols-1 md:flex flex-wrap w-full gap-10 justify-center items-center px-10 py-16 ">
           {statisticsData?.map((data) => (
-            <div className="px-2 flex flex-col items-center justify-center text-center ">
+            <div className="px-2 flex flex-col items-center justify-center text-center " key={data.title}>
               <div className="flex items-center gap-1">
                 <CountUp
                   end={`${data.number}`}

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import Statistics from "../../../components/About us/Statistics/Statistics";
 import Service from "../../../components/Home/Service/Service";
 import MoneyExchange from "../../../components/Home/Money Exchange/MoneyExchange";
+import Feature from "../../../components/Home/Feature/Feature";
 
 const Home = () => {
   useEffect(() => {
@@ -13,12 +14,11 @@ const Home = () => {
   }, []);
   return (
     <>
-      {/* <Banner /> */}
       <UpdatedBanner />
       <Statistics />
       <Service />
       <MoneyExchange />
-      <UpdatedBanner />
+      <Feature />
       <CustomerReview />
       <FaqSection />
     </>

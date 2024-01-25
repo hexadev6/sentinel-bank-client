@@ -1,4 +1,4 @@
-import Heading from "../../Shared/Heading Title/Heading";
+import SubHeading from "../../Shared/Heading Title/SubHeading";
 import Container from "../../Shared/container/Container";
 
 
@@ -7,7 +7,7 @@ const Mission = () => {
         <Container>
             <div className="flex h-60 justify-center gap-10 mx-6">
             <div className="border p-2">
-                <Heading title={'Our Mission'} ></Heading>
+                <SubHeading title={'Our Mission'} />
                 <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium officia tempora id? Quae magni, dicta deleniti qui delectus officia nobis blanditiis odit dolore distinctio repellendus iusto omnis velit earum natus.</h2>
             </div>
             <div className="border p-2">
