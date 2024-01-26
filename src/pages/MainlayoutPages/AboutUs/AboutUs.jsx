@@ -5,6 +5,9 @@ import Team from "../../../components/About us/Team/Team";
 import Sponsor from "../../../components/About us/Sponsor/Sponsor";
 import Mission from "../../../components/About us/Mission/Mission";
 import Awards from "../../../components/About us/Awards/Awards";
+import WhatOffer from "../../../components/About us/WhatOffer/WhatOffer";
+import CommonBanner from "../../../components/Shared/CommonBanner/CommonBanner";
+import b1 from '../../../assets/banner/b1.jpg'
 
 const AboutUs = () => {
   useEffect(() => {
@@ -12,9 +15,11 @@ const AboutUs = () => {
   }, []);
   return (
     <div>
+    <CommonBanner title="About us" img={b1} subtitle={'Committed to Your Financial Success'}/>
       <AboutCompany />
       <Mission></Mission>
       <Awards/>
+      <WhatOffer/>
       <Team />
       <Sponsor/>
     </div>

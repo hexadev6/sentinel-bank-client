@@ -71,8 +71,8 @@ const ContactList = () => {
       icon: RectangleGroupIcon,
     },
     {
-      title: "Special Offers",
-      link: "contact",
+      title: "Main Branch",
+      link: "mainbranch",
       description: "Explore limited-time deals and bundles",
       icon: TagIcon,
     },

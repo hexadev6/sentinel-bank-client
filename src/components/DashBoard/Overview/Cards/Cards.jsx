@@ -32,18 +32,7 @@ const Cards = () => {
   ];
   return (
     <>
-      <div className="flex justify-between gap-5 mb-5  items-center ">
-        {/* title */}
-        {/* <h1 className="py-2 px-3 text-nevy-blue font-medium text-lg border-b-2 border-b-nevy-blue w-fit">
-          My Cards
-        </h1> */}
-        <Button
-          variant="text"
-          className="border hover:bg-black hover:text-text-white rounded bg-black text-white"
-        >
-          Get new card
-        </Button>
-      </div>
+   
       <div className="flex md:flex-nowrap flex-wrap gap-3 justify-between xl:justify-start  overflow-auto mb-5">
         {cardNumber.map((item) => (
           <Card className=" w-full md:w-fit lg:flex-shrink-0  text-white opacity-80  bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded">

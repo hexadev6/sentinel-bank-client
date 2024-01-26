@@ -17,7 +17,7 @@ const Transfer = () => {
         Account Status
       </h1> */}
         {/* deposit */}
-        <Card className="border shadow-sm rounded text-light-gray">
+        <Card className="border shadow-sm bg-green-100 rounded text-light-gray">
           <CardBody>
             <Typography variant="h6" className="mb-2 font-light">
               Deposit
@@ -25,14 +25,14 @@ const Transfer = () => {
             <Typography variant="h3" className="font-medium">
               $1033.00
             </Typography>
-            <span className="bg-black text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
+            <span className="bg-nevy-blue text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
               <span>6.0545%</span>
               <FaArrowTrendUp className="ml-4" />
             </span>
           </CardBody>
         </Card>
         {/* withdraw */}
-        <Card className="border shadow-sm  rounded text-light-gray">
+        <Card className="border shadow-sm bg-orange-100 rounded text-light-gray">
           <CardBody>
             <Typography variant="h6" className="mb-2 font-light">
               Withdraw
@@ -40,14 +40,14 @@ const Transfer = () => {
             <Typography variant="h3" className="font-medium">
               $1344.00
             </Typography>
-            <span className="bg-black text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
+            <span className="bg-nevy-blue text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
               <span>43.354%</span>
               <FaArrowTrendDown className="ml-4" />
             </span>
           </CardBody>
         </Card>
         {/* Savings */}
-        <Card className="border shadow-sm  rounded text-light-gray">
+        <Card className="border shadow-sm bg-deep-orange-50 rounded text-light-gray">
           <CardBody>
             <Typography variant="h6" className="mb-2 font-light">
               Savings
@@ -55,14 +55,14 @@ const Transfer = () => {
             <Typography variant="h3" className="font-medium">
               $2343.00
             </Typography>
-            <span className="bg-black text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
+            <span className="bg-nevy-blue text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
               <span>10.873%</span>
               <FaArrowTrendDown className="ml-4" />
             </span>
           </CardBody>
         </Card>
         {/* for total balance */}
-        <Card className="border shadow-sm  rounded text-light-gray">
+        <Card className="border shadow-sm bg-blue-100 rounded text-light-gray">
           <CardBody>
             <Typography variant="h6" className="mb-2 font-light">
               Total Balance
@@ -70,7 +70,7 @@ const Transfer = () => {
             <Typography variant="h3" className="font-medium">
               $17524.00
             </Typography>
-            <span className="bg-black text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
+            <span className="bg-nevy-blue text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
               <span>26.0532%</span>
               <FaArrowTrendUp className="ml-4" />
             </span>

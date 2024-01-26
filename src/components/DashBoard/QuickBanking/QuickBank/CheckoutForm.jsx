@@ -3,13 +3,7 @@ import { CardElement, useElements } from "@stripe/react-stripe-js";
 import { Button } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 
-const CheckoutForm = ({
-  depositInfo,
-  setTotal,
-  setDeposit,
-  recordTransaction,
-  deposit,
-}) => {
+const CheckoutForm = ({ depositInfo, setTotal, setDeposit,recordTransaction ,deposit}) => {
   const [error, setError] = useState();
 
   const elements = useElements();
@@ -28,8 +22,9 @@ const CheckoutForm = ({
     toast.success("Your Deposit successfully done!");
     const newAmount = depositInfo.totalAmount + parseFloat(depositInfo.amount);
     setTotal(newAmount);
-    setDeposit(parseFloat(depositInfo.amount) + deposit);
+    setDeposit(parseFloat(depositInfo.amount)+deposit);
     recordTransaction("deposit", depositInfo.amount);
+
   };
 
   return (

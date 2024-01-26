@@ -3,7 +3,7 @@ import AccountCreate from '../../components/DashBoard/Account Manage/AccountCrea
 
 const AccountManage = () => {
     return (
-        <div>
+        <div className='p-4'>
             <AccountCreate />
         </div>
     );

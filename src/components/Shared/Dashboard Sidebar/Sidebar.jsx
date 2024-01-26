@@ -25,7 +25,7 @@ const Sidebar = () => {
         {/* bank statement download */}
         <div>
           <h1 className="lg:flex hidden font-semibold my-2 ">Bank Statement</h1>
-          <button className="bg-black w-full  gap-y-2 p-2 items-center text-white rounded flex justify-center lg:justify-between gap-2 ">
+          <button className="bg-nevy-blue w-full  gap-y-2 p-2 items-center text-white rounded flex justify-center lg:justify-between gap-2 ">
             <IoDownloadOutline className="text-lg" />{" "}
             <span className="lg:flex hidden">Dowonload pdf</span>
           </button>
@@ -37,7 +37,7 @@ const Sidebar = () => {
           <Switch
             id="custom-switch-component"
             ripple={false}
-            className="h-full w-full checked:bg-black"
+            className="h-full w-full checked:bg-nevy-blue"
             containerProps={{
               className: "w-11 h-6",
             }}

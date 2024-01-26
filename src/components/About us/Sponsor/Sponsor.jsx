@@ -17,11 +17,11 @@ const Sponsor = () => {
     },[])
     return (
         <Container>
-            <div>
+            <div id="sponsors">
                 <SubHeading title={'Our Sponsors & Partners'} />
                     <div className="grid mt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mx-16">
                         {
-                            sponsor.map(item=><h2 key={item.id} ><img className="text-xl  shadow-xl p-2 mx-6 rounded-lg w-32 h-20" src={item.image} alt="" /></h2>)
+                            sponsor.map(item=><h2 key={item.id} ><img className="text-xl  shadow-md  p-2 mx-6 rounded-lg w-32 h-20" src={item.image} alt="" /></h2>)
                         }
                     </div>
             </div>

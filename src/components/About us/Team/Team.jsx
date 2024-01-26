@@ -3,7 +3,7 @@ import {
   CardHeader,
   CardBody,
   Typography,
-  Avatar,
+ 
 } from "@material-tailwind/react";
 import SubHeading from "../../Shared/Heading Title/SubHeading";
 import {
@@ -43,7 +43,7 @@ const Team = () => {
     <div className=" px-2 py-20">
       <SubHeading title="Meet Our Team" />
 
-      <div className=" flex flex-wrap md:grid-cols-2 md:grid lg:grid-cols-4 gap-5 justify-center mt-10 items-center">
+      <div id="team" className=" flex flex-wrap md:grid-cols-2 md:grid lg:grid-cols-4 gap-5 justify-center mt-10 items-center">
         {teams.map((member, indx) => (
           <Card
             key={indx}
@@ -61,13 +61,13 @@ const Team = () => {
                 backgroundPosition: "top center",
               }}
             >
-              <div className="absolute h-full w-full bg-gradient-to-t from-dark-green via-medium-green opacity-60" />
+              <div className="absolute h-full w-full bg-nevy-blue opacity-60" />
 
               <CardBody className="">
-                <FaFacebookF className="absolute -right-10 group-hover:right-3 top-3  transition-all duration-700   bg-white p-2 rounded text-4xl  text-medium-green" />
-                <FaInstagram className="absolute -right-20 group-hover:right-3  top-14 transition-all duration-700   bg-white p-2 rounded text-4xl text-medium-green" />
-                <FaTwitter className="absolute -right-32 group-hover:right-3 transition-all duration-700   bg-white p-2 rounded text-4xl top-[100px] text-medium-green" />
-                <FaPinterestP className="absolute -right-40 group-hover:right-3 transition-all duration-700 bg-white p-2 rounded text-4xl top-36  text-medium-green" />
+                <FaFacebookF className="absolute -right-10 group-hover:right-3 top-3  transition-all duration-700   bg-white p-2 rounded text-4xl  text-nevy-blue" />
+                <FaInstagram className="absolute -right-20 group-hover:right-3  top-14 transition-all duration-700   bg-white p-2 rounded text-4xl text-nevy-blue" />
+                <FaTwitter className="absolute -right-32 group-hover:right-3 transition-all duration-700   bg-white p-2 rounded text-4xl top-[100px] text-nevy-blue" />
+                <FaPinterestP className="absolute -right-40 group-hover:right-3 transition-all duration-700 bg-white p-2 rounded text-4xl top-36  text-nevy-blue" />
               </CardBody>
               <CardBody className="absolute bottom-0 left-0 right-0 mx-auto">
                 <Typography

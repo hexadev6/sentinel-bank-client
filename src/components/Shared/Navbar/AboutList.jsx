@@ -18,36 +18,39 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-
 const AboutList = () => {
+  // const links = <>
+  // <li><Link to='home'>Home</Link></li>
+  // <li><Link to='awards'>Awards</Link></li>
+  // </>
   const navListMenuItems = [
     {
-      title: "contact",
-      link: "aboutus",
+      title: "Awards",
+      link: "awards",
       description: "Find the perfect solution for your needs.",
       icon: SquaresPlusIcon,
     },
     {
-      title: "About Us",
-      link: "aboutus",
+      title: "Team",
+      link: "team",
       description: "Meet and learn about our dedication",
       icon: UserGroupIcon,
     },
     {
-      title: "Blog",
-      link: "aboutus",
+      title: "Sponsors & Partners",
+      link: "sponsors",
       description: "Find the perfect solution for your needs.",
       icon: Bars4Icon,
     },
     {
-      title: "Services",
-      link: "aboutus",
+      title: "Mission & Vision",
+      link: "mission",
       description: "Learn how we can help you achieve your goals.",
       icon: SunIcon,
     },
     {
-      title: "Support",
-      link: "aboutus",
+      title: "Branches",
+      link: "branch",
       description: "Reach out to us for assistance or inquiries",
       icon: GlobeAmericasIcon,
     },
@@ -80,7 +83,7 @@ const AboutList = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const renderItems = navListMenuItems.map(
     ({ icon, title, description, link }, key) => (
-      <Link to={link} key={key}>
+      <Link to={`/aboutus/${link}`} key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}

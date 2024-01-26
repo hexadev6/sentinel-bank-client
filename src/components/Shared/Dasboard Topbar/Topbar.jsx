@@ -9,8 +9,11 @@ import { IoSearch } from "react-icons/io5";
 import { FaBell } from "react-icons/fa";
 import HidedMenu from "./HidedMenu";
 import { Outlet } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const Topbar = () => {
+  const {user} = useAuth()
+
   return (
     // topbar
 
@@ -23,9 +26,9 @@ const Topbar = () => {
           as="a"
           href="#"
           variant="h6"
-          className="mr-4 ml-2 cursor-pointer py-1.5 hidden sm:flex"
+          className="mr-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
         >
-          Dashboard
+          {user?.displayName}
         </Typography>
         {/* search bar */}
         <div className="relative md:flex hidden gap-2 md:max-w">
@@ -64,7 +67,7 @@ const Topbar = () => {
           {/* avatar */}
           <div className=" rounded-full ">
             <Avatar
-              src="https://docs.material-tailwind.com/img/face-2.jpg"
+              src={user?.photoURL}
               alt="avatar"
             />
           </div>

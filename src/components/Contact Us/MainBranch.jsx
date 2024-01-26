@@ -9,7 +9,6 @@ const MainBranch = () => {
     <Container>
       <SubHeading title="Main Branch" />
       <div className="max-w-[500px] mx-auto mb-20">
-        <SubHeading title="Our experienced team ensures personalized financial guidance, fostering trust and building lasting relationships. " />
       </div>
       <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-32 items-center font-bold px-5">
         <div className="">

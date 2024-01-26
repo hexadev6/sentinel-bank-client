@@ -3,6 +3,8 @@ import ContactInfo from "../../components/Contact Us/ContactInfo";
 import Section2 from "../../components/Contact Us/Section2";
 import { useLocation } from "react-router-dom";
 import MainBranch from "../../components/Contact Us/MainBranch";
+import CommonBanner from "../../components/Shared/CommonBanner/CommonBanner";
+import bg2 from "../../assets/banner/bg2.jpg";
 
 const ContactUs = () => {
   const location = useLocation();
@@ -11,9 +13,11 @@ const ContactUs = () => {
     if (location.pathname === "/contact/information") {
       setPosition(150);
     } else if (location.pathname === "/contact/livechat") {
-      setPosition(1320);
+      setPosition(2020);
     } else if (location.pathname === "/contact/contactfrom") {
-      setPosition(1700);
+      setPosition(2500);
+    } else if (location.pathname === "/contact/mainbranch") {
+      setPosition(3000);
     }
     window.AnimationEffect;
     window.scrollTo({
@@ -23,6 +27,12 @@ const ContactUs = () => {
   }, [position, location.pathname]);
   return (
     <div>
+      <CommonBanner
+        title="Contact Us"
+        img={bg2}
+        subtitle={"Let's Connect to Serve You Better"}
+        orientation={"right"}
+      />
       <Section2 />
       <ContactInfo />
       <div id="contactfrom" className="container mx-auto mt-10 p-6">
