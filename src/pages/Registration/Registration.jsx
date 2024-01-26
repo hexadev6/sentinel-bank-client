@@ -4,7 +4,7 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from "react-icons/fa";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bgimg from '../../assets/banner/new.png'
 import Logo from "../../utility/Logo";
 
@@ -143,6 +143,7 @@ const RegistrationForm = () => {
         <div className="grid grid-cols-2 gap-6">
         <div className="p-4">
         <h2 className='text-3xl font-semibold mb-6'>Register</h2>
+        <h2>Already have an account? please <Link className='text-natural-yellow font-bold hover:underline' to='/login'>login</Link> </h2>
         <InputContainer>
           <Label htmlFor='name'>Name</Label>
           <Input
@@ -200,7 +201,7 @@ const RegistrationForm = () => {
          
         </InputContainer>
 
-        <Button color='green' type='submit'>
+        <Button className="bg-nevy-blue" type='submit'>
           Registration
         </Button>
         </div>
