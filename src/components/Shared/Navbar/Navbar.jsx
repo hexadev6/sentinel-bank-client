@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import NavList from "./NavList";
 import { Link } from "react-router-dom";
-import { Avatar, Menu, MenuHandler, MenuItem, MenuList } from "../../../lib/materialClass";
 import Logo from "../../../utility/Logo";
 import Drawer from "../../Drawer/Drawer";
 import useAuth from "../../../Hooks/useAuth";
-import { Button } from "react-scroll";
 import ProfileMenu from "./ProfileDropdown";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
-  const {user} = useAuth()
+  const { user } = useAuth();
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
@@ -37,8 +35,8 @@ const Navbar = () => {
       style={linearGradientStyle}
       className={`   w-full z-50  text-white ${
         issticky
-          ? "sticky bg-white  top-0 ease-in duration-100 shadow-md text-white "
-          : "py-5 "
+          ? "sticky  bg-white  top-0 ease-in duration-100 shadow-md text-white "
+          : "py-8 "
       }`}
     >
       <div className="flex  gap-10 items-center justify-end md:justify-between px-5 md:px-10  lg:px-20">
@@ -55,24 +53,31 @@ const Navbar = () => {
           {/* navLink */}
           <NavList></NavList>
         </div>
-        {
-          user?
+        {user ? (
           <div className="hidden lg:flex items-center gap-5">
-          {/* deshbord */}
-          <Link
-            to={"/dashboard"}
-            className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
-          >
-            Dashboard
-          </Link>
+            {/* deshbord */}
+            <Link
+              to={"/dashboard"}
+              className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
+            >
+              Dashboard
+            </Link>
 
             <div className=" rounded-full ">
-              <ProfileMenu/>
+              <ProfileMenu />
             </div>
-         
-        </div>: <h2><Link className="hover:underline" to='/login'>Login</Link>/<Link className="hover:underline" to='/registration'>Registration</Link>
-       </h2> 
-        }
+          </div>
+        ) : (
+          <h2>
+            <Link className="hover:underline" to="/login">
+              Login
+            </Link>
+            /
+            <Link className="hover:underline" to="/registration">
+              Registration
+            </Link>
+          </h2>
+        )}
 
         <div className="lg:hidden ml-20 md:ml-0">
           <Drawer />

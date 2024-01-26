@@ -17,9 +17,7 @@ const NavList = () => {
         Home
       </NavLink>
       <p className="border h-5"></p>
-      <NavLink to='/aboutus'>
       <AboutList />
-      </NavLink>
       <p className="border h-5"></p>
       <ContactList />
     </>
