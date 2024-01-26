@@ -48,9 +48,9 @@ const DepoWithdraw = ({
       const newAmount = total - parseFloat(newWithdraw);
 
       console.log(newAmount);
-      setWithdraw(withdraw + parseFloat(newWithdraw));
+      setWithdraw(withdraw+parseFloat(newWithdraw));
       setTotal(newAmount);
-      recordTransaction("withdraw", withdraw);
+      recordTransaction("withdraw", newWithdraw);
     } else {
       toast.error("You don't have sufficient balance");
     }
@@ -182,6 +182,7 @@ const DepoWithdraw = ({
         <History
           recordTransaction={recordTransaction}
           transactionHistory={transactionHistory}
+          withdraw={withdraw}
         />
       </div>
     </div>
