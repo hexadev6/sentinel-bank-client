@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Navbar,
-  MobileNav,
   Typography,
   Button,
   Menu,
@@ -9,21 +7,18 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-  Card,
-  IconButton,
+  
 } from "@material-tailwind/react";
 import {
-  CubeTransparentIcon,
+
   UserCircleIcon,
-  CodeBracketSquareIcon,
-  Square3Stack3DIcon,
+ 
   ChevronDownIcon,
   Cog6ToothIcon,
   InboxArrowDownIcon,
   LifebuoyIcon,
   PowerIcon,
-  RocketLaunchIcon,
-  Bars2Icon,
+  
 } from "@heroicons/react/24/solid";
 import useAuth from "../../../Hooks/useAuth";
  
