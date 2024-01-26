@@ -7,12 +7,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-// apu
-// use '/createAccount' route in the post method create new account.
-// you must send data in this formate:
-// { ac_name, ac_num,email, nid, no_name, number}
-
-// after successful creation you will get response
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AccountCreate = () => {
   const HandleCreatAcc = (e) => {
@@ -35,11 +31,23 @@ const AccountCreate = () => {
       number: refernumber,
     };
     console.log(accountInfo);
+
+    axios
+      .post("http://localhost:5000/createAccount")
+      .then((res) => {
+        if (res.data.insertedId) {
+          toast.success(
+            "Your application has been submitted. Wait for next response!"
+          );
+        }
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="max-w-xl  shadow p-5">
-      <Card color="transparent" shadow={false}>
+      <div>
         <Typography variant="h4" color="blue-gray" className="text-nevy-blue">
           Open a Bank Account
         </Typography>
@@ -135,15 +143,15 @@ const AccountCreate = () => {
           </div>
 
           <div className="flex justify-end">
-            <Button
+            <button
               variant="text"
-              className="border hover:bg-black hover:text-text-white mt-3  rounded bg-nevy-blue text-white"
+              className="border hover:bg-black py-2 px-4 hover:text-text-white mt-3  rounded bg-nevy-blue text-white"
             >
               Submit your information
-            </Button>
+            </button>
           </div>
         </form>
-      </Card>
+      </div>
     </div>
   );
 };
