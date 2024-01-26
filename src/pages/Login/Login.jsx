@@ -83,7 +83,7 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  left: 10px;
+  Right: 10px;
 `;
 
 
@@ -131,6 +131,7 @@ const Login = () => {
   <Input
     type="email"
     id="email"
+    placeholder='Your email'
     {...register('email', {
       required: 'Email is required',
       pattern: {
@@ -150,6 +151,7 @@ const Login = () => {
     <PasswordInput
       type="password"
       id="password"
+      placeholder='Your password'
       {...register('password', { required: 'Password is required' })}
     />
     <PasswordIcon>
