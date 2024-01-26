@@ -81,7 +81,7 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  left:10px
+  right:10px
 `;
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -148,6 +148,7 @@ const RegistrationForm = () => {
           <Input
             type='text'
             id='name'
+            placeholder="Your name"
             {...register("name", { required: "Name is required" })}
           />
           <PasswordIcon>
@@ -160,6 +161,7 @@ const RegistrationForm = () => {
           <Input
             type='email'
             id='email'
+            placeholder="Your email"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -178,6 +180,7 @@ const RegistrationForm = () => {
           <PasswordInput
             type='password'
             id='password'
+            placeholder="Your password"
             {...register("password", { required: "Password is required" })}
           />
           <PasswordIcon>
