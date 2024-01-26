@@ -43,7 +43,7 @@ const Team = () => {
     <div className=" px-2 py-20">
       <SubHeading title="Meet Our Team" />
 
-      <div className=" flex flex-wrap md:grid-cols-2 md:grid lg:grid-cols-4 gap-5 justify-center mt-10 items-center">
+      <div id="team" className=" flex flex-wrap md:grid-cols-2 md:grid lg:grid-cols-4 gap-5 justify-center mt-10 items-center">
         {teams.map((member, indx) => (
           <Card
             key={indx}
