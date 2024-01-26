@@ -68,7 +68,7 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <h2>
+          <h2 className="hidden lg:block">
             <Link className="hover:underline" to="/login">
               Login
             </Link>
