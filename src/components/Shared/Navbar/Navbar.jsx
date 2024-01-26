@@ -6,6 +6,7 @@ import Logo from "../../../utility/Logo";
 import Drawer from "../../Drawer/Drawer";
 import useAuth from "../../../Hooks/useAuth";
 import { Button } from "react-scroll";
+import ProfileMenu from "./ProfileDropdown";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const {user} = useAuth()
@@ -66,10 +67,7 @@ const Navbar = () => {
           </Link>
 
             <div className=" rounded-full ">
-              <Avatar
-                src={user.photoURL}
-                alt="avatar"
-              />
+              <ProfileMenu/>
             </div>
          
         </div>: <h2><Link className="hover:underline" to='/login'>Login</Link>/<Link className="hover:underline" to='/registration'>Registration</Link>
