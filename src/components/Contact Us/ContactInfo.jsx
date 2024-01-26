@@ -2,13 +2,15 @@ import { IoChatboxEllipses } from "react-icons/io5";
 import Container from "../Shared/container/Container";
 import { BsFillQuestionDiamondFill } from "react-icons/bs";
 import { FcBusinesswoman } from "react-icons/fc";
+import SubHeading from "../Shared/Heading Title/SubHeading";
 
 const ContactInfo = () => {
   return (
     <Container>
+      <SubHeading title={"Live Contact us"} />
       <div
         id="livechat"
-        className=" w-full flex items-center justify-center gap-10 mb-20"
+        className=" w-full flex items-center justify-center gap-10 mb-20 mt-20"
       >
         <div className="flex flex-col md:flex-row justify-between gap-20 lg:gap-64 ">
           <div className="text-center font-extrabold">
