@@ -5,6 +5,8 @@ import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import bgimg from '../../assets/banner/new.png'
+import Logo from "../../utility/Logo";
 
 const FormContainer = styled.div`
   display: flex;
@@ -15,11 +17,11 @@ const FormContainer = styled.div`
 
 const StyledForm = styled.form`
   width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  radious:20px;
+  background-color: #F5F5F5;
+  
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
 
 const InputContainer = styled.div`
@@ -79,8 +81,7 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+  left:10px
 `;
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -132,10 +133,16 @@ const RegistrationForm = () => {
   // };
 
   return (
-    <FormContainer>
+   <div>
+   
+     <FormContainer >
+     
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='text-3xl font-semibold mb-6'>Register</h2>
+        
 
+        <div className="grid grid-cols-2 gap-6">
+        <div className="p-4">
+        <h2 className='text-3xl font-semibold mb-6'>Register</h2>
         <InputContainer>
           <Label htmlFor='name'>Name</Label>
           <Input
@@ -187,16 +194,21 @@ const RegistrationForm = () => {
             // onChange={handleImageChange}
             {...register("image", { required: "image is required" })}
           />
-          <PasswordIcon>
-            <FaFileImage />
-          </PasswordIcon>
+         
         </InputContainer>
 
         <Button color='green' type='submit'>
           Registration
         </Button>
+        </div>
+        <div className="flex right-5 ">
+          <img className="relative w-full h-full" src={bgimg} alt="" />
+          <div className="absolute py-12 mx-12"><Logo/></div>
+        </div>
+        </div>
       </StyledForm>
     </FormContainer>
+   </div>
   );
 };
 
