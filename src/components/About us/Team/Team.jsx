@@ -3,7 +3,7 @@ import {
   CardHeader,
   CardBody,
   Typography,
-  Avatar,
+ 
 } from "@material-tailwind/react";
 import SubHeading from "../../Shared/Heading Title/SubHeading";
 import {

@@ -6,7 +6,7 @@ import { FaCheckCircle } from "react-icons/fa";
 const Mission = () => {
     return (
         <Container>
-            <div id="mission" className="grid grid-cols-1 lg:grid-cols-2 h-auto gap-6 mx-6">
+            <div id="mission" className="grid grid-cols-1 lg:grid-cols-2 h-auto gap-4 mx-6">
             <div className=" p-2 ">
                 <SubHeading title={'Our Mission'} ></SubHeading>
                 <h2 className="my-4 text-[#073871] text-left p-2 text-lg font-medium">At Sentinel Trust Bank, our mission is to empower individuals and businesses to achieve financial success by providing innovative, reliable, and personalized banking solutions. We are committed to building lasting relationships with our clients, fostering a culture of trust, integrity, and transparency. Through responsible banking practices, community engagement, and a dedication to excellence, we strive to be a trusted financial partner, contributing to the prosperity and well-being of the communities we serve</h2>

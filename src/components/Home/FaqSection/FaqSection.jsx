@@ -4,9 +4,10 @@ import {
   AccordionHeader,
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
-import picbg from "../../../assets/banner/confused.jpg";
+import picbg from "../../../assets/banner/quest.jpg";
 import Container from "../../Shared/container/Container";
 import PropTypes from "prop-types";
+import SubHeading from "../../Shared/Heading Title/SubHeading";
 function Icon({ id, open }) {
   return (
     <svg
@@ -47,23 +48,18 @@ const FaqSection = () => {
 
   return (
     <Container>
-      <div className=" my-10 w-full min-h-sceen">
-        <h2 className="text-4xl font-bold text-center text-[#4d774e] ">
-          Freqently Asked Questions
-        </h2>
-        <p className="text-xl text-center py-2">
-          Navigating the Uncharted: Your Curated FAQ Expedition with Sentinel
-          Trust Bank
-        </p>
-        <div className="flex gap-20 flex-col md:flex-row-reverse mt-8">
+      <div className=" my-32 w-full min-h-sceen">
+        <SubHeading title={' Freqently Asked Questions'}></SubHeading>
+       
+        <div className="flex gap-10 flex-col md:flex-row-reverse mt-8">
           <div className="w-[max-content] mx-auto">
-            <img className="w-96 h-96" src={picbg} alt="" />
+            <img className="w-full h-96" src={picbg} alt="" />
           </div>
           <div className="flex-1">
             <div className="p-4">
               <div
                 className={` ${
-                  showAll ? "max-h-full" : "max-h-96"
+                  showAll ? "max-h-full" : "max-h-[380px]"
                 } overflow-hidden transition-max-height`}
               >
                 {faq?.map((item, index) => (
@@ -74,7 +70,7 @@ const FaqSection = () => {
                     icon={<Icon id={index} open={open} />}
                   >
                     <AccordionHeader
-                      className="text-[#4d774e] hover:text-[#4d774e]"
+                      className="text-nevy-blue hover:text-nevy-blue"
                       onClick={() => handleOpen(index)}
                     >
                       {item?.question}
@@ -88,7 +84,7 @@ const FaqSection = () => {
 
               <div className="w-[max-content] mx-auto">
                 <button
-                  className="btn rounded-lg border p-2 border-[#4d774e]"
+                  className="btn rounded-lg border p-2 border-nevy-blue"
                   onClick={handleShow}
                 >
                   {showAll ? "Show Less" : "Show More"}
