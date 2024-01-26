@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
 import { Button } from '@material-tailwind/react';
 import useAuth from '../../Hooks/useAuth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import bgimg from '../../assets/banner/new.png'
 import Logo from '../../utility/Logo';
 
@@ -162,7 +162,8 @@ const Login = () => {
 
 
 
-<Button color="green" type="submit">login</Button>
+<Button className='bg-nevy-blue' type="submit">login</Button>
+<h2 className='text-sm'>Don't have an account?<Link className='text-natural-yellow font-bold hover:underline' to='/registration'> create your account</Link></h2>
       </div>
       <div className="flex right-5 ">
           <img className="relative w-full h-[400px]" src={bgimg} alt="" />
