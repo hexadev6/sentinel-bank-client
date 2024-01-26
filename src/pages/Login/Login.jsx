@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
 import { Button } from '@material-tailwind/react';
 import useAuth from '../../Hooks/useAuth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const FormContainer = styled.div`
   display: flex;
@@ -89,6 +90,8 @@ const PasswordIcon = styled.span`
 const Login = () => {
   const {userLogin}= useAuth();
   const { register, handleSubmit, setValue } = useForm();
+  const location= useLocation()
+  const navigate = useNavigate()
   
 
   const onSubmit = (data) => {
@@ -96,6 +99,7 @@ const Login = () => {
     userLogin(data.email,data.password)
     .then(result=>{
       console.log(result.user);
+      navigate(location?.state ? location.state : "/")
     })
     .catch(err=>{
       console.log(err);
@@ -103,11 +107,11 @@ const Login = () => {
     
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    // You can handle file validation and preview logic here if needed
-    setValue('image', file);
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   // You can handle file validation and preview logic here if needed
+  //   setValue('image', file);
+  // };
 
   
 

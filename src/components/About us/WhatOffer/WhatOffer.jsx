@@ -18,6 +18,7 @@ const WhatOffer = () => {
     return (
        <Container>
         <SubHeading title={'Our Branches'}></SubHeading>
+        <div id="branch">
         <Card className="h-full my-6 w-full overflow-scroll">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
@@ -78,6 +79,7 @@ const WhatOffer = () => {
           </tbody>
         </table>
       </Card>
+        </div>
        </Container>
     );
 };
