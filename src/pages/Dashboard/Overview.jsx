@@ -1,20 +1,19 @@
-import React from 'react';
-import Transaction from '../../components/Overview/Transaction/Transaction';
-import Cards from '../../components/Overview/Cards/Cards';
-import Transfer from '../../components/Overview/MoneyTransfer/Transfer';
+import React from "react";
+import Cards from "../../components/DashBoard/Overview/Cards/Cards";
+import Transaction from "../../components/DashBoard/Overview/Transaction/Transaction";
+import Transfer from "../../components/DashBoard/Overview/MoneyTransfer/Transfer";
 
 const Overview = () => {
-    return (
-        <div className='grid lg:grid-cols-5 xl:grid-cols-4 gap-5 justify-between overflow-auto'>
-            <div className='lg:col-span-3'>
-            <Cards />
-            <Transaction />
-            </div>
-            <div className='lg:col-span-2 xl:col-span-1 w-full'>
-                <Transfer />
-            </div>
-        </div>
-    );
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
+      <div className="col-span-2">
+        <Cards />
+        <Transaction />
+      </div>
+        <Transfer />
+    
+    </div>
+  );
 };
 
 export default Overview;

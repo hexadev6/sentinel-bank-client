@@ -1,4 +1,4 @@
-import { Input, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import { FaPaperPlane } from "react-icons/fa";
 import Featured from "../../Home/Featured/Featured";
 import { Button } from "@material-tailwind/react";
@@ -20,10 +20,9 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="relative w-full mt-20 py-10 text-white bg-gray-900">
-        <div className="mx-auto w-full max-w-7xl px-8 ">
-          {/* <Featured /> */}
-          <div className="grid grid-cols-1 justify-between gap-10 lg:grid-cols-2">
+      <footer className="w-full mt-20 pt-10 pb-5 text-white bg-blue-gray-900">
+        <div className="mx-auto w-full max-w-7xl px-4">
+          <div className="grid grid-cols-1  justify-between gap-10 lg:grid-cols-3">
             <div>
               {/* <Typography variant="h5" className="mb-3">
                 SentinelTrust Bank
@@ -127,7 +126,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className=" flex flex-wrap sm:grid grid-cols-3 justify-between gap-4 t">
+            <div className="col-span-2 flex flex-wrap sm:grid grid-cols-3 sm:justify-between gap-4 t">
               {LINKS.map(({ title, items }) => (
                 <ul key={title}>
                   <Typography
@@ -161,30 +160,35 @@ const Footer = () => {
                   Subscribe
                 </Typography>
                 <p>
-                  Dont miss to subscribe our news feed, Kindly fill the form
-                  below
+                  Dont miss to subscribe our news feed to get best offers,
+                  Kindly fill the form below
                 </p>
-                <div className="relative flex w-full mt-4">
-                  <Input
+                <div className="flex items-center  mt-4  bg-white">
+                  <input
                     type="email"
-                    className="p-4 rounded-none focus:!border-white  w-5/6"
+                    className="p-4 text-light-gray rounded-none w-full focus:!border-white outline-0  "
                     placeholder="name@mail.com"
-                    labelProps={{
-                      className: "before:content-none after:content-none",
-                    }}
+                   
                   />
-                  <Button
+                  <button
                     size="sm"
-                    className="!absolute right-0 top-0  rounded-none bg-white text-[#4d774e]"
+                    className=" rounded-none bg-nevy-blue text-white py-4 px-2"
                   >
                     <FaPaperPlane className="text-2xl h-full" />
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+          
         </div>
       </footer>
+      <p
+            className="text-center font-normal text-white-900 px-4 bg-blue-gray-900 py-3 border-t border-t-gray-700"
+          >
+            &copy; {currentYear} <a href="https://material-tailwind.com/">HexaDev</a>. All
+            Rights Reserved.
+          </p>
     </div>
   );
 };

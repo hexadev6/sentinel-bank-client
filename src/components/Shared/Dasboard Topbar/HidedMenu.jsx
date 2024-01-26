@@ -13,22 +13,34 @@ import { GrTransaction } from "react-icons/gr";
 import { BsBank2 } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import Logo from "../../../utility/Logo";
+import useAuth from "../../../Hooks/useAuth";
 
 const HidedMenu = () => {
   const [open, setOpen] = React.useState(false);
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+  const {user,userLogOut} = useAuth()
 
+
+  const Logout= ()=>{
+    userLogOut()
+    .then(result=>{
+        console.log(result.user);
+    })
+    .catch(err =>{
+        console.log(err);
+    })
+  }
   return (
-    // draer menu for sm device
+    // drawer menu for sm device
     <React.Fragment>
       {/* drawer opening btn */}
       <IconButton
         onClick={openDrawer}
-        variant="text"
+        variant="text"bgover
         color="white"
-        className="text-black sm:hidden flex rounded hover:bg-gray-400"
+        className="text-nevy-blue sm:hidden flex rounded hover:bg-nevy-blue hover:text-white"
       >
         <FaBarsStaggered className="" />
       </IconButton>
@@ -66,12 +78,12 @@ const HidedMenu = () => {
         <div className="flex-grow mt-12">
           <div className="w-full flex flex-col gap-2 ">
             <NavLink
-              to="/"
+              to="/dashboard"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
             >
@@ -92,12 +104,12 @@ const HidedMenu = () => {
               </div>
             </NavLink>
             <NavLink
-              to="/"
+              to="manageAcc"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
             >
@@ -118,18 +130,18 @@ const HidedMenu = () => {
               </div>
             </NavLink>
             <NavLink
-              to="/"
+              to="quickBanking"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
             >
               <div className="flex  items-center gap-3 px-2 py-1">
                 <BsBank2 />
-                <span className="flex">Deposit / Withdraw</span>
+                <span className="flex">Quick Banking</span>
               </div>
             </NavLink>
             <NavLink
@@ -138,7 +150,7 @@ const HidedMenu = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
             >
@@ -153,7 +165,7 @@ const HidedMenu = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
             >
@@ -168,7 +180,7 @@ const HidedMenu = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
             >
@@ -194,10 +206,10 @@ const HidedMenu = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-black bg-medium-green rounded"
+                  ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
-            >
+             onClick={Logout}>
               <div className="flex  items-center gap-3 px-2 py-1">
                 <IoLogOutOutline />
                 <span className="flex">Log out</span>
@@ -211,7 +223,7 @@ const HidedMenu = () => {
           {/* bank statement download */}
           <div>
             <h1 className="flex font-semibold my-2 ">Bank Statement</h1>
-            <button className="bg-light-green w-full  gap-y-2 p-2 items-center text-black rounded flex  justify-between gap-2 ">
+            <button className="bg-nevy-blue  w-full  gap-y-2 p-2 items-center text-white rounded flex  justify-between gap-2 ">
               <IoDownloadOutline className="text-lg" />{" "}
               <span className="flex">Dowonload pdf</span>
             </button>
@@ -223,7 +235,7 @@ const HidedMenu = () => {
             <Switch
               id="custom-switch-component"
               ripple={false}
-              className="h-full w-full checked:bg-[#2ec946]"
+              className="h-full w-full checked:bg-nevy-blue "
               containerProps={{
                 className: "w-11 h-6",
               }}

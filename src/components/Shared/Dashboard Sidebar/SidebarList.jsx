@@ -4,15 +4,28 @@ import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
 import {  IoLogOutOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const SidebarList = () => {
+
+  const {user,userLogOut} = useAuth()
+
+  const Logout= ()=>{
+    userLogOut()
+    .then(result=>{
+        console.log(result.user);
+    })
+    .catch(err =>{
+        console.log(err);
+    })
+  }
   return (
     <div className="w-full flex flex-col gap-2 items-center lg:items-start">
       <NavLink to='/dashboard' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-light-green rounded w-full"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }
         >
@@ -34,11 +47,11 @@ const SidebarList = () => {
           </span>
           </div>
       </NavLink>
-      <NavLink to='/' className={({ isActive, isPending }) =>
+      <NavLink to='manageAcc' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -59,17 +72,17 @@ const SidebarList = () => {
           </span>
           </div>
       </NavLink>
-      <NavLink to='/' className={({ isActive, isPending }) =>
+      <NavLink to='quickBanking' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <BsBank2 />
           <span className="lg:flex hidden">
-          Deposit / Withdraw
+          Quick Banking
           </span>
           </div>
       </NavLink>
@@ -77,7 +90,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -91,7 +104,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -105,7 +118,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -130,9 +143,9 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-medium-green rounded"
+            ? "text-white bg-nevy-blue w-full rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-        }>
+        } onClick={Logout}>
           <div className="flex  items-center gap-3 px-2 py-1">
           <IoLogOutOutline />
           <span className="lg:flex hidden">

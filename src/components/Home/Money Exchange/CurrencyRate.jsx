@@ -17,7 +17,7 @@ const CurrencyRate = () => {
       {/* API updated date */}
       <p>As on {publishedDate}</p>
       <div>
-        <Card className="h-96 w-full overflow-auto mt-10 rounded-none">
+        <Card className="scrollbar h-96 w-full overflow-auto mt-10 rounded-none">
           {/* currency rate table */}
           <table className="w-full table-auto text-center">
             <thead className="sticky top-0">

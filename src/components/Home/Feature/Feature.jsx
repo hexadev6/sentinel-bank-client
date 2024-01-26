@@ -6,13 +6,14 @@ import { FaCcMastercard, FaLaptop, FaPersonBooth } from "react-icons/fa";
 import { MdOutlineSecurity } from "react-icons/md";
 import { IoDocumentLockSharp } from "react-icons/io5";
 import { AiFillCustomerService } from "react-icons/ai";
+import News from "../News/News";
 
 const Feature = () => {
   return (
     <div className="px-4">
       {/* heading */}
       <SubHeading title={"Our Feature"} />
-      <div className="container mx-auto ">
+      <div className="container mx-auto  gap-5 justify-between items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 justify-between items-center">
           {/* feature maping */}
           {featureType.map((item) => (
@@ -50,6 +51,7 @@ const Feature = () => {
             </div>
           ))}
         </div>
+    
       </div>
     </div>
   );

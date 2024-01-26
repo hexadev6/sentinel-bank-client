@@ -52,7 +52,7 @@ const CustomerReview = () => {
   };
 
   return (
-    <div className="px-4">
+    <div className="px-4 lg:mb-40 ">
       <div className="container mx-auto mt-24 ">
         {/* feedback heading */}
         <SubHeading title="Customer feedback" />
