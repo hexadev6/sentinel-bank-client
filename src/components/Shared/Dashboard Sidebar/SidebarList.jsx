@@ -12,7 +12,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-white bg-nevy-blue rounded w-full"
+            ? "text-white bg-black rounded w-full"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }
         >
@@ -34,11 +34,11 @@ const SidebarList = () => {
           </span>
           </div>
       </NavLink>
-      <NavLink to='/' className={({ isActive, isPending }) =>
+      <NavLink to='manageAcc' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "text-black bg-nevy-blue rounded"
+            ? "text-white bg-black rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -59,17 +59,17 @@ const SidebarList = () => {
           </span>
           </div>
       </NavLink>
-      <NavLink to='/' className={({ isActive, isPending }) =>
+      <NavLink to='quickBanking' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
-            ? "text-white bg-nevy-blue rounded"
+            ? "text-white bg-black rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
           <BsBank2 />
           <span className="lg:flex hidden">
-          Deposit / Withdraw
+          Quick Banking
           </span>
           </div>
       </NavLink>
@@ -77,7 +77,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-white bg-nevy-blue rounded"
+            ? "text-white bg-black rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -91,7 +91,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-white bg-nevy-blue rounded"
+            ? "text-white bg-black rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -105,7 +105,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-white bg-nevy-blue rounded"
+            ? "text-white bg-black rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">
@@ -130,7 +130,7 @@ const SidebarList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "text-white bg-nevy-blue rounded"
+            ? "text-white bg-black rounded"
             : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
         }>
           <div className="flex  items-center gap-3 px-2 py-1">

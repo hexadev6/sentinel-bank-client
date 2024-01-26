@@ -1,7 +1,7 @@
 import React from "react";
-import Transaction from "../../components/Overview/Transaction/Transaction";
-import Cards from "../../components/Overview/Cards/Cards";
-import Transfer from "../../components/Overview/MoneyTransfer/Transfer";
+import Cards from "../../components/DashBoard/Overview/Cards/Cards";
+import Transaction from "../../components/DashBoard/Overview/Transaction/Transaction";
+import Transfer from "../../components/DashBoard/Overview/MoneyTransfer/Transfer";
 
 const Overview = () => {
   return (

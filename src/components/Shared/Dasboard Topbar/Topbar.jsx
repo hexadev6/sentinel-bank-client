@@ -15,7 +15,7 @@ const Topbar = () => {
     // topbar
 
     <div className="w-full">
-    <div className="flex w-full h-fit sticky z-50 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-nevy-blue">
+    <div className="flex w-full h-fit sticky z-50 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
         {/* side bar will open  */}
         <HidedMenu />
         {/* top menu start from here  */}

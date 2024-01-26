@@ -7,6 +7,8 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import Overview from "../pages/Dashboard/Overview";
+import QuickBank from "../pages/Dashboard/QuickBank";
+import AccountManage from "../pages/Dashboard/AccountManage";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,11 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
-    children: [{ path: "/dashboard", element: <Overview /> }],
+    children: [
+      { path: "/dashboard", element: <Overview /> },
+      { path: "quickBanking", element: <QuickBank /> },
+      { path: "manageAcc", element: <AccountManage /> },
+  ],
   },
 ]);
 
