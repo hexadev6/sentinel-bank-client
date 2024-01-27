@@ -9,12 +9,22 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  HomeIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
-const CommonSideLink = () => {
+const CommonSideLink = ({ closeDrawer }) => {
   return (
     <>
       {" "}
+      <Link to={"/"} onClick={closeDrawer}>
+        <ListItem>
+          <ListItemPrefix>
+            <HomeIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Home
+        </ListItem>
+      </Link>
       <ListItem>
         <ListItemPrefix>
           <InboxIcon className="h-5 w-5" />

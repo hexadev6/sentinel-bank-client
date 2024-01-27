@@ -68,15 +68,9 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <h2 className="hidden lg:block">
-            <Link className="hover:underline" to="/login">
-              Login
-            </Link>
-            /
-            <Link className="hover:underline" to="/registration">
-              Registration
-            </Link>
-          </h2>
+          <Link className="hover:underline hidden lg:block" to="/login">
+            Login
+          </Link>
         )}
 
         <div className="lg:hidden ml-20 md:ml-0">

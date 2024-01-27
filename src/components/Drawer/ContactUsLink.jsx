@@ -7,10 +7,12 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import { PresentationChartBarIcon } from "@heroicons/react/24/solid";
+
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { MdContactPage } from "react-icons/md";
 
 const ContactUsLink = ({ closeDrawer }) => {
   const [open, setOpen] = useState(0);
@@ -36,7 +38,7 @@ const ContactUsLink = ({ closeDrawer }) => {
           className="border-b-0 p-3 "
         >
           <ListItemPrefix>
-            <PresentationChartBarIcon className="h-5 w-5 text-white" />
+            <MdContactPage className="h-5 w-5 text-white" />
           </ListItemPrefix>
           <Typography color="white" className="mr-auto font-normal">
             Contact us

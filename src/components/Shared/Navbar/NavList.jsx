@@ -10,7 +10,7 @@ const NavList = () => {
           isPending
             ? "pending"
             : isActive
-            ? "border-b border-green-400 pb-1 "
+            ? "border-b border-green-400 pb-1 text-green-400"
             : "hover:border-b hover:border-b-green-400 ease-in duration-500 pb-1"
         }
       >
