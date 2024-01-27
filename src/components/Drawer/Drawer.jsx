@@ -13,12 +13,17 @@ const Dawer = () => {
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
   return (
-    <div className="text-white">
-      <IoMenu className="text-4xl  mr-5 " onClick={openDrawer}></IoMenu>
+    <div className="text-white ">
+      <IoMenu
+        className="text-4xl cursor-pointer  mr-5 "
+        onClick={openDrawer}
+      ></IoMenu>
       <Drawer
+        placement="left"
+        size={320}
         open={open}
         onClose={closeDrawer}
-        className="p-4 overflow-y-scroll overflow-x-hidden bg-nevy-blue text-white"
+        className="p-4 overflow-y-scroll overflow-x-hidden bg-nevy-blue text-white "
       >
         <div className="mb-6 flex items-center justify-between ">
           {/* logo for website */}
@@ -41,14 +46,15 @@ const Dawer = () => {
             </svg>
           </IconButton>
         </div>
-
+        {/* all Link above card section */}
         <Card className="shadow-none bg-transparent mt-20">
           <List className="text-white">
             <AboutLink closeDrawer={closeDrawer} />
             <ContactUsLink closeDrawer={closeDrawer} />
 
             <hr className="mb-2 border-blue-gray-50" />
-            <CommonSideLink />
+
+            <CommonSideLink closeDrawer={closeDrawer} />
           </List>
         </Card>
       </Drawer>
