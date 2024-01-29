@@ -104,7 +104,7 @@ const HidedMenu = () => {
               </div>
             </NavLink>
             <NavLink
-              to="manageAcc"
+              to="createAcc"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
@@ -126,7 +126,7 @@ const HidedMenu = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="flex">Account Management</span>
+                <span className="flex">Create Bank Account</span>
               </div>
             </NavLink>
             <NavLink
