@@ -21,15 +21,13 @@ const Footer = () => {
   return (
     <div>
       <footer className="w-full mt-20 pt-10 pb-5 text-white bg-blue-gray-900">
-        <div className="mx-auto w-full max-w-7xl px-4">
+        <div className="mx-auto container px-4">
           <div className="grid grid-cols-1  justify-between gap-10 lg:grid-cols-3">
             <div>
-              {/* <Typography variant="h5" className="mb-3">
-                SentinelTrust Bank
-              </Typography> */}
-              <Logo/>
+    
+              <Logo />
 
-              <p className="text-gray-400">
+              <p className=" text-sm text-white">
                 It is a leading financial institution committed to providing
                 top-notch banking services.{" "}
               </p>
@@ -155,7 +153,7 @@ const Footer = () => {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="mb-3 font-semibold text-lg opacity-90 text-white"
+                  className="mb-3 font-semibold text-sm opacity-90 text-white"
                 >
                   Subscribe
                 </Typography>
@@ -168,7 +166,6 @@ const Footer = () => {
                     type="email"
                     className="p-4 text-light-gray rounded-none w-full focus:!border-white outline-0  "
                     placeholder="name@mail.com"
-                   
                   />
                   <button
                     size="sm"
@@ -180,15 +177,13 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
         </div>
       </footer>
-      <p
-            className="text-center font-normal text-white-900 px-4 bg-blue-gray-900 py-3 border-t border-t-gray-700"
-          >
-            &copy; {currentYear} <a href="https://material-tailwind.com/">HexaDev</a>. All
-            Rights Reserved.
-          </p>
+      <p className="text-center font-normal text-white-900 px-4 bg-blue-gray-900 py-3 border-t border-t-gray-700 text-white text-sm">
+        &copy; {currentYear}{" "}
+        <a href="https://material-tailwind.com/">HexaDev</a>. All Rights
+        Reserved.
+      </p>
     </div>
   );
 };
