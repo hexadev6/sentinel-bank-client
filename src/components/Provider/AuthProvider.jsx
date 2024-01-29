@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -48,6 +49,10 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signOut(auth)
     }
+    const emaillVerification=()=>{
+        setLoading(true)
+        return sendEmailVerification(auth.currentUser)
+    }
 
 
     const authInfo ={
@@ -57,7 +62,8 @@ const AuthProvider = ({ children }) => {
        userSignUp,
        userLogin,
        userLogOut,
-       UserProfileUpdate
+       UserProfileUpdate,
+       emaillVerification
 
 
     }

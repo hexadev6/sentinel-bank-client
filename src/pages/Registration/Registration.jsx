@@ -4,9 +4,8 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from "react-icons/fa";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import bgimg from '../../assets/banner/new.png'
-import Logo from "../../utility/Logo";
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import signup from '../../assets/banner/signup.jpg'
 
 const FormContainer = styled.div`
   display: flex;
@@ -17,9 +16,9 @@ const FormContainer = styled.div`
 
 const StyledForm = styled.form`
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   radious:20px;
-  background-color: #F5F5F5;
+  background-color: #fffff;
   
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
@@ -88,7 +87,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const RegistrationForm = () => {
-  const { userSignUp, UserProfileUpdate} = useAuth();
+  const { userSignUp, UserProfileUpdate,emaillVerification} = useAuth();
   const { register, handleSubmit, setValue } = useForm();
   const location = useLocation()
   const navigate= useNavigate()
@@ -112,9 +111,21 @@ const RegistrationForm = () => {
         .then((result) => {
           if(result.user) {
             UserProfileUpdate(data.name, imgRes.data.data.display_url)
-            .then(res => console.log(res))
+            .then(result => {
+              
+              console.log(result.user)
+              })
             .catch(error => console.log(error))
           }
+          emaillVerification()
+              .then(result=>{
+                console.log('email verify',result.user);
+              })
+              .catch(err=>{
+                console.log(err);
+              })
+          
+
           navigate(location?.state ? location.state : "/")
         })
 
@@ -141,9 +152,12 @@ const RegistrationForm = () => {
         
 
         <div className="grid grid-cols-2 gap-6">
+          <div>
+            <img src={signup} alt="" />
+          </div>
         <div className="p-4">
-        <h2 className='text-3xl font-semibold mb-6'>Register</h2>
-        <h2>Already have an account? please <Link className='text-natural-yellow font-bold hover:underline' to='/login'>login</Link> </h2>
+        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
+        <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
         <InputContainer>
           <Label htmlFor='name'>Name</Label>
           <Input
@@ -205,10 +219,7 @@ const RegistrationForm = () => {
           Registration
         </Button>
         </div>
-        <div className="flex right-5 ">
-          <img className="relative w-full h-full" src={bgimg} alt="" />
-          <div className="absolute py-12 mx-12"><Logo/></div>
-        </div>
+        
         </div>
       </StyledForm>
     </FormContainer>

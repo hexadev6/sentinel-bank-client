@@ -5,8 +5,9 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
 import { Button } from '@material-tailwind/react';
 import useAuth from '../../Hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import bgimg from '../../assets/banner/new.png'
+import login from '../../assets/banner/signin.jpg'
 import Logo from '../../utility/Logo';
+// import Logo from '../../utility/Logo';
 
 const FormContainer = styled.div`
   display: flex;
@@ -17,9 +18,9 @@ const FormContainer = styled.div`
 
 const StyledForm = styled.form`
   width: 100%;
-  max-width: 550px;
-  height:400px;
-  background-color:#F5F5F5;
+  max-width: 1000px;
+  height:500px;
+  background-color:#Fffff;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
@@ -121,8 +122,16 @@ const Login = () => {
          
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <div className='grid grid-cols-2 gap-6'>
+        <div>
+          <img className='relative h-[500px]' src={login} alt="" />
+          {/* <div className='absolute top-60'>
+            <Logo/>
+          </div> */}
+        </div>
       <div className='p-4'>
-      <h2 className="text-3xl font-semibold mb-6">Login</h2>
+        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
+        <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
+      {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
 
        
 
@@ -161,14 +170,12 @@ const Login = () => {
 
 
 
-
+  <h2 className='mb-2'>Forgot password?</h2>
 <Button className='bg-nevy-blue' type="submit">login</Button>
-<h2 className='text-sm'>Don't have an account?<Link className='text-natural-yellow font-bold hover:underline' to='/registration'> create your account</Link></h2>
+
+
+
       </div>
-      <div className="flex right-5 ">
-          <img className="relative w-full h-[400px]" src={bgimg} alt="" />
-          <div className="absolute py-12 mx-12"><Logo/></div>
-        </div>
       </div>
 
        
