@@ -59,23 +59,23 @@ const CreateAcc = () => {
         );
     
         const accountInfo = {
-            holderName: holder_name,
-            holderEmail: email,
-            holderDOB: holder_dob,
-            age: age,
-            gender: holder_gender,
-            nationality: nationality,
-            occupation: occupation,
-            phnNumber: phnNumber,
-            address: address,
-            type: type,
-            income_source: income,
-            initial_deposit: initial_deposit,
-            nidnumber: nidnumber,
-            reference: reference,
-            nominee: nominee,
-            documents:selectedImg,
-            profileImg:photo
+            holderName: holder_name,  //text
+            holderEmail: email, //text
+            holderDOB: holder_dob, //date
+            age: age, //number
+            gender: holder_gender, //text
+            nationality: nationality, //text
+            occupation: occupation, //text
+            phnNumber: phnNumber, //number
+            address: address, //text
+            type: type, //text
+            income_source: income, //text
+            initial_deposit: initial_deposit, //number
+            nidnumber: nidnumber, //number
+            reference: reference, //number
+            nominee: nominee, //text
+            documents:selectedImg, //array
+            profileImg:photo //
           };
           console.log(accountInfo);
           setLoading(false)
