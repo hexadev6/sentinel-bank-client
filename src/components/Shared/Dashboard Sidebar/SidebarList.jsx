@@ -47,7 +47,7 @@ const SidebarList = () => {
           </span>
           </div>
       </NavLink>
-      <NavLink to='manageAcc' className={({ isActive, isPending }) =>
+      <NavLink to='createAcc' className={({ isActive, isPending }) =>
           isPending
             ? "pending"
             : isActive
@@ -68,7 +68,7 @@ const SidebarList = () => {
             />
           </svg>
           <span className="lg:flex hidden">
-        Account Management
+        Create Bank Account
           </span>
           </div>
       </NavLink>
