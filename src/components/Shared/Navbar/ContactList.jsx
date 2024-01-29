@@ -17,9 +17,10 @@ import {
   TagIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ContactList = () => {
+  const location = useLocation();
   const navListMenuItems = [
     {
       title: "General Information",
@@ -123,7 +124,11 @@ const ContactList = () => {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium ">
             <div
-              className="flex items-center gap-3 text-sm font-bold text-white    capitalize  hover:bg-none hover:border-b hover:border-b-green-400 ease-in duration-500 rounded-none  p-0 pb-1 cursor-pointer"
+              className={`flex items-center gap-3 text-sm font-bold     capitalize  hover:bg-none hover:border-b hover:border-b-green-400 ease-in duration-500 rounded-none  p-0 pb-1 cursor-pointer ${
+                location?.pathname?.includes("contact")
+                  ? "border-b border-green-400 text-green-400"
+                  : ""
+              }`}
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
