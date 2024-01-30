@@ -90,7 +90,7 @@ const PasswordIcon = styled.span`
 
 
 const Login = () => {
-  const {userLogin}= useAuth();
+  const {userLogin,passwordRest}= useAuth();
   const { register, handleSubmit, setValue } = useForm();
   const location= useLocation()
   const navigate = useNavigate()
@@ -170,7 +170,7 @@ const Login = () => {
 
 
 
-  <h2 className='mb-2'>Forgot password?</h2>
+  <h2  className='mb-2'>Forgot password?</h2>
 <Button className='bg-nevy-blue' type="submit">login</Button>
 
 

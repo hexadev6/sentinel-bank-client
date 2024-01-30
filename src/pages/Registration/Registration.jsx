@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import signup from '../../assets/banner/signup.jpg'
+import { sendEmailVerification } from "firebase/auth";
 
 const FormContainer = styled.div`
   display: flex;
@@ -87,7 +88,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const RegistrationForm = () => {
-  const { userSignUp, UserProfileUpdate,emaillVerification} = useAuth();
+  const { userSignUp, UserProfileUpdate} = useAuth();
   const { register, handleSubmit, setValue } = useForm();
   const location = useLocation()
   const navigate= useNavigate()
@@ -109,24 +110,34 @@ const RegistrationForm = () => {
     if (imgRes.data.success) {
       userSignUp(data.email, data.password)
         .then((result) => {
-          if(result.user) {
-            UserProfileUpdate(data.name, imgRes.data.data.display_url)
-            .then(result => {
-              
-              console.log(result.user)
-              })
-            .catch(error => console.log(error))
-          }
-          emaillVerification()
-              .then(result=>{
-                console.log('email verify',result.user);
+          console.log('user create',result.user);
+          if(result.user.emailVerified === false){
+            sendEmailVerification(result.user)
+              .then(()=>{
+                alert('please verify your email')
+                    
               })
               .catch(err=>{
                 console.log(err);
               })
+           }
+           else{
+            console.log('homepage');
+            navigate(location?.state ? location.state : "/")
+           }
+          
+          // if(result.user) {
+          //   UserProfileUpdate(data.name, imgRes.data.data.display_url)
+          //   .then(result => {
+              
+          //     console.log(result.user)
+          //     })
+          //   .catch(error => console.log(error))
+          // }
+          
           
 
-          navigate(location?.state ? location.state : "/")
+          
         })
 
         .catch((err) => {
