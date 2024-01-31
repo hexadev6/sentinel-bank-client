@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import CreateAccLayout from "../../components/DashBoard/Account Create/CreateAccLayout";
 import useAuth from "../../Hooks/useAuth";
 import multiImgUpload from "../../Hooks/multiImgUpload";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const CreateAcc = () => {
   const { user } = useAuth();
   const [minAge, setMinAge] = useState("");
   const [showImg, setShowImg] = useState(null);
+  const [profileImg, setProfileImg] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+  const axiosPublic = useAxiosPublic();
+
   const HandleAge = (e) => {
     const holder_dob = e.target.value;
     const ageDiff =
@@ -21,14 +24,19 @@ const CreateAcc = () => {
     }
   };
 
-  const HandleUpload=(e)=>{
-    const imgfiles = e.target.files
-    const seletedImgList = Array.from(imgfiles)
+  const HandleUpload = (e) => {
+    const imgfiles = e.target.files;
+    const seletedImgList = Array.from(imgfiles);
     setShowImg(seletedImgList);
-  }
+  };
+  const HandleProfileImg = (e) => {
+    const profileImg = e.target.files;
+    setProfileImg(profileImg[0]);
+  };
 
-  const HandleCreateAcc = async(e) => {
-    setLoading(true)
+
+  const HandleCreateAcc = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     const email = user?.email;
@@ -53,37 +61,44 @@ const CreateAcc = () => {
     const photo = await multiImgUpload(image);
 
     try {
+      const selectedImg = await Promise.all(
+        showImg.map((img) => multiImgUpload(img))
+      );
 
-        const selectedImg = await Promise.all(
-            showImg.map((img) => multiImgUpload(img))
-        );
-    
-        const accountInfo = {
-            holderName: holder_name,  //text
-            holderEmail: email, //text
-            holderDOB: holder_dob, //date
-            age: age, //number
-            gender: holder_gender, //text
-            nationality: nationality, //text
-            occupation: occupation, //text
-            phnNumber: phnNumber, //number
-            address: address, //text
-            type: type, //text
-            income_source: income, //text
-            initial_deposit: initial_deposit, //number
-            nidnumber: nidnumber, //number
-            reference: reference, //number
-            nominee: nominee, //text
-            documents:selectedImg, //array
-            profileImg:photo //
-          };
-          console.log(accountInfo);
-          setLoading(false)
-      } catch (error) {
-        console.error("Error during image upload:", error);
-      }
+      const accountInfo = {
+        holderName: holder_name, //text
+        holderEmail: email, //text
+        holderDOB: holder_dob, //date
+        age: age, //number
+        gender: holder_gender, //text
+        nationality: nationality, //text
+        occupation: occupation, //text
+        phnNumber: phnNumber, //number
+        address: address, //text
+        type: type, //text
+        income_source: income, //text
+        initial_deposit: initial_deposit, //number
+        nidnumber: nidnumber, //number
+        reference: reference, //number
+        nominee: nominee, //text
+        documents: selectedImg, //array
+        profileImg: photo, //
+      };
 
+      axiosPublic
+        .post("/createBankAccount", accountInfo)
+        .then((res) => {
+          console.log(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
+      console.log(accountInfo);
+    } catch (error) {
+      console.error("Error during image upload:", error);
+    }
   };
   return (
     <div className="p-4">
@@ -95,6 +110,9 @@ const CreateAcc = () => {
         showImg={showImg}
         setShowImg={setShowImg}
         loading={loading}
+        profileImg={profileImg}
+        setProfileImg={setProfileImg}
+        HandleProfileImg={HandleProfileImg}
       />
     </div>
   );
