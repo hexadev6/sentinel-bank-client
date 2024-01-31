@@ -5,8 +5,7 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
 import { Button } from '@material-tailwind/react';
 import useAuth from '../../Hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import login from '../../assets/banner/signin.jpg'
-import Logo from '../../utility/Logo';
+import bgimg from '../../assets/banner/view-city-square.jpg'
 // import Logo from '../../utility/Logo';
 
 const FormContainer = styled.div`
@@ -18,7 +17,7 @@ const FormContainer = styled.div`
 
 const StyledForm = styled.form`
   width: 100%;
-  max-width: 1000px;
+  max-width: 500px;
   height:500px;
   background-color:#Fffff;
   border-radius: 8px;
@@ -118,69 +117,65 @@ const Login = () => {
   
 
   return (
-    <FormContainer>
+    <div>
+      <FormContainer>
          
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <div className='grid grid-cols-2 gap-6'>
-        <div>
-          <img className='relative h-[500px]' src={login} alt="" />
-          {/* <div className='absolute top-60'>
-            <Logo/>
-          </div> */}
-        </div>
-      <div className='p-4'>
-        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-        <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
-      {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
-
-       
-
-<InputContainer>
-  <Label htmlFor="email">Email</Label>
-  <Input
-    type="email"
-    id="email"
-    placeholder='Your email'
-    {...register('email', {
-      required: 'Email is required',
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-        message: 'Invalid email address',
-      },
-    })}
-  />
-  <PasswordIcon>
-    <FaEnvelope />
-  </PasswordIcon>
-</InputContainer>
-
-
-  <InputContainer>
-    <Label htmlFor="password">Password</Label>
-    <PasswordInput
-      type="password"
-      id="password"
-      placeholder='Your password'
-      {...register('password', { required: 'Password is required' })}
-    />
-    <PasswordIcon>
-      <FaLock />
-    </PasswordIcon>
-  </InputContainer>
-
-
-
-  <h2  className='mb-2'>Forgot password?</h2>
-<Button className='bg-nevy-blue' type="submit">login</Button>
-
-
-
-      </div>
-      </div>
-
-       
-      </StyledForm>
-    </FormContainer>
+         <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
+         <div>
+         <div className='p-4'>
+           <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
+           <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
+         {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
+   
+          
+   
+   <InputContainer>
+     <Label htmlFor="email">Email</Label>
+     <Input
+       type="email"
+       id="email"
+       placeholder='Your email'
+       {...register('email', {
+         required: 'Email is required',
+         pattern: {
+           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+           message: 'Invalid email address',
+         },
+       })}
+     />
+     <PasswordIcon>
+       <FaEnvelope />
+     </PasswordIcon>
+   </InputContainer>
+   
+   
+     <InputContainer>
+       <Label htmlFor="password">Password</Label>
+       <PasswordInput
+         type="password"
+         id="password"
+         placeholder='Your password'
+         {...register('password', { required: 'Password is required' })}
+       />
+       <PasswordIcon>
+         <FaLock />
+       </PasswordIcon>
+     </InputContainer>
+   
+   
+   
+     <h2  className='mb-2'>Forgot password?</h2>
+   <Button className='bg-nevy-blue' type="submit">login</Button>
+   
+   
+   
+         </div>
+         </div>
+   
+          
+         </StyledForm>
+       </FormContainer>
+    </div>
   );
 };
 

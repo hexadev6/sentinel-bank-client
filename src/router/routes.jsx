@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Overview from "../pages/Dashboard/Overview";
 import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
+import Stepper from "../components/Stepper/Stepper";
 
 const router = createBrowserRouter([
   {
@@ -27,15 +28,15 @@ const router = createBrowserRouter([
         path: "contact/:section",
         element: <ContactUs></ContactUs>,
       },
-      {
-        path: "registration",
-        element: <Registration></Registration>,
-      },
-      {
-        path: "login",
-        element: <Login></Login>,
-      },
     ],
+  },
+  {
+    path: "registration",
+    element: <Stepper/>,
+  },
+  {
+    path: "login",
+    element: <Login></Login>,
   },
   {
     path: "/dashboard",
