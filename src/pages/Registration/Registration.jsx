@@ -5,8 +5,10 @@ import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import signup from '../../assets/banner/signup.jpg'
+// import signup from '../../assets/banner/signup.jpg'
+
 import { sendEmailVerification } from "firebase/auth";
+
 
 const FormContainer = styled.div`
   display: flex;
@@ -17,10 +19,9 @@ const FormContainer = styled.div`
 
 const StyledForm = styled.form`
   width: 100%;
-  max-width: 1000px;
+  max-width: 500px;
   radious:20px;
   background-color: #fffff;
-  
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
 
@@ -155,17 +156,21 @@ const RegistrationForm = () => {
   // };
 
   return (
-   <div>
-   
-     <FormContainer >
+   <div  >
+
+
+
+
+
+<FormContainer   >
      
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
         
 
-        <div className="grid grid-cols-2 gap-6">
-          <div>
+        <div className=" bg-white">
+          {/* <div>
             <img src={signup} alt="" />
-          </div>
+          </div> */}
         <div className="p-4">
         <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
         <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
@@ -234,6 +239,8 @@ const RegistrationForm = () => {
         </div>
       </StyledForm>
     </FormContainer>
+   
+     
    </div>
   );
 };
