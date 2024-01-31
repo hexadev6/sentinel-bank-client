@@ -14,7 +14,7 @@ const Sidebar = () => {
         <Typography variant="h5" color="blue-gray" className="hidden lg:flex">
           <Logo />
         </Typography>
-        <img src={logo} alt="" srcset="" className="flex lg:hidden w-16" />
+        <img src={logo} alt="" className="flex lg:hidden w-16" />
       </div>
       {/* menu */}
       <div className="flex-1 mt-12">
