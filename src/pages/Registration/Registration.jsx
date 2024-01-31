@@ -82,17 +82,17 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  right:10px
+  right: 10px;
 `;
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const RegistrationForm = () => {
-  const { userSignUp, UserProfileUpdate} = useAuth();
+  const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
-  const location = useLocation()
-  const navigate= useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -109,36 +109,30 @@ const RegistrationForm = () => {
 
     // if image upload success then register user
     if (imgRes.data.success) {
-      userSignUp(data.email, data.password)
+      await userSignUp(data.email, data.password)
         .then((result) => {
-          console.log('user create',result.user);
-          if(result.user.emailVerified === false){
+          console.log("user create", result.user);
+          if (result.user.emailVerified === false) {
             sendEmailVerification(result.user)
-              .then(()=>{
-                alert('please verify your email')
-                    
+              .then(() => {
+                alert("please verify your email");
               })
-              .catch(err=>{
+              .catch((err) => {
                 console.log(err);
-              })
-           }
-           else{
-            console.log('homepage');
-            navigate(location?.state ? location.state : "/")
-           }
-          
-          // if(result.user) {
-          //   UserProfileUpdate(data.name, imgRes.data.data.display_url)
-          //   .then(result => {
-              
-          //     console.log(result.user)
-          //     })
-          //   .catch(error => console.log(error))
-          // }
-          
-          
+              });
+          } else {
+            console.log("homepage");
 
-          
+            if (result.user) {
+              UserProfileUpdate(data.name, imgRes.data.data.display_url)
+                .then((result) => {
+                  console.log(result.user);
+                })
+                .catch((error) => console.log(error));
+            }
+
+            // navigate(location?.state ? location.state : "/")
+          }
         })
 
         .catch((err) => {

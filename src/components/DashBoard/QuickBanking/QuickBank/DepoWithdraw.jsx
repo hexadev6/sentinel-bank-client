@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import History from "./History";
 import { Button, Input, Radio } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import useAuth from "../../../../Hooks/useAuth";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment);
 
@@ -21,6 +22,8 @@ const DepoWithdraw = ({
   const [depoAmount, setDepoAmount] = useState(0);
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [isTrue, setIsTrue] = useState(false);
+const { user} =useAuth()
+
 
   // history function
   const recordTransaction = (type, amount) => {
@@ -34,11 +37,17 @@ const DepoWithdraw = ({
   // deposit func
   const HandleDeposit = (e) => {
     e.preventDefault();
-    const newDeposit = e.target.elements.withdraw.value;
-    console.log(deposit);
+    const newDeposit = e.target.elements.deposit.value;
     setDepoAmount(newDeposit);
     setDepoMethod(true);
   };
+
+  
+  const userInfo = {
+    userName : user?.displayName,
+    userEmail : user?.email,
+    depoAmount:depoAmount
+  }
 
   // withdraw func
   const HandleWithdraw = (e) => {
@@ -83,7 +92,7 @@ const DepoWithdraw = ({
           <Input
             label="Deposit Amount"
             className="rounded h-full"
-            name="withdraw"
+            name="deposit"
           />
           <Button
             variant="outlined"
@@ -164,17 +173,16 @@ const DepoWithdraw = ({
         </div>
         {/* stripe card pay */}
         <div>
-          {isTrue && (
-            <Elements stripe={stripePromise}>
-              <CheckoutForm
-                depositInfo={depositInfo}
-                setTotal={setTotal}
-                setDeposit={setDeposit}
-                deposit={deposit}
-                recordTransaction={recordTransaction}
-              />
-            </Elements>
-          )}
+        {isTrue &&  (
+        <Elements  stripe={stripePromise}>
+          <CheckoutForm
+          userInfo={userInfo}
+           />
+        </Elements>
+      )}
+
+      
+
         </div>
       </div>
       {/* history show */}

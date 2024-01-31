@@ -1,37 +1,113 @@
-import React, { useState } from "react";
-import { CardElement, useElements } from "@stripe/react-stripe-js";
-import { Button } from "@material-tailwind/react";
-import toast from "react-hot-toast";
+import {
+  CardElement,
+  Elements,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Button, Input, Typography } from "@material-tailwind/react";
 
-const CheckoutForm = ({ depositInfo, setTotal, setDeposit,recordTransaction ,deposit}) => {
-  const [error, setError] = useState();
-
+const CheckoutForm = ({ userInfo }) => {
+  const stripe = useStripe();
   const elements = useElements();
 
-  // payment handle
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("works");
+  // console.log(userInfo);
+  //   state
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
+  const [clientSecret, setClientSecret] = useState("");
 
+  useEffect(() => {
+    if (userInfo.depoAmount != undefined) {
+      axios
+        .post("http://localhost:5000/create-payment-intent", userInfo)
+        .then((res) => {
+          // console.log(res.data)
+          setClientSecret(res.data.clientSecret);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
+
+  const HandlePayment = async (event) => {
+    event.preventDefault();
+    if (!stripe || !elements || !userInfo.depoAmount) {
+      // Stripe.js has not loaded yet. Make sure to disable
+      // form submission until Stripe.js has loaded.
+
+      return;
+    }
     const card = elements.getElement(CardElement);
+
     if (card == null) {
-      setError("Card is not valid");
       return;
     }
 
-    toast.success("Your Deposit successfully done!");
-    const newAmount = depositInfo.totalAmount + parseFloat(depositInfo.amount);
-    setTotal(newAmount);
-    setDeposit(parseFloat(depositInfo.amount)+deposit);
-    recordTransaction("deposit", depositInfo.amount);
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card,
+    });
 
+    if (error) {
+      console.log("[error]", error);
+      setError(error.message);
+    } else {
+      console.log("[PaymentMethod]", paymentMethod);
+      setError("");
+    }
+
+    // confirm payment
+
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: userInfo?.userName || "anonymous",
+            email: userInfo?.userEmail || "anonymous",
+          },
+        },
+      });
+
+    if (confirmError) {
+      setSuccess("");
+      setError(confirmError.message);
+
+      console.log("error payment intent", confirmError.message);
+    } else {
+      if (paymentIntent.status === "succeeded") {
+        console.log("Payment success. Transaction ID : ", paymentIntent?.id);
+        axios
+          .post("http://localhost:5000/transactions", userInfo)
+          .then((res) => {
+            console.log(res.data);
+            setSuccess("Your deposit is successfully done");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
   };
 
   return (
-    <form className="p-5 mt-3 border shadow-md">
-      {/* payment card */}
+    <form
+      id="payment-form"
+      onSubmit={HandlePayment}
+      className="shadow p-5 mt-5"
+    >
+     
+
+      <Typography
+        variant="h6"
+        color="blue-gray"
+        className=" text-lg font-normal mb-5"
+      >
+        Deposit Amount: {userInfo.depoAmount}
+      </Typography>
       <CardElement
-        className="text-white input-bordered input p-3 rounded-none"
+        className="text-white border p-3 rounded"
         options={{
           style: {
             base: {
@@ -47,18 +123,21 @@ const CheckoutForm = ({ depositInfo, setTotal, setDeposit,recordTransaction ,dep
           },
         }}
       />
-      {error != "" && (
-        <p className="text-nevy-blue font-medium  my-2">{error}</p>
+
+      {/* ------------- */}
+      {error != "" && <p className="font-roboto my-2">{error}</p>}
+      {success != "" && (
+        <p className="text-black font-roboto my-2">{success}</p>
       )}
 
       <div className="text-right">
-        <Button
-          onClick={handleSubmit}
-          variant="text"
-          className="border hover:bg-black hover:text-text-white rounded bg-nevy-blue text-white"
+        <button
+          disabled={!stripe || !clientSecret}
+          type="submit"
+          className="uppercase w-full mt-2 py-2 px-5 tracking-widest text-white btn border-none btn-outline bg-nevy-blue rounded"
         >
-          Deposit
-        </Button>
+          Comfirm Deposit
+        </button>
       </div>
     </form>
   );

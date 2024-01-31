@@ -20,6 +20,9 @@ const CreateAccLayout = ({
   showImg,
   setShowImg,
   loading,
+  profileImg,
+  setProfileImg,
+  HandleProfileImg
 }) => {
   const [isClicked, setIsClicked] = useState(true);
   const handleTerms = () => {
@@ -55,19 +58,19 @@ const CreateAccLayout = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-between  items-start">
               <div className="flex flex-col gap-3">
                 {/* account holder name */}
-                <Input
+                <input
                   label="Full legal name"
                   color="indigo"
                   name="holder_name"
                   type="text"
                   required
-                  placeholder="examle name"
+                  placeholder="account holder name"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
               <div className="flex flex-col gap-3 ">
                 {/* holder dob  */}
-                <Input
+                <input
                   required
                   label="Date of birth"
                   color="indigo"
@@ -100,25 +103,25 @@ const CreateAccLayout = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 justify-between  items-center">
               <div className="flex flex-col gap-3">
                 {/* nationality */}
-                <Input
+                <input
                   required
                   label="Nationality"
                   color="indigo"
                   type="text"
                   name="nationality"
-                  placeholder="Bangladeshi"
+                  placeholder="nationality e.g. Bangladeshi"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
               <div className="flex flex-col gap-3">
                 {/* Occupation */}
-                <Input
+                <input
                   required
                   label="Occupation"
                   color="indigo"
                   name="occupation"
                   type="text"
-                  placeholder="student/teacher/housewife"
+                  placeholder="occupation e.g. student/teacher/housewife"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
@@ -136,25 +139,25 @@ const CreateAccLayout = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between  items-center">
               <div className="flex flex-col gap-3 ">
                 {/* Residential address */}
-                <Input
+                <input
                   required
                   label="Residential address"
                   color="indigo"
                   name="address"
                   type="text"
-                  placeholder="Mirpur,Dhaka"
+                  placeholder="residential address e.g Mirpur,Dhaka"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
               <div className="flex flex-col gap-3">
                 {/* Phone number  */}
-                <Input
+                <input
                   required
                   label="Phone number"
                   color="indigo"
                   name="phnNumber"
                   type="number"
-                  placeholder="017XXXXXXX"
+                  placeholder="phone number e.g 017XXXXXXX"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
@@ -191,25 +194,25 @@ const CreateAccLayout = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 justify-between  items-center">
               <div className="flex flex-col gap-3">
                 {/* Source of income */}
-                <Input
+                <input
                   required
                   label="Source of income"
                   color="indigo"
                   type="text"
                   name="income"
-                  placeholder="business income"
+                  placeholder="Source of income e.g Business"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
               <div className="flex flex-col gap-3">
-                {/* Occupation */}
-                <Input
+                {/* deposit */}
+                <input
                   required
                   label="Initial Deposit"
                   color="indigo"
                   type="number"
                   name="deposit"
-                  placeholder="student/teacher/housewife"
+                  placeholder="initial deposit e.g 500 "
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
@@ -227,47 +230,46 @@ const CreateAccLayout = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-between  items-center">
               <div className="flex flex-col gap-3">
                 {/* Your NID Number */}
-                <Input
+                <input
                   required
                   label="Your NID Number"
                   color="indigo"
                   type="number"
                   name="nidnumber"
-                  placeholder="xxxxxxxxxxxxxxxxxxx"
+                  placeholder="NID Number e.g 3245856934"
                   className="  py-2 px-4 border rounded-md outline-0"
                 />
               </div>
               <div className="flex flex-col gap-3">
                 {/* reference account number */}
-                <Input
+                <input
                   required
                   label="Reference Account Number"
                   color="indigo"
                   type="number"
                   name="reference"
-                  placeholder="xxxxxxxxxxxxxxxxxxx"
+                  placeholder="reference account no. e.g 4478765416"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
               <div className="flex flex-col gap-3">
                 {/* Nominee Name */}
-                <Input
+                <input
                   required
                   label="Nominee Name"
                   color="indigo"
                   type="text"
                   name="nominee"
-                  placeholder="example name"
+                  placeholder="nominee name"
                   className="  py-2 px-4 border rounded outline-0"
                 />
               </div>
             </div>
 
-            {/* Security */}
-         
+            {/* Security documents*/}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 justify-between  items-start">
-            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3">
                 {/* Your  uploaded file */}
                 <label htmlFor="Profile" className="">
                   Upload your Passport picture
@@ -278,11 +280,27 @@ const CreateAccLayout = ({
                   id="Profile"
                   name="photo"
                   accept="image/*"
-                  className="border-dotted border-2 border-nevy-blue p-2"
+                  className=" border rounded p-2"
+                  onChange={HandleProfileImg}
                 />
+                   <div className="flex gap-4 items-center col-span-3">
+                  {profileImg &&
+                      <div className="w-20 h-20 relative">
+                      <img
+                        required
+                        src={
+                          profileImg instanceof File ? URL.createObjectURL(profileImg) : profileImg
+                        }
+                        alt=""
+                        accept="image/*"
+                        className="w-full h-full rounded"
+                      />
+                      
+                    </div>}
+                </div>
               </div>
               <div className="flex flex-col gap-3  ">
-                <label htmlFor="documents"  >
+                <label htmlFor="documents">
                   Upload your documents(like utility bill, NID/ TIN etc)
                 </label>
                 <div className="flex flex-col gap-3">
@@ -293,14 +311,15 @@ const CreateAccLayout = ({
                     id="documents"
                     name="documents"
                     multiple
-                    className="border-dotted border-2 border-nevy-blue p-2"
+                    accept="image/*"
+                    className=" border rounded p-2"
                     onChange={HandleUpload}
                   />
                 </div>
                 <div className="flex gap-4 items-center col-span-3">
                   {showImg &&
                     showImg.map((img) => (
-                      <div className="w-28 h-28 relative">
+                      <div className="w-20 h-20 relative">
                         <img
                           required
                           src={
@@ -318,7 +337,6 @@ const CreateAccLayout = ({
                     ))}
                 </div>
               </div>
-           
             </div>
             {/* Terms & condition */}
             <div className="flex items-start md:items-center mt-6">
@@ -417,7 +435,7 @@ const CreateAccLayout = ({
                   disabled
                   className="border py-2 px-4 hover:text-white mt-3  rounded bg-gray-400 text-white"
                 >
-                  <Spinner color="white" />
+                  <Spinner color="white" className="inline"/><span> Creating...</span>
                 </button>
               ) : (
                 <button
