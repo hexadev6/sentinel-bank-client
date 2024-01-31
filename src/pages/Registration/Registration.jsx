@@ -4,8 +4,9 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from "react-icons/fa";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
-import { Link, useLocation, useNavigate } from "react-router-dom"
-import signup from '../../assets/banner/signup.jpg'
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import signup from "../../assets/banner/signup.jpg";
+import { sendEmailVerification } from "firebase/auth";
 
 const FormContainer = styled.div`
   display: flex;
@@ -17,9 +18,9 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 1000px;
-  radious:20px;
+  radious: 20px;
   background-color: #fffff;
-  
+
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
 
@@ -80,17 +81,17 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  right:10px
+  right: 10px;
 `;
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const RegistrationForm = () => {
-  const { userSignUp, UserProfileUpdate,emaillVerification} = useAuth();
+  const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
-  const location = useLocation()
-  const navigate= useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -107,26 +108,30 @@ const RegistrationForm = () => {
 
     // if image upload success then register user
     if (imgRes.data.success) {
-      userSignUp(data.email, data.password)
+      await userSignUp(data.email, data.password)
         .then((result) => {
-          if(result.user) {
-            UserProfileUpdate(data.name, imgRes.data.data.display_url)
-            .then(result => {
-              
-              console.log(result.user)
+          console.log("user create", result.user);
+          if (result.user.emailVerified === false) {
+            sendEmailVerification(result.user)
+              .then(() => {
+                alert("please verify your email");
               })
-            .catch(error => console.log(error))
-          }
-          emaillVerification()
-              .then(result=>{
-                console.log('email verify',result.user);
-              })
-              .catch(err=>{
+              .catch((err) => {
                 console.log(err);
-              })
-          
+              });
+          } else {
+            console.log("homepage");
 
-          navigate(location?.state ? location.state : "/")
+            if (result.user) {
+              UserProfileUpdate(data.name, imgRes.data.data.display_url)
+                .then((result) => {
+                  console.log(result.user);
+                })
+                .catch((error) => console.log(error));
+            }
+
+            // navigate(location?.state ? location.state : "/")
+          }
         })
 
         .catch((err) => {
@@ -144,86 +149,92 @@ const RegistrationForm = () => {
   // };
 
   return (
-   <div>
-   
-     <FormContainer >
-     
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        
+    <div>
+      <FormContainer>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <img src={signup} alt="" />
+            </div>
+            <div className="p-4">
+              <h2 className="text-3xl font-semibold mb-4">
+                Welcome to Sentinel Trust Bank.
+              </h2>
+              <h2 className="mb-4">
+                Already have an account? please{" "}
+                <Link
+                  className="bg-blue-200 p-1 rounded font-bold hover:rounded-xl"
+                  to="/login"
+                >
+                  login
+                </Link>{" "}
+              </h2>
+              <InputContainer>
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                  {...register("name", { required: "Name is required" })}
+                />
+                <PasswordIcon>
+                  <FaUser />
+                </PasswordIcon>
+              </InputContainer>
 
-        <div className="grid grid-cols-2 gap-6">
-          <div>
-            <img src={signup} alt="" />
+              <InputContainer>
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder="Your email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                <PasswordIcon>
+                  <FaEnvelope />
+                </PasswordIcon>
+              </InputContainer>
+
+              <InputContainer>
+                <Label htmlFor="password">Password</Label>
+                <PasswordInput
+                  type="password"
+                  id="password"
+                  placeholder="Your password"
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                />
+                <PasswordIcon>
+                  <FaLock />
+                </PasswordIcon>
+              </InputContainer>
+
+              <InputContainer>
+                <Label htmlFor="image">Image</Label>
+                <FileInput
+                  type="file"
+                  id="image"
+                  accept="image/*"
+                  // onChange={handleImageChange}
+                  {...register("image", { required: "image is required" })}
+                />
+              </InputContainer>
+
+              <Button className="bg-nevy-blue" type="submit">
+                Registration
+              </Button>
+            </div>
           </div>
-        <div className="p-4">
-        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-        <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
-        <InputContainer>
-          <Label htmlFor='name'>Name</Label>
-          <Input
-            type='text'
-            id='name'
-            placeholder="Your name"
-            {...register("name", { required: "Name is required" })}
-          />
-          <PasswordIcon>
-            <FaUser />
-          </PasswordIcon>
-        </InputContainer>
-
-        <InputContainer>
-          <Label htmlFor='email'>Email</Label>
-          <Input
-            type='email'
-            id='email'
-            placeholder="Your email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "Invalid email address",
-              },
-            })}
-          />
-          <PasswordIcon>
-            <FaEnvelope />
-          </PasswordIcon>
-        </InputContainer>
-
-        <InputContainer>
-          <Label htmlFor='password'>Password</Label>
-          <PasswordInput
-            type='password'
-            id='password'
-            placeholder="Your password"
-            {...register("password", { required: "Password is required" })}
-          />
-          <PasswordIcon>
-            <FaLock />
-          </PasswordIcon>
-        </InputContainer>
-
-        <InputContainer>
-          <Label htmlFor='image'>Image</Label>
-          <FileInput
-            type='file'
-            id='image'
-            accept='image/*'
-            // onChange={handleImageChange}
-            {...register("image", { required: "image is required" })}
-          />
-         
-        </InputContainer>
-
-        <Button className="bg-nevy-blue" type='submit'>
-          Registration
-        </Button>
-        </div>
-        
-        </div>
-      </StyledForm>
-    </FormContainer>
-   </div>
+        </StyledForm>
+      </FormContainer>
+    </div>
   );
 };
 
