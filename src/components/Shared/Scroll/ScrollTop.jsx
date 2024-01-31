@@ -4,7 +4,7 @@ const ScrollTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 200) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -27,7 +27,7 @@ const ScrollTop = () => {
     <FaCircleArrowUp
       onClick={handleScrollToTop}
       className={`fixed bottom-4 right-4 text-natural-yellow  cursor-pointer text-4xl rounded-full ${
-        isVisible ? "block " : "hidden"
+        isVisible ? " opacity-100 ease-linear duration-1000" : " opacity-0"
       }`}
     />
   );
