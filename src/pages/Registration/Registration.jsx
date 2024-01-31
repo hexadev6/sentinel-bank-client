@@ -116,6 +116,13 @@ const RegistrationForm = () => {
             sendEmailVerification(result.user)
               .then(() => {
                 alert("please verify your email");
+                if (result.user) {
+                  UserProfileUpdate(data.name, imgRes.data.data.display_url)
+                    .then((result) => {
+                      console.log(result.user);
+                    })
+                    .catch((error) => console.log(error));
+                }
               })
               .catch((err) => {
                 console.log(err);
@@ -123,13 +130,7 @@ const RegistrationForm = () => {
           } else {
             console.log("homepage");
 
-            if (result.user) {
-              UserProfileUpdate(data.name, imgRes.data.data.display_url)
-                .then((result) => {
-                  console.log(result.user);
-                })
-                .catch((error) => console.log(error));
-            }
+            
 
             // navigate(location?.state ? location.state : "/")
           }
