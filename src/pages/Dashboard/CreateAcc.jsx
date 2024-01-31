@@ -88,7 +88,6 @@ const CreateAcc = () => {
       axiosPublic
         .post("/createBankAccount", accountInfo)
         .then((res) => {
-          console.log(res.data);
           setLoading(false);
           if (res.data.success === true) {
             swal(
@@ -103,8 +102,6 @@ const CreateAcc = () => {
         .catch((err) => {
           console.log(err);
         });
-
-      console.log(accountInfo);
     } catch (error) {
       console.error("Error during image upload:", error);
     }
