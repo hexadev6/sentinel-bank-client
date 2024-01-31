@@ -3,6 +3,7 @@ import CreateAccLayout from "../../components/DashBoard/Account Create/CreateAcc
 import useAuth from "../../Hooks/useAuth";
 import multiImgUpload from "../../Hooks/multiImgUpload";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import swal from "sweetalert";
 
 const CreateAcc = () => {
   const { user } = useAuth();
@@ -33,7 +34,6 @@ const CreateAcc = () => {
     const profileImg = e.target.files;
     setProfileImg(profileImg[0]);
   };
-
 
   const HandleCreateAcc = async (e) => {
     setLoading(true);
@@ -90,6 +90,15 @@ const CreateAcc = () => {
         .then((res) => {
           console.log(res.data);
           setLoading(false);
+          if (res.data.success === true) {
+            swal(
+              "Wait..",
+              "Your new account application are in process.You will be get notify after complete the process.",
+              "success"
+            );
+          } else {
+            swal("Sorry!", res.data.error.message, "error");
+          }
         })
         .catch((err) => {
           console.log(err);
