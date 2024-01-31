@@ -99,8 +99,12 @@ const Login = () => {
     console.log(data);
     userLogin(data.email,data.password)
     .then(result=>{
-      console.log(result.user);
+      if(result.user.emailVerified){
       navigate(location?.state ? location.state : "/")
+      }
+      else{
+        alert('please Verify your email')
+      }
     })
     .catch(err=>{
       console.log(err);
@@ -117,7 +121,7 @@ const Login = () => {
   
 
   return (
-    <div>
+    <div style={{backgroundImage: `url(${bgimg})`}} className="min-h-screen bg-cover bg-center">
       <FormContainer>
          
          <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
