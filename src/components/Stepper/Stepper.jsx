@@ -1,8 +1,8 @@
 import { useState } from "react";
 import EmailVerify from "../../pages/EmailVerify/EmailVerify";
-import Login from "../../pages/Login/Login";
 import RegistrationForm from "../../pages/Registration/Registration";
-import bgimg from '../../assets/banner/view-city-square.jpg'
+import bgimg from '../../assets/banner/aerial-view-suzhou-overpass.jpg'
+import Loginstep from "../../pages/Login/Loginstep";
 
 
 const Stepper = () => {
@@ -16,11 +16,11 @@ const Stepper = () => {
             return <EmailVerify/>
         }
         else{
-            return <Login/>
+            return <Loginstep/>
         }
     }
     return (
-        <div style={{backgroundImage: `url(${bgimg})`}} className="min-h-screen bg-cover bg-center">
+        <div style={{backgroundImage: `url(${bgimg})`}} className="min-h-screen bg-cover bg-center py-10">
             <div className="w-full px-24 py-4">
   <div className="relative flex items-center justify-between w-full">
     <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-gray-300"></div>
@@ -48,7 +48,7 @@ const Stepper = () => {
 
    
     <div
-      className="relative z-10 grid w-10 h-10 font-bold text-white transition-all duration-300 bg-gray-900 rounded-full place-items-center">
+      className={`relative z-10 grid w-10 h-10 font-bold text-white transition-all duration-300  rounded-full place-items-center ${pages===1 || pages===2? ' bg-gray-900': ' bg-gray-300'}`}>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         aria-hidden="true" className="w-5 h-5">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -66,7 +66,7 @@ const Stepper = () => {
       </div>
     </div>
     <div
-      className="relative z-10 grid w-10 h-10 font-bold text-gray-900 transition-all duration-300 bg-gray-300 rounded-full place-items-center">
+      className={`relative z-10 grid w-10 h-10 font-bold text-white transition-all duration-300  rounded-full place-items-center ${pages===2? ' bg-gray-900': ' bg-gray-300'}`}>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         aria-hidden="true" className="w-5 h-5">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -84,7 +84,7 @@ const Stepper = () => {
       </div>
     </div>
   </div>
-  <div>
+  <div className="my-10">
         {PageDisplay()}
       </div>
   <div className="flex justify-between mt-32">
