@@ -8,8 +8,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 // import signup from '../../assets/banner/signup.jpg'
 
 import { sendEmailVerification } from "firebase/auth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
+
 
 const FormContainer = styled.div`
   display: flex;
@@ -92,11 +92,9 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const RegistrationForm = () => {
   const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
+    const accepted= data.terms.checked;
     console.log(data);
 
     // image update goes here
@@ -110,14 +108,21 @@ const RegistrationForm = () => {
     });
 
     // if image upload success then register user
-    if (imgRes.data.success) {
+    if (imgRes.data.success && !accepted) {
       await userSignUp(data.email, data.password)
         .then((result) => {
-          console.log("user create", result.user);
+          console.log("user create", result.user)
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "User created Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
           if (result.user.emailVerified === false) {
             sendEmailVerification(result.user)
               .then(() => {
-                alert("please verify your email");
+                console.log('verify');
                 if (result.user) {
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
@@ -223,25 +228,34 @@ const RegistrationForm = () => {
                 </PasswordIcon>
               </InputContainer>
 
-              <InputContainer>
-                <Label htmlFor='image'>Image</Label>
-                <FileInput
-                  type='file'
-                  id='image'
-                  accept='image/*'
-                  // onChange={handleImageChange}
-                  {...register("image", { required: "image is required" })}
-                />
-              </InputContainer>
-
-              <Button className='bg-nevy-blue' type='submit'>
-                Registration
-              </Button>
-            </div>
-          </div>
-        </StyledForm>
-      </FormContainer>
-    </div>
+        <InputContainer>
+          <Label htmlFor='image'>Image</Label>
+          <FileInput
+            type='file'
+            id='image'
+            accept='image/*'
+            // onChange={handleImageChange}
+            {...register("image", { required: "image is required" })}
+          />
+       
+        </InputContainer>
+        <InputContainer>
+        <input type="checkbox" name="terms"  {...register("terms", {
+              required: "Accept terms and condition.",
+            })} id="terms" />
+        <label className="ml-2" htmlFor="terms">Accept our terms and conditions.</label>
+        </InputContainer>
+        <Button className="bg-nevy-blue" type='submit'>
+          Registration
+        </Button>
+        </div>
+        
+        </div>
+      </StyledForm>
+    </FormContainer>
+   
+     
+   </div>
   );
 };
 

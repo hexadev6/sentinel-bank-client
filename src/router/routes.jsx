@@ -10,6 +10,7 @@ import Overview from "../pages/Dashboard/Overview";
 import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
+import AccountManagement from "../pages/Dashboard/AccountManagement";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
       { path: "overview", element: <Overview /> },
       { path: "quickBanking", element: <QuickBank /> },
       { path: "createAcc", element: <CreateAcc /> },
+      {path: 'accountManagement', element: <AccountManagement/>}
   ],
   },
 ]);

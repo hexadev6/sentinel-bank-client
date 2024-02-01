@@ -1,16 +1,17 @@
-
-import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
-import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
-import { Button } from '@material-tailwind/react';
-import useAuth from '../../Hooks/useAuth';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import bgimg from '../../assets/banner/aerial-view-suzhou-overpass.jpg'
-import { useState } from 'react';
+import useAuth from '../../Hooks/useAuth';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import styled from 'styled-components';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import auth from '../../Firebase/Firebase.config';
-import Swal from 'sweetalert2';
-// import Logo from '../../utility/Logo';
+import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { Button } from 'react-scroll';
+
+
+
+
 
 const FormContainer = styled.div`
   display: flex;
@@ -22,11 +23,13 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 500px;
-  height: 500px;
-  background-color: #Fffff;
+  height:500px;
+  background-color:#Fffff;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
+
+
 
 const InputContainer = styled.div`
   margin-bottom: 20px;
@@ -85,65 +88,51 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  right: 10px;
+  Right: 10px;
 `;
 
-const Login = () => {
-  const {userLogin}= useAuth();
-  const { register, handleSubmit, setValue } = useForm();
-  // const emailRef= useRef(null)
-  const [email,setEmail]= useState(null)
-  const location= useLocation()
-  const navigate = useNavigate()
-  
 
-  
-  const handlePassReset=()=>{
-    console.log('email reset',email);
-    sendPasswordResetEmail(auth,email)
-    .then(result=>{
-      console.log(result.user);
-    })
-    .catch(err=>{
-      console.log(err);
-    })
-  }
- 
+const Loginstep = () => {
+    const {userLogin}= useAuth();
+    const { register, handleSubmit, setValue } = useForm();
+    // const emailRef= useRef(null)
+    const [email,setEmail]= useState(null)
+    const location= useLocation()
+    const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    console.log(data);
-    setEmail(data.email)
-    console.log(email);
-    userLogin(data.email,data.password)
-    .then(result=>{
-      if(result.user.emailVerified){
-      navigate(location?.state ? location.state : "/")
+
+    const handlePassReset=()=>{
+        console.log('email reset',email);
+        sendPasswordResetEmail(auth,email)
+        .then(result=>{
+          console.log(result.user);
+        })
+        .catch(err=>{
+          console.log(err);
+        })
       }
-      else{
-        Swal.fire("please Verify your email");
-      }
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+     
     
-  };
-
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   // You can handle file validation and preview logic here if needed
-  //   setValue('image', file);
-  // };
-
- 
-
-  
-
-  return (
-    <div
-      style={{ backgroundImage: `url(${bgimg})` }}
-      className='min-h-screen bg-cover bg-center'>
-      <FormContainer>
+      const onSubmit = (data) => {
+        console.log(data);
+        setEmail(data.email)
+        console.log(email);
+        userLogin(data.email,data.password)
+        .then(result=>{
+          if(result.user.emailVerified){
+          navigate(location?.state ? location.state : "/")
+          }
+          else{
+            Swal.fire("please Verify your email");
+          }
+        })
+        .catch(err=>{
+          console.log(err);
+        })
+        
+      };
+    return (
+        <FormContainer>
          
          <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
          <div>
@@ -192,7 +181,7 @@ const Login = () => {
    
    
      <h2 onClick={handlePassReset}  className='mb-2'>Forgot password?</h2>
-   <Button className='bg-nevy-blue' type="submit">login</Button>
+   <Button className='bg-nevy-blue p-2 rounded-lg text-white' type="submit">login</Button>
    
    
    
@@ -202,8 +191,7 @@ const Login = () => {
           
          </StyledForm>
        </FormContainer>
-    </div>
-  );
+    );
 };
 
-export default Login;
+export default Loginstep;
