@@ -7,7 +7,7 @@ const AdminSidbar = () => {
   return (
     <>
       <NavLink
-        to="/dashboard/admin"
+        to="/dashboard/overview"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"

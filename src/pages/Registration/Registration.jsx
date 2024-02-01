@@ -4,11 +4,12 @@ import { FaUser, FaEnvelope, FaFileImage, FaLock } from "react-icons/fa";
 import { Button } from "@material-tailwind/react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import signup from '../../assets/banner/signup.jpg'
 
 import { sendEmailVerification } from "firebase/auth";
-
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import swal from "sweetalert";
 
 const FormContainer = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 500px;
-  radious:20px;
+  radious: 20px;
   background-color: #fffff;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
@@ -93,6 +94,7 @@ const RegistrationForm = () => {
   const { register, handleSubmit, setValue } = useForm();
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -118,8 +120,14 @@ const RegistrationForm = () => {
                 alert("please verify your email");
                 if (result.user) {
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
-                    .then((result) => {
-                      console.log(result.user);
+                    .then(async (result) => {
+                      const res = await axiosPublic.post("/createUser", {
+                        email: data.email,
+                        name: data.name,
+                        image: imgRes.data.data.display_url,
+                      });
+                      console.log(res);
+                      if(res.data.success) alert('user created succesfully!')
                     })
                     .catch((error) => console.log(error));
                 }
@@ -129,8 +137,6 @@ const RegistrationForm = () => {
               });
           } else {
             console.log("homepage");
-
-            
 
             // navigate(location?.state ? location.state : "/")
           }
@@ -151,92 +157,91 @@ const RegistrationForm = () => {
   // };
 
   return (
-   <div  >
-
-
-
-
-
-<FormContainer   >
-     
-      <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
-        
-
-        <div className=" bg-white">
-          {/* <div>
+    <div>
+      <FormContainer>
+        <StyledForm className='' onSubmit={handleSubmit(onSubmit)}>
+          <div className=' bg-white'>
+            {/* <div>
             <img src={signup} alt="" />
           </div> */}
-        <div className="p-4">
-        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-        <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
-        <InputContainer>
-          <Label htmlFor='name'>Name</Label>
-          <Input
-            type='text'
-            id='name'
-            placeholder="Your name"
-            {...register("name", { required: "Name is required" })}
-          />
-          <PasswordIcon>
-            <FaUser />
-          </PasswordIcon>
-        </InputContainer>
+            <div className='p-4'>
+              <h2 className='text-3xl font-semibold mb-4'>
+                Welcome to Sentinel Trust Bank.
+              </h2>
+              <h2 className='mb-4'>
+                Already have an account? please{" "}
+                <Link
+                  className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl'
+                  to='/login'>
+                  login
+                </Link>{" "}
+              </h2>
+              <InputContainer>
+                <Label htmlFor='name'>Name</Label>
+                <Input
+                  type='text'
+                  id='name'
+                  placeholder='Your name'
+                  {...register("name", { required: "Name is required" })}
+                />
+                <PasswordIcon>
+                  <FaUser />
+                </PasswordIcon>
+              </InputContainer>
 
-        <InputContainer>
-          <Label htmlFor='email'>Email</Label>
-          <Input
-            type='email'
-            id='email'
-            placeholder="Your email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "Invalid email address",
-              },
-            })}
-          />
-          <PasswordIcon>
-            <FaEnvelope />
-          </PasswordIcon>
-        </InputContainer>
+              <InputContainer>
+                <Label htmlFor='email'>Email</Label>
+                <Input
+                  type='email'
+                  id='email'
+                  placeholder='Your email'
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                <PasswordIcon>
+                  <FaEnvelope />
+                </PasswordIcon>
+              </InputContainer>
 
-        <InputContainer>
-          <Label htmlFor='password'>Password</Label>
-          <PasswordInput
-            type='password'
-            id='password'
-            placeholder="Your password"
-            {...register("password", { required: "Password is required" })}
-          />
-          <PasswordIcon>
-            <FaLock />
-          </PasswordIcon>
-        </InputContainer>
+              <InputContainer>
+                <Label htmlFor='password'>Password</Label>
+                <PasswordInput
+                  type='password'
+                  id='password'
+                  placeholder='Your password'
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                />
+                <PasswordIcon>
+                  <FaLock />
+                </PasswordIcon>
+              </InputContainer>
 
-        <InputContainer>
-          <Label htmlFor='image'>Image</Label>
-          <FileInput
-            type='file'
-            id='image'
-            accept='image/*'
-            // onChange={handleImageChange}
-            {...register("image", { required: "image is required" })}
-          />
-         
-        </InputContainer>
+              <InputContainer>
+                <Label htmlFor='image'>Image</Label>
+                <FileInput
+                  type='file'
+                  id='image'
+                  accept='image/*'
+                  // onChange={handleImageChange}
+                  {...register("image", { required: "image is required" })}
+                />
+              </InputContainer>
 
-        <Button className="bg-nevy-blue" type='submit'>
-          Registration
-        </Button>
-        </div>
-        
-        </div>
-      </StyledForm>
-    </FormContainer>
-   
-     
-   </div>
+              <Button className='bg-nevy-blue' type='submit'>
+                Registration
+              </Button>
+            </div>
+          </div>
+        </StyledForm>
+      </FormContainer>
+    </div>
   );
 };
 

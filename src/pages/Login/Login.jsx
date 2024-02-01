@@ -1,11 +1,10 @@
-
-import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
-import { FaUser, FaEnvelope, FaFileImage, FaLock } from 'react-icons/fa';
-import { Button } from '@material-tailwind/react';
-import useAuth from '../../Hooks/useAuth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import bgimg from '../../assets/banner/view-city-square.jpg'
+import { useForm } from "react-hook-form";
+import styled from "styled-components";
+import { FaUser, FaEnvelope, FaFileImage, FaLock } from "react-icons/fa";
+import { Button } from "@material-tailwind/react";
+import useAuth from "../../Hooks/useAuth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import bgimg from "../../assets/banner/view-city-square.jpg";
 // import Logo from '../../utility/Logo';
 
 const FormContainer = styled.div`
@@ -18,13 +17,11 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 500px;
-  height:500px;
-  background-color:#Fffff;
+  height: 500px;
+  background-color: #Fffff;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
-
-
 
 const InputContainer = styled.div`
   margin-bottom: 20px;
@@ -83,33 +80,28 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  Right: 10px;
+  right: 10px;
 `;
 
-
-
 const Login = () => {
-  const {userLogin,passwordRest}= useAuth();
+  const { userLogin, passwordRest } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
-  const location= useLocation()
-  const navigate = useNavigate()
-  
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
-    userLogin(data.email,data.password)
-    .then(result=>{
-      if(result.user.emailVerified){
-      navigate(location?.state ? location.state : "/")
-      }
-      else{
-        alert('please Verify your email')
-      }
-    })
-    .catch(err=>{
-      console.log(err);
-    })
-    
+    userLogin(data.email, data.password)
+      .then((result) => {
+        if (result.user.emailVerified) {
+          navigate(location?.state ? location.state : "/");
+        } else {
+          alert("please Verify your email");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // const handleImageChange = (e) => {
@@ -118,67 +110,70 @@ const Login = () => {
   //   setValue('image', file);
   // };
 
-  
-
   return (
-    <div style={{backgroundImage: `url(${bgimg})`}} className="min-h-screen bg-cover bg-center">
+    <div
+      style={{ backgroundImage: `url(${bgimg})` }}
+      className='min-h-screen bg-cover bg-center'>
       <FormContainer>
-         
-         <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
-         <div>
-         <div className='p-4'>
-           <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-           <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
-         {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
-   
-          
-   
-   <InputContainer>
-     <Label htmlFor="email">Email</Label>
-     <Input
-       type="email"
-       id="email"
-       placeholder='Your email'
-       {...register('email', {
-         required: 'Email is required',
-         pattern: {
-           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-           message: 'Invalid email address',
-         },
-       })}
-     />
-     <PasswordIcon>
-       <FaEnvelope />
-     </PasswordIcon>
-   </InputContainer>
-   
-   
-     <InputContainer>
-       <Label htmlFor="password">Password</Label>
-       <PasswordInput
-         type="password"
-         id="password"
-         placeholder='Your password'
-         {...register('password', { required: 'Password is required' })}
-       />
-       <PasswordIcon>
-         <FaLock />
-       </PasswordIcon>
-     </InputContainer>
-   
-   
-   
-     <h2  className='mb-2'>Forgot password?</h2>
-   <Button className='bg-nevy-blue' type="submit">login</Button>
-   
-   
-   
-         </div>
-         </div>
-   
-          
-         </StyledForm>
-       </FormContainer>
+        <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <div className='p-4'>
+              <h2 className='text-3xl font-semibold mb-4'>
+                Welcome to Sentinel Trust Bank.
+              </h2>
+              <h2 className='text-sm mb-4'>
+                If you don't have any acount. It's simple to{" "}
+                <Link
+                  className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl'
+                  to='/registration'>
+                  {" "}
+                  create your account
+                </Link>
+              </h2>
+              {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
+
+              <InputContainer>
+                <Label htmlFor='email'>Email</Label>
+                <Input
+                  type='email'
+                  id='email'
+                  placeholder='Your email'
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                <PasswordIcon>
+                  <FaEnvelope />
+                </PasswordIcon>
+              </InputContainer>
+
+              <InputContainer>
+                <Label htmlFor='password'>Password</Label>
+                <PasswordInput
+                  type='password'
+                  id='password'
+                  placeholder='Your password'
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                />
+                <PasswordIcon>
+                  <FaLock />
+                </PasswordIcon>
+              </InputContainer>
+
+              <h2 className='mb-2'>Forgot password?</h2>
+              <Button className='bg-nevy-blue' type='submit'>
+                login
+              </Button>
+            </div>
+          </div>
+        </StyledForm>
+      </FormContainer>
     </div>
   );
 };

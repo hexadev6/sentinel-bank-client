@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
-      { path: "/dashboard", element: <Overview /> },
+      { path: "overview", element: <Overview /> },
       { path: "quickBanking", element: <QuickBank /> },
       { path: "createAcc", element: <CreateAcc /> },
   ],
