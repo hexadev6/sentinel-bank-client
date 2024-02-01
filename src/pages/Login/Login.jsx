@@ -22,13 +22,11 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 500px;
-  height:500px;
-  background-color:#Fffff;
+  height: 500px;
+  background-color: #Fffff;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
-
-
 
 const InputContainer = styled.div`
   margin-bottom: 20px;
@@ -87,10 +85,8 @@ const PasswordInput = styled.input`
 const PasswordIcon = styled.span`
   position: absolute;
   top: 50%;
-  Right: 10px;
+  right: 10px;
 `;
-
-
 
 const Login = () => {
   const {userLogin}= useAuth();
@@ -144,7 +140,9 @@ const Login = () => {
   
 
   return (
-    <div style={{backgroundImage: `url(${bgimg})`}} className="min-h-screen bg-cover bg-center">
+    <div
+      style={{ backgroundImage: `url(${bgimg})` }}
+      className='min-h-screen bg-cover bg-center'>
       <FormContainer>
          
          <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
