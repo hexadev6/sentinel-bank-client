@@ -1,40 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useSingleAccount from "../../../Hooks/useSingleAccount";
 import { Avatar, Card, Spinner, Typography } from "@material-tailwind/react";
 import PropTypes from "prop-types";
-
-const TABLE_HEAD = ["Name", "Job", "Employed", ""];
-
-const TABLE_ROWS = [
-  {
-    name: "John Michael",
-    job: "Manager",
-    date: "23/04/18",
-  },
-  {
-    name: "Alexa Liras",
-    job: "Developer",
-    date: "23/04/18",
-  },
-  {
-    name: "Laurent Perrier",
-    job: "Executive",
-    date: "19/09/17",
-  },
-  {
-    name: "Michael Levi",
-    job: "Developer",
-    date: "24/12/08",
-  },
-  {
-    name: "Richard Gran",
-    job: "Manager",
-    date: "04/10/21",
-  },
-];
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const AccountDetails = ({ id }) => {
   const [account, isLoading, refetch] = useSingleAccount(id);
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
+
   if (isLoading)
     return (
       <div className='min-h-screen flex items-center justify-center'>
@@ -72,11 +49,12 @@ const AccountDetails = ({ id }) => {
           <hr className='my-2 border-1 border-green-600' />
           <div className='grid grid-cols-1 md:grid-cols-2 gap-1'>
             {documents.map((document, idx) => (
-              <img
-                key={idx}
-                className='w-20 h-20 rounded-md border-2 border-black'
-                src={document}
-              />
+              <Zoom key={idx}>
+                <img
+                  className='w-20 h-20 rounded-md border-2 border-black cursor-pointer'
+                  src={document}
+                />
+              </Zoom>
             ))}
           </div>
         </div>

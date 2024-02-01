@@ -14,22 +14,33 @@ import {
   Tooltip,
   Typography,
 } from "@material-tailwind/react";
-import swal from 'sweetalert';
-
+import swal from "sweetalert";
 
 import useAllAccounts from "../../Hooks/useAllAccounts";
 import { CiMenuKebab } from "react-icons/ci";
 import { useState } from "react";
 import AccountDetails from "../../components/DashBoard/AccountDetails/AccountDetails";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-const TABLE_HEAD = ["Account Holder","Account Number", "NID", "Nominee", "Status", "Action", ""];
+const TABLE_HEAD = [
+  "Account Holder",
+  "Account Number",
+  "NID",
+  "Nominee",
+  "Status",
+  "Action",
+  "",
+];
 
 const AccountManagement = () => {
   const [allAcounts, isLoading, refetch] = useAllAccounts();
-const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const [open, setOpen] = useState(false);
+  const [dialogId, setDialogId] = useState('');
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = (id) => {
+    setOpen(!open);
+    setDialogId(id)
+  };
   if (isLoading)
     return (
       <div className='min-h-screen flex items-center justify-center'>
@@ -37,29 +48,29 @@ const axiosPublic = useAxiosPublic();
       </div>
     );
 
-
-    const handleUpdataStatus =  (id, status) => {
-      swal({
-        title: "Are you sure?",
-        text: "Account status will be updated",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then(async(willUpdate) => {
-        if (willUpdate) {
-          const res = await axiosPublic.patch(`/updateAccount/${id}`, {status: status})
-          if(res.data.success) {
-            refetch();
-            swal("Poof! The account status is updated", {
-              icon: "success",
-            });
-          }
-        } else {
-          swal("Account status is not updated!");
+  const handleUpdataStatus = (id, status) => {
+    swal({
+      title: "Are you sure?",
+      text: "Account status will be updated",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willUpdate) => {
+      if (willUpdate) {
+        const res = await axiosPublic.patch(`/updateAccount/${id}`, {
+          status: status,
+        });
+        if (res.data.success) {
+          refetch();
+          swal("Poof! The account status is updated", {
+            icon: "success",
+          });
         }
-      });
-    }
+      } else {
+        swal("Account status is not updated!");
+      }
+    });
+  };
   console.log(allAcounts);
   return (
     <div className='px-8 py-8'>
@@ -106,7 +117,7 @@ const axiosPublic = useAxiosPublic();
                     nominee,
                     status,
                     nidnumber,
-                    acc_num
+                    acc_num,
                   },
                   index
                 ) => {
@@ -179,9 +190,14 @@ const axiosPublic = useAxiosPublic();
                         </div>
                       </td>
                       <td className={classes}>
-                        <Button onClick={() => {
-                          handleUpdataStatus(_id, status === 'active' ? "not-active":"active")
-                        }} color={status === "active" ? "red" : "green"}>
+                        <Button
+                          onClick={() => {
+                            handleUpdataStatus(
+                              _id,
+                              status === "active" ? "not-active" : "active"
+                            );
+                          }}
+                          color={status === "active" ? "red" : "green"}>
                           {status === "active" ? "Deactivate" : "Activate"}
                         </Button>
                       </td>
@@ -189,28 +205,12 @@ const axiosPublic = useAxiosPublic();
                         <Tooltip content='Details'>
                           <IconButton
                             onClick={() => {
-                              handleOpen();
+                              handleOpen(_id);
                             }}
                             variant='text'>
                             <CiMenuKebab className='h-6 w-6' />
                           </IconButton>
                         </Tooltip>
-                        {/* pop up menu */}
-                        <Dialog size='xl' open={open} handler={handleOpen}>
-                          <DialogHeader>Account Details</DialogHeader>
-                          <DialogBody>
-                            <AccountDetails id={_id} />
-                          </DialogBody>
-                          <DialogFooter>
-                            <Button
-                              variant='text'
-                              color='red'
-                              onClick={handleOpen}
-                              className='mr-1'>
-                              <span>Close</span>
-                            </Button>
-                          </DialogFooter>
-                        </Dialog>
                       </td>
                     </tr>
                   );
@@ -220,6 +220,22 @@ const axiosPublic = useAxiosPublic();
           </table>
         </CardBody>
       </Card>
+      {/* pop up menu */}
+      <Dialog size='xl' open={open} handler={handleOpen}>
+        <DialogHeader>Account Details</DialogHeader>
+        <DialogBody>
+          <AccountDetails id={dialogId} />
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant='text'
+            color='red'
+            onClick={handleOpen}
+            className='mr-1'>
+            <span>Close</span>
+          </Button>
+        </DialogFooter>
+      </Dialog>
     </div>
   );
 };
