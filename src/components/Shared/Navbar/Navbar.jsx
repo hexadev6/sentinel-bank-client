@@ -57,7 +57,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-5">
             {/* deshbord */}
             <Link
-              to={"/dashboard"}
+              to={"/dashboard/overview"}
               className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
             >
               Dashboard

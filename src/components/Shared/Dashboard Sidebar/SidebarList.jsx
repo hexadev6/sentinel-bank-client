@@ -26,9 +26,9 @@ const SidebarList = () => {
   return (
     <div className="w-full flex flex-col gap-2 items-center lg:items-start">
       {/* user */}
-      {status === "user" && <UserSidebar />}
+      {/* {status === "user" && <UserSidebar />} */}
 
-      {status === "admin" && <AdminSidbar />}
+      {status === "admin" ? <AdminSidbar /> : <UserSidebar/>}
       {/* common */}
       <NavLink
         to="/"
