@@ -22,8 +22,13 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 500px;
+<<<<<<< HEAD
+  height:450px;
+  background-color:#Fffff;
+=======
   height: 500px;
   background-color: #Fffff;
+>>>>>>> 941c9f35f730c90f1f806ccb82e92cca510d432b
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
@@ -90,9 +95,10 @@ const PasswordIcon = styled.span`
 
 const Login = () => {
   const {userLogin}= useAuth();
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue,reset } = useForm();
   // const emailRef= useRef(null)
   const [email,setEmail]= useState(null)
+  const [pass,setPass] =useState('')
   const location= useLocation()
   const navigate = useNavigate()
   
@@ -102,6 +108,9 @@ const Login = () => {
     console.log('email reset',email);
     sendPasswordResetEmail(auth,email)
     .then(result=>{
+      Swal.fire({
+        text: "Please check your email to Reset Password.",
+      });
       console.log(result.user);
     })
     .catch(err=>{
@@ -112,8 +121,12 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    // email getting
     setEmail(data.email)
     console.log(email);
+   // error handle
+    setPass('')
+    // user login
     userLogin(data.email,data.password)
     .then(result=>{
       if(result.user.emailVerified){
@@ -122,10 +135,13 @@ const Login = () => {
       else{
         Swal.fire("please Verify your email");
       }
+      reset()
     })
     .catch(err=>{
       console.log(err);
+      setPass(err.message)
     })
+    
     
   };
 
@@ -189,7 +205,9 @@ const Login = () => {
        </PasswordIcon>
      </InputContainer>
    
-   
+   {
+    pass && <p className='text-red-600 font-bold'>{pass}</p>
+   }
    
      <h2 onClick={handlePassReset}  className='mb-2'>Forgot password?</h2>
    <Button className='bg-nevy-blue' type="submit">login</Button>

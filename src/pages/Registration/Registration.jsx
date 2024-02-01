@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { sendEmailVerification } from "firebase/auth";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 const FormContainer = styled.div`
@@ -91,8 +92,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const RegistrationForm = () => {
   const { userSignUp, UserProfileUpdate } = useAuth();
-  const { register, handleSubmit, setValue } = useForm();
-
+  const { register, handleSubmit, reset,setValue } = useForm();
   const onSubmit = async (data) => {
     const accepted= data.terms.checked;
     console.log(data);
@@ -122,7 +122,6 @@ const RegistrationForm = () => {
           if (result.user.emailVerified === false) {
             sendEmailVerification(result.user)
               .then(() => {
-                console.log('verify');
                 if (result.user) {
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
@@ -145,6 +144,7 @@ const RegistrationForm = () => {
 
             // navigate(location?.state ? location.state : "/")
           }
+          reset()
         })
 
         .catch((err) => {
@@ -162,37 +162,33 @@ const RegistrationForm = () => {
   // };
 
   return (
-    <div>
-      <FormContainer>
-        <StyledForm className='' onSubmit={handleSubmit(onSubmit)}>
-          <div className=' bg-white'>
-            {/* <div>
-            <img src={signup} alt="" />
-          </div> */}
-            <div className='p-4'>
-              <h2 className='text-3xl font-semibold mb-4'>
-                Welcome to Sentinel Trust Bank.
-              </h2>
-              <h2 className='mb-4'>
-                Already have an account? please{" "}
-                <Link
-                  className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl'
-                  to='/login'>
-                  login
-                </Link>{" "}
-              </h2>
-              <InputContainer>
-                <Label htmlFor='name'>Name</Label>
-                <Input
-                  type='text'
-                  id='name'
-                  placeholder='Your name'
-                  {...register("name", { required: "Name is required" })}
-                />
-                <PasswordIcon>
-                  <FaUser />
-                </PasswordIcon>
-              </InputContainer>
+   <div  >
+
+
+
+
+
+<FormContainer   >
+     
+      <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
+        
+
+        <div className=" bg-white">
+        <div className="p-4">
+        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
+        <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
+        <InputContainer>
+          <Label htmlFor='name'>Name</Label>
+          <Input
+            type='text'
+            id='name'
+            placeholder="Your name"
+            {...register("name", { required: "Name is required" })}
+          />
+          <PasswordIcon>
+            <FaUser />
+          </PasswordIcon>
+        </InputContainer>
 
               <InputContainer>
                 <Label htmlFor='email'>Email</Label>
