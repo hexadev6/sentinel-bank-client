@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const FormContainer = styled.div`
@@ -90,9 +91,10 @@ const PasswordIcon = styled.span`
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const RegistrationForm = () => {
+const RegistrationForm = ({onComplete}) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, reset,setValue } = useForm();
+  const axiosPublic=useAxiosPublic()
   const onSubmit = async (data) => {
     const accepted= data.terms.checked;
     console.log(data);
@@ -123,15 +125,22 @@ const RegistrationForm = () => {
             sendEmailVerification(result.user)
               .then(() => {
                 if (result.user) {
+                  console.log('email verify', result.user);
+                  
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
+                      console.log('user Created regi',result);
                       const res = await axiosPublic.post("/createUser", {
                         email: data.email,
                         name: data.name,
                         image: imgRes.data.data.display_url,
                       });
                       console.log(res);
-                      if(res.data.success) alert('user created succesfully!')
+                      if(res.data.success) {
+                        onComplete()
+                      }
+                     
+                      
                     })
                     .catch((error) => console.log(error));
                 }
