@@ -33,7 +33,7 @@ const Overview = () => {
 
 
   useEffect(()=>{
-    const sumOfDeposits = allDeposits.reduce((total, deposit) => total + deposit.amount, 0);
+    const sumOfDeposits = allDeposits?.reduce((total, deposit) => total + deposit.amount, 0);
     setTotalDeposits(sumOfDeposits);
   },[allDeposits])
 

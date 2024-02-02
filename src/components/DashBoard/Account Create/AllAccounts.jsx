@@ -51,7 +51,7 @@ const AllAccounts = ({ allUsers, isPending }) => {
         <Spinner color="indigo" />
       ) : (
         <>
-          {allUsers.map((user) => (
+          {allUsers?.map((user) => (
             <div
               key={user._id}
               className="p-6 shadow-lg w-full flex flex-col md:h-fit hover:bg-blue-gray-50 duration-300 transition"
