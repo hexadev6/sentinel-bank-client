@@ -43,7 +43,7 @@ const Overview = () => {
   }, [totalDeposits]);
 
   useEffect(() => {
-    const sumOfDeposits = allDeposits??.reduce(
+    const sumOfDeposits = allDeposits?.reduce(
       (total, deposit) => total + deposit.amount,
       0
     );
