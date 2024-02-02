@@ -9,7 +9,7 @@ import {
 import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
 
 const Transfer = ({totalDeposits,getTotalBalance}) => {
-  console.log(getTotalBalance)
+  // console.log(getTotalBalance)
   return (
 
       

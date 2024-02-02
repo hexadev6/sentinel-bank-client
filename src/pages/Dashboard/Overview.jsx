@@ -53,7 +53,7 @@ const Overview = () => {
     setGetTotalBalance(total);
   }, [allDeposits, totalBalance]);
 
-  console.log(totalBalance);
+  // console.log(totalBalance);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
