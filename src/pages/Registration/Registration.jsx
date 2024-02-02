@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const FormContainer = styled.div`
@@ -93,6 +94,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const RegistrationForm = () => {
   const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, reset,setValue } = useForm();
+  const axiosPublic = useAxiosPublic();
   const onSubmit = async (data) => {
     const accepted= data.terms.checked;
     console.log(data);
