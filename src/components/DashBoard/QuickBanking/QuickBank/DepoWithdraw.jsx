@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import History from "./History";
 import { Button, Input, Radio } from "@material-tailwind/react";
 import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import useAuth from "../../../../Hooks/useAuth";
+import Transaction from "../../Overview/Transaction/Transaction";
+import useStatus from "../../../../Hooks/useStatus";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment);
 
@@ -16,15 +19,19 @@ const DepoWithdraw = ({
   setWithdraw,
   deposit,
   withdraw,
+  totalDeposits,
+  isPending,
+  allDeposits,
+  refetch,
+  user
 }) => {
   // state
   const [depoMethod, setDepoMethod] = useState(false);
   const [depoAmount, setDepoAmount] = useState(0);
   const [transactionHistory, setTransactionHistory] = useState([]);
+  const [depositBy, setDepositBy] = useState("");
   const [isTrue, setIsTrue] = useState(false);
-const { user} =useAuth()
-
-
+  
   // history function
   const recordTransaction = (type, amount) => {
     const newTransaction = {
@@ -42,12 +49,11 @@ const { user} =useAuth()
     setDepoMethod(true);
   };
 
-  
   const userInfo = {
-    userName : user?.displayName,
-    userEmail : user?.email,
-    depoAmount:depoAmount
-  }
+    userName: user?.displayName,
+    userEmail: user?.email,
+    depoAmount: depoAmount,
+  };
 
   // withdraw func
   const HandleWithdraw = (e) => {
@@ -57,7 +63,7 @@ const { user} =useAuth()
       const newAmount = total - parseFloat(newWithdraw);
 
       console.log(newAmount);
-      setWithdraw(withdraw+parseFloat(newWithdraw));
+      setWithdraw(withdraw + parseFloat(newWithdraw));
       setTotal(newAmount);
       recordTransaction("withdraw", newWithdraw);
     } else {
@@ -76,6 +82,7 @@ const { user} =useAuth()
   // payment handle
   const HandlePayment = (e) => {
     console.log(e.target.value);
+    setDepositBy(e.target.value);
     setIsTrue(true);
   };
 
@@ -88,7 +95,10 @@ const { user} =useAuth()
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center items-start mt-5">
       <div className="">
         {/* deposite input */}
-        <form className="flex flex-wrap sm:flex-nowrap gap-2 " onSubmit={HandleDeposit}>
+        <form
+          className="flex flex-wrap sm:flex-nowrap gap-2 "
+          onSubmit={HandleDeposit}
+        >
           <Input
             label="Deposit Amount"
             className="rounded h-full"
@@ -103,7 +113,10 @@ const { user} =useAuth()
           </Button>
         </form>
         {/* withdraw input */}
-        <form className="flex gap-2 mt-2 flex-wrap sm:flex-nowrap" onSubmit={HandleWithdraw}>
+        <form
+          className="flex gap-2 mt-2 flex-wrap sm:flex-nowrap"
+          onSubmit={HandleWithdraw}
+        >
           <Input
             label="Withdraw Amount"
             className="rounded h-full"
@@ -173,25 +186,17 @@ const { user} =useAuth()
         </div>
         {/* stripe card pay */}
         <div>
-        {isTrue &&  (
-        <Elements  stripe={stripePromise}>
-          <CheckoutForm
-          userInfo={userInfo}
-           />
-        </Elements>
-      )}
-
-      
-
+          {isTrue && (
+            <Elements stripe={stripePromise}>
+              <CheckoutForm userInfo={userInfo} refetch={refetch}/>
+            </Elements>
+          )}
         </div>
       </div>
       {/* history show */}
       <div>
-        <History
-          recordTransaction={recordTransaction}
-          transactionHistory={transactionHistory}
-          withdraw={withdraw}
-        />
+        <Transaction allDeposits={allDeposits} isPending={isPending} totalDeposits/>
+        
       </div>
     </div>
   );

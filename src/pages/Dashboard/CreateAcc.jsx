@@ -4,6 +4,9 @@ import useAuth from "../../Hooks/useAuth";
 import multiImgUpload from "../../Hooks/multiImgUpload";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import swal from "sweetalert";
+import AllAccounts from "../../components/DashBoard/Account Create/AllAccounts";
+import { useQuery } from "@tanstack/react-query";
+import useStatus from "../../Hooks/useStatus";
 
 const CreateAcc = () => {
   const { user } = useAuth();
@@ -12,6 +15,25 @@ const CreateAcc = () => {
   const [profileImg, setProfileImg] = useState(null);
   const [loading, setLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
+ 
+
+  const {
+    isPending,
+    error,
+    data: allUsers,
+    refetch
+  } = useQuery({
+    queryKey: ["allUsers"],
+    queryFn: async () => {
+      try {
+        const res = await axiosPublic.get(`/allAccountUser?email=${user?.email}`);
+        return res.data.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
+
 
   const HandleAge = (e) => {
     const holder_dob = e.target.value;
@@ -92,9 +114,10 @@ const CreateAcc = () => {
           if (res.data.success === true) {
             swal(
               "Wait..",
-              "Your new account application are in process.You will be get notify after complete the process.",
+              "Your new account application are in process.You will be get notify after activated the account.",
               "success"
             );
+            refetch()
           } else {
             swal("Sorry!", res.data.error.message, "error");
           }
@@ -107,8 +130,8 @@ const CreateAcc = () => {
     }
   };
   return (
-    <div className="p-4">
-      <CreateAccLayout
+    <div className="p-4 flex flex-col-reverse md:grid grid-cols-7 gap-5">
+      <CreateAccLayout 
         HandleCreateAcc={HandleCreateAcc}
         HandleAge={HandleAge}
         minAge={minAge}
@@ -120,6 +143,7 @@ const CreateAcc = () => {
         setProfileImg={setProfileImg}
         HandleProfileImg={HandleProfileImg}
       />
+      <AllAccounts allUsers={allUsers} isPending={isPending}/>
     </div>
   );
 };

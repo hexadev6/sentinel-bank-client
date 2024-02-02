@@ -7,11 +7,7 @@ import "react-medium-image-zoom/dist/styles.css";
 
 const AccountDetails = ({ id }) => {
   const [account, isLoading, refetch] = useSingleAccount(id);
-
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
-
+  console.log('from 38-------',account)
   if (isLoading)
     return (
       <div className='min-h-screen flex items-center justify-center'>

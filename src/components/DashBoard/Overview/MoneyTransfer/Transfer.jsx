@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
 
-const Transfer = () => {
+const Transfer = ({totalDeposits}) => {
   return (
 
       
@@ -23,7 +23,7 @@ const Transfer = () => {
               Deposit
             </Typography>
             <Typography variant="h3" className="font-medium">
-              $1033.00
+            ${totalDeposits}
             </Typography>
             <span className="bg-nevy-blue text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
               <span>6.0545%</span>

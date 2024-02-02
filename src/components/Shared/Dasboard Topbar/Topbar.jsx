@@ -10,9 +10,11 @@ import { FaBell } from "react-icons/fa";
 import HidedMenu from "./HidedMenu";
 import { Outlet } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import useStatus from "../../../Hooks/useStatus";
 
 const Topbar = () => {
   const {user} = useAuth()
+  const {userinfo} = useStatus({ email: user?.email })
 
   return (
     // topbar
@@ -22,6 +24,7 @@ const Topbar = () => {
         {/* side bar will open  */}
         <HidedMenu />
         {/* top menu start from here  */}
+        <div>
         <Typography
           as="a"
           href="#"
@@ -30,6 +33,15 @@ const Topbar = () => {
         >
           {user?.displayName}
         </Typography>
+        <Typography
+          as="a"
+          href="#"
+          variant="h6"
+          className="mr-4 -mt-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
+        >
+          Account no. {userinfo?.acc_num}
+        </Typography>
+        </div>
         {/* search bar */}
         <div className="relative md:flex hidden gap-2 md:max-w">
           <input
