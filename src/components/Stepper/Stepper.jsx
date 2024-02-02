@@ -20,7 +20,7 @@ const Stepper = () => {
         }
     }
     return (
-        <div style={{backgroundImage: `url(${bgimg})`}} className="min-h-screen bg-cover bg-center py-10">
+        <div style={{backgroundImage: `url(${bgimg})`}} className="bg-fixed min-h-screen bg-cover bg-center py-10">
             <div className="w-full px-24 py-4">
   <div className="relative flex items-center justify-between w-full">
     <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-gray-300"></div>
