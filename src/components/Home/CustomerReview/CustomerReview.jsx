@@ -73,8 +73,8 @@ const CustomerReview = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between items-center ">
               {/* review section */}
-              {displayedData.map((feedback) => (
-                <Card
+              {displayedData.map((feedback,index) => (
+                <Card key={index}
                   color="transparent"
                   shadow={false}
                   className=" w-full rounded bg-white flex-shrink-0 border shadow p-5 flex-1"

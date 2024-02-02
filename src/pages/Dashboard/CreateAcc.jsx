@@ -6,7 +6,6 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import swal from "sweetalert";
 import AllAccounts from "../../components/DashBoard/Account Create/AllAccounts";
 import { useQuery } from "@tanstack/react-query";
-import useStatus from "../../Hooks/useStatus";
 
 const CreateAcc = () => {
   const { user } = useAuth();
@@ -15,7 +14,6 @@ const CreateAcc = () => {
   const [profileImg, setProfileImg] = useState(null);
   const [loading, setLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
- 
 
   const {
     isPending,

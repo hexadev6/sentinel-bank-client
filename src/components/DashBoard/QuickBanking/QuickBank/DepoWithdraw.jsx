@@ -62,7 +62,7 @@ const DepoWithdraw = ({
     if (total >= newWithdraw) {
       const newAmount = total - parseFloat(newWithdraw);
 
-      console.log(newAmount);
+      // console.log(newAmount);
       setWithdraw(withdraw + parseFloat(newWithdraw));
       setTotal(newAmount);
       recordTransaction("withdraw", newWithdraw);
@@ -81,7 +81,7 @@ const DepoWithdraw = ({
 
   // payment handle
   const HandlePayment = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setDepositBy(e.target.value);
     setIsTrue(true);
   };

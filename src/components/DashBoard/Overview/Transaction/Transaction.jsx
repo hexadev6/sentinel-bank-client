@@ -29,8 +29,6 @@ const Transaction = ({ allDeposits, isPending }) => {
   ];
 
 
-  console.log(allDeposits);
-
   return (
     <>
       <Card className="rounded border shadow-none overflow-auto">
@@ -56,8 +54,8 @@ const Transaction = ({ allDeposits, isPending }) => {
                 <Spinner />
               ) : (
                 <>
-                  {allDeposits?.map((deposit) => (
-                    <tr key={deposit.acc_Num} className=" border-b text-center ">
+                  {allDeposits && allDeposits?.map((deposit) => (
+                    <tr key={deposit._id} className=" border-b text-center ">
                       <td className='py-4'>
                       <Typography
                             variant="small"

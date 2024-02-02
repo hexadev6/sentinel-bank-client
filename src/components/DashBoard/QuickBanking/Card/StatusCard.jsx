@@ -15,6 +15,8 @@ const StatusCard = () => {
   const { userinfo } = useStatus({ email: user?.email });
   const axiosPublic = useAxiosPublic();
   const [totalDeposits, setTotalDeposits] = useState(0);
+  const [totalBalance, setTotalBalance] = useState(0);
+  const [getTotalBalance, setGetTotalBalance] = useState(0);
 
   const {
     isPending,
@@ -25,22 +27,31 @@ const StatusCard = () => {
     queryKey: ["allDeposits"],
     queryFn: async () => {
       try {
-        console.log(userinfo?.acc_num);
         const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
-        console.log(res.data);
         return res.data.data;
       } catch (error) {
         console.log(error);
       }
     },
   });
+
+  useEffect(() => {
+    axiosPublic
+      .get(`/findByAccNum/${userinfo?.acc_num}`)
+      .then((res) => setTotalBalance(res.data.data))
+      .catch((error) => console.log(error));
+  }, [totalDeposits]);
+
   useEffect(() => {
     const sumOfDeposits = allDeposits?.reduce(
       (total, deposit) => total + deposit.amount,
       0
     );
+    const total = totalBalance?.initial_deposit + sumOfDeposits;
+    console.log(total);
     setTotalDeposits(sumOfDeposits);
-  }, [allDeposits]);
+    setGetTotalBalance(total);
+  }, [allDeposits, totalBalance]);
 
   return (
     <>
@@ -52,7 +63,7 @@ const StatusCard = () => {
               Total Balance
             </Typography>
             <Typography variant="h3" className="font-medium" id="total">
-              ${total}
+              ${getTotalBalance}
             </Typography>
           </CardBody>
         </Card>

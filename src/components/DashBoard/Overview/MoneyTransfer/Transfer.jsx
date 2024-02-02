@@ -8,14 +8,13 @@ import {
 } from "@material-tailwind/react";
 import { FaArrowTrendDown, FaArrowTrendUp } from "react-icons/fa6";
 
-const Transfer = ({totalDeposits}) => {
+const Transfer = ({totalDeposits,getTotalBalance}) => {
+  // console.log(getTotalBalance)
   return (
 
       
       <div className="justify-between flex flex-col gap-2 w-full">
-      {/* <h1 className="py-2 px-3 text-nevy-blue font-medium text-lg mb-3 border-b-2 border-b-nevy-blue w-fit">
-        Account Status
-      </h1> */}
+
         {/* deposit */}
         <Card className="border shadow-sm bg-green-100 rounded text-light-gray">
           <CardBody>
@@ -68,7 +67,7 @@ const Transfer = ({totalDeposits}) => {
               Total Balance
             </Typography>
             <Typography variant="h3" className="font-medium">
-              $17524.00
+              ${getTotalBalance}
             </Typography>
             <span className="bg-nevy-blue text-white text-sm  rounded px-2 py-1 flex items-center w-fit mt-5">
               <span>26.0532%</span>
