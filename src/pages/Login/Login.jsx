@@ -205,7 +205,8 @@ const Login = () => {
     pass && <p className='text-red-600 font-bold'>{pass}</p>
    }
    
-     <h2 onClick={handlePassReset}  className='mb-2'>Forgot password?</h2>
+     
+     <h2 className='my-2'><a onClick={handlePassReset}  href="#" >Forgot password?</a></h2>
    <Button className='bg-nevy-blue' type="submit">login</Button>
    
    

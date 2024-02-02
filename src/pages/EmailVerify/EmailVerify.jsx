@@ -1,10 +1,11 @@
 import { Button } from '@material-tailwind/react';
 import React, { useState } from 'react';
 
-const EmailVerify = () => {
+const EmailVerify = ({onComplete}) => {
     const [open,setOpen]= useState(0)
     const handleOpen=()=>{
         setOpen(1)
+        onComplete()
     }
     return (
         <div className={`relative mt-10 w-full h-96 bg-white ${open === 1?'hidden':'' }`}>

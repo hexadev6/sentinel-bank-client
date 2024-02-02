@@ -16,7 +16,7 @@ const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 500px;
 `;
 
 const StyledForm = styled.form`
@@ -93,50 +93,50 @@ const PasswordIcon = styled.span`
 
 
 const Login = () => {
-  const {userLogin}= useAuth();
+  const { userLogin } = useAuth();
   const { register, handleSubmit, setValue } = useForm();
   // const emailRef= useRef(null)
-  const [email,setEmail]= useState(null)
-  const [pass,setPass] =useState('')
-  const location= useLocation()
+  const [email, setEmail] = useState(null)
+  const [pass, setPass] = useState('')
+  const location = useLocation()
   const navigate = useNavigate()
-  
 
-  
-  const handlePassReset=()=>{
-    console.log('email reset',email);
-    sendPasswordResetEmail(auth,email)
-    .then(result=>{
+
+
+  const handlePassReset = () => {
+    console.log('email reset', email);
+    sendPasswordResetEmail(auth, email)
+      .then(result => {
         Swal.fire({
-            text: "Please check your email to Reset Password.",
-          });
-      console.log(result.user);
-      
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+          text: "Please check your email to Reset Password.",
+        });
+        console.log(result.user);
+
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
- 
+
 
   const onSubmit = (data) => {
     console.log(data);
     setEmail(data.email)
     console.log(email);
-    userLogin(data.email,data.password)
-    .then(result=>{
-      if(result.user.emailVerified){
-      navigate(location?.state ? location.state : "/")
-      }
-      else{
-        Swal.fire("please Verify your email");
-      }
-    })
-    .catch(err=>{
-      console.log(err);
-      setPass(err.message)
-    })
-    
+    userLogin(data.email, data.password)
+      .then(result => {
+        if (result.user.emailVerified) {
+          navigate(location?.state ? location.state : "/")
+        }
+        else {
+          Swal.fire("please Verify your email");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        setPass(err.message)
+      })
+
   };
 
   // const handleImageChange = (e) => {
@@ -145,74 +145,74 @@ const Login = () => {
   //   setValue('image', file);
   // };
 
- 
 
-  
+
+
 
   return (
     <div>
       <FormContainer>
-         
-         <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
-         <div>
-         <div className='p-4'>
-           <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-           <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
-         {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
-   
-          
-   <InputContainer>
-     <Label htmlFor="email">Email</Label>
-     <Input
-  type="email"
-  id="email"
-  placeholder='Your email'
-  // ref={emailRef}
-  {...register('email', {
-    required: 'Email is required',
-    pattern: {
-      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-      message: 'Invalid email address',
-    },
-    
-  })}
-/>
 
-     <PasswordIcon>
-       <FaEnvelope />
-     </PasswordIcon>
-   </InputContainer>
-   
-   
-     <InputContainer>
-     
-       <Label htmlFor="password">Password</Label>
-       <PasswordInput
-         type="password"
-         id="password"
-         placeholder='Your password'
-         {...register('password', { required: 'Password is required' })}
-       />
-       <PasswordIcon>
-         <FaLock />
-       </PasswordIcon>
-     </InputContainer>
-   
-   
-     {
-    pass && <p className='text-red-600 font-bold'>{pass}</p>
-   }
-     <h2 onClick={handlePassReset}  className='mb-2'>Forgot password?</h2>
-   <Button className='bg-nevy-blue' type="submit">login</Button>
-   
-   
-   
-         </div>
-         </div>
-   
-          
-         </StyledForm>
-       </FormContainer>
+        <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <div className='p-4'>
+              <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
+              <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
+              {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
+
+
+              <InputContainer>
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder='Your email'
+                  // ref={emailRef}
+                  {...register('email', {
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: 'Invalid email address',
+                    },
+
+                  })}
+                />
+
+                <PasswordIcon>
+                  <FaEnvelope />
+                </PasswordIcon>
+              </InputContainer>
+
+
+              <InputContainer>
+
+                <Label htmlFor="password">Password</Label>
+                <PasswordInput
+                  type="password"
+                  id="password"
+                  placeholder='Your password'
+                  {...register('password', { required: 'Password is required' })}
+                />
+                <PasswordIcon>
+                  <FaLock />
+                </PasswordIcon>
+              </InputContainer>
+
+
+              {
+                pass && <p className='text-red-600 font-bold'>{pass}</p>
+              }
+              <h2 className='my-2'><a onClick={handlePassReset} href="#" >Forgot password?</a></h2>
+              <Button className='bg-nevy-blue' type="submit">login</Button>
+
+
+
+            </div>
+          </div>
+
+
+        </StyledForm>
+      </FormContainer>
     </div>
   );
 };

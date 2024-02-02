@@ -91,10 +91,14 @@ const PasswordIcon = styled.span`
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const RegistrationForm = () => {
+const RegistrationForm = ({onComplete}) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, reset,setValue } = useForm();
+<<<<<<< HEAD
+  const axiosPublic=useAxiosPublic()
+=======
   const axiosPublic = useAxiosPublic();
+>>>>>>> ae3a847ee4dc8814cc7f192dbf83d72b4da2bba3
   const onSubmit = async (data) => {
     const accepted= data.terms.checked;
     console.log(data);
@@ -125,8 +129,11 @@ const axiosPublic  =useAxiosPublic()
             sendEmailVerification(result.user)
               .then(() => {
                 if (result.user) {
+                  console.log('email verify', result.user);
+                  
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
+                      console.log('user Created regi',result);
                       const res = await axiosPublic.post("/createUser", {
                         email: data.email,
                         name: data.name,
@@ -134,7 +141,11 @@ const axiosPublic  =useAxiosPublic()
                         acc_num:0
                       });
                       console.log(res);
-                      if(res.data.success) alert('user created succesfully!')
+                      if(res.data.success) {
+                        onComplete()
+                      }
+                     
+                      
                     })
                     .catch((error) => console.log(error));
                 }
