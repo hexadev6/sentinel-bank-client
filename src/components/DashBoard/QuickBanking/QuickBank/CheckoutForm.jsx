@@ -7,16 +7,18 @@ import {
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Input, Typography } from "@material-tailwind/react";
+import useStatus from "../../../../Hooks/useStatus";
 
-const CheckoutForm = ({ userInfo }) => {
+const CheckoutForm = ({ userInfo ,refetch}) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  // console.log(userInfo);
-  //   state
+  const currentDate = new Date(Date.now()).toLocaleString();
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
   const [clientSecret, setClientSecret] = useState("");
+
+  const { userinfo } = useStatus({ email: userInfo?.userEmail });
 
   useEffect(() => {
     if (userInfo.depoAmount != undefined) {
@@ -53,7 +55,7 @@ const CheckoutForm = ({ userInfo }) => {
       console.log("[error]", error);
       setError(error.message);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      console.log("[PaymentMethod]", paymentMethod.card);
       setError("");
     }
 
@@ -77,16 +79,31 @@ const CheckoutForm = ({ userInfo }) => {
       console.log("error payment intent", confirmError.message);
     } else {
       if (paymentIntent.status === "succeeded") {
-        console.log("Payment success. Transaction ID : ", paymentIntent?.id);
-        axios
-          .post("http://localhost:5000/transactions", userInfo)
+        console.log("Payment success. Transaction ID : ", paymentIntent);
+
+        if (paymentMethod.card) {
+          const depositInfo = {
+            acc_Num: userinfo.acc_num,
+            userEmail: userInfo?.userEmail,
+            transactionType: "deposit",
+            amount: parseFloat(userInfo?.depoAmount),
+            depsitBy: paymentMethod?.card?.brand,
+            depsitId: parseInt(paymentMethod?.card?.last4),
+            transactionDate: currentDate,
+          };
+
+          console.log(depositInfo);
+            axios
+          .post("http://localhost:5000/deposit", depositInfo)
           .then((res) => {
             console.log(res.data);
             setSuccess("Your deposit is successfully done");
+            refetch()
           })
           .catch((error) => {
             console.log(error);
           });
+        }
       }
     }
   };
@@ -97,14 +114,29 @@ const CheckoutForm = ({ userInfo }) => {
       onSubmit={HandlePayment}
       className="shadow p-5 mt-5"
     >
-     
-
+      <Typography variant="h3" color="blue-gray" className=" text-center mb-5 ">
+        Deposit in your account
+      </Typography>
+      <Typography
+        variant="h6"
+        color="blue-gray"
+        className=" text-lg font-normal  capitalize"
+      >
+        Account Holder: {userInfo?.userName}
+      </Typography>
+      <Typography
+        variant="h6"
+        color="blue-gray"
+        className=" text-lg font-normal "
+      >
+        Deposit Amount: {userInfo.depoAmount}$
+      </Typography>
       <Typography
         variant="h6"
         color="blue-gray"
         className=" text-lg font-normal mb-5"
       >
-        Deposit Amount: {userInfo.depoAmount}
+        Deposit Date: {currentDate}
       </Typography>
       <CardElement
         className="text-white border p-3 rounded"

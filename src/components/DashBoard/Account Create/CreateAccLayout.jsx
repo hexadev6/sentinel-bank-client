@@ -35,7 +35,7 @@ const CreateAccLayout = ({
     setShowImg(afterDelete);
   };
   return (
-    <div className=" p-5">
+    <div className="col-span-5 p-10 shadow-lg">
       <div>
         <Typography variant="h4" color="blue-gray" className="text-nevy-blue">
           Open a Bank Account
@@ -268,7 +268,7 @@ const CreateAccLayout = ({
 
             {/* Security documents*/}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 justify-between  items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 justify-between  items-start">
               <div className="flex flex-col gap-3">
                 {/* Your  uploaded file */}
                 <label htmlFor="Profile" className="">
