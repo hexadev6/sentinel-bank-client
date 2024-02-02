@@ -48,13 +48,13 @@ const FaqSection = () => {
 
   return (
     <Container>
-      <div className=" my-32 w-full min-h-sceen">
+      <div className=" bg-white pt-10 w-full min-h-sceen">
         <SubHeading title={' Freqently Asked Questions'}></SubHeading>
        
-        <div className="flex gap-10 flex-col md:flex-row-reverse mt-8">
-          <div className="w-[max-content] mx-auto">
+        <div className="">
+          {/* <div className="w-[max-content] mx-auto">
             <img className="w-full h-96" src={picbg} alt="" />
-          </div>
+          </div> */}
           <div className="flex-1">
             <div className="p-4">
               <div
