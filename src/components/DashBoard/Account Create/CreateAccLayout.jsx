@@ -318,8 +318,8 @@ const CreateAccLayout = ({
                 </div>
                 <div className="flex gap-4 items-center col-span-3">
                   {showImg &&
-                    showImg.map((img) => (
-                      <div className="w-20 h-20 relative">
+                    showImg.map((img,index) => (
+                      <div className="w-20 h-20 relative" key={index} >
                         <img
                           required
                           src={

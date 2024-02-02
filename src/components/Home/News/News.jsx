@@ -39,8 +39,8 @@ const News = () => {
       <div className="container mx-auto  gap-5 justify-between items-center ">
         {/* news maping */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 justify-between items-center">
-          {showAll.map((news) => (
-            <Card className="w-full flex-col rounded-none h-full ">
+          {showAll.map((news, index) => (
+            <Card key={index} className="w-full flex-col rounded-none h-full ">
               {/* img */}
               <CardHeader
                 shadow={false}

@@ -55,7 +55,7 @@ const CheckoutForm = ({ userInfo ,refetch}) => {
       console.log("[error]", error);
       setError(error.message);
     } else {
-      console.log("[PaymentMethod]", paymentMethod.card);
+      // console.log("[PaymentMethod]", paymentMethod.card);
       setError("");
     }
 
@@ -76,10 +76,10 @@ const CheckoutForm = ({ userInfo ,refetch}) => {
       setSuccess("");
       setError(confirmError.message);
 
-      console.log("error payment intent", confirmError.message);
+      // console.log("error payment intent", confirmError.message);
     } else {
       if (paymentIntent.status === "succeeded") {
-        console.log("Payment success. Transaction ID : ", paymentIntent);
+        // console.log("Payment success. Transaction ID : ", paymentIntent);
 
         if (paymentMethod.card) {
           const depositInfo = {
@@ -92,11 +92,11 @@ const CheckoutForm = ({ userInfo ,refetch}) => {
             transactionDate: currentDate,
           };
 
-          console.log(depositInfo);
+          // console.log(depositInfo);
             axios
           .post("http://localhost:5000/deposit", depositInfo)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setSuccess("Your deposit is successfully done");
             refetch()
           })

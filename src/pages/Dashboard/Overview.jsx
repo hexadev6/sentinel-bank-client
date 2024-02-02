@@ -6,12 +6,17 @@ import useAuth from "../../Hooks/useAuth";
 import useStatus from "../../Hooks/useStatus";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useSingleAccount from "../../Hooks/useSingleAccount";
 
 const Overview = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
   const axiosPublic = useAxiosPublic();
   const [totalDeposits, setTotalDeposits] = useState(0);
+
+  const [totalBalance, setTotalBalance] = useState(0);
+  const [getTotalBalance, setGetTotalBalance] = useState(0);
+
   const {
     isPending,
     error,
@@ -21,9 +26,8 @@ const Overview = () => {
     queryKey: ["allDeposits"],
     queryFn: async () => {
       try {
-        console.log(userinfo?.acc_num);
+        // console.log(userinfo?.acc_num);
         const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
-        console.log(res.data);
         return res.data.data;
       } catch (error) {
         console.log(error);
@@ -31,19 +35,36 @@ const Overview = () => {
     },
   });
 
+  useEffect(() => {
+    axiosPublic
+      .get(`/findByAccNum/${userinfo?.acc_num}`)
+      .then((res) => setTotalBalance(res.data.data))
+      .catch((error) => console.log(error));
+  }, [totalDeposits]);
 
-  useEffect(()=>{
-    const sumOfDeposits = allDeposits.reduce((total, deposit) => total + deposit.amount, 0);
+  useEffect(() => {
+    const sumOfDeposits = allDeposits?.reduce(
+      (total, deposit) => total + deposit.amount,
+      0
+    );
+    const total = totalBalance?.initial_deposit + sumOfDeposits;
+    console.log(total);
     setTotalDeposits(sumOfDeposits);
-  },[allDeposits])
+    setGetTotalBalance(total);
+  }, [allDeposits, totalBalance]);
+
+  console.log(totalBalance);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
       <div className="col-span-2">
         <Cards />
-        <Transaction allDeposits={allDeposits} isPending={isPending}  />
+        <Transaction allDeposits={allDeposits} isPending={isPending} />
       </div>
-      <Transfer totalDeposits={totalDeposits} />
+      <Transfer
+        totalDeposits={totalDeposits}
+        getTotalBalance={getTotalBalance}
+      />
     </div>
   );
 };
