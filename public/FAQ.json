@@ -11,31 +11,26 @@
   },
   {
     "_id": 3,
-    "question": "What are the interest rates on your savings accounts?",
-    "answer": "Our interest rates vary depending on the type of savings account. You can find detailed information on our website or contact our customer service for the latest rates."
-  },
-  {
-    "_id": 4,
     "question": "How do I reset my online banking password?",
     "answer": "To reset your online banking password, go to the login page and click on the 'Forgot Password' link. Follow the instructions to reset your password securely."
   },
   {
-    "_id": 5,
+    "_id": 4,
     "question": "Are my deposits insured?",
     "answer": "Yes, your deposits are insured up to a certain limit by the FDIC (Federal Deposit Insurance Corporation). This provides protection for your funds in the unlikely event of bank failure."
   },
   {
-    "_id": 6,
+    "_id": 5,
     "question": "What security measures do you have in place for online transactions?",
     "answer": "We employ industry-standard security measures, including encryption and multi-factor authentication, to ensure the security of your online transactions and protect your personal information."
   },
   {
-    "_id": 7,
+    "_id": 6,
     "question": "How can I report a lost or stolen debit card?",
     "answer": "If your debit card is lost or stolen, contact our customer service immediately. We will assist you in blocking the card and issuing a replacement to prevent unauthorized use."
   },
   {
-    "_id": 8,
+    "_id": 7,
     "question": "How do I apply for a loan?",
     "answer": "You can apply for a loan through our website or visit one of our branches to speak with a loan officer. The application process will require you to provide information about your financial situation and the purpose of the loan."
   }
