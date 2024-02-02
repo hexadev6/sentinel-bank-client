@@ -35,6 +35,7 @@ const TABLE_ROWS = [
 
 const AccountDetails = ({ id }) => {
   const [account, isLoading, refetch] = useSingleAccount(id);
+  console.log('from 38-------',account)
   if (isLoading)
     return (
       <div className='min-h-screen flex items-center justify-center'>
