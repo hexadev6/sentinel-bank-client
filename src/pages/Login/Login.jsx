@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import auth from '../../Firebase/Firebase.config';
 import Swal from 'sweetalert2';
+import FaqSection from '../../components/Home/FaqSection/FaqSection';
 // import Logo from '../../utility/Logo';
 
 const FormContainer = styled.div`
@@ -22,13 +23,8 @@ const FormContainer = styled.div`
 const StyledForm = styled.form`
   width: 100%;
   max-width: 500px;
-<<<<<<< HEAD
   height:450px;
   background-color:#Fffff;
-=======
-  height: 500px;
-  background-color: #Fffff;
->>>>>>> 941c9f35f730c90f1f806ccb82e92cca510d432b
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 `;
@@ -158,7 +154,7 @@ const Login = () => {
   return (
     <div
       style={{ backgroundImage: `url(${bgimg})` }}
-      className='min-h-screen bg-cover bg-center'>
+      className='bg-fixed min-h-screen bg-cover bg-center'>
       <FormContainer>
          
          <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
@@ -220,6 +216,7 @@ const Login = () => {
           
          </StyledForm>
        </FormContainer>
+      
     </div>
   );
 };
