@@ -1,7 +1,3 @@
-import React from "react";
-import { BsBank2 } from "react-icons/bs";
-import { GrTransaction } from "react-icons/gr";
-import { TfiWrite } from "react-icons/tfi";
 import { IoLogOutOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
@@ -12,7 +8,6 @@ import useStatus from "../../../Hooks/useStatus";
 const SidebarList = () => {
   const { user, userLogOut } = useAuth();
   const { status } = useStatus({ email: user?.email });
-  console.log(status);
 
   const Logout = () => {
     userLogOut()
@@ -25,11 +20,13 @@ const SidebarList = () => {
   };
   return (
     <div className="w-full flex flex-col gap-2 items-center lg:items-start">
-      {/* user */}
+      {/* user route*/}
       {status === "user" && <UserSidebar />}
 
+      {/* admin route */}
       {status === "admin" && <AdminSidbar />}
-      {/* common */}
+
+      {/* common route*/}
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>

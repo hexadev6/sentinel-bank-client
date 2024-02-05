@@ -1,4 +1,3 @@
-import React from "react";
 import { Typography, Switch } from "@material-tailwind/react";
 import { IoDownloadOutline } from "react-icons/io5";
 import SidebarList from "./SidebarList";
