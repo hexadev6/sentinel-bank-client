@@ -17,7 +17,7 @@ const SectionTowCard = ({ info }) => {
         <div className="absolute top-0 left-0 h-[100px] w-full">
           <img src={image} className="h-full w-full" alt="" />
         </div>
-        <Typography variant="h5" color="" className="mb-2 mt-20">
+        <Typography variant="h5" className="mb-2 mt-20">
           {name}
         </Typography>
         <Typography>{title}</Typography>
@@ -36,7 +36,6 @@ const SectionTowCard = ({ info }) => {
           <p>{location}</p>
         </div>
       </CardBody>
-      <CardFooter className="pt-0"></CardFooter>
     </Card>
   );
 };

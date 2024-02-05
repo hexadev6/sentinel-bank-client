@@ -18,6 +18,7 @@ import { InboxIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import ProfileMenu from "../Shared/Navbar/ProfileDropdown";
+import { MdDashboardCustomize } from "react-icons/md";
 const Dawer = () => {
   const { user } = useAuth();
   const [open, setOpen] = React.useState(false);
@@ -61,12 +62,12 @@ const Dawer = () => {
         </div>
 
         {/* all Link above card section */}
-        <Card className="shadow-none bg-transparent mt-20">
-          <List className="text-white">
+        <Card className="shadow-none bg-transparent mt-20 ">
+          <List className="text-white ">
             {user && (
-              <ListItem>
+              <ListItem className="hover:bg-opacity-10 hover:text-white">
                 <ListItemPrefix>
-                  <InboxIcon className="h-5 w-5" />
+                  <MdDashboardCustomize />
                 </ListItemPrefix>
 
                 <Link

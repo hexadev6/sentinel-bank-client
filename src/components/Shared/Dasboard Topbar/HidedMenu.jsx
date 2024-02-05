@@ -20,25 +20,26 @@ const HidedMenu = () => {
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
-  const {user,userLogOut} = useAuth()
+  const { user, userLogOut } = useAuth();
 
-
-  const Logout= ()=>{
+  const Logout = () => {
     userLogOut()
-    .then(result=>{
+      .then((result) => {
         // console.log(result.user);
-    })
-    .catch(err =>{
+      })
+      .catch((err) => {
         console.log(err);
-    })
-  }
+      });
+  };
   return (
     // drawer menu for sm device
     <React.Fragment>
       {/* drawer opening btn */}
       <IconButton
         onClick={openDrawer}
-        variant="text"bgover
+        variant="text"
+        // error message
+        bgover
         color="white"
         className="text-nevy-blue sm:hidden flex rounded hover:bg-nevy-blue hover:text-white"
       >
@@ -209,7 +210,8 @@ const HidedMenu = () => {
                   ? "text-white bg-nevy-blue w-full rounded"
                   : "hover:bg-gray-200 rounded ease-in duration-500 "
               }
-             onClick={Logout}>
+              onClick={Logout}
+            >
               <div className="flex  items-center gap-3 px-2 py-1">
                 <IoLogOutOutline />
                 <span className="flex">Log out</span>

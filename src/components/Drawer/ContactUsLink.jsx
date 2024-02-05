@@ -32,7 +32,10 @@ const ContactUsLink = ({ closeDrawer }) => {
         />
       }
     >
-      <ListItem className="p-0" selected={open === 1}>
+      <ListItem
+        className="p-0 hover:bg-opacity-10 hover:text-white"
+        selected={open === 1}
+      >
         <AccordionHeader
           onClick={() => handleOpen(1)}
           className="border-b-0 p-3 "
@@ -48,7 +51,7 @@ const ContactUsLink = ({ closeDrawer }) => {
       <AccordionBody className="py-1   ">
         <List className="p-0 text-white ">
           <Link to={"/contact/analytics"} onClick={closeDrawer}>
-            <ListItem>
+            <ListItem className="hover:bg-opacity-10 hover:text-white">
               <ListItemPrefix>
                 <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
               </ListItemPrefix>
@@ -56,7 +59,7 @@ const ContactUsLink = ({ closeDrawer }) => {
             </ListItem>
           </Link>
           <Link to={"/contact/analytics"} onClick={closeDrawer}>
-            <ListItem>
+            <ListItem className="hover:bg-opacity-10 hover:text-white">
               <ListItemPrefix>
                 <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
               </ListItemPrefix>
@@ -64,7 +67,7 @@ const ContactUsLink = ({ closeDrawer }) => {
             </ListItem>
           </Link>
           <Link to={"/contact/analytics"} onClick={closeDrawer}>
-            <ListItem>
+            <ListItem className="hover:bg-opacity-10 hover:text-white">
               <ListItemPrefix>
                 <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
               </ListItemPrefix>

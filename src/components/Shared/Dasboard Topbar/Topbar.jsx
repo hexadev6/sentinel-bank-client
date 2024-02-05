@@ -13,34 +13,35 @@ import useAuth from "../../../Hooks/useAuth";
 import useStatus from "../../../Hooks/useStatus";
 
 const Topbar = () => {
-  const {user} = useAuth()
-  const {userinfo} = useStatus({ email: user?.email })
+  const { user } = useAuth();
+  const { userinfo } = useStatus({ email: user?.email }) || {};
 
   return (
     // topbar
 
     <div className="w-full">
-    <div className="flex w-full h-fit sticky z-50 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
+      <div className="flex w-full h-fit sticky z-50 top-0  bg-white border-b  rounded-none px-4 py-3 items-center justify-between gap-y-4 text-black">
         {/* side bar will open  */}
         <HidedMenu />
         {/* top menu start from here  */}
         <div>
-        <Typography
-          as="a"
-          href="#"
-          variant="h6"
-          className="mr-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
-        >
-          {user?.displayName}
-        </Typography>
-        <Typography
-          as="a"
-          href="#"
-          variant="h6"
-          className="mr-4 -mt-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
-        >
-          Account no. {userinfo?.acc_num}
-        </Typography>
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            className="mr-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
+          >
+            {user?.displayName}
+          </Typography>
+          <Typography
+            as="a"
+            href="#"
+            variant="h6"
+            className="mr-4 -mt-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
+          >
+            {/* error message */}
+            Account no. {userinfo?.acc_num}
+          </Typography>
         </div>
         {/* search bar */}
         <div className="relative md:flex hidden gap-2 md:max-w">
@@ -78,16 +79,12 @@ const Topbar = () => {
           </IconButton>
           {/* avatar */}
           <div className=" rounded-full ">
-            <Avatar
-              src={user?.photoURL}
-              alt="avatar"
-            />
+            <Avatar src={user?.photoURL} alt="avatar" />
           </div>
         </div>
       </div>
-    <Outlet />
+      <Outlet />
     </div>
-   
   );
 };
 
