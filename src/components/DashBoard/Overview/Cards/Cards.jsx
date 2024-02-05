@@ -32,10 +32,12 @@ const Cards = () => {
   ];
   return (
     <>
-   
       <div className="flex md:flex-nowrap flex-wrap gap-3 justify-between xl:justify-start  overflow-auto mb-5">
-        {cardNumber.map((item) => (
-          <Card  className=" w-full md:w-fit lg:flex-shrink-0  text-white opacity-80  bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded">
+        {cardNumber.map((item, indx) => (
+          <Card
+            key={indx}
+            className=" w-full md:w-fit lg:flex-shrink-0  text-white opacity-80  bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded"
+          >
             <CardBody>
               <div className="flex  gap-2 flex-col justify-between ">
                 {/* logo */}

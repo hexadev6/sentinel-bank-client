@@ -3,18 +3,17 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useStatus = ({ email }) => {
   const axiosPublic = useAxiosPublic();
-  console.log(email);
 
-  const { data: status, refetch } = useQuery({
+  const { data: userinfo, refetch } = useQuery({
     queryKey: [email],
     queryFn: async () => {
       const res = await axiosPublic.get(`/findUserOne?email=${email}`);
-      const userinfo = res.data?.data?.status;
+      const userinfo = res.data?.data;
 
       return userinfo;
     },
   });
-  return { status, refetch };
+  return { userinfo, refetch };
 };
 
 export default useStatus;

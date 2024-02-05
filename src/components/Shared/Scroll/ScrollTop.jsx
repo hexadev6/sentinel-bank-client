@@ -26,10 +26,10 @@ const ScrollTop = () => {
   return (
     <FaArrowUpFromBracket
       onClick={handleScrollToTop}
-      className={`fixed bottom-4 right-4  cursor-pointer text-2xl rounded-full ${
+      className={`fixed bottom-6 right-6  cursor-pointer text-2xl rounded-full ${
         isVisible
-          ? " opacity-100 ease-linear duration-1000"
-          : " opacity-0 text-nevy-blue"
+          ? " opacity-100 ease-linear duration-500 text-green-500 hover:bg-nevy-blue  p-2 text-4xl hover:text-white "
+          : " opacity-0 "
       }`}
     />
   );

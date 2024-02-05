@@ -7,9 +7,8 @@ import useStatus from "../../../Hooks/useStatus";
 
 const SidebarList = () => {
   const { user, userLogOut } = useAuth() || {};
-  console.log(user?.email);
-  const { status } = useStatus({ email: user?.email });
-  console.log(status);
+
+  const { userinfo } = useStatus({ email: user?.email });
 
   const Logout = () => {
     userLogOut()
@@ -26,10 +25,10 @@ const SidebarList = () => {
       {/* {status === "user" && <UserSidebar />} */}
 
       {/* admin route */}
-      {status === "admin" && <AdminSidbar />}
+      {userinfo?.status === "admin" && <AdminSidbar />}
 
       {/* user */}
-      {status === "user" && <UserSidebar />}
+      {userinfo?.status === "user" && <UserSidebar />}
 
       {/* common */}
       <NavLink

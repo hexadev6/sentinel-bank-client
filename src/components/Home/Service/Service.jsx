@@ -1,11 +1,7 @@
 import React from "react";
 import SubHeading from "../../Shared/Heading Title/SubHeading";
 import { accountType } from "./accountType";
-import {
-  Card,
-  CardBody,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 import { GiWallet } from "react-icons/gi";
 import { RiLuggageDepositFill } from "react-icons/ri";
@@ -21,8 +17,7 @@ const Service = () => {
       <div className="container mx-auto px-4 md:px-0 ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 justify-between items-center">
           {accountType.map((item) => (
-     
-              <div className="flex group h-full" key={item.id}>
+            <div className="flex group h-full" key={item.id}>
               <Card className=" group-hover:col-span-2   rounded-none border shadow-none duration-700 ease-in-out transition-all relative justify-between  items-center ">
                 <CardBody className="z-10 flex-1 w-full">
                   {item.title === "Checking Accounts" ? (
@@ -52,19 +47,18 @@ const Service = () => {
 
                 <CardBody className="bg-gray-300 flex w-full flex-wrap h-full -right-5 absolute top-0 opacity-0 group-hover:opacity-100 flex-col justify-center group-hover:right-0 transition-all ease-in-out duration-700 z-30">
                   {item.type.map((type) => (
-                    <p className="flex gap-2 group-[menu] " key={type}>
+                    <div className="flex gap-2 group-[menu] " key={type}>
                       <span>
                         <TbPointFilled className="text-xl text-nevy-blue " />
                       </span>
                       <Typography className="hover:text-nevy-blue hover:tracking-wider transition-all duration-150 cursor-pointer">
                         {type}
                       </Typography>
-                    </p>
+                    </div>
                   ))}
                 </CardBody>
               </Card>
             </div>
-          
           ))}
         </div>
       </div>

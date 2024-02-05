@@ -15,19 +15,19 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const CommonSideLink = ({ closeDrawer }) => {
-  const { user } = useAuth();
+  const { user, userLogOut } = useAuth();
   return (
     <>
       {" "}
       <Link to={"/"} onClick={closeDrawer}>
-        <ListItem>
+        <ListItem className="hover:bg-opacity-10 hover:text-white">
           <ListItemPrefix>
             <HomeIcon className="h-5 w-5" />
           </ListItemPrefix>
           Home
         </ListItem>
       </Link>
-      <ListItem>
+      <ListItem className="hover:bg-opacity-10 hover:text-white">
         <ListItemPrefix>
           <InboxIcon className="h-5 w-5" />
         </ListItemPrefix>
@@ -41,27 +41,33 @@ const CommonSideLink = ({ closeDrawer }) => {
           />
         </ListItemSuffix>
       </ListItem>
-      <ListItem>
+      <ListItem className="hover:bg-opacity-10 hover:text-white">
         <ListItemPrefix>
           <UserCircleIcon className="h-5 w-5" />
         </ListItemPrefix>
         Profile
       </ListItem>
-      <ListItem>
+      <ListItem className="hover:bg-opacity-10 hover:text-white">
         <ListItemPrefix>
           <Cog6ToothIcon className="h-5 w-5" />
         </ListItemPrefix>
         Settings
       </ListItem>
       {user ? (
-        <ListItem>
+        <ListItem
+          className="hover:bg-opacity-10 hover:text-white"
+          onClick={() => {
+            userLogOut();
+            closeDrawer();
+          }}
+        >
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>
           Log Out
         </ListItem>
       ) : (
-        <ListItem>
+        <ListItem className="hover:bg-opacity-10 hover:text-white">
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>
