@@ -52,7 +52,7 @@ const Service = () => {
 
                 <CardBody className="bg-gray-300 flex w-full flex-wrap h-full -right-5 absolute top-0 opacity-0 group-hover:opacity-100 flex-col justify-center group-hover:right-0 transition-all ease-in-out duration-700 z-30">
                   {item.type.map((type) => (
-                    <p className="flex gap-2 group-[menu] ">
+                    <p className="flex gap-2 group-[menu] " key={type}>
                       <span>
                         <TbPointFilled className="text-xl text-nevy-blue " />
                       </span>

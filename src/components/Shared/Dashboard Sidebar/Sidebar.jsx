@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import { Typography, Switch } from "@material-tailwind/react";
 import { IoDownloadOutline } from "react-icons/io5";
 import SidebarList from "./SidebarList";
@@ -24,7 +25,11 @@ const Sidebar = () => {
         {/* bank statement download */}
         <div>
           <h1 className="lg:flex hidden font-semibold my-2 ">Bank Statement</h1>
-          <button className="bg-nevy-blue w-full  gap-y-2 p-2 items-center text-white rounded flex justify-center lg:justify-between gap-2 ">
+
+          <button
+            onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+            className="bg-nevy-blue w-full  gap-y-2 p-2 items-center text-white rounded flex justify-center lg:justify-between gap-2 "
+          >
             <IoDownloadOutline className="text-lg" />{" "}
             <span className="lg:flex hidden">Dowonload pdf</span>
           </button>

@@ -6,8 +6,10 @@ import AdminSidbar from "./AdminSidbar";
 import useStatus from "../../../Hooks/useStatus";
 
 const SidebarList = () => {
-  const { user, userLogOut } = useAuth();
+  const { user, userLogOut } = useAuth() || {};
+  console.log(user?.email);
   const { status } = useStatus({ email: user?.email });
+  console.log(status);
 
   const Logout = () => {
     userLogOut()
@@ -21,12 +23,15 @@ const SidebarList = () => {
   return (
     <div className="w-full flex flex-col gap-2 items-center lg:items-start">
       {/* user route*/}
-      {status === "user" && <UserSidebar />}
+      {/* {status === "user" && <UserSidebar />} */}
 
       {/* admin route */}
       {status === "admin" && <AdminSidbar />}
 
-      {/* common route*/}
+      {/* user */}
+      {status === "user" && <UserSidebar />}
+
+      {/* common */}
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>

@@ -2,17 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
 const useStatus = ({ email }) => {
-  const axios = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
+  console.log(email);
 
   const { data: status, refetch } = useQuery({
     queryKey: [email],
     queryFn: async () => {
-      const res = await axios(`/findUserOne?email=${email}`);
-      const userinfo = res.data?.data;
-      return userinfo?.status;
+      const res = await axiosPublic.get(`/findUserOne?email=${email}`);
+      const userinfo = res.data?.data?.status;
+
+      return userinfo;
     },
   });
-
   return { status, refetch };
 };
 
