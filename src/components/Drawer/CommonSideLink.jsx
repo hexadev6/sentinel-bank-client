@@ -12,8 +12,10 @@ import {
   HomeIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const CommonSideLink = ({ closeDrawer }) => {
+  const { user } = useAuth();
   return (
     <>
       {" "}
@@ -35,7 +37,6 @@ const CommonSideLink = ({ closeDrawer }) => {
             value="14"
             size="sm"
             variant="ghost"
-            color=""
             className="rounded-full text-white"
           />
         </ListItemSuffix>
@@ -52,12 +53,21 @@ const CommonSideLink = ({ closeDrawer }) => {
         </ListItemPrefix>
         Settings
       </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <PowerIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Log Out
-      </ListItem>
+      {user ? (
+        <ListItem>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Log Out
+        </ListItem>
+      ) : (
+        <ListItem>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          <Link to="/login">Login</Link>
+        </ListItem>
+      )}
     </>
   );
 };

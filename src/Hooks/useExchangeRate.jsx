@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useExchangeRate = () => {
   const [exchangeData, setExchangeData] = useState(null);
@@ -8,7 +8,9 @@ const useExchangeRate = () => {
     const fetchExchangeRate = async () => {
       try {
         const response = await axios.get(
-          `https://v6.exchangerate-api.com/v6/${import.meta.env.VITE_Currency_API_KEY}/latest/USD`
+          `https://v6.exchangerate-api.com/v6/${
+            import.meta.env.VITE_Currency_API_KEY
+          }/latest/USD`
         );
         const conversion_rates = Object.entries(
           response.data.conversion_rates

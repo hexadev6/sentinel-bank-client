@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
-
 const FormContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -91,18 +90,14 @@ const PasswordIcon = styled.span`
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const RegistrationForm = ({onComplete}) => {
+const RegistrationForm = ({ onComplete }) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
-  const { register, handleSubmit, reset,setValue } = useForm();
-<<<<<<< HEAD
-  const axiosPublic=useAxiosPublic()
-=======
+  const { register, handleSubmit, reset, setValue } = useForm();
   const axiosPublic = useAxiosPublic();
->>>>>>> ae3a847ee4dc8814cc7f192dbf83d72b4da2bba3
   const onSubmit = async (data) => {
-    const accepted= data.terms.checked;
+    const accepted = data.terms.checked;
     console.log(data);
-const axiosPublic  =useAxiosPublic()
+    // const axiosPublic  =useAxiosPublic()
     // image update goes here
     const imgFile = { image: data.image[0] };
     console.log(imgFile);
@@ -117,35 +112,33 @@ const axiosPublic  =useAxiosPublic()
     if (imgRes.data.success && !accepted) {
       await userSignUp(data.email, data.password)
         .then((result) => {
-          console.log("user create", result.user)
+          console.log("user create", result.user);
           Swal.fire({
             position: "center",
             icon: "success",
             title: "User created Successfully",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           if (result.user.emailVerified === false) {
             sendEmailVerification(result.user)
               .then(() => {
                 if (result.user) {
-                  console.log('email verify', result.user);
-                  
+                  console.log("email verify", result.user);
+
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
-                      console.log('user Created regi',result);
+                      console.log("user Created regi", result);
                       const res = await axiosPublic.post("/createUser", {
                         email: data.email,
                         name: data.name,
                         image: imgRes.data.data.display_url,
-                        acc_num:0
+                        acc_num: 0,
                       });
                       console.log(res);
-                      if(res.data.success) {
-                        onComplete()
+                      if (res.data.success) {
+                        onComplete();
                       }
-                     
-                      
                     })
                     .catch((error) => console.log(error));
                 }
@@ -158,7 +151,7 @@ const axiosPublic  =useAxiosPublic()
 
             // navigate(location?.state ? location.state : "/")
           }
-          reset()
+          reset();
         })
 
         .catch((err) => {
@@ -176,40 +169,42 @@ const axiosPublic  =useAxiosPublic()
   // };
 
   return (
-   <div  >
-
-
-
-
-
-<FormContainer   >
-     
-      <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
-        
-
-        <div className=" bg-white">
-        <div className="p-4">
-        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-        <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
-        <InputContainer>
-          <Label htmlFor='name'>Name</Label>
-          <Input
-            type='text'
-            id='name'
-            placeholder="Your name"
-            {...register("name", { required: "Name is required" })}
-          />
-          <PasswordIcon>
-            <FaUser />
-          </PasswordIcon>
-        </InputContainer>
+    <div>
+      <FormContainer>
+        <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
+          <div className=" bg-white">
+            <div className="p-4">
+              <h2 className="text-3xl font-semibold mb-4">
+                Welcome to Sentinel Trust Bank.
+              </h2>
+              <h2 className="mb-4">
+                Already have an account? please{" "}
+                <Link
+                  className="bg-blue-200 p-1 rounded font-bold hover:rounded-xl"
+                  to="/login"
+                >
+                  login
+                </Link>{" "}
+              </h2>
+              <InputContainer>
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                  {...register("name", { required: "Name is required" })}
+                />
+                <PasswordIcon>
+                  <FaUser />
+                </PasswordIcon>
+              </InputContainer>
 
               <InputContainer>
-                <Label htmlFor='email'>Email</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
-                  type='email'
-                  id='email'
-                  placeholder='Your email'
+                  type="email"
+                  id="email"
+                  placeholder="Your email"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -224,11 +219,11 @@ const axiosPublic  =useAxiosPublic()
               </InputContainer>
 
               <InputContainer>
-                <Label htmlFor='password'>Password</Label>
+                <Label htmlFor="password">Password</Label>
                 <PasswordInput
-                  type='password'
-                  id='password'
-                  placeholder='Your password'
+                  type="password"
+                  id="password"
+                  placeholder="Your password"
                   {...register("password", {
                     required: "Password is required",
                   })}
@@ -238,34 +233,37 @@ const axiosPublic  =useAxiosPublic()
                 </PasswordIcon>
               </InputContainer>
 
-        <InputContainer>
-          <Label htmlFor='image'>Image</Label>
-          <FileInput
-            type='file'
-            id='image'
-            accept='image/*'
-            // onChange={handleImageChange}
-            {...register("image", { required: "image is required" })}
-          />
-       
-        </InputContainer>
-        <InputContainer>
-        <input type="checkbox" name="terms"  {...register("terms", {
-              required: "Accept terms and condition.",
-            })} id="terms" />
-        <label className="ml-2" htmlFor="terms">Accept our terms and conditions.</label>
-        </InputContainer>
-        <Button className="bg-nevy-blue" type='submit'>
-          Registration
-        </Button>
-        </div>
-        
-        </div>
-      </StyledForm>
-    </FormContainer>
-   
-     
-   </div>
+              <InputContainer>
+                <Label htmlFor="image">Image</Label>
+                <FileInput
+                  type="file"
+                  id="image"
+                  accept="image/*"
+                  // onChange={handleImageChange}
+                  {...register("image", { required: "image is required" })}
+                />
+              </InputContainer>
+              <InputContainer>
+                <input
+                  type="checkbox"
+                  name="terms"
+                  {...register("terms", {
+                    required: "Accept terms and condition.",
+                  })}
+                  id="terms"
+                />
+                <label className="ml-2" htmlFor="terms">
+                  Accept our terms and conditions.
+                </label>
+              </InputContainer>
+              <Button className="bg-nevy-blue" type="submit">
+                Registration
+              </Button>
+            </div>
+          </div>
+        </StyledForm>
+      </FormContainer>
+    </div>
   );
 };
 

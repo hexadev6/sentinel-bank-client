@@ -3,11 +3,23 @@ import React from "react";
 import { IoMenu } from "react-icons/io5";
 import Logo from "../../utility/Logo";
 import AboutLink from "./AboutLink";
-import { Card, List } from "@material-tailwind/react";
+import {
+  Card,
+  Chip,
+  List,
+  ListItem,
+  ListItemPrefix,
+  ListItemSuffix,
+} from "@material-tailwind/react";
 import CommonSideLink from "./CommonSideLink";
 import ContactUsLink from "./ContactUsLink";
 
+import { InboxIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import ProfileMenu from "../Shared/Navbar/ProfileDropdown";
 const Dawer = () => {
+  const { user } = useAuth();
   const [open, setOpen] = React.useState(false);
 
   const openDrawer = () => setOpen(true);
@@ -29,6 +41,7 @@ const Dawer = () => {
           {/* logo for website */}
           <Logo />
 
+          {/* close button */}
           <IconButton variant="text" color="white" onClick={closeDrawer}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +59,24 @@ const Dawer = () => {
             </svg>
           </IconButton>
         </div>
+
         {/* all Link above card section */}
         <Card className="shadow-none bg-transparent mt-20">
           <List className="text-white">
+            {user && (
+              <ListItem>
+                <ListItemPrefix>
+                  <InboxIcon className="h-5 w-5" />
+                </ListItemPrefix>
+
+                <Link
+                  to={"/dashboard/overview"}
+                  className=" text-white font-medium font-cinzel py-2  rounded-md"
+                >
+                  Dashboard
+                </Link>
+              </ListItem>
+            )}
             <AboutLink closeDrawer={closeDrawer} />
             <ContactUsLink closeDrawer={closeDrawer} />
 
