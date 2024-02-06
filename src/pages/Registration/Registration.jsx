@@ -48,10 +48,6 @@ const Input = styled.input`
   outline: none;
   transition: border-color 0.3s;
   padding-right: 30px;
-
-  &:focus {
-    border-color: #4caf50;
-  }
 `;
 
 const FileInput = styled.input`
@@ -63,9 +59,7 @@ const FileInput = styled.input`
   transition: border-color 0.3s;
   cursor: pointer;
 
-  &:focus {
-    border-color: #4caf50;
-  }
+
 `;
 
 const PasswordInput = styled.input`
@@ -77,14 +71,12 @@ const PasswordInput = styled.input`
   transition: border-color 0.3s;
   padding-right: 30px;
 
-  &:focus {
-    border-color: #4caf50;
-  }
+
 `;
 
 const PasswordIcon = styled.span`
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
 `;
 
@@ -94,15 +86,11 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const RegistrationForm = ({onComplete}) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit, reset,setValue } = useForm();
-<<<<<<< HEAD
   const axiosPublic=useAxiosPublic()
-=======
-  const axiosPublic = useAxiosPublic();
->>>>>>> ae3a847ee4dc8814cc7f192dbf83d72b4da2bba3
   const onSubmit = async (data) => {
     const accepted= data.terms.checked;
     console.log(data);
-const axiosPublic  =useAxiosPublic()
+
     // image update goes here
     const imgFile = { image: data.image[0] };
     console.log(imgFile);
@@ -134,7 +122,7 @@ const axiosPublic  =useAxiosPublic()
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
                       console.log('user Created regi',result);
-                      const res = await axiosPublic.post("/createUser", {
+              const res = await axiosPublic.post("/createUser", {
                         email: data.email,
                         name: data.name,
                         image: imgRes.data.data.display_url,
@@ -184,16 +172,17 @@ const axiosPublic  =useAxiosPublic()
 
 <FormContainer   >
      
-      <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
+      <StyledForm className="rounded border border-nevy-blue" onSubmit={handleSubmit(onSubmit)}>
         
 
         <div className=" bg-white">
-        <div className="p-4">
+        <div className="p-10">
         <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-        <h2 className="mb-4">Already have an account? please <Link className='bg-blue-200 p-1 rounded font-bold hover:rounded-xl' to='/login'>login</Link> </h2>
+        <h2 className="mb-4">Already have an account? please <Link className=' p-1 text-nevy-blue transition-all duration-300 rounded hover:underline' to='/login'>login</Link> </h2>
         <InputContainer>
           <Label htmlFor='name'>Name</Label>
           <Input
+          className="focus:border-nevy-blue"
             type='text'
             id='name'
             placeholder="Your name"
@@ -207,6 +196,7 @@ const axiosPublic  =useAxiosPublic()
               <InputContainer>
                 <Label htmlFor='email'>Email</Label>
                 <Input
+                className="focus:border-nevy-blue"
                   type='email'
                   id='email'
                   placeholder='Your email'
@@ -226,6 +216,7 @@ const axiosPublic  =useAxiosPublic()
               <InputContainer>
                 <Label htmlFor='password'>Password</Label>
                 <PasswordInput
+                className="focus:border-nevy-blue"
                   type='password'
                   id='password'
                   placeholder='Your password'
@@ -255,7 +246,7 @@ const axiosPublic  =useAxiosPublic()
             })} id="terms" />
         <label className="ml-2" htmlFor="terms">Accept our terms and conditions.</label>
         </InputContainer>
-        <Button className="bg-nevy-blue" type='submit'>
+        <Button className="bg-nevy-blue w-full" type='submit'>
           Registration
         </Button>
         </div>
