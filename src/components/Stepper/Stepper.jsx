@@ -1,8 +1,8 @@
 import { useState } from "react";
 import EmailVerify from "../../pages/EmailVerify/EmailVerify";
 import RegistrationForm from "../../pages/Registration/Registration";
-import bgimg from '../../assets/banner/aerial-view-suzhou-overpass.jpg'
-import Loginstep from "../../pages/Login/Loginstep";
+import Login from "../../pages/Login/Login";
+
 
 
 const Stepper = () => {
@@ -27,16 +27,17 @@ const Stepper = () => {
         return <EmailVerify onComplete={handleStepComplete}></EmailVerify>
       }
       else{
-return <Loginstep onComplete={handleStepComplete}></Loginstep>
+return <Login onComplete={handleStepComplete}></Login>
       }
     
     }
     return (
-        <div style={{backgroundImage: `url(${bgimg})`}} className="bg-fixed min-h-screen bg-cover bg-center py-2">
+        <div className="" >
+          
             <div className="w-full px-24 py-4">
-  <div className="relative flex items-center justify-between w-full">
+  {/* <div className="relative flex items-center justify-between w-full">
     <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-gray-300"></div>
-    <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-gray-900 transition-all duration-500">
+    <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4  bg-gray-900 transition-all duration-500">
     </div>
     <div
       className="relative z-10 grid w-10 h-10 font-bold text-white transition-all duration-300 bg-gray-900 rounded-full place-items-center">
@@ -98,8 +99,14 @@ return <Loginstep onComplete={handleStepComplete}></Loginstep>
         </p>
       </div>
     </div>
+  </div> */}
+  <div className='bg-white w-full h-20 py-4 px-28 gap-6 grid grid-cols-3 justify-center border-b-2 border-b-nevy-blue'>
+   <h2 className={`font-bold text-xl ${currentStep>=1? 'text-nevy-blue': 'text-black'}`}>01 <span>Registration</span></h2>
+   <h2 className={`font-bold text-xl ${currentStep>=2? 'text-nevy-blue': 'text-black'}`}>02 <span>Email Verify</span></h2>
+   <h2 className={`font-bold text-xl ${currentStep>=3? 'text-nevy-blue': 'text-black'}`}>03 <span>Login</span></h2>
   </div>
   <div className="my-6">
+  {/* <UnderlineTabs/> */}
         {PageDisplay()}
       </div>
 </div>

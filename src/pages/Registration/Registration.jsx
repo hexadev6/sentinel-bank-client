@@ -47,10 +47,6 @@ const Input = styled.input`
   outline: none;
   transition: border-color 0.3s;
   padding-right: 30px;
-
-  &:focus {
-    border-color: #4caf50;
-  }
 `;
 
 const FileInput = styled.input`
@@ -62,9 +58,7 @@ const FileInput = styled.input`
   transition: border-color 0.3s;
   cursor: pointer;
 
-  &:focus {
-    border-color: #4caf50;
-  }
+
 `;
 
 const PasswordInput = styled.input`
@@ -76,14 +70,12 @@ const PasswordInput = styled.input`
   transition: border-color 0.3s;
   padding-right: 30px;
 
-  &:focus {
-    border-color: #4caf50;
-  }
+
 `;
 
 const PasswordIcon = styled.span`
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
 `;
 
@@ -92,12 +84,21 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const RegistrationForm = ({ onComplete }) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
+<<<<<<< HEAD
+  const { register, handleSubmit, reset,setValue } = useForm();
+  const axiosPublic=useAxiosPublic()
+=======
   const { register, handleSubmit, reset, setValue } = useForm();
   const axiosPublic = useAxiosPublic();
+>>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
   const onSubmit = async (data) => {
     const accepted = data.terms.checked;
     console.log(data);
+<<<<<<< HEAD
+
+=======
     // const axiosPublic  =useAxiosPublic()
+>>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
     // image update goes here
     const imgFile = { image: data.image[0] };
     console.log(imgFile);
@@ -128,8 +129,13 @@ const RegistrationForm = ({ onComplete }) => {
 
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
+<<<<<<< HEAD
+                      console.log('user Created regi',result);
+              const res = await axiosPublic.post("/createUser", {
+=======
                       console.log("user Created regi", result);
                       const res = await axiosPublic.post("/createUser", {
+>>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
                         email: data.email,
                         name: data.name,
                         image: imgRes.data.data.display_url,
@@ -169,42 +175,42 @@ const RegistrationForm = ({ onComplete }) => {
   // };
 
   return (
-    <div>
-      <FormContainer>
-        <StyledForm className="" onSubmit={handleSubmit(onSubmit)}>
-          <div className=" bg-white">
-            <div className="p-4">
-              <h2 className="text-3xl font-semibold mb-4">
-                Welcome to Sentinel Trust Bank.
-              </h2>
-              <h2 className="mb-4">
-                Already have an account? please{" "}
-                <Link
-                  className="bg-blue-200 p-1 rounded font-bold hover:rounded-xl"
-                  to="/login"
-                >
-                  login
-                </Link>{" "}
-              </h2>
-              <InputContainer>
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  type="text"
-                  id="name"
-                  placeholder="Your name"
-                  {...register("name", { required: "Name is required" })}
-                />
-                <PasswordIcon>
-                  <FaUser />
-                </PasswordIcon>
-              </InputContainer>
+   <div  >
+
+
+
+
+
+<FormContainer   >
+     
+      <StyledForm className="rounded border border-nevy-blue" onSubmit={handleSubmit(onSubmit)}>
+        
+
+        <div className=" bg-white">
+        <div className="p-10">
+        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
+        <h2 className="mb-4">Already have an account? please <Link className=' p-1 text-nevy-blue transition-all duration-300 rounded hover:underline' to='/login'>login</Link> </h2>
+        <InputContainer>
+          <Label htmlFor='name'>Name</Label>
+          <Input
+          className="focus:border-nevy-blue"
+            type='text'
+            id='name'
+            placeholder="Your name"
+            {...register("name", { required: "Name is required" })}
+          />
+          <PasswordIcon>
+            <FaUser />
+          </PasswordIcon>
+        </InputContainer>
 
               <InputContainer>
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  type="email"
-                  id="email"
-                  placeholder="Your email"
+                className="focus:border-nevy-blue"
+                  type='email'
+                  id='email'
+                  placeholder='Your email'
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -221,9 +227,10 @@ const RegistrationForm = ({ onComplete }) => {
               <InputContainer>
                 <Label htmlFor="password">Password</Label>
                 <PasswordInput
-                  type="password"
-                  id="password"
-                  placeholder="Your password"
+                className="focus:border-nevy-blue"
+                  type='password'
+                  id='password'
+                  placeholder='Your password'
                   {...register("password", {
                     required: "Password is required",
                   })}
@@ -233,37 +240,34 @@ const RegistrationForm = ({ onComplete }) => {
                 </PasswordIcon>
               </InputContainer>
 
-              <InputContainer>
-                <Label htmlFor="image">Image</Label>
-                <FileInput
-                  type="file"
-                  id="image"
-                  accept="image/*"
-                  // onChange={handleImageChange}
-                  {...register("image", { required: "image is required" })}
-                />
-              </InputContainer>
-              <InputContainer>
-                <input
-                  type="checkbox"
-                  name="terms"
-                  {...register("terms", {
-                    required: "Accept terms and condition.",
-                  })}
-                  id="terms"
-                />
-                <label className="ml-2" htmlFor="terms">
-                  Accept our terms and conditions.
-                </label>
-              </InputContainer>
-              <Button className="bg-nevy-blue" type="submit">
-                Registration
-              </Button>
-            </div>
-          </div>
-        </StyledForm>
-      </FormContainer>
-    </div>
+        <InputContainer>
+          <Label htmlFor='image'>Image</Label>
+          <FileInput
+            type='file'
+            id='image'
+            accept='image/*'
+            // onChange={handleImageChange}
+            {...register("image", { required: "image is required" })}
+          />
+       
+        </InputContainer>
+        <InputContainer>
+        <input type="checkbox" name="terms"  {...register("terms", {
+              required: "Accept terms and condition.",
+            })} id="terms" />
+        <label className="ml-2" htmlFor="terms">Accept our terms and conditions.</label>
+        </InputContainer>
+        <Button className="bg-nevy-blue w-full" type='submit'>
+          Registration
+        </Button>
+        </div>
+        
+        </div>
+      </StyledForm>
+    </FormContainer>
+   
+     
+   </div>
   );
 };
 

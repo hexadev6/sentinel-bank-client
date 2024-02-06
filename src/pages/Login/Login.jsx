@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import auth from '../../Firebase/Firebase.config';
 import Swal from 'sweetalert2';
-import FaqSection from '../../components/Home/FaqSection/FaqSection';
 // import Logo from '../../utility/Logo';
 
 const FormContainer = styled.div`
@@ -30,7 +29,7 @@ const StyledForm = styled.form`
 `;
 
 const InputContainer = styled.div`
-  margin-bottom: 20px;
+  
   position: relative;
 `;
 
@@ -50,23 +49,6 @@ const Input = styled.input`
   transition: border-color 0.3s;
   padding-right: 30px;
 
-  &:focus {
-    border-color: #4caf50;
-  }
-`;
-
-const FileInput = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.3s;
-  cursor: pointer;
-
-  &:focus {
-    border-color: #4caf50;
-  }
 `;
 
 const PasswordInput = styled.input`
@@ -78,14 +60,12 @@ const PasswordInput = styled.input`
   transition: border-color 0.3s;
   padding-right: 30px;
 
-  &:focus {
-    border-color: #4caf50;
-  }
+  
 `;
 
 const PasswordIcon = styled.span`
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
 `;
 
@@ -141,33 +121,23 @@ const Login = () => {
     
   };
 
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   // You can handle file validation and preview logic here if needed
-  //   setValue('image', file);
-  // };
-
- 
-
-  
 
   return (
-    <div
-      style={{ backgroundImage: `url(${bgimg})` }}
-      className='bg-fixed min-h-screen bg-cover bg-center'>
+    <div>
       <FormContainer>
          
-         <StyledForm className='bg-white' onSubmit={handleSubmit(onSubmit)}>
+         <StyledForm className="border border-nevy-blue" onSubmit={handleSubmit(onSubmit)}>
          <div>
-         <div className='p-4'>
+         <div className='p-10'>
            <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-           <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 rounded bg-blue-200 font-bold hover:rounded-xl' to='/registration'> create your account</Link></h2>
+           <h2 className='text-sm mb-4'>If you don't have any acount. It's simple to <Link className=' p-1 text-nevy-blue transition-all duration-300  hover:underline' to='/registration'> create your account</Link></h2>
          {/* <h2 className="text-3xl font-semibold mb-6">Login</h2> */}
    
           
    <InputContainer>
      <Label htmlFor="email">Email</Label>
      <Input
+     className="focus:border-nevy-blue"
   type="email"
   id="email"
   placeholder='Your email'
@@ -191,6 +161,7 @@ const Login = () => {
      <InputContainer>
        <Label htmlFor="password">Password</Label>
        <PasswordInput
+       className="focus:border-nevy-blue"
          type="password"
          id="password"
          placeholder='Your password'
@@ -207,7 +178,7 @@ const Login = () => {
    
      
      <h2 className='my-2'><a onClick={handlePassReset}  href="#" >Forgot password?</a></h2>
-   <Button className='bg-nevy-blue' type="submit">login</Button>
+   <Button className='w-full bg-nevy-blue' type="submit">login</Button>
    
    
    
