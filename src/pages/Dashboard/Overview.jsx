@@ -7,6 +7,7 @@ import useStatus from "../../Hooks/useStatus";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useSingleAccount from "../../Hooks/useSingleAccount";
+import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
 
 const Overview = () => {
   const { user } = useAuth();
@@ -56,15 +57,17 @@ const Overview = () => {
   // console.log(totalBalance);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
-      <div className="col-span-2">
-        <Cards />
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5'>
+      <div className='col-span-2 space-y-6'>
+        
+        <Transfer
+          totalDeposits={totalDeposits}
+          getTotalBalance={getTotalBalance}
+        />
+        <UserGraph/>
         <Transaction allDeposits={allDeposits} isPending={isPending} />
       </div>
-      <Transfer
-        totalDeposits={totalDeposits}
-        getTotalBalance={getTotalBalance}
-      />
+      {/* <Cards /> */}
     </div>
   );
 };
