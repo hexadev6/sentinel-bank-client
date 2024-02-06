@@ -84,21 +84,11 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const RegistrationForm = ({ onComplete }) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
-<<<<<<< HEAD
   const { register, handleSubmit, reset,setValue } = useForm();
   const axiosPublic=useAxiosPublic()
-=======
-  const { register, handleSubmit, reset, setValue } = useForm();
-  const axiosPublic = useAxiosPublic();
->>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
   const onSubmit = async (data) => {
     const accepted = data.terms.checked;
     console.log(data);
-<<<<<<< HEAD
-
-=======
-    // const axiosPublic  =useAxiosPublic()
->>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
     // image update goes here
     const imgFile = { image: data.image[0] };
     console.log(imgFile);
@@ -129,13 +119,8 @@ const RegistrationForm = ({ onComplete }) => {
 
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
-<<<<<<< HEAD
                       console.log('user Created regi',result);
               const res = await axiosPublic.post("/createUser", {
-=======
-                      console.log("user Created regi", result);
-                      const res = await axiosPublic.post("/createUser", {
->>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
                         email: data.email,
                         name: data.name,
                         image: imgRes.data.data.display_url,
