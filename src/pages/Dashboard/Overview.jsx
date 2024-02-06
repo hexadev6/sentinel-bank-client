@@ -48,7 +48,7 @@ const Overview = () => {
       0
     );
     const total = totalBalance?.initial_deposit + sumOfDeposits;
-    console.log(total);
+
     setTotalDeposits(sumOfDeposits);
     setGetTotalBalance(total);
   }, [allDeposits, totalBalance]);

@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
-
 const FormContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -83,14 +82,23 @@ const PasswordIcon = styled.span`
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const RegistrationForm = ({onComplete}) => {
+const RegistrationForm = ({ onComplete }) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
+<<<<<<< HEAD
   const { register, handleSubmit, reset,setValue } = useForm();
   const axiosPublic=useAxiosPublic()
+=======
+  const { register, handleSubmit, reset, setValue } = useForm();
+  const axiosPublic = useAxiosPublic();
+>>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
   const onSubmit = async (data) => {
-    const accepted= data.terms.checked;
+    const accepted = data.terms.checked;
     console.log(data);
+<<<<<<< HEAD
 
+=======
+    // const axiosPublic  =useAxiosPublic()
+>>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
     // image update goes here
     const imgFile = { image: data.image[0] };
     console.log(imgFile);
@@ -105,35 +113,38 @@ const RegistrationForm = ({onComplete}) => {
     if (imgRes.data.success && !accepted) {
       await userSignUp(data.email, data.password)
         .then((result) => {
-          console.log("user create", result.user)
+          console.log("user create", result.user);
           Swal.fire({
             position: "center",
             icon: "success",
             title: "User created Successfully",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           if (result.user.emailVerified === false) {
             sendEmailVerification(result.user)
               .then(() => {
                 if (result.user) {
-                  console.log('email verify', result.user);
-                  
+                  console.log("email verify", result.user);
+
                   UserProfileUpdate(data.name, imgRes.data.data.display_url)
                     .then(async (result) => {
+<<<<<<< HEAD
                       console.log('user Created regi',result);
               const res = await axiosPublic.post("/createUser", {
+=======
+                      console.log("user Created regi", result);
+                      const res = await axiosPublic.post("/createUser", {
+>>>>>>> 6092e496a3553a99d9bf29a3edca6f851d362099
                         email: data.email,
                         name: data.name,
                         image: imgRes.data.data.display_url,
-                        acc_num:0
+                        acc_num: 0,
                       });
                       console.log(res);
-                      if(res.data.success) {
-                        onComplete()
+                      if (res.data.success) {
+                        onComplete();
                       }
-                     
-                      
                     })
                     .catch((error) => console.log(error));
                 }
@@ -146,7 +157,7 @@ const RegistrationForm = ({onComplete}) => {
 
             // navigate(location?.state ? location.state : "/")
           }
-          reset()
+          reset();
         })
 
         .catch((err) => {
@@ -194,7 +205,7 @@ const RegistrationForm = ({onComplete}) => {
         </InputContainer>
 
               <InputContainer>
-                <Label htmlFor='email'>Email</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                 className="focus:border-nevy-blue"
                   type='email'
@@ -214,7 +225,7 @@ const RegistrationForm = ({onComplete}) => {
               </InputContainer>
 
               <InputContainer>
-                <Label htmlFor='password'>Password</Label>
+                <Label htmlFor="password">Password</Label>
                 <PasswordInput
                 className="focus:border-nevy-blue"
                   type='password'

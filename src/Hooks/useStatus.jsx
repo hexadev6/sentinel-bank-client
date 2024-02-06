@@ -7,12 +7,13 @@ const useStatus = ({ email }) => {
   const { data: userinfo, refetch } = useQuery({
     queryKey: [email],
     queryFn: async () => {
-      const res = await axiosPublic(`/findUserOne?email=${email}`);
+      const res = await axiosPublic.get(`/findUserOne?email=${email}`);
       const userinfo = res.data?.data;
+
       return userinfo;
     },
   });
-  return { userinfo, refetch};
+  return { userinfo, refetch };
 };
 
 export default useStatus;

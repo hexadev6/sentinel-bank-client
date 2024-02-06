@@ -6,8 +6,6 @@ import Logo from "../../../utility/Logo";
 import logo from "../../../assets/icons/bank.svg";
 
 const Sidebar = () => {
- 
-
   return (
     // sidebar
     <div className="hidden sticky left-0 top-0 bottom-0 sm:w-fit lg:w-72 bg-white  shadow-xl h-screen sm:flex flex-col items-center justify-center p-4 ">
@@ -27,9 +25,9 @@ const Sidebar = () => {
         {/* bank statement download */}
         <div>
           <h1 className="lg:flex hidden font-semibold my-2 ">Bank Statement</h1>
-      
+
           <button
-            onClick={()=>generatePDF(targetRef, {filename: 'page.pdf'})}
+            onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
             className="bg-nevy-blue w-full  gap-y-2 p-2 items-center text-white rounded flex justify-center lg:justify-between gap-2 "
           >
             <IoDownloadOutline className="text-lg" />{" "}
