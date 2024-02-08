@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import {
   Drawer,
@@ -14,9 +14,15 @@ import { BsBank2 } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import Logo from "../../../utility/Logo";
 import useAuth from "../../../Hooks/useAuth";
+import { useReactToPrint } from "react-to-print";
+import TransactionPDF from "../../DashBoard/HistoryDownload/TransactionPDF";
 
 const HidedMenu = () => {
   const [open, setOpen] = React.useState(false);
+  const pdfContentRef = useRef(null);
+  const HandleDownloadPDF = useReactToPrint({
+    content: () => document.getElementById("pdf-content"),
+  });
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -225,7 +231,10 @@ const HidedMenu = () => {
           {/* bank statement download */}
           <div>
             <h1 className="flex font-semibold my-2 ">Bank Statement</h1>
-            <button className="bg-nevy-blue  w-full  gap-y-2 p-2 items-center text-white rounded flex  justify-between gap-2 ">
+            <button
+              onClick={HandleDownloadPDF}
+              className="bg-nevy-blue  w-full  gap-y-2 p-2 items-center text-white rounded flex  justify-between gap-2 "
+            >
               <IoDownloadOutline className="text-lg" />{" "}
               <span className="flex">Dowonload pdf</span>
             </button>
@@ -245,6 +254,10 @@ const HidedMenu = () => {
                 className: "before:hidden left-0.5 border-none",
               }}
             />
+          </div>
+          <div className="hidden">
+            {/* <AllTransaction  pdfContentRef={pdfContentRef}/> */}
+            <TransactionPDF pdfContentRef={pdfContentRef} />
           </div>
         </div>
       </Drawer>
