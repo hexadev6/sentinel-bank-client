@@ -16,9 +16,11 @@ import Logo from "../../../utility/Logo";
 import useAuth from "../../../Hooks/useAuth";
 import { useReactToPrint } from "react-to-print";
 import TransactionPDF from "../../DashBoard/HistoryDownload/TransactionPDF";
+import useDarkMode from "../../../Hooks/useDarkMode";
 
 const HidedMenu = () => {
   const [open, setOpen] = React.useState(false);
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const pdfContentRef = useRef(null);
   const HandleDownloadPDF = useReactToPrint({
     content: () => document.getElementById("pdf-content"),
@@ -44,18 +46,20 @@ const HidedMenu = () => {
       <IconButton
         onClick={openDrawer}
         variant="text"
-        // error message
-        bgover
-        color="white"
-        className="text-nevy-blue sm:hidden flex rounded hover:bg-nevy-blue hover:text-white"
+        className={` sm:hidden flex rounded hover:bg-nevy-blue hover:text-white ${
+          darkMode == true ? "text-blue-gray-500" : "text-nevy-blue"
+        }`}
       >
         <FaBarsStaggered className="" />
       </IconButton>
       {/* drawer menu */}
       <Drawer
+        data-theme={darkMode == true ? "night" : "light"}
         open={open}
         onClose={closeDrawer}
-        className="p-4 w-64 flex flex-col  sm:hidden shadow-md h-screen items-center justify-center "
+        className={` p-4 w-64 flex flex-col  sm:hidden shadow-md h-screen items-center justify-center  ${
+          darkMode == true ? "bg-blue-gray-900" : ""
+        }`}
       >
         {/* drawer sidebar */}
         <div className="gap-2 justify-between flex">
@@ -244,6 +248,8 @@ const HidedMenu = () => {
           <div className=" flex justify-between gap-2 items-center">
             <h1 className="flex ">Dark mode</h1>
             <Switch
+              checked={darkMode}
+              onChange={toggleDarkMode}
               id="custom-switch-component"
               ripple={false}
               className="h-full w-full checked:bg-nevy-blue "
@@ -256,7 +262,6 @@ const HidedMenu = () => {
             />
           </div>
           <div className="hidden">
-            {/* <AllTransaction  pdfContentRef={pdfContentRef}/> */}
             <TransactionPDF pdfContentRef={pdfContentRef} />
           </div>
         </div>

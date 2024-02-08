@@ -8,10 +8,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Input, Typography } from "@material-tailwind/react";
 import useStatus from "../../../../Hooks/useStatus";
+import useDarkMode from "../../../../Hooks/useDarkMode";
 
 const CheckoutForm = ({ userInfo ,refetch}) => {
   const stripe = useStripe();
   const elements = useElements();
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const currentDate = new Date(Date.now()).toLocaleString();
   const [error, setError] = useState();
@@ -112,39 +114,42 @@ const CheckoutForm = ({ userInfo ,refetch}) => {
     <form
       id="payment-form"
       onSubmit={HandlePayment}
-      className="shadow p-5 mt-5"
+      className={`shadow p-5 mt-5 ${
+        darkMode ? "bg-[#25324b] text-blue-gray-200" : ""
+      }`}
+
     >
-      <Typography variant="h3" color="blue-gray" className=" text-center mb-5 ">
+      <Typography variant="h3"  className=" text-center mb-5 ">
         Deposit in your account
       </Typography>
       <Typography
         variant="h6"
-        color="blue-gray"
         className=" text-lg font-normal  capitalize"
       >
         Account Holder: {userInfo?.userName}
       </Typography>
       <Typography
         variant="h6"
-        color="blue-gray"
         className=" text-lg font-normal "
       >
         Deposit Amount: {userInfo.depoAmount}$
       </Typography>
       <Typography
         variant="h6"
-        color="blue-gray"
         className=" text-lg font-normal mb-5"
       >
         Deposit Date: {currentDate}
       </Typography>
       <CardElement
-        className="text-white border p-3 rounded"
+      className={`text-white p-3 rounded${
+        darkMode ? "" : "border"
+      }`}
+    
         options={{
           style: {
             base: {
               fontSize: "16px",
-              color: "black",
+              color: "blue-gray",
               "::placeholder": {
                 color: "#aab7c4",
               },

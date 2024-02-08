@@ -8,8 +8,11 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useSingleAccount from "../../Hooks/useSingleAccount";
 import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
+import useDarkMode from "../../Hooks/useDarkMode";
+import useHistory from "../../Hooks/useHistory";
 
 const Overview = () => {
+  // const {darkMode, toggleDarkMode} = useDarkMode()
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
   const axiosPublic = useAxiosPublic();
@@ -17,24 +20,9 @@ const Overview = () => {
 
   const [totalBalance, setTotalBalance] = useState(0);
   const [getTotalBalance, setGetTotalBalance] = useState(0);
+  const { isPending, error, allDeposits, refetch } = useHistory();
 
-  const {
-    isPending,
-    error,
-    data: allDeposits,
-    refetch,
-  } = useQuery({
-    queryKey: ["allDeposits"],
-    queryFn: async () => {
-      try {
-        // console.log(userinfo?.acc_num);
-        const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
-        return res.data.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
+ 
 
   useEffect(() => {
     axiosPublic
@@ -65,7 +53,7 @@ const Overview = () => {
           getTotalBalance={getTotalBalance}
         />
         <UserGraph/>
-        <Transaction allDeposits={allDeposits} isPending={isPending} />
+        <Transaction  />
       </div>
       {/* <Cards /> */}
     </div>

@@ -19,5 +19,8 @@ export default withMT({
       },
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ["light", "dracula","night"]
+  },
+  plugins: [require("daisyui")],
 })
