@@ -21,6 +21,7 @@ import {
   
 } from "@heroicons/react/24/solid";
 import useAuth from "../../../Hooks/useAuth";
+import { Link } from "react-router-dom";
  
 // profile menu component
 const profileMenuItems = [
@@ -87,29 +88,58 @@ function ProfileMenu() {
       <MenuList className="p-1">
         {profileMenuItems.map(({ label, icon }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
+          const isFirstItem= key ===0
           return (
             <MenuItem
-              key={label}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
+            key={label}
+            onClick={closeMenu}
+            className={`flex items-center gap-2 rounded ${
+              isLastItem
+                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                : ""
+            }`}
+          >
+            {React.createElement(icon, {
+              className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
+              strokeWidth: 2,
+            })}
+            <Typography
+              as={isFirstItem ? Link : 'span'}
+              to={isFirstItem ? '/my-profile' : undefined}
+              variant="small"
+              className="font-normal"
+              color={isLastItem ? "red" : "inherit"}
+              onClick={isLastItem ? Logout : null}
             >
-              {React.createElement(icon, {
-                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
-              <Typography onClick={Logout}
-                as="span"
-                variant="small"
-                className="font-normal"
-                color={isLastItem ? "red" : "inherit"}
-              >
-                {label}
-              </Typography>
-            </MenuItem>
+              {label}
+            </Typography>
+          </MenuItem>
+
+
+
+
+            // <MenuItem
+            //   key={label}
+            //   onClick={closeMenu}
+            //   className={`flex items-center gap-2 rounded ${
+            //     isLastItem
+            //       ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+            //       : ""
+            //   }`}
+            // >
+            //   {React.createElement(icon, {
+            //     className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
+            //     strokeWidth: 2,
+            //   })}
+            //   <Typography onClick={Logout}
+            //     as="span"
+            //     variant="small"
+            //     className="font-normal"
+            //     color={isLastItem ? "red" : "inherit"}
+            //   >
+            //     {label}
+            //   </Typography>
+            // </MenuItem>
           );
         })}
       </MenuList>

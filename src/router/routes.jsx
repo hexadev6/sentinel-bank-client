@@ -11,6 +11,7 @@ import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
 import AccountManagement from "../pages/Dashboard/AccountManagement";
+import UserProfile from "../components/Shared/Navbar/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         path: "contact/:section",
         element: <ContactUs></ContactUs>,
       },
+      
     ],
   },
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login></Login>,
+  },
+  {
+    path:'/my-profile',
+    element:<UserProfile></UserProfile>
   },
   {
     path: "/dashboard",

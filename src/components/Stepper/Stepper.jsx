@@ -100,7 +100,7 @@ return <Login onComplete={handleStepComplete}></Login>
       </div>
     </div>
   </div> */}
-  <div className='bg-white w-full h-20 py-4 px-28 gap-6 grid grid-cols-3 justify-center border-b-2 border-b-nevy-blue'>
+  <div className='bg-white w-full h-20 py-8 gap-6 px-28 grid grid-cols-3 justify-center border-b-2 border-b-nevy-blue'>
    <h2 className={`font-bold text-xl ${currentStep>=1? 'text-nevy-blue': 'text-black'}`}>01 <span>Registration</span></h2>
    <h2 className={`font-bold text-xl ${currentStep>=2? 'text-nevy-blue': 'text-black'}`}>02 <span>Email Verify</span></h2>
    <h2 className={`font-bold text-xl ${currentStep>=3? 'text-nevy-blue': 'text-black'}`}>03 <span>Login</span></h2>
