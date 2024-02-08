@@ -16,7 +16,7 @@ const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 100vh;
 `;
 
 const StyledForm = styled.form`
