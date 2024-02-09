@@ -4,11 +4,24 @@ import { IoDownloadOutline } from "react-icons/io5";
 import SidebarList from "./SidebarList";
 import Logo from "../../../utility/Logo";
 import logo from "../../../assets/icons/bank.svg";
+import TransactionPDF from "../../DashBoard/HistoryDownload/TransactionPDF";
+import { useReactToPrint } from "react-to-print";
+import useDarkMode from "../../../Hooks/useDarkMode";
+
 
 const Sidebar = () => {
+  const {darkMode, toggleDarkMode} = useDarkMode()
+  const pdfContentRef = useRef(null);
+  const HandleDownloadPDF = useReactToPrint({
+    content: () => document.getElementById("pdf-content"),
+  });
+
   return (
     // sidebar
-    <div className="hidden sticky left-0 top-0 bottom-0 sm:w-fit lg:w-72 bg-white  shadow-xl h-screen sm:flex flex-col items-center justify-center p-4 ">
+    <div data-theme={ darkMode==true  ? "night" : 'light'}
+    className={`hidden sticky left-0 top-0 bottom-0 sm:w-fit lg:w-80
+     shadow-xl  h-screen sm:flex flex-col items-center justify-center p-4`}
+  >
       {/* top logo */}
       <div className="">
         <Typography variant="h5" color="blue-gray" className="hidden lg:flex">
@@ -26,8 +39,12 @@ const Sidebar = () => {
         <div>
           <h1 className="lg:flex hidden font-semibold my-2 ">Bank Statement</h1>
 
+          <div className="hidden">
+            <TransactionPDF pdfContentRef={pdfContentRef} />
+          </div>
+
           <button
-            onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+            onClick={HandleDownloadPDF}
             className="bg-nevy-blue w-full  gap-y-2 p-2 items-center text-white rounded flex justify-center lg:justify-between gap-2 "
           >
             <IoDownloadOutline className="text-lg" />{" "}
@@ -39,6 +56,8 @@ const Sidebar = () => {
         <div className=" flex justify-between gap-2 items-center">
           <h1 className="lg:flex hidden">Dark mode</h1>
           <Switch
+          checked={darkMode}
+          onChange={toggleDarkMode}
             id="custom-switch-component"
             ripple={false}
             className="h-full w-full checked:bg-nevy-blue"

@@ -11,10 +11,11 @@ import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
 import AccountManagement from "../pages/Dashboard/AccountManagement";
-import ApplicationCard from "../pages/Dashboard/ApplicationCard";
+import UserProfile from "../components/Shared/Navbar/UserProfile";
+import CardManagement from "../pages/Dashboard/CardManagement";
 import DebitCard from "../pages/Dashboard/DebitCard";
 import CeditCard from "../pages/Dashboard/CeditCard";
-import CardManagement from "../pages/Dashboard/CardManagement";
+import ApplicationCard from "../pages/Dashboard/ApplicationCard";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login></Login>,
+  },
+  {
+    path: "/my-profile",
+    element: <UserProfile></UserProfile>,
   },
   {
     path: "/dashboard",

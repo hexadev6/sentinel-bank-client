@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import useDarkMode from "../../../Hooks/useDarkMode";
 
 const CreateAccLayout = ({
   HandleCreateAcc,
@@ -25,6 +26,8 @@ const CreateAccLayout = ({
   HandleProfileImg
 }) => {
   const [isClicked, setIsClicked] = useState(true);
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   const handleTerms = () => {
     setIsClicked(!isClicked);
     setIsClicked(!isClicked);
@@ -36,11 +39,18 @@ const CreateAccLayout = ({
   };
   return (
     <div className="col-span-5 p-10 shadow-lg">
-      <div>
-        <Typography variant="h4" color="blue-gray" className="text-nevy-blue">
+         <div>
+        <Typography
+          variant="h4"
+          color="blue-gray"
+          className={`${darkMode ? "text-blue-gray-400" : "text-nevy-blue"}`}
+        >
           Open a Bank Account
         </Typography>
-        <Typography color="gray" className="mt-1 font-normal">
+        <Typography
+          color="gray"
+          className={`mt-1 font-normal ${darkMode ? "text-blue-gray-400" : ""}`}
+        >
           Nice to meet you! Start your journey to a seamless experience by
           opening a bank account with us today!.
         </Typography>
@@ -50,7 +60,9 @@ const CreateAccLayout = ({
             <Typography
               variant="h6"
               color="blue-gray"
-              className=" text-lg font-normal"
+              className={`text-lg font-normal ${
+                darkMode ? "text-blue-gray-500" : "text-nevy-blue"
+              }`}
             >
               Personal Information
             </Typography>
@@ -65,7 +77,9 @@ const CreateAccLayout = ({
                   type="text"
                   required
                   placeholder="account holder name"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3 ">
@@ -77,10 +91,14 @@ const CreateAccLayout = ({
                   name="dob"
                   type="date"
                   placeholder="NID DOB"
-                  className="  py-2 px-4 border rounded outline-0 "
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                   onChange={HandleAge}
                 />
-                {minAge != "" && <span className="text-red-500">{minAge}</span>}
+                {minAge != "" && (
+                  <span className="text-red-500 text-sm">{minAge}</span>
+                )}
               </div>
               <div className="flex flex-col gap-3 ">
                 {/* holder gender */}
@@ -89,7 +107,9 @@ const CreateAccLayout = ({
                   color="indigo"
                   label="Gender"
                   name="gender"
-                  className="p-2 rounded border focus:border-indigo-400 outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 >
                   <option selected disabled>
                     Select your gender
@@ -110,7 +130,9 @@ const CreateAccLayout = ({
                   type="text"
                   name="nationality"
                   placeholder="nationality e.g. Bangladeshi"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3">
@@ -122,7 +144,9 @@ const CreateAccLayout = ({
                   name="occupation"
                   type="text"
                   placeholder="occupation e.g. student/teacher/housewife"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
             </div>
@@ -131,7 +155,9 @@ const CreateAccLayout = ({
             <Typography
               variant="h6"
               color="blue-gray"
-              className=" text-lg font-normal"
+              className={`text-lg font-normal ${
+                darkMode ? "text-blue-gray-500" : "text-nevy-blue"
+              }`}
             >
               Contact Information
             </Typography>
@@ -146,7 +172,9 @@ const CreateAccLayout = ({
                   name="address"
                   type="text"
                   placeholder="residential address e.g Mirpur,Dhaka"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3">
@@ -158,7 +186,9 @@ const CreateAccLayout = ({
                   name="phnNumber"
                   type="number"
                   placeholder="phone number e.g 017XXXXXXX"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3 ">
@@ -167,7 +197,9 @@ const CreateAccLayout = ({
                   color="indigo"
                   label="Account type"
                   name="type"
-                  className="p-2 rounded border focus:border-indigo-400 outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 >
                   <option selected disabled>
                     Select account type
@@ -186,7 +218,9 @@ const CreateAccLayout = ({
             <Typography
               variant="h6"
               color="blue-gray"
-              className=" text-lg font-normal"
+              className={`text-lg font-normal ${
+                darkMode ? "text-blue-gray-500" : "text-nevy-blue"
+              }`}
             >
               Financial Information
             </Typography>
@@ -201,7 +235,9 @@ const CreateAccLayout = ({
                   type="text"
                   name="income"
                   placeholder="Source of income e.g Business"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3">
@@ -213,7 +249,9 @@ const CreateAccLayout = ({
                   type="number"
                   name="deposit"
                   placeholder="initial deposit e.g 500 "
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
             </div>
@@ -222,7 +260,9 @@ const CreateAccLayout = ({
             <Typography
               variant="h6"
               color="blue-gray"
-              className=" text-lg font-normal"
+              className={`text-lg font-normal ${
+                darkMode ? "text-blue-gray-500" : "text-nevy-blue"
+              }`}
             >
               Identification Information
             </Typography>
@@ -237,7 +277,9 @@ const CreateAccLayout = ({
                   type="number"
                   name="nidnumber"
                   placeholder="NID Number e.g 3245856934"
-                  className="  py-2 px-4 border rounded-md outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3">
@@ -249,7 +291,9 @@ const CreateAccLayout = ({
                   type="number"
                   name="reference"
                   placeholder="reference account no. e.g 4478765416"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
               <div className="flex flex-col gap-3">
@@ -261,7 +305,9 @@ const CreateAccLayout = ({
                   type="text"
                   name="nominee"
                   placeholder="nominee name"
-                  className="  py-2 px-4 border rounded outline-0"
+                  className={` py-2 px-4 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                 />
               </div>
             </div>
@@ -271,7 +317,12 @@ const CreateAccLayout = ({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 justify-between  items-start">
               <div className="flex flex-col gap-3">
                 {/* Your  uploaded file */}
-                <label htmlFor="Profile" className="">
+                <label
+                  htmlFor="Profile"
+                  className={` ${
+                    darkMode ? "text-blue-gray-500" : "text-nevy-blue"
+                  }`}
+                >
                   Upload your Passport picture
                 </label>
                 <input
@@ -280,27 +331,36 @@ const CreateAccLayout = ({
                   id="Profile"
                   name="photo"
                   accept="image/*"
-                  className=" border rounded p-2"
+                  className={`p-2 rounded outline-0 ${
+                    darkMode ? "bg-[#25324b]" : "border "
+                  }`}
                   onChange={HandleProfileImg}
                 />
-                   <div className="flex gap-4 items-center col-span-3">
-                  {profileImg &&
-                      <div className="w-20 h-20 relative">
+                <div className="flex gap-4 items-center col-span-3">
+                  {profileImg && (
+                    <div className="w-20 h-20 relative">
                       <img
                         required
                         src={
-                          profileImg instanceof File ? URL.createObjectURL(profileImg) : profileImg
+                          profileImg instanceof File
+                            ? URL.createObjectURL(profileImg)
+                            : profileImg
                         }
                         alt=""
                         accept="image/*"
                         className="w-full h-full rounded"
                       />
-                      
-                    </div>}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="flex flex-col gap-3  ">
-                <label htmlFor="documents">
+                <label
+                  htmlFor="documents"
+                  className={`${
+                    darkMode ? "text-blue-gray-500" : "text-nevy-blue"
+                  }`}
+                >
                   Upload your documents(like utility bill, NID/ TIN etc)
                 </label>
                 <div className="flex flex-col gap-3">
@@ -312,14 +372,16 @@ const CreateAccLayout = ({
                     name="documents"
                     multiple
                     accept="image/*"
-                    className=" border rounded p-2"
+                    className={`p-2 rounded outline-0 ${
+                      darkMode ? "bg-[#25324b]" : "border "
+                    }`}
                     onChange={HandleUpload}
                   />
                 </div>
                 <div className="flex gap-4 items-center col-span-3">
                   {showImg &&
-                    showImg.map((img,index) => (
-                      <div className="w-20 h-20 relative" key={index} >
+                    showImg.map((img, index) => (
+                      <div className="w-20 h-20 relative" key={index}>
                         <img
                           required
                           src={
@@ -357,16 +419,20 @@ const CreateAccLayout = ({
                       Terms & condition
                     </span>
                   </PopoverHandler>
-                  <PopoverContent>
+                  <PopoverContent
+                    className={` outline-0 rounded ${
+                      darkMode ? "bg-[#25324b]" : ""
+                    }`}
+                  >
                     <Typography
                       variant="h6"
-                      color="blue-gray"
-                      className=" text-lg  font-bold mb-5 text-center"
+                 
+                      className="text-lg  font-bold mb-5 pt-10 text-center"
                     >
                       Terms & condition
                     </Typography>
 
-                    <div className="flex flex-col gap-3 col-span-3 ml-6  mt-10">
+                    <div className="flex flex-col gap-3 col-span-3 ml-6 p-10 pt-0 mt-10">
                       <span>
                         1.To create an account, you must meet the eligibility
                         criteria established by Sentinel Trust Bank
@@ -433,14 +499,19 @@ const CreateAccLayout = ({
                 <button
                   variant="text"
                   disabled
-                  className="border py-2 px-4 hover:text-white mt-3  rounded bg-gray-400 text-white"
+                  className={` py-2 px-4 hover:text-white mt-3  rounded  text-white ${
+                    darkMode ? "bg-[#25324b]" : "bg-gray-400 border"
+                  }`}
                 >
-                  <Spinner color="white" className="inline"/><span> Creating...</span>
+                  <Spinner color="white" className="inline" />
+                  <span> Creating...</span>
                 </button>
               ) : (
                 <button
                   variant="text"
-                  className="border  hover:bg-black py-2 px-4 hover:text-white mt-3  rounded bg-nevy-blue text-white"
+                  className={`  py-2 px-4 hover:text-white mt-3  rounded bg-nevy-blue text-white  ${darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
+                  }`}
+                 
                 >
                   Create bank account
                 </button>
@@ -449,7 +520,9 @@ const CreateAccLayout = ({
               <button
                 variant="text"
                 disabled
-                className="border py-2 px-4 hover:text-white mt-3  rounded bg-gray-400 text-white"
+                className={` py-2 px-4 hover:text-white mt-3  rounded  text-white ${
+                  darkMode ? "bg-[#25324b]" : "bg-gray-400 border"
+                }`}
               >
                 Create bank account
               </button>

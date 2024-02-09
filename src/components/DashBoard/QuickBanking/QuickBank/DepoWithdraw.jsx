@@ -9,6 +9,7 @@ import Transaction from "../../Overview/Transaction/Transaction";
 import useStatus from "../../../../Hooks/useStatus";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useDarkMode from "../../../../Hooks/useDarkMode";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment);
 
@@ -23,7 +24,7 @@ const DepoWithdraw = ({
   isPending,
   allDeposits,
   refetch,
-  user
+  user,
 }) => {
   // state
   const [depoMethod, setDepoMethod] = useState(false);
@@ -31,7 +32,8 @@ const DepoWithdraw = ({
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [depositBy, setDepositBy] = useState("");
   const [isTrue, setIsTrue] = useState(false);
-  
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   // history function
   const recordTransaction = (type, amount) => {
     const newTransaction = {
@@ -106,7 +108,11 @@ const DepoWithdraw = ({
           />
           <Button
             variant="outlined"
-            className="sm:w-fit w-full flex-shrink-0 rounded border border-nevy-blue"
+            className={`sm:w-fit w-full flex-shrink-0 rounded   ${
+              darkMode
+                ? "bg-[#25324b] text-blue-gray-200 border-0"
+                : "border border-nevy-blue"
+            }`}
             type="submit"
           >
             Deposit Money
@@ -124,7 +130,11 @@ const DepoWithdraw = ({
           />
           <Button
             variant="outlined"
-            className="sm:w-fit w-full flex-shrink-0 rounded border border-nevy-blue"
+            className={`sm:w-fit w-full flex-shrink-0 rounded   ${
+              darkMode
+                ? "bg-[#25324b] text-blue-gray-200 border-0"
+                : "border border-nevy-blue"
+            }`}
             type="submit"
           >
             Withdraw Money
@@ -133,7 +143,11 @@ const DepoWithdraw = ({
         {/* deposit method */}
         <div>
           {depoMethod && (
-            <div className="p-5 border shadow mt-3">
+            <div
+              className={`p-5  shadow mt-3 ${
+                darkMode ? "bg-[#25324b] " : "border"
+              }`}
+            >
               <div className="flex flex-wrap gap-2 justify-between items-center">
                 <div className="flex gap-2 ">
                   <Radio name="type" label="Bkash" onClick={HandleOthers} />
@@ -188,15 +202,15 @@ const DepoWithdraw = ({
         <div>
           {isTrue && (
             <Elements stripe={stripePromise}>
-              <CheckoutForm userInfo={userInfo} refetch={refetch}/>
+              <CheckoutForm userInfo={userInfo} refetch={refetch} />
             </Elements>
           )}
         </div>
       </div>
       {/* history show */}
       <div>
-        <Transaction allDeposits={allDeposits} isPending={isPending} totalDeposits/>
-        
+        <Transaction
+        />
       </div>
     </div>
   );

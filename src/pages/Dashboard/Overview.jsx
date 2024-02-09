@@ -7,8 +7,12 @@ import useStatus from "../../Hooks/useStatus";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useSingleAccount from "../../Hooks/useSingleAccount";
+import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
+import useDarkMode from "../../Hooks/useDarkMode";
+import useHistory from "../../Hooks/useHistory";
 
 const Overview = () => {
+  // const {darkMode, toggleDarkMode} = useDarkMode()
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
   const axiosPublic = useAxiosPublic();
@@ -16,24 +20,9 @@ const Overview = () => {
 
   const [totalBalance, setTotalBalance] = useState(0);
   const [getTotalBalance, setGetTotalBalance] = useState(0);
+  const { isPending, error, allDeposits, refetch } = useHistory();
 
-  const {
-    isPending,
-    error,
-    data: allDeposits,
-    refetch,
-  } = useQuery({
-    queryKey: ["allDeposits"],
-    queryFn: async () => {
-      try {
-        // console.log(userinfo?.acc_num);
-        const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
-        return res.data.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
+ 
 
   useEffect(() => {
     axiosPublic
@@ -56,15 +45,17 @@ const Overview = () => {
   // console.log(totalBalance);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
-      <div className="col-span-2">
-        <Cards />
-        <Transaction allDeposits={allDeposits} isPending={isPending} />
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5'>
+      <div className='col-span-2 space-y-6'>
+        
+        <Transfer
+          totalDeposits={totalDeposits}
+          getTotalBalance={getTotalBalance}
+        />
+        <UserGraph/>
+        <Transaction  />
       </div>
-      <Transfer
-        totalDeposits={totalDeposits}
-        getTotalBalance={getTotalBalance}
-      />
+      {/* <Cards /> */}
     </div>
   );
 };
