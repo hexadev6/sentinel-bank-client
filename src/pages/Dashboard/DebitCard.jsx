@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Input } from "@material-tailwind/react";
+import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
@@ -10,10 +11,33 @@ const DebitCard = () => {
   const axios = useAxiosSecure();
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
-  console.log(userinfo);
-  const account = useFindsingleByAC(userinfo?.acc_num);
 
-  console.log(account);
+  const account = useFindsingleByAC(userinfo?.acc_num);
+  const notify = () =>
+    toast("application successfuly ", {
+      duration: 4000,
+      position: "top-right",
+
+      // Styling
+      style: {},
+      className: "",
+
+      // Custom Icon
+      icon: "👏",
+
+      // Change colors of success/error/loading icon
+      iconTheme: {
+        primary: "#000",
+        secondary: "#fff",
+      },
+
+      // Aria
+      ariaProps: {
+        role: "status",
+        "aria-live": "polite",
+      },
+    });
+
   const {
     register,
     handleSubmit,
@@ -31,7 +55,7 @@ const DebitCard = () => {
     console.log(cardinfo);
     axios
       .post(`/applicationCard`, cardinfo)
-      .then((result) => console.log(result.data))
+      .then(() => notify())
       .catch((err) => console.log(err));
   };
   return (
