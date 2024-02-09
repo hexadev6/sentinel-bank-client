@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useStatus from "../../../../Hooks/useStatus";
 import useAuth from "../../../../Hooks/useAuth";
+import useFindByAccNum from "../../../../Hooks/useFindByAccNum";
 
 const StatusCard = () => {
   // all state
@@ -14,15 +15,17 @@ const StatusCard = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
   const axiosPublic = useAxiosPublic();
-  const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
   const [getTotalBalance, setGetTotalBalance] = useState(0);
+  const [accountByNum, isLoading, refetch] = useFindByAccNum();
+
+  const [totalDeposits, setTotalDeposits] = useState(0);
+  const [totalWithDraws, setTotalWithDraws] = useState(0);
 
   const {
     isPending,
     error,
     data: allDeposits,
-    refetch,
   } = useQuery({
     queryKey: ["allDeposits"],
     queryFn: async () => {
@@ -36,22 +39,44 @@ const StatusCard = () => {
   });
 
   useEffect(() => {
-    axiosPublic
-      .get(`/findByAccNum/${userinfo?.acc_num}`)
-      .then((res) => setTotalBalance(res.data.data))
-      .catch((error) => console.log(error));
+    refetch();
+    setTotalBalance(accountByNum);
   }, [totalDeposits]);
 
+
   useEffect(() => {
-    const sumOfDeposits = allDeposits?.reduce(
+    const depositsForAccount = allDeposits?.filter(
+      (deposit) => deposit.transactionType === "deposit"
+    );
+    const sumOfDeposits = depositsForAccount?.reduce(
       (total, deposit) => total + deposit.amount,
       0
     );
-    const total = totalBalance?.initial_deposit + sumOfDeposits;
-    console.log(total);
-    setTotalDeposits(sumOfDeposits);
-    setGetTotalBalance(total);
-  }, [allDeposits, totalBalance]);
+    setTotalDeposits(sumOfDeposits || 0);
+  }, [allDeposits, accountByNum]);
+
+  // sum of withdraw
+  useEffect(() => {
+    const withdrawForAccount = allDeposits?.filter(
+      (withdraw) => withdraw.transactionType === "withdraw"
+    );
+    console.log(withdrawForAccount);
+    const sumOfWithdraw = withdrawForAccount?.reduce(
+      (total, withdraw) => total + withdraw.amount,
+      0
+    );
+    setTotalWithDraws(sumOfWithdraw || 0);
+  }, [allDeposits, accountByNum]);
+
+  // total balance
+  useEffect(() => {
+    const totalBalance =
+      accountByNum?.initial_deposit +
+      (totalDeposits || 0) -
+      (totalWithDraws || 0);
+
+    setGetTotalBalance(totalBalance || 0);
+  }, [totalDeposits, totalWithDraws, totalBalance, accountByNum]);
 
   return (
     <>
@@ -85,7 +110,7 @@ const StatusCard = () => {
               Withdraw
             </Typography>
             <Typography variant="h3" className="font-medium">
-              ${withdraw}
+              ${totalWithDraws}
             </Typography>
           </CardBody>
         </Card>
@@ -94,7 +119,6 @@ const StatusCard = () => {
       <DepoWithdraw
         allDeposits={allDeposits}
         isPending={isPending}
-        // totalDeposits={totalDeposits}
         refetch={refetch}
         setTotal={setTotal}
         total={total}

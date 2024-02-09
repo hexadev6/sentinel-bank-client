@@ -93,7 +93,7 @@ const Transaction = ({}) => {
                               darkMode == true ? "text-gray-200" : "text-light-gray"
                             } `}
                           >
-                            {deposit?.depsitBy}
+                            {deposit?.transactionType}
                           </Typography>
                         </td>
                         <td className="p-4">
@@ -104,7 +104,7 @@ const Transaction = ({}) => {
                               darkMode == true ? "text-gray-200" : "text-light-gray"
                             } `}
                           >
-                            ${deposit?.amount}
+                            {deposit?.amount}
                           </Typography>
                         </td>
                         <td className="p-4">
@@ -143,7 +143,7 @@ const Transaction = ({}) => {
                                 darkMode == true ? "text-gray-200" : "text-light-gray"
                               } `}
                             >
-                              {deposit?.depsitId}
+                              {deposit?.transactionId}
                             </Typography>
                           </div>
                         </td>
