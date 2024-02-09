@@ -13,9 +13,7 @@ import { useForm } from "react-hook-form";
 // import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+import { Link } from "react-router-dom";
 
 const UserDialog = ({userinfo,refetch}) => {
     const [open, setOpen] = React.useState(false);
@@ -27,13 +25,13 @@ const UserDialog = ({userinfo,refetch}) => {
         formState: { errors },
       } = useForm()
     const handleOpen = () => setOpen(!open);
-    const _id= "65c4e3b51f0869f32a088212";
-    const {name,email,dateOfBirth,mobile,location,nationality}=userinfo || {};
+    const {_id,name,email,dateOfBirth,mobile,location,nationality}=userinfo || {};
     console.log("user",userinfo);
     const onSubmit=async(data)=>{
         const updateProfile={
             name:data?.name,
             DOB: data?.DOB,
+            email: email,
             mobile:data?.mobile,
             location: data?.location,
             nationality: data?.nationality
@@ -42,15 +40,15 @@ const UserDialog = ({userinfo,refetch}) => {
         const profileRes= await axiosSecure.patch(`/updateUser/${_id}`,updateProfile)
         .then(res=>{
             console.log(res.data);
-            if(res.data.data.message=='success'){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Profile Updated Successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-            }
+            // if(res.data.data.message=='success'){
+            //     Swal.fire({
+            //         position: "center",
+            //         icon: "success",
+            //         title: "Profile Updated Successfully",
+            //         showConfirmButton: false,
+            //         timer: 1500,
+            //       });
+            // }
            
             refetch()
         })
@@ -61,7 +59,13 @@ const UserDialog = ({userinfo,refetch}) => {
    
     return (
         <>
+        <div className="flex gap-1 justify-between">
+        <Link to='/'><Button variant="outlined">Go Home</Button ></Link>
         <Button onClick={handleOpen} className="text-blue-700" variant="text">Edit Profile</Button>
+        <div className="">
+              
+                </div>
+        </div>
         <Dialog open={open} size="md" handler={handleOpen}>
             <div className="flex items-center justify-between">
               <DialogHeader className="flex flex-col items-start">
