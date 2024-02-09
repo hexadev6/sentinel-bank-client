@@ -89,6 +89,21 @@ const AdminSidbar = () => {
         </div>
       </NavLink>
       <NavLink
+        to="/dashboard/cardManagement"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <GrTransaction />
+          <span className="lg:flex hidden">Card Management</span>
+        </div>
+      </NavLink>
+      <NavLink
         to="/"
         className={({ isActive, isPending }) =>
           isPending

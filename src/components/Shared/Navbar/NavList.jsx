@@ -17,6 +17,19 @@ const NavList = () => {
         Home
       </NavLink>
       <p className="border h-5"></p>
+      <NavLink
+        to="/?rates=ExchangeRates"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "  pb-1 "
+            : "hover:border-b hover:border-b-green-400 ease-in duration-500 pb-1"
+        }
+      >
+        Exchange Rates
+      </NavLink>
+      <p className="border h-5"></p>
       <AboutList />
       <p className="border h-5"></p>
       <ContactList />

@@ -11,6 +11,10 @@ import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
 import AccountManagement from "../pages/Dashboard/AccountManagement";
+import ApplicationCard from "../pages/Dashboard/ApplicationCard";
+import DebitCard from "../pages/Dashboard/DebitCard";
+import CeditCard from "../pages/Dashboard/CeditCard";
+import CardManagement from "../pages/Dashboard/CardManagement";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: "registration",
-    element: <Stepper/>,
+    element: <Stepper />,
   },
   {
     path: "login",
@@ -43,11 +47,39 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
-      { path: "overview", element: <Overview /> },
-      { path: "quickBanking", element: <QuickBank /> },
-      { path: "createAcc", element: <CreateAcc /> },
-      {path: 'accountManagement', element: <AccountManagement/>}
-  ],
+      {
+        path: "overview",
+        element: <Overview />,
+      },
+      {
+        path: "quickBanking",
+        element: <QuickBank />,
+      },
+      {
+        path: "createAcc",
+        element: <CreateAcc />,
+      },
+      {
+        path: "accountManagement",
+        element: <AccountManagement />,
+      },
+      {
+        path: "cardManagement",
+        element: <CardManagement />,
+      },
+      {
+        path: "applicationCard",
+        element: <ApplicationCard />,
+      },
+      {
+        path: "applicationCard/debit",
+        element: <DebitCard />,
+      },
+      {
+        path: "applicationCard/cedit",
+        element: <CeditCard />,
+      },
+    ],
   },
 ]);
 
