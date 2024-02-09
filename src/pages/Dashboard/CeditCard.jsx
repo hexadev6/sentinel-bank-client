@@ -4,7 +4,8 @@ import { Input } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
 import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
-import useFindsingleByAC from "../../Hooks/usefindsingleByAC";
+import useFindsingleByAC from "../../Hooks/useFindsingleByAC";
+
 
 const CeditCard = () => {
   const axios = useAxiosSecure();

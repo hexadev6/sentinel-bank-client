@@ -46,7 +46,7 @@ const Overview = () => {
         <UserGraph/>
         <Transaction  />
       </div>
-      {/* <Cards /> */}
+      <Cards />
     </div>
   );
 };
