@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Input, Radio } from "@material-tailwind/react";
-import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
-import useAuth from "../../../../Hooks/useAuth";
 import Transaction from "../../Overview/Transaction/Transaction";
-import useStatus from "../../../../Hooks/useStatus";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
 import useDarkMode from "../../../../Hooks/useDarkMode";
+import WithdrawForm from "./WithdrawForm";
+import swal from "sweetalert";
 
-const stripePromise = loadStripe(import.meta.env.VITE_Payment);
 
 const DepoWithdraw = ({
   total,
@@ -31,7 +26,8 @@ const DepoWithdraw = ({
   const [depoAmount, setDepoAmount] = useState(0);
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [depositBy, setDepositBy] = useState("");
-  const [isTrue, setIsTrue] = useState(false);
+  const [isDepoTrue, setIsDepoTrue] = useState(false);
+  const [isWDTrue, setIsWDTrue] = useState(false);
   const { darkMode, toggleDarkMode } = useDarkMode();
 
   // history function
@@ -48,7 +44,8 @@ const DepoWithdraw = ({
     e.preventDefault();
     const newDeposit = e.target.elements.deposit.value;
     setDepoAmount(newDeposit);
-    setDepoMethod(true);
+    setIsDepoTrue(true);
+    setIsWDTrue(false)
   };
 
   const userInfo = {
@@ -60,58 +57,42 @@ const DepoWithdraw = ({
   // withdraw func
   const HandleWithdraw = (e) => {
     e.preventDefault();
-    const newWithdraw = e.target.elements.withdraw.value;
-    if (total >= newWithdraw) {
-      const newAmount = total - parseFloat(newWithdraw);
-
-      // console.log(newAmount);
-      setWithdraw(withdraw + parseFloat(newWithdraw));
-      setTotal(newAmount);
-      recordTransaction("withdraw", newWithdraw);
-    } else {
-      toast.error("You don't have sufficient balance");
+    const newDeposit = e.target.elements.withdraw.value;
+    if (newDeposit > total) {
+      setIsDepoTrue(false);
+      swal("Your don't have sufficient balance");
+      return;
+    }
+    else{
+      setDepoAmount(newDeposit);
+      setIsWDTrue(true);
+      setIsDepoTrue(false);
     }
   };
 
-  // deposit info store
-  const depositInfo = {
-    amount: depoAmount,
-    name: "hema",
-    email: "demo@gmail.com",
-    totalAmount: total,
-  };
 
-  // payment handle
-  const HandlePayment = (e) => {
-    // console.log(e.target.value);
-    setDepositBy(e.target.value);
-    setIsTrue(true);
-  };
-
-  // other method handle
-  const HandleOthers = () => {
-    setIsTrue(false);
-  };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center items-start mt-5">
-      <div className="">
+    <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 justify-center items-start mt-5">
+      <div className="grid-cols-1 md:grid-cols-2 grid gap-5 justify-between items-center">
         {/* deposite input */}
         <form
-          className="flex flex-wrap sm:flex-nowrap gap-2 "
+          className="flex flex-wrap  gap-2  p-10 py-9 rounded bg-nevy-blue"
           onSubmit={HandleDeposit}
         >
           <Input
             label="Deposit Amount"
+            required
+            color="white"
             className="rounded h-full"
             name="deposit"
           />
           <Button
             variant="outlined"
-            className={`sm:w-fit w-full flex-shrink-0 rounded   ${
+            className={` w-full flex-shrink-0 rounded   ${
               darkMode
                 ? "bg-[#25324b] text-blue-gray-200 border-0"
-                : "border border-nevy-blue"
+                : "bg-white border-0"
             }`}
             type="submit"
           >
@@ -120,97 +101,38 @@ const DepoWithdraw = ({
         </form>
         {/* withdraw input */}
         <form
-          className="flex gap-2 mt-2 flex-wrap sm:flex-nowrap"
+          className="flex gap-2  flex-wrap  p-10 py-9 rounded bg-nevy-blue"
           onSubmit={HandleWithdraw}
         >
           <Input
+                      color="white"
+
             label="Withdraw Amount"
             className="rounded h-full"
             name="withdraw"
+            required
           />
           <Button
             variant="outlined"
-            className={`sm:w-fit w-full flex-shrink-0 rounded   ${
+            className={`w-full flex-shrink-0 rounded   ${
               darkMode
                 ? "bg-[#25324b] text-blue-gray-200 border-0"
-                : "border border-nevy-blue"
+                : "bg-white border-0"
             }`}
             type="submit"
           >
             Withdraw Money
           </Button>
         </form>
-        {/* deposit method */}
+
         <div>
-          {depoMethod && (
-            <div
-              className={`p-5  shadow mt-3 ${
-                darkMode ? "bg-[#25324b] " : "border"
-              }`}
-            >
-              <div className="flex flex-wrap gap-2 justify-between items-center">
-                <div className="flex gap-2 ">
-                  <Radio name="type" label="Bkash" onClick={HandleOthers} />
-                  <img
-                    src={
-                      "https://freelogopng.com/images/all_img/1656235223bkash-logo.png"
-                    }
-                    alt=""
-                    className="w-10 h-10  rounded-full"
-                  />
-                </div>
-                <div className="flex gap-2 ">
-                  <Radio name="type" label="Nagad" onClick={HandleOthers} />
-                  <img
-                    src={
-                      "https://freelogopng.com/images/all_img/1679248787Nagad-Logo.png"
-                    }
-                    alt=""
-                    className="w-10 h-10  rounded-full"
-                  />
-                </div>
-                <div className="flex gap-2 ">
-                  <Radio name="type" label="Rocket" onClick={HandleOthers} />
-                  <img
-                    src={
-                      "https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png"
-                    }
-                    alt=""
-                    className="w-10 h-10  rounded-full"
-                  />
-                </div>
-                <div className="flex gap-2 ">
-                  <Radio
-                    name="type"
-                    label="Stripe"
-                    onClick={HandlePayment}
-                    value="stripe"
-                  />
-                  <img
-                    src={
-                      "https://cdn-icons-png.flaticon.com/512/5968/5968312.png"
-                    }
-                    alt=""
-                    className="w-10 h-10  rounded-full"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        {/* stripe card pay */}
-        <div>
-          {isTrue && (
-            <Elements stripe={stripePromise}>
-              <CheckoutForm userInfo={userInfo} refetch={refetch} />
-            </Elements>
-          )}
+          {isDepoTrue && <CheckoutForm userInfo={userInfo} refetch={refetch} />}
+          {isWDTrue && <WithdrawForm userInfo={userInfo} refetch={refetch} />}
         </div>
       </div>
       {/* history show */}
       <div>
-        <Transaction
-        />
+        <Transaction />
       </div>
     </div>
   );
