@@ -5,7 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
-import useFindsingleByAC from "../../Hooks/usefindsingleByAC";
+import useFindsingleByAC from "../../Hooks/useFindsingleByAC";
+
 
 const DebitCard = () => {
   const axios = useAxiosSecure();
