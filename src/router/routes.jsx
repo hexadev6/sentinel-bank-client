@@ -12,6 +12,10 @@ import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
 import AccountManagement from "../pages/Dashboard/AccountManagement";
 import UserProfile from "../components/Shared/Navbar/UserProfile";
+import CardManagement from "../pages/Dashboard/CardManagement";
+import DebitCard from "../pages/Dashboard/DebitCard";
+import CeditCard from "../pages/Dashboard/CeditCard";
+import ApplicationCard from "../pages/Dashboard/ApplicationCard";
 
 const router = createBrowserRouter([
   {
@@ -30,30 +34,57 @@ const router = createBrowserRouter([
         path: "contact/:section",
         element: <ContactUs></ContactUs>,
       },
-      
     ],
   },
   {
     path: "registration",
-    element: <Stepper/>,
+    element: <Stepper />,
   },
   {
     path: "login",
     element: <Login></Login>,
   },
   {
-    path:'/my-profile',
-    element:<UserProfile></UserProfile>
+    path: "/my-profile",
+    element: <UserProfile></UserProfile>,
   },
   {
     path: "/dashboard",
     element: <Dashboard />,
     children: [
-      { path: "overview", element: <Overview /> },
-      { path: "quickBanking", element: <QuickBank /> },
-      { path: "createAcc", element: <CreateAcc /> },
-      {path: 'accountManagement', element: <AccountManagement/>}
-  ],
+      {
+        path: "overview",
+        element: <Overview />,
+      },
+      {
+        path: "quickBanking",
+        element: <QuickBank />,
+      },
+      {
+        path: "createAcc",
+        element: <CreateAcc />,
+      },
+      {
+        path: "accountManagement",
+        element: <AccountManagement />,
+      },
+      {
+        path: "cardManagement",
+        element: <CardManagement />,
+      },
+      {
+        path: "applicationCard",
+        element: <ApplicationCard />,
+      },
+      {
+        path: "applicationCard/debit",
+        element: <DebitCard />,
+      },
+      {
+        path: "applicationCard/cedit",
+        element: <CeditCard />,
+      },
+    ],
   },
 ]);
 

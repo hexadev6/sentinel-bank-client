@@ -89,7 +89,7 @@ const UserSidebar = () => {
         </div>
       </NavLink>
       <NavLink
-        to="/"
+        to="/dashboard/applicationCard"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
