@@ -21,9 +21,6 @@ const SidebarList = () => {
   };
   return (
     <div className="w-full flex flex-col gap-2 items-center lg:items-start">
-      {/* user route*/}
-      {/* {status === "user" && <UserSidebar />} */}
-
       {/* admin route */}
       {userinfo?.status === "admin" && <AdminSidbar />}
 
