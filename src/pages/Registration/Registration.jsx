@@ -79,85 +79,54 @@ const PasswordIcon = styled.span`
   right: 10px;
 `;
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
 const RegistrationForm = ({ onComplete }) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
-  const { register, handleSubmit, reset,setValue } = useForm();
+  const { register, handleSubmit } = useForm();
   const axiosPublic=useAxiosPublic()
   const onSubmit = async (data) => {
     const accepted = data.terms.checked;
     console.log(data);
-    // image update goes here
-    const imgFile = { image: data.image[0] };
-    console.log(imgFile);
 
-    const imgRes = await axios.post(image_hosting_api, imgFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
-
-    // if image upload success then register user
-    if (imgRes.data.success && !accepted) {
-      await userSignUp(data.email, data.password)
-        .then((result) => {
-          console.log("user create", result.user);
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "User created Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          if (result.user.emailVerified === false) {
-            sendEmailVerification(result.user)
-              .then(() => {
-                if (result.user) {
-                  console.log("email verify", result.user);
-
-                  UserProfileUpdate(data.name, imgRes.data.data.display_url)
-                    .then(async (result) => {
-                      console.log('user Created regi',result);
-              const res = await axiosPublic.post("/createUser", {
-                        email: data.email,
-                        name: data.name,
-                        image: imgRes.data.data.display_url,
-                        acc_num: 0,
-                      });
-                      console.log(res);
-                      if (res.data.success) {
-                        onComplete();
-                      }
-                    })
-                    .catch((error) => console.log(error));
-                }
-              })
-              .catch((err) => {
-                console.log(err);
+      userSignUp(data.email,data.password)
+      .then((result) => {
+              console.log("user create", result.user);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
               });
-          } else {
-            console.log("homepage");
-
-            // navigate(location?.state ? location.state : "/")
-          }
-          reset();
-        })
-
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      console.log("something error occurred in uploading image");
+              if (result.user.emailVerified === false) {
+                sendEmailVerification(result.user)
+                  .then(() => {
+                    if (result.user) {
+                      console.log("email verify", result.user);
+                      UserProfileUpdate(data.name, null)
+                                      .then(async (result) => {
+                                        console.log('user Created regi',result);
+                                const res = await axiosPublic.post("/createUser", {
+                                          email: data.email,
+                                          name: data.name,
+                                          image: null,
+                                          acc_num: 0,
+                                        });
+                                        console.log(res);
+                                        if (res.data.success) {
+                                          onComplete();
+                                        }
+                                      })
+                                      .catch((error) => console.log(error));
+                                  }
+                                })
+                                .catch((error) => console.log(error));
+                  }
+                })
+                .catch(err=>{
+                  console.log(err);
+                })
     }
-  };
-
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   // You can handle file validation and preview logic here if needed
-  //   setValue('image', file);
-  // };
+  
 
   return (
    <div  >
@@ -224,18 +193,6 @@ const RegistrationForm = ({ onComplete }) => {
                   <FaLock />
                 </PasswordIcon>
               </InputContainer>
-
-        <InputContainer>
-          <Label htmlFor='image'>Image</Label>
-          <FileInput
-            type='file'
-            id='image'
-            accept='image/*'
-            // onChange={handleImageChange}
-            {...register("image", { required: "image is required" })}
-          />
-       
-        </InputContainer>
         <InputContainer>
         <input type="checkbox" name="terms"  {...register("terms", {
               required: "Accept terms and condition.",
