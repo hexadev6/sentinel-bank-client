@@ -16,6 +16,7 @@ import CardManagement from "../pages/Dashboard/CardManagement";
 import DebitCard from "../pages/Dashboard/DebitCard";
 import CeditCard from "../pages/Dashboard/CeditCard";
 import ApplicationCard from "../pages/Dashboard/ApplicationCard";
+import Notice from "../components/DashBoard/Notice/Notice";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "applicationCard/cedit",
         element: <CeditCard />,
+      },
+      {
+        path: "notice",
+        element: <Notice />,
       },
     ],
   },

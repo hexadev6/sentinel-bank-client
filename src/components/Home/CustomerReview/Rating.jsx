@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
-const Rating = ({ rating }) => {
+const CustomRating = ({ rating }) => {
   const stars = [];
   const negetiveStar = 5 - rating;
   for (let i = 0; i < rating; i++) {
@@ -14,4 +14,4 @@ const Rating = ({ rating }) => {
   return stars;
 };
 
-export default Rating;
+export default CustomRating;
