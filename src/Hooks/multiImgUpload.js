@@ -9,7 +9,8 @@ const multiImgUpload =async (image) => {
         formData
       )
       const photo_url  = data.data.display_url
-      
+      console.log(photo_url)
+      console.log(data)
       return photo_url ;
 };
 

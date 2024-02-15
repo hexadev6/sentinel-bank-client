@@ -22,7 +22,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const CustomerReview = () => {
   // state
-  const [customerFeedback, setCustomerFeedback] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedData, setDisplayedData] = useState([]);
   const [open, setOpen] = useState(false);
@@ -56,12 +55,12 @@ const CustomerReview = () => {
 
   // declaration for pagination
   const itemsPerPage = 2;
-  const totalPgNum = Math.ceil(allreviews.length / itemsPerPage);
+  const totalPgNum = Math.ceil(allreviews?.length / itemsPerPage);
 
   useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    setDisplayedData(allreviews.slice(startIndex, endIndex));
+    setDisplayedData(allreviews?.slice(startIndex, endIndex));
   }, [currentPage, allreviews]);
 
   // pagination logic
@@ -107,12 +106,13 @@ const CustomerReview = () => {
         console.log(res.data);
         setOpen(!open);
         setIsLoading(false);
-        refetch()
+        refetch();
       })
-      .catch((err) => console.log(err));
-    console.log(reviews);
+      .catch((err) => {
+        setIsLoading(false);
+        console.log(err);
+      });
   };
-
 
   return (
     <div className="px-4 lg:mb-40 ">
@@ -244,7 +244,11 @@ const CustomerReview = () => {
                     />
                     <div className="flex w-full flex-col gap-0.5 flex-1">
                       <div className="flex flex-wrap gap-1 items-center justify-between ">
-                        <Typography variant="h5" color="blue-gray" className="capitalize">
+                        <Typography
+                          variant="h5"
+                          color="blue-gray"
+                          className="capitalize"
+                        >
                           {feedback?.name}
                         </Typography>
                         <div className=" flex items-center gap-0">
