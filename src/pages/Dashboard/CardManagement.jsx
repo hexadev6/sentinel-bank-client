@@ -18,7 +18,8 @@ import { useState } from "react";
 import AccountDetails from "../../components/DashBoard/AccountDetails/AccountDetails";
 
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import UseallCard from "../../Hooks/useallCard";
+import useAllCard from "../../Hooks/useallCard";
+
 const TABLE_HEAD = [
   "Account Holder",
   "Account Number",
@@ -29,7 +30,7 @@ const TABLE_HEAD = [
 ];
 
 const CardManagement = () => {
-  const [card, isLoading, refetch] = UseallCard();
+  const [card, isLoading, refetch] = useAllCard();
   console.log(card);
   const axios = useAxiosSecure();
   const [open, setOpen] = useState(false);

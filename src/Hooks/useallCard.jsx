@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import useAxiosSecure from "./useAxiosSecure";
 
-const UseallCard = () => {
+const useAllCard = () => {
   const axios = useAxiosSecure();
   const {
     data: card,
@@ -19,4 +19,4 @@ const UseallCard = () => {
   return [card, isLoading, refetch];
 };
 
-export default UseallCard;
+export default useAllCard;
