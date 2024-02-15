@@ -27,6 +27,8 @@ const Cards = () => {
     },
   }) || {};
 
+  const issue = card?.filter((item) => item.status === "issue");
+
   return (
     <>
       <div className="px-5 md:px-8 shadow-lg rounded-lg h-[50vh]">
@@ -37,7 +39,7 @@ const Cards = () => {
           modules={[EffectCards]}
           className="mySwiper"
         >
-          {card?.map((item, indx) => (
+          {issue?.map((item, indx) => (
             <SwiperSlide key={indx}>
               <Card
                 key={indx}

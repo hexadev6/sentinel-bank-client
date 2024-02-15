@@ -100,7 +100,7 @@ const UserSidebar = () => {
       >
         <div className="flex  items-center gap-3 px-2 py-1">
           <TfiWrite />
-          <span className="lg:flex hidden">Application</span>
+          <span className="lg:flex hidden">Application Card</span>
         </div>
       </NavLink>
     </>

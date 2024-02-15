@@ -6,7 +6,6 @@ import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
 import useFindsingleByAC from "../../Hooks/useFindsingleByAC";
 
-
 const CeditCard = () => {
   const axios = useAxiosSecure();
   const { user } = useAuth();
@@ -59,8 +58,8 @@ const CeditCard = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className=" mt-8 p-6 border rounded-lg shadow-lg bg-white mx-20 px-20">
-      <h2 className="text-2xl font-bold mb-4 text-center">
+    <div className=" mt-8 border border-black rounded-lg shadow-lg  mx-20 p-20">
+      <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for Cedit Card
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -143,7 +142,7 @@ const CeditCard = () => {
           <div className="flex-1">
             <select
               {...register("card_type", { required: true })}
-              className="w-full border py-2 rounded-md"
+              className="w-full border py-2 rounded-md bg-transparent"
             >
               <option value="MasterCard">MasterCard</option>
               <option value="Visa">Visa</option>
@@ -154,7 +153,7 @@ const CeditCard = () => {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="border border-nevy-blue ease-linear duration-300 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded"
         >
           Submit
         </button>
