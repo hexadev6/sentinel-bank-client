@@ -12,20 +12,20 @@ import useStatus from "../../../../Hooks/useStatus";
 import useAuth from "../../../../Hooks/useAuth";
 
 const Cards = () => {
-  const { user } = useAuth();
-  const { userinfo } = useStatus({ email: user?.email });
+  const { user } = useAuth() || {};
+  const { userinfo } = useStatus({ email: user?.email }) || {};
   const axios = useAxiosSecure();
   const {
     data: card,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["card"],
+    queryKey: ["allcard"],
     queryFn: async () => {
-      const res = await axios.get(`/userAllcard?acc_num=${userinfo.acc_num}`);
-      return res.data?.data;
+      const res = await axios.get(`/userAllcard?acc_num=${userinfo?.acc_num}`);
+      return res?.data?.data;
     },
-  });
+  }) || {};
 
   return (
     <>
@@ -51,7 +51,7 @@ const Cards = () => {
                     </Typography>
                     <Typography
                       variant="h4"
-                      className="text-white mt-5 font-medium flex flex-shrink sm:flex-shrink-0 gap-1 sm:gap-3 sm:text-2xl justify-between"
+                      className="text-white mt-5 flex flex-shrink sm:flex-shrink-0 gap-1 sm:gap-3 sm:text-2xl justify-between font-bold "
                     >
                       {/* {item?.cardNumber
                         .split("")
@@ -59,7 +59,7 @@ const Cards = () => {
                         ?.map((index, i) => (
                           <span key={i}>{index}</span>
                         ))} */}
-                      {item?.cardNumber}
+                      <span> {item?.cardNumber}</span>
                     </Typography>
 
                     <div className="flex justify-between gap-5 items-end ">
