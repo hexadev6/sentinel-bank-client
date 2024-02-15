@@ -59,7 +59,7 @@ const AdminSidbar = () => {
         </div>
       </NavLink>
       <NavLink
-        to="quickBanking"
+        to="notice"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -70,7 +70,7 @@ const AdminSidbar = () => {
       >
         <div className="flex  items-center gap-3 px-2 py-1">
           <BsBank2 />
-          <span className="lg:flex hidden">Transactions History</span>
+          <span className="lg:flex hidden">Important Notice</span>
         </div>
       </NavLink>
       <NavLink
