@@ -4,5 +4,5 @@
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #073871;
+  background-color: rgb(207, 216, 220);
 }

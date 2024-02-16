@@ -9,8 +9,16 @@
 }
 .text-editor ul {
     list-style-type: disc; 
+    padding-left: 60px;
   }
   
   .text-editor ol {
     list-style-type: decimal; 
+    padding-left: 60px;
+
+  }
+
+  .text-editor a{
+    text-decoration: underline;
+    color: blue;
   }
