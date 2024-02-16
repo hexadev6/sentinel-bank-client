@@ -1,6 +1,6 @@
 .chat-window {
     width: 400px;
-    height: 500px;
+    height: 550px;
   }
   
   .chat-window p {
@@ -22,7 +22,7 @@
   }
   
   .chat-window .chat-body {
-    height: calc(450px - (45px + 70px));
+    height: calc(550px - (45px + 70px));
     border: 1px solid #263238;
     background: #fff;
   
