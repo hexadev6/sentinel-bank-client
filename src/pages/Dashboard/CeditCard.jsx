@@ -58,12 +58,12 @@ const CeditCard = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className=" mt-8 border border-black rounded-lg shadow-lg  mx-20 p-20">
+    <div className=" mt-8 border border-black rounded-lg shadow-lg  mx-20 md:p-20 p-5">
       <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for Cedit Card
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-5 w-full justify-between mb-4">
+        <div className="flex flex-col md:flex-row gap-5 w-full justify-between mb-4">
           <div className="flex-1">
             <Input
               type="text"
@@ -85,7 +85,7 @@ const CeditCard = () => {
             />
           </div>
         </div>
-        <div className="flex gap-5 w-full justify-between mb-4">
+        <div className="flex flex-col md:flex-row gap-5 w-full justify-between mb-4">
           <div className="flex-1">
             <Input
               type="text"
@@ -107,7 +107,7 @@ const CeditCard = () => {
           </div>
         </div>
 
-        <div className="flex gap-5 w-full justify-between mb-4">
+        <div className="flex flex-col md:flex-row gap-5 w-full justify-between mb-4">
           <div className="flex-1">
             <Input
               type="number"
@@ -128,7 +128,7 @@ const CeditCard = () => {
             />
           </div>
         </div>
-        <div className="flex gap-5 w-full justify-between mb-4">
+        <div className="flex flex-col md:flex-row gap-5 w-full justify-between mb-4">
           <div className="flex-1">
             <Input
               type="email"
