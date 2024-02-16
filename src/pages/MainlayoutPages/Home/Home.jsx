@@ -32,7 +32,6 @@ const Home = () => {
     <>
       {/* <PopupLogin /> */}
       <UpdatedBanner />
-
       <Statistics />
       <Feature />
       <MoneyExchange />

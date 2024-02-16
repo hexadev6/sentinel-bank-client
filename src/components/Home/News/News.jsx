@@ -8,28 +8,25 @@ import {
   Button,
 } from "@material-tailwind/react";
 import SubHeading from "../../Shared/Heading Title/SubHeading";
+import useAllNotice from "../../../Hooks/useAllNotice";
+import { Link } from "react-router-dom";
 
 const News = () => {
   const [latesNews, setLatesNews] = useState([]);
   const [showAll, setShowAll] = useState([]);
   const [isToggle, setIsToggle] = useState(false);
+  const { isPending, refetch, error, allnotice } = useAllNotice();
 
   useEffect(() => {
-    axios
-      .get("/news.json")
-      .then((res) => {
-        setLatesNews(res.data);
-        setShowAll(res.data.slice(0, 3));
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    setShowAll(allnotice?.slice(0, 3));
+  }, [allnotice]);
 
   const HandleShow = () => {
     setIsToggle((prevToggle) => !prevToggle);
     if (!isToggle) {
-      setShowAll(latesNews);
+      setShowAll(allnotice);
     } else {
-      setShowAll(latesNews.slice(0, 3));
+      setShowAll(allnotice?.slice(0, 3));
     }
   };
 
@@ -39,7 +36,7 @@ const News = () => {
       <div className="container mx-auto  gap-5 justify-between items-center ">
         {/* news maping */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20 justify-between items-center">
-          {showAll.map((news, index) => (
+          {showAll?.map((news, index) => (
             <Card key={index} className="w-full flex-col rounded-none h-full ">
               {/* img */}
               <CardHeader
@@ -56,19 +53,26 @@ const News = () => {
               <CardBody className="flex flex-col  flex-1 h-full">
                 {/* date */}
                 <p className="mb-4 uppercase font-light text-light-gray">
-                  {news.date}
+                  {news.createdAt.split("T")[0]}
                 </p>
                 {/* title */}
                 <Typography variant="h6" color="blue-gray" className="mb-2 ">
                   {news.title}
                 </Typography>
                 {/* content */}
-                <Typography color="gray" className="mb-8 font-normal flex-1">
-                  {news.content}
-                </Typography>
+                <Typography
+                  color="gray"
+                  className="mb-8 font-normal flex-1"
+                  dangerouslySetInnerHTML={{
+                    __html: `${news?.description
+                      .split(" ")
+                      .slice(0, 20)
+                      .join(" ")} ...`,
+                  }}
+                />
                 {/*  button */}
-                <a href="#" className="inline-block">
-                  <Button
+                <Link to={`bankUpdate/${news?._id}`}>
+                 <Button
                     variant="text"
                     className="flex items-center gap-2 border hover:border-nevy-blue hover:text-nevy-blue rounded-none bg-nevy-blue text-white"
                   >
@@ -88,7 +92,7 @@ const News = () => {
                       />
                     </svg>
                   </Button>
-                </a>
+                 </Link>
               </CardBody>
             </Card>
           ))}
@@ -96,13 +100,14 @@ const News = () => {
 
         {/* conditional button */}
         <div className="text-center">
-          <Button
-            onClick={HandleShow}
-            variant="text"
-            className="mt-10 gap-2 border hover:bg-nevy-blue hover:text-text-white rounded-none bg-nevy-blue text-white"
-          >
-            {isToggle ? " Show Less" : "Show More"}
-          </Button>
+          <Link to={"bankUpdate"}>
+            <Button
+              variant="text"
+              className="mt-10 gap-2 border hover:bg-nevy-blue hover:text-text-white rounded-none bg-nevy-blue text-white"
+            >
+              Show all
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

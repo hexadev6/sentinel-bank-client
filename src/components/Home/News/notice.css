@@ -1,0 +1,24 @@
+.text-editor h1{
+    font-size: 2.25rem
+}
+.text-editor h2{
+    font-size: 1.5rem
+}
+.text-editor h3{
+    font-size: 1.25rem
+}
+.text-editor ul {
+    list-style-type: disc; 
+    padding-left: 60px;
+  }
+  
+  .text-editor ol {
+    list-style-type: decimal; 
+    padding-left: 60px;
+
+  }
+
+  .text-editor a{
+    text-decoration: underline;
+    color: blue;
+  }
