@@ -6,9 +6,10 @@ import "react-quill/dist/quill.snow.css";
 import multiImgUpload from "../../../Hooks/multiImgUpload";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import "../../DashBoard/Notice/notice.css";
 import { MdDelete, MdEdit } from "react-icons/md";
 import swal from "sweetalert";
+import "../../Home/Money Exchange/scroll.css";
+import useAllNotice from "../../../Hooks/useAllNotice";
 
 const Notice = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -16,28 +17,13 @@ const Notice = () => {
   const axiosPublic = useAxiosPublic();
   const [selectedNotice, setSelectedNotice] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  // get
-  const {
-    isPending,
-    refetch,
-    error,
-    data: allnotice,
-  } = useQuery({
-    queryKey: ["allnotice"],
-    queryFn: async () => {
-      try {
-        const res = await axiosPublic.get("/allNotice");
-        // console.log(res.data);
-        return res.data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
+  const [isLoading, setIsLoading] = useState(false);
+  const { isPending, refetch, error, allnotice } = useAllNotice();
 
   // post
   const HandleNotice = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const form = e.target;
     const title = form.title.value;
     const image = form.photo.files[0];
@@ -49,9 +35,8 @@ const Notice = () => {
       description: value,
     };
 
-
-    if (isEditing===true && selectedNotice) {
-      console.log(isEditing)
+    if (isEditing === true && selectedNotice) {
+      console.log(isEditing);
       // If editing, use the patch endpoint instead of post
       await axiosPublic
         .patch(`/allNotice/${selectedNotice._id}`, notice)
@@ -59,28 +44,31 @@ const Notice = () => {
           form.title.value = "";
           form.photo.value = "";
           setValue("");
-          console.log(res.data)
-          setSelectedNotice(null)
+          console.log(res.data);
+          setSelectedNotice(null);
           setIsEditing(false); // Reset the editing state after successful patch
           refetch();
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     } else {
       await axiosPublic
-      .post("/allNotice", notice)
-      .then((res) => {
-        form.title.value = "";
-        form.photo.value = "";
-        setValue("");
-        refetch();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .post("/allNotice", notice)
+        .then((res) => {
+          form.title.value = "";
+          form.photo.value = "";
+          setValue("");
+          refetch();
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsLoading(false);
+        });
     }
-
   };
 
   // delete
@@ -105,7 +93,7 @@ const Notice = () => {
           })
           .catch((err) => console.log(err));
       } else {
-        swal("Your post file is safe!");
+        swal("Your post is safe!");
       }
     });
   };
@@ -114,14 +102,12 @@ const Notice = () => {
   const HandleEdit = (notice) => {
     setSelectedNotice(notice);
     setValue(notice?.description);
-    setIsEditing(true)
+    setIsEditing(true);
   };
 
-
-
   return (
-    <div className="p-5 grid grid-cols-6 gap-4 justify-between">
-      <div className="col-span-4">
+    <div className="p-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 justify-between">
+      <div className=" xl:col-span-2">
         <Typography
           variant="h4"
           color="blue-gray"
@@ -178,12 +164,19 @@ const Notice = () => {
               darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
             }`}
           >
-            Share this notice
+            {isLoading ? "Please Wait..." : "Share this notice"}
           </button>
         </form>
       </div>
 
-      <div className="flex gap-3 flex-col col-span-2">
+      <div className="flex flex-col xl:col-span-1 gap-4 h-screen overflow-auto scrollbar">
+      <Typography
+          variant="h4"
+          color="blue-gray"
+          className={` ${darkMode ? "text-blue-gray-400" : "text-nevy-blue"} text-end`}
+        >
+          All Notices
+        </Typography>
         {allnotice?.map((notice) => (
           <div className="flex items-center justify-between gap-4 shadow-md  p-5 w-full">
             <div className="flex gap-3 items-center ">
@@ -193,10 +186,10 @@ const Notice = () => {
                 alt=""
               />
               <div className="flex flex-col">
-                <h5 className="text-lg font-medium overflow-hidden break-words">
+                <h5 className="text-sm overflow-hidden break-words">
                   {notice?.title}
                 </h5>
-                <p className="text-sm text-gray-400 ">
+                <p className="text-xs text-gray-400 ">
                   Published on:
                   {new Date(notice?.createdAt).toISOString().split("T")[0]}
                 </p>
@@ -205,21 +198,15 @@ const Notice = () => {
 
             <div className="flex gap-2 items-center justify-between">
               <MdEdit
-                className="bg-blue-gray-100 w-8 h-8 rounded p-1"
+                className="bg-gray-100 w-8 h-8 rounded p-1 text-blue-gray-700"
                 onClick={() => HandleEdit(notice)}
               />
               <MdDelete
-                className="bg-blue-gray-100 w-8 h-8 rounded p-1"
+                className="bg-gray-100 w-8 h-8 rounded p-1 text-blue-gray-700"
                 onClick={() => HandleDelete(notice._id)}
               />
             </div>
           </div>
-
-          //   <div className=" text-xl">
-
-          //     {/* <span>description:   </span> */}
-          //     {/* <p dangerouslySetInnerHTML={{ __html: notice.description }}></p> */}
-          //   </div>
         ))}
       </div>
     </div>
