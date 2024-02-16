@@ -20,12 +20,12 @@ const ApplicationCard = () => {
             <div className="flex justify-center gap-8 mt-5 items-center">
               <Link to={"/dashboard/applicationCard/debit"}>
                 <button className="px-10 py-2 border hover:bg-nevy-blue hover:text-white font-bold ease-linear duration-200  border-nevy-blue">
-                  Debit
+                  Debit Card
                 </button>
               </Link>
               <Link to={"/dashboard/applicationCard/cedit"}>
                 <button className="px-10 py-2 border hover:bg-nevy-blue hover:text-white font-bold ease-linear duration-200  border-nevy-blue">
-                  Cedit{" "}
+                  Cedit Card{" "}
                 </button>
               </Link>
             </div>
