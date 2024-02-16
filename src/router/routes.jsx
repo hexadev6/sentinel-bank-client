@@ -17,6 +17,8 @@ import DebitCard from "../pages/Dashboard/DebitCard";
 import CeditCard from "../pages/Dashboard/CeditCard";
 import ApplicationCard from "../pages/Dashboard/ApplicationCard";
 import Notice from "../components/DashBoard/Notice/Notice";
+import BankUpdate from "../components/Home/News/BankUpdate";
+import ReadNotice from "../components/Home/News/ReadNotice";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,15 @@ const router = createBrowserRouter([
       {
         path: "aboutUs/:section",
         element: <AboutUs />,
+      },
+      {
+        path: "/bankUpdate",
+        element: <BankUpdate />,
+      },
+      {
+        path: "/bankUpdate/:id",
+        element: <ReadNotice />,
+        loader:({params})=>fetch(`http://localhost:5000/allNotice/${params.id}`)
       },
       {
         path: "contact/:section",
