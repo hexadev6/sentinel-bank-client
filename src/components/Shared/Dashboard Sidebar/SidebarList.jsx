@@ -13,7 +13,7 @@ const SidebarList = () => {
   const Logout = () => {
     userLogOut()
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((err) => {
         console.log(err);

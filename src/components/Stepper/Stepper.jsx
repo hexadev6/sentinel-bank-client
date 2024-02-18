@@ -10,7 +10,7 @@ const Stepper = () => {
     const handleStepComplete=()=>{
           if(currentStep<totalStep){
             setCurrentStep(currentStep+1)
-            console.log('before',currentStep,totalStep);
+            // console.log('before',currentStep,totalStep);
           }
 
     }

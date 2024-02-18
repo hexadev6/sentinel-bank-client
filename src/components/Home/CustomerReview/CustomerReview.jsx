@@ -32,7 +32,7 @@ const CustomerReview = () => {
 
   const handleRatingChange = (newValue) => {
     setRatingValue(newValue);
-    console.log(newValue);
+    // console.log(newValue);
   };
 
   const {
@@ -45,7 +45,7 @@ const CustomerReview = () => {
     queryFn: async () => {
       try {
         const res = await axiosPublic.get("/allReviews");
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       } catch (error) {
         console.log(error);
@@ -103,7 +103,7 @@ const CustomerReview = () => {
     await axiosPublic
       .post("/allReviews", reviews)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setOpen(!open);
         setIsLoading(false);
         refetch();

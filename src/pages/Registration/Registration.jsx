@@ -85,11 +85,11 @@ const RegistrationForm = ({ onComplete }) => {
   const axiosPublic=useAxiosPublic()
   const onSubmit = async (data) => {
     const accepted = data.terms.checked;
-    console.log(data);
+    // console.log(data);
 
       userSignUp(data.email,data.password)
       .then((result) => {
-              console.log("user create", result.user);
+              // console.log("user create", result.user);
               Swal.fire({
                 position: "center",
                 icon: "success",
@@ -101,17 +101,17 @@ const RegistrationForm = ({ onComplete }) => {
                 sendEmailVerification(result.user)
                   .then(() => {
                     if (result.user) {
-                      console.log("email verify", result.user);
+                      // console.log("email verify", result.user);
                       UserProfileUpdate(data.name, null)
                                       .then(async (result) => {
-                                        console.log('user Created regi',result);
+                                        // console.log('user Created regi',result);
                                 const res = await axiosPublic.post("/createUser", {
                                           email: data.email,
                                           name: data.name,
                                           image: null,
                                           acc_num: 0,
                                         });
-                                        console.log(res);
+                                        // console.log(res);
                                         if (res.data.success) {
                                           onComplete();
                                         }

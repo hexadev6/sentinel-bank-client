@@ -31,7 +31,7 @@ const TABLE_HEAD = [
 
 const CardManagement = () => {
   const [card, isLoading, refetch] = useAllCard();
-  console.log(card);
+  // console.log(card);
   const axios = useAxiosSecure();
   const [open, setOpen] = useState(false);
   const [dialogId, setDialogId] = useState("");

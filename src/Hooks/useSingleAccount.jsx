@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
 const useSingleAccount = (id) => {
-  console.log(id)
+  // console.log(id)
   const axiosPublic = useAxiosPublic();
   const {
     data: singleAccount,
@@ -12,7 +12,7 @@ const useSingleAccount = (id) => {
     queryKey: ["account", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/findBankAccountOne/${id}`);
-      console.log(res.data)
+      // console.log(res.data)
       return res.data.data;
     },
   });

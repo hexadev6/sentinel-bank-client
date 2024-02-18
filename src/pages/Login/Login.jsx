@@ -81,13 +81,13 @@ const Login = () => {
 
   
   const handlePassReset=()=>{
-    console.log('email reset',email);
+    // console.log('email reset',email);
     sendPasswordResetEmail(auth,email)
     .then(result=>{
       Swal.fire({
         text: "Please check your email to Reset Password.",
       });
-      console.log(result.user);
+      // console.log(result.user);
     })
     .catch(err=>{
       console.log(err);
@@ -96,10 +96,10 @@ const Login = () => {
  
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     // email getting
     setEmail(data.email)
-    console.log(email);
+    // console.log(email);
    // error handle
     setPass('')
     // user login

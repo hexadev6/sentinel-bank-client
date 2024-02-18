@@ -23,7 +23,7 @@ const UserDialog = ({userinfo,refetch}) => {
       } = useForm()
     const handleOpen = () => setOpen(!open);
     const {_id,name, email,dateOfBirth,mobile,location,nationality}=userinfo || {};
-    console.log("user",userinfo);
+    // console.log("user",userinfo);
     const onSubmit=async(data)=>{
         const updateProfile={
             name:data?.name,
@@ -33,10 +33,10 @@ const UserDialog = ({userinfo,refetch}) => {
             location: data?.location,
             nationality: data?.nationality
         }
-        console.log(updateProfile);
+        // console.log(updateProfile);
          await axiosSecure.patch(`/updateUser/${_id}`,updateProfile)
         .then(res=>{
-            console.log(res.data.message=='success');
+            // console.log(res.data.message=='success');
             if(res.data.message=='success'){
                 Swal.fire({
                     position: "center",
