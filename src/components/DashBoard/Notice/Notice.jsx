@@ -36,8 +36,6 @@ const Notice = () => {
     };
 
     if (isEditing === true && selectedNotice) {
-      // console.log(isEditing);
-      // If editing, use the patch endpoint instead of post
       await axiosPublic
         .patch(`/allNotice/${selectedNotice._id}`, notice)
         .then((res) => {

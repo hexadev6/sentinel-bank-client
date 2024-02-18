@@ -10,7 +10,7 @@ import useDarkMode from "../../../Hooks/useDarkMode";
 
 const AllAccounts = ({ allUsers, isPending }) => {
   const { user } = useAuth();
-  const { userinfo ,refetch} = useStatus({ email: user?.email });
+  const { userinfo, refetch } = useStatus({ email: user?.email });
   const axiosPublic = useAxiosPublic();
   const { darkMode, toggleDarkMode } = useDarkMode();
 
@@ -28,18 +28,18 @@ const AllAccounts = ({ allUsers, isPending }) => {
           await axiosPublic
             .patch(`/updateUser/${id}`, { acc_num: accountNumber })
             .then((res) => {
-              if (res.data.data!=null) {
+              if (res.data.data != null) {
                 swal("Poof! You have switched successfully", {
                   icon: "success",
                 });
-                refetch()
+                refetch();
               } else {
                 swal("Account switching is not possible at this moment!");
               }
             })
-            .catch(err=>{
-              console.log(err)
-            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       });
     } else {
@@ -54,30 +54,28 @@ const AllAccounts = ({ allUsers, isPending }) => {
       ) : (
         <>
           {allUsers?.map((user) => (
-             <div
-             key={user._id}
-             className={`p-6 rounded shadow-lg w-full flex flex-col md:h-fit duration-300 transition ${
-               darkMode ? "hover:bg-[#25324b]" : "hover:bg-blue-gray-50 "
-             }`}
-
-             onClick={() => HandleSwitch(user?.acc_num, user?.status)}
-           >
-             <h1 className="text-lg font-semibold">{user?.type} Account</h1>
-             <p className="text-gray-500 text-sm">
-               Account no. {user?.acc_num}
-             </p>
-             <p className="mb-4 text-gray-500 text-sm flex-1">
-               Nominee: {user?.nominee}
-             </p>
-             <Chip
-               className={` w-fit  `}
-            
-               variant="ghost"
-               size="sm"
-               value={user?.status === "active" ? "Active" : "Not Active"}
-               color={user?.status === "active" ? "green" : "black"}
-             />
-           </div>
+            <div
+              key={user._id}
+              className={`p-6 rounded shadow-lg w-full flex flex-col md:h-fit duration-300 transition ${
+                darkMode ? "hover:bg-[#25324b]" : "hover:bg-blue-gray-50 "
+              }`}
+              onClick={() => HandleSwitch(user?.acc_num, user?.status)}
+            >
+              <h1 className="text-lg font-semibold">{user?.type} Account</h1>
+              <p className="text-gray-500 text-sm">
+                Account no. {user?.acc_num}
+              </p>
+              <p className="mb-4 text-gray-500 text-sm flex-1">
+                Nominee: {user?.nominee}
+              </p>
+              <Chip
+                className={` w-fit  `}
+                variant="ghost"
+                size="sm"
+                value={user?.status === "active" ? "Active" : "Not Active"}
+                color={user?.status === "active" ? "green" : "black"}
+              />
+            </div>
           ))}
         </>
       )}
