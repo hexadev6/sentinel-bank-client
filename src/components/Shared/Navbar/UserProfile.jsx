@@ -8,6 +8,7 @@ import { useRef} from "react";
 import multiImgUpload from "../../../Hooks/multiImgUpload";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Support from "../Support/Support";
 
 
 
@@ -94,6 +95,8 @@ const UserProfile = () => {
                             <h2>Location: <span>{userinfo?.location} </span> </h2>
                             <h2>Nationality: {userinfo?.nationality} </h2>
                             <div className=" pt-24 pl-16"><UserDialog userinfo={userinfo} refetch={refetch}></UserDialog></div>
+
+                            <Support></Support>
                         </div>
 
                     </div>
