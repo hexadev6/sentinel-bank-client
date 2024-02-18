@@ -8,7 +8,6 @@ import { useRef} from "react";
 import multiImgUpload from "../../../Hooks/multiImgUpload";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import Support from "../Support/Support";
 
 
 
@@ -16,6 +15,7 @@ const UserProfile = () => {
     const { user } = useAuth()
     const userEmail = user?.email;
     const { userinfo, refetch } = useStatus({ email: userEmail });
+    // console.log(userinfo)
     const axiosSecure= useAxiosSecure()
 
     const inputRef = useRef(null)
@@ -29,10 +29,10 @@ const UserProfile = () => {
     const HandleImageChange = async(e) => {
         const profileImg = e.target.files[0];
         const photo = await multiImgUpload(profileImg);
-        console.log(photo);
+        // console.log(photo);
         await axiosSecure.patch(`/updateUser/${userinfo._id}`,{image: photo})
         .then(res=>{
-            console.log('after patch',res.data);
+            // console.log('after patch',res.data);
             if(res.data.message=='success'){
                 Swal.fire({
                     position: "center",

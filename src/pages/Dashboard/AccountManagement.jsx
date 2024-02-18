@@ -71,7 +71,7 @@ const AccountManagement = () => {
       }
     });
   };
-  console.log(allAcounts);
+  // console.log(allAcounts);
   return (
     <div className='px-8 py-8'>
       {/* table */}

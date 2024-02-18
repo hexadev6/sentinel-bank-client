@@ -62,7 +62,7 @@ const Transfer = () => {
     const withdrawForAccount = allDeposits?.filter(
       (withdraw) => withdraw.transactionType === "withdraw"
     );
-    console.log(withdrawForAccount);
+    // console.log(withdrawForAccount);
     const sumOfWithdraw = withdrawForAccount?.reduce(
       (total, withdraw) => total + withdraw.amount,
       0

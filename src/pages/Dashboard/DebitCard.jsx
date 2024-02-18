@@ -52,7 +52,7 @@ const DebitCard = () => {
       card: "debit",
       status: "not issue",
     };
-    console.log(cardinfo);
+    // console.log(cardinfo);
     axios
       .post(`/applicationCard`, cardinfo)
       .then(() => notify())
