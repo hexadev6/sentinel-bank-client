@@ -8,7 +8,6 @@ import { useRef} from "react";
 import multiImgUpload from "../../../Hooks/multiImgUpload";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import Support from "../Support/Support";
 
 
 
