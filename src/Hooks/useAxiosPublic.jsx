@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  baseURL: "http://localhost:5000",
-  withCredentials: true,
+  baseURL: import.meta.env.VITE_SERVER_URL,
+  // withCredentials: true,
 });
 
 const useAxiosPublic = () => {

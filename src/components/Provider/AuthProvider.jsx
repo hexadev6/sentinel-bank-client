@@ -11,11 +11,13 @@ import {
 import auth from "../../Firebase/Firebase.config";
 import PropTypes from "prop-types";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const axios = useAxiosSecure();
+  // const axios = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 

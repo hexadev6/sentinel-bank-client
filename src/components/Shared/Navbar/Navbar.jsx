@@ -8,7 +8,6 @@ import ProfileMenu from "./ProfileDropdown";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const { user } = useAuth();
-  console.log(user);
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
@@ -54,7 +53,7 @@ const Navbar = () => {
           {/* navLink */}
           <NavList></NavList>
         </div>
-        {(user?.emailVerified===true)? (
+        {user?.emailVerified === true ? (
           <div className="hidden lg:flex items-center gap-5">
             {/* deshbord */}
             <Link

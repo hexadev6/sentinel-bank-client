@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import './Chat.css';
+import React, { useEffect, useState } from "react";
+import "./Chat.css";
 import io from "socket.io-client";
-import useStatus from '../../../Hooks/useStatus';
-import useAuth from '../../../Hooks/useAuth';
+import useStatus from "../../../Hooks/useStatus";
+import useAuth from "../../../Hooks/useAuth";
 
-
-const socket = io.connect("http://localhost:5000", { transports: ["websocket"] });
+const socket = io.connect("http://localhost:5000", {
+  transports: ["websocket"],
+});
 
 const Chat = () => {
-  
+  const { user } = useAuth();
+  const userEmail = user?.email;
 
-
-    const { user } = useAuth()
-    const userEmail = user?.email;
-   
-    const { userinfo, refetch } = useStatus({ email: userEmail });
+  const { userinfo, refetch } = useStatus({ email: userEmail });
 
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -29,22 +27,20 @@ const Chat = () => {
         time: new Date(Date.now()).toLocaleTimeString(),
         role: userinfo?.status, // Assuming userinfo has a "status" property indicating user or admin
       };
-  
+
       console.log("Sending message:", messageData);
-  
+
       await socket.emit("send_message", messageData);
       // setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
     }
   };
-  
+
   useEffect(() => {
     socket.off("receive_message").on("receive_message", (data) => {
-
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
-
 
   return (
     <div>
@@ -56,9 +52,12 @@ const Chat = () => {
           <div className="message-container">
             {messageList.map((messageContent, index) => {
               return (
-                <div key={index}
+                <div
+                  key={index}
                   className={`message `}
-                  id={userinfo?.status === messageContent.author? "other" : "you"}
+                  id={
+                    userinfo?.status === messageContent.author ? "other" : "you"
+                  }
                 >
                   <div>
                     <div className="message-content">
@@ -66,7 +65,9 @@ const Chat = () => {
                     </div>
                     <div className="message-meta">
                       <p id="time">{messageContent.time}</p>
-                      <p id="author">{messageContent.role === 'admin' ? 'admin' : 'user'}</p>
+                      <p id="author">
+                        {messageContent.role === "admin" ? "admin" : "user"}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const location = useLocation();
-  console.log(location);
+
   const [position, setPosition] = useState(0);
   useEffect(() => {
     if (location?.search === "?rates=ExchangeRates") {
