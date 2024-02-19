@@ -12,52 +12,49 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-const UserDialog = ({userinfo,refetch}) => {
- 
-
-    const [open, setOpen] = React.useState(false);
-    const axiosSecure= useAxiosSecure()
-    const {
-        register,
-        handleSubmit,
-      } = useForm()
-    const handleOpen = () => setOpen(!open);
-    const {_id,name, email,dateOfBirth,mobile,location,nationality}=userinfo || {};
-    // console.log("user",userinfo);
-    const onSubmit=async(data)=>{
-        const updateProfile={
-            name:data?.name,
-            DOB: data?.DOB,
-            email: email,
-            mobile:data?.mobile,
-            location: data?.location,
-            nationality: data?.nationality
+const UserDialog = ({ userinfo, refetch }) => {
+  const [open, setOpen] = React.useState(false);
+  const axiosSecure = useAxiosSecure();
+  const { register, handleSubmit } = useForm();
+  const handleOpen = () => setOpen(!open);
+  const { _id, name, email, dateOfBirth, mobile, location, nationality } =
+    userinfo || {};
+  // console.log("user",userinfo);
+  const onSubmit = async (data) => {
+    const updateProfile = {
+      name: data?.name,
+      DOB: data?.DOB,
+      email: email,
+      mobile: data?.mobile,
+      location: data?.location,
+      nationality: data?.nationality,
+    };
+    // console.log(updateProfile);
+    await axiosSecure
+      .patch(`/updateUser/${_id}`, updateProfile)
+      .then((res) => {
+        // console.log(res.data.message=='success');
+        if (res.data.message == "success") {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Profile Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-        // console.log(updateProfile);
-         await axiosSecure.patch(`/updateUser/${_id}`,updateProfile)
-        .then(res=>{
-            // console.log(res.data.message=='success');
-            if(res.data.message=='success'){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Profile Updated Successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-            }
-           
-            refetch()
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    }
-   
-    return (
-  <>
+
+        refetch();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return (
+    <>
       <div className="flex gap-1 justify-between">
-        <Link to='/'>
+        <Link to="/">
           <Button variant="outlined">Go Home</Button>
         </Link>
         <Button onClick={handleOpen} className="text-blue-700" variant="text">
@@ -84,26 +81,57 @@ const UserDialog = ({userinfo,refetch}) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogBody>
             <div className="grid gap-6">
-              <Input {...register('name')} defaultValue={name} label="Username" />
-              <Input {...register('DOB')} defaultValue={dateOfBirth} type="date" label="Date of birth" />
-              <Input disabled {...register('email')} defaultValue={email} label="Email" />
-              <Input {...register('mobile')} defaultValue={mobile} label="Mobile" />
-              <Input {...register('location')} defaultValue={location} label="Location" />
-              <Input {...register('nationality')} defaultValue={nationality} label="Nationality" />
+              <Input
+                {...register("name")}
+                defaultValue={name}
+                label="Username"
+              />
+              <Input
+                {...register("DOB")}
+                defaultValue={dateOfBirth}
+                type="date"
+                label="Date of birth"
+              />
+              <Input
+                disabled
+                {...register("email")}
+                defaultValue={email}
+                label="Email"
+              />
+              <Input
+                {...register("mobile")}
+                defaultValue={mobile}
+                label="Mobile"
+              />
+              <Input
+                {...register("location")}
+                defaultValue={location}
+                label="Location"
+              />
+              <Input
+                {...register("nationality")}
+                defaultValue={nationality}
+                label="Nationality"
+              />
             </div>
           </DialogBody>
           <DialogFooter className="space-x-2">
             <Button variant="text" color="gray" onClick={handleOpen}>
               Cancel
             </Button>
-            <Button onClick={handleOpen} variant="gradient" type="submit" color="gray">
+            <Button
+              onClick={handleOpen}
+              variant="gradient"
+              type="submit"
+              color="gray"
+            >
               Save
             </Button>
           </DialogFooter>
         </form>
       </Dialog>
     </>
-    );
+  );
 };
 
 export default UserDialog;

@@ -7,7 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 import ProfileMenu from "./ProfileDropdown";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
-  const { user } = useAuth();
+  const { user, userLogOut } = useAuth();
   // console.log(user);
 
   const handleStickey = () => {
@@ -54,7 +54,7 @@ const Navbar = () => {
           {/* navLink */}
           <NavList></NavList>
         </div>
-        {(user?.emailVerified===true)? (
+        {user?.emailVerified === true ? (
           <div className="hidden lg:flex items-center gap-5">
             {/* deshbord */}
             <Link

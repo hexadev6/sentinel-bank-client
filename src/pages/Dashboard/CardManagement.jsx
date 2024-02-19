@@ -19,6 +19,7 @@ import AccountDetails from "../../components/DashBoard/AccountDetails/AccountDet
 
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAllCard from "../../Hooks/useallCard";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const TABLE_HEAD = [
   "Account Holder",
@@ -33,6 +34,7 @@ const CardManagement = () => {
   const [card, isLoading, refetch] = useAllCard();
   // console.log(card);
   const axios = useAxiosSecure();
+  // const axios = useAxiosPublic();
   const [open, setOpen] = useState(false);
   const [dialogId, setDialogId] = useState("");
 

@@ -10,11 +10,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import useStatus from "../../../../Hooks/useStatus";
 import useAuth from "../../../../Hooks/useAuth";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
 const Cards = () => {
   const { user } = useAuth() || {};
   const { userinfo } = useStatus({ email: user?.email }) || {};
   const axios = useAxiosSecure();
+  // const axios = useAxiosPublic();
   const {
     data: card,
     isLoading,
