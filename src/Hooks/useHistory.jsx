@@ -17,15 +17,14 @@ const useHistory = () => {
   } = useQuery({
     queryKey: ["allDeposits"],
     queryFn: async () => {
-        try {
-          const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
-          return res.data.data;
-        } catch (error) {
-          console.error(error);
-          return { error: "An error occurred while fetching data." };
-      
-        }
-      },
+      try {
+        const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
+        return res.data.data;
+      } catch (error) {
+        console.error(error);
+        return { error: "An error occurred while fetching data." };
+      }
+    },
   });
 
   return { isPending, error, allDeposits, refetch };

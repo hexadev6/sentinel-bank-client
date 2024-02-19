@@ -11,11 +11,13 @@ import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
 import useDarkMode from "../../Hooks/useDarkMode";
 import useHistory from "../../Hooks/useHistory";
 import useFindByAccNum from "../../Hooks/useFindByAccNum";
+import ChatApp from "../../components/DashBoard/ChatApp/ChatApp";
 
 const Overview = () => {
   // const {darkMode, toggleDarkMode} = useDarkMode()
   const { user } = useAuth();
-  const { userinfo } = useStatus({ email: user?.email });
+  const { userinfo:normalUserInfo } = useStatus({ email: user?.email });
+  // const { userinfo:adminInfo } = useStatus({ email: 'team.hexadev@gmail.com' });
   const axiosPublic = useAxiosPublic();
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
@@ -26,11 +28,13 @@ const Overview = () => {
   useEffect(() => {
     refetch();
     setTotalBalance(accountByNum);
-    // axiosPublic
-    //   .get(`/findByAccNum/${userinfo?.acc_num}`)
-    //   .then((res) => setTotalBalance(res.data.data))
-    //   .catch((error) => console.log(error));
   }, [totalDeposits]);
+
+  
+  // Set userId and adminId dynamically
+  const userId = normalUserInfo?._id;
+  const adminId = '65c62bccbeb6949fbca80189';
+
 
   return (
     <>
@@ -39,6 +43,7 @@ const Overview = () => {
           <Transfer />
           <UserGraph />
           <Transaction />
+          <ChatApp  key={user?._id} userId={userId} adminId={adminId} />
         </div>
         <Cards />
       </div>

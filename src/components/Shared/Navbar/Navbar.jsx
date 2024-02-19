@@ -8,6 +8,7 @@ import ProfileMenu from "./ProfileDropdown";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const { user } = useAuth();
+  // console.log(user);
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);

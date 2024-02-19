@@ -37,7 +37,7 @@ const CheckoutForm = ({ userInfo, refetch }) => {
     axiosPublic
       .post("/ssl-payment", paymentInfo)
       .then((res) => {
-        console.log("url====", res.data);
+        // console.log("url====", res.data);
         window.location.replace(res.data.url);
 
       })

@@ -8,6 +8,7 @@ import { useRef } from "react";
 import multiImgUpload from "../../../Hooks/multiImgUpload";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+<<<<<<< HEAD
 import Support from "../Support/Support";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
@@ -17,6 +18,17 @@ const UserProfile = () => {
   const { userinfo, refetch } = useStatus({ email: userEmail });
   const axiosSecure = useAxiosSecure();
   //   const axiosSecure = useAxiosPublic();
+=======
+
+
+
+const UserProfile = () => {
+    const { user } = useAuth()
+    const userEmail = user?.email;
+    const { userinfo, refetch } = useStatus({ email: userEmail });
+    // console.log(userinfo)
+    const axiosSecure= useAxiosSecure()
+>>>>>>> 270e8c37e94b1ba03c7f2c8c1f3043ec14dc655a
 
   const inputRef = useRef(null);
   const handleImageClick = () => {
@@ -48,6 +60,7 @@ const UserProfile = () => {
       });
   };
 
+<<<<<<< HEAD
   return (
     <div className="min-h-screen mb-10">
       <div className="relative">
@@ -58,6 +71,40 @@ const UserProfile = () => {
           <div className="flex gap-6 absolute mx-44 -mt-60 w-2/3 h-[450px] rounded-md bg-blue-100 border mb-10">
             <div>
               <img className="w-80 h-96 " src={userinfo?.image} alt="" />
+=======
+    const HandleImageChange = async(e) => {
+        const profileImg = e.target.files[0];
+        const photo = await multiImgUpload(profileImg);
+        // console.log(photo);
+        await axiosSecure.patch(`/updateUser/${userinfo._id}`,{image: photo})
+        .then(res=>{
+            // console.log('after patch',res.data);
+            if(res.data.message=='success'){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Profile Updated Successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+            }
+           
+            refetch()
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+      };
+
+  
+
+
+
+    return (
+        <div className="min-h-screen mb-10">
+            <div className="relative">
+                <CommonBanner img={img1}></CommonBanner>
+>>>>>>> 270e8c37e94b1ba03c7f2c8c1f3043ec14dc655a
 
               <div className="relative ml-64 -mt-12" onClick={handleImageClick}>
                 {/* Icon for image upload */}

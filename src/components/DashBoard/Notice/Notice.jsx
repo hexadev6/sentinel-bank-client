@@ -36,15 +36,13 @@ const Notice = () => {
     };
 
     if (isEditing === true && selectedNotice) {
-      console.log(isEditing);
-      // If editing, use the patch endpoint instead of post
       await axiosPublic
         .patch(`/allNotice/${selectedNotice._id}`, notice)
         .then((res) => {
           form.title.value = "";
           form.photo.value = "";
           setValue("");
-          console.log(res.data);
+          // console.log(res.data);
           setSelectedNotice(null);
           setIsEditing(false); // Reset the editing state after successful patch
           refetch();
