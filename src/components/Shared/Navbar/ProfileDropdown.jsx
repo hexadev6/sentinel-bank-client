@@ -32,7 +32,6 @@ const profileMenuItems = [
 
 function ProfileMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-<<<<<<< HEAD
   const { user, userLogOut } = useAuth();
   const userEmail = user?.email;
   const { userinfo } = useStatus({ email: userEmail });
@@ -41,30 +40,14 @@ function ProfileMenu() {
   const Logout = () => {
     userLogOut()
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-=======
-  const {user,userLogOut} = useAuth()
-  const userEmail= user?.email
-  const { userinfo} = useStatus({ email: userEmail });
- 
-  const closeMenu = () => setIsMenuOpen(false);
-  const Logout= ()=>{
-    userLogOut()
-    .then(result=>{
-        // console.log(result.user);
-    })
-    .catch(err =>{
-        console.log(err);
-    })
-  }
 
   // console.log(userinfo);
->>>>>>> 270e8c37e94b1ba03c7f2c8c1f3043ec14dc655a
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">

@@ -7,7 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 import ProfileMenu from "./ProfileDropdown";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
-  const { user } = useAuth();
+  const { user, userLogOut } = useAuth();
   // console.log(user);
 
   const handleStickey = () => {

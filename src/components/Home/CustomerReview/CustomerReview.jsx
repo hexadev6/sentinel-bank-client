@@ -45,11 +45,7 @@ const CustomerReview = () => {
     queryFn: async () => {
       try {
         const res = await axiosPublic.get("/allReviews");
-<<<<<<< HEAD
-
-=======
         // console.log(res.data);
->>>>>>> 270e8c37e94b1ba03c7f2c8c1f3043ec14dc655a
         return res.data;
       } catch (error) {
         console.log(error);

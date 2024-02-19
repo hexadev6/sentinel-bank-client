@@ -12,17 +12,14 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const UserDialog = ({ userinfo, refetch }) => {
   const [open, setOpen] = React.useState(false);
   const axiosSecure = useAxiosSecure();
-  // const axiosSecure = useAxiosPublic();
   const { register, handleSubmit } = useForm();
   const handleOpen = () => setOpen(!open);
   const { _id, name, email, dateOfBirth, mobile, location, nationality } =
     userinfo || {};
-  console.log("user", userinfo);
+  // console.log("user",userinfo);
   const onSubmit = async (data) => {
     const updateProfile = {
       name: data?.name,
@@ -32,11 +29,11 @@ const UserDialog = ({ userinfo, refetch }) => {
       location: data?.location,
       nationality: data?.nationality,
     };
-    console.log(updateProfile);
+    // console.log(updateProfile);
     await axiosSecure
       .patch(`/updateUser/${_id}`, updateProfile)
       .then((res) => {
-        console.log(res.data.message == "success");
+        // console.log(res.data.message=='success');
         if (res.data.message == "success") {
           Swal.fire({
             position: "center",
@@ -56,52 +53,6 @@ const UserDialog = ({ userinfo, refetch }) => {
 
   return (
     <>
-=======
-const UserDialog = ({userinfo,refetch}) => {
- 
-
-    const [open, setOpen] = React.useState(false);
-    const axiosSecure= useAxiosSecure()
-    const {
-        register,
-        handleSubmit,
-      } = useForm()
-    const handleOpen = () => setOpen(!open);
-    const {_id,name, email,dateOfBirth,mobile,location,nationality}=userinfo || {};
-    // console.log("user",userinfo);
-    const onSubmit=async(data)=>{
-        const updateProfile={
-            name:data?.name,
-            DOB: data?.DOB,
-            email: email,
-            mobile:data?.mobile,
-            location: data?.location,
-            nationality: data?.nationality
-        }
-        // console.log(updateProfile);
-         await axiosSecure.patch(`/updateUser/${_id}`,updateProfile)
-        .then(res=>{
-            // console.log(res.data.message=='success');
-            if(res.data.message=='success'){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Profile Updated Successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-            }
-           
-            refetch()
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    }
-   
-    return (
-  <>
->>>>>>> 270e8c37e94b1ba03c7f2c8c1f3043ec14dc655a
       <div className="flex gap-1 justify-between">
         <Link to="/">
           <Button variant="outlined">Go Home</Button>
