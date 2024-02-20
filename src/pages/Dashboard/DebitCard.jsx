@@ -6,11 +6,10 @@ import { useForm } from "react-hook-form";
 import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
 import useFindsingleByAC from "../../Hooks/useFindsingleByAC";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const DebitCard = () => {
   const axios = useAxiosSecure();
-  // const axios = useAxiosPublic();
+
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
 
@@ -54,14 +53,14 @@ const DebitCard = () => {
       card: "debit",
       status: "not issue",
     };
-    // console.log(cardinfo);
+
     axios
       .post(`/applicationCard`, cardinfo)
       .then(() => notify())
       .catch((err) => console.log(err));
   };
   return (
-    <div className=" mt-8  border border-black rounded-lg shadow-lg mx-20 p-20">
+    <div className=" mt-8  border border-black rounded-lg shadow-lg mx-2 md:mx-20 p-5 md:p-20">
       <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for debit Card
       </h2>

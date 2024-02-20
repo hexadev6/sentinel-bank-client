@@ -15,7 +15,7 @@ const useHistory = () => {
     data: allDeposits,
     refetch,
   } = useQuery({
-    queryKey: ["allDeposits"],
+    queryKey: ["allDeposits", userinfo],
     queryFn: async () => {
       try {
         const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);

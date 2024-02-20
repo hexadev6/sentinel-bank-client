@@ -5,11 +5,10 @@ import { useForm } from "react-hook-form";
 import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
 import useFindsingleByAC from "../../Hooks/useFindsingleByAC";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const CeditCard = () => {
   const axios = useAxiosSecure();
-  // const axios = useAxiosPublic();
+
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
 
@@ -60,7 +59,7 @@ const CeditCard = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className=" mt-8 border border-black rounded-lg shadow-lg  mx-20 md:p-20 p-5">
+    <div className=" mt-8 border border-black rounded-lg shadow-lg mx-2  md:mx-20 md:p-20 p-5">
       <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for Cedit Card
       </h2>

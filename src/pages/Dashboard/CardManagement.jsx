@@ -61,7 +61,7 @@ const CardManagement = () => {
         const res = await axios.patch(`/updateCard/${id}`, {
           status: status,
         });
-        if (res.data.success) {
+        if (res?.data.success) {
           refetch();
           swal("Poof! The account status is updated", {
             icon: "success",
