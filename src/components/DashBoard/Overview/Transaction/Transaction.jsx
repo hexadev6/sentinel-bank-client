@@ -23,7 +23,7 @@ import useStatus from "../../../../Hooks/useStatus";
 import useDarkMode from "../../../../Hooks/useDarkMode";
 import useHistory from "../../../../Hooks/useHistory";
 
-const Transaction = ({}) => {
+const Transaction = () => {
   const { isPending, error, allDeposits, refetch } = useHistory();
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
@@ -39,7 +39,7 @@ const Transaction = ({}) => {
 
   useEffect(() => {
     refetch();
-  }, [user, userinfo?.acc_num]);
+  }, [user, userinfo?.acc_num, refetch]);
 
   return (
     <>

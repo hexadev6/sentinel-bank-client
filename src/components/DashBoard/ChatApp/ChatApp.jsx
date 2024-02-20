@@ -18,7 +18,7 @@ const ChatApp = ({ userId, adminId }) => {
       console.log("Received message:", msg);
       const senderId = msg.sender;
       setSenderId(senderId);
-      console.log('sender id ==> ',senderId);
+      console.log("sender id ==> ", senderId);
 
       setMessages((prevMsg) => [...prevMsg, msg]);
     });
@@ -29,30 +29,26 @@ const ChatApp = ({ userId, adminId }) => {
   }, [userId]);
 
   const sendMessage = () => {
-    let msgObject; 
-    
-    
-    if(userId=='65c62bccbeb6949fbca80189') {
-      msgObject={
+    let msgObject;
+
+    if (userId == "65c62bccbeb6949fbca80189") {
+      msgObject = {
         sender: adminId,
-        receiver:senderId,
+        receiver: senderId,
         message: newMessage,
-      }   
-    }
-    else{
-      msgObject={
+      };
+    } else {
+      msgObject = {
         sender: userId,
         receiver: adminId,
         message: newMessage,
-      }   
+      };
     }
 
     socket.emit("sendMessage", msgObject);
     setMessages((prevMsg) => [...prevMsg, msgObject]);
     setNewMessage("");
   };
-
-  console.log(messages);
 
   return (
     <div>
