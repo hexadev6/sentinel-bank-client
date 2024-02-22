@@ -5,7 +5,7 @@ import AboutUs from "../pages/MainlayoutPages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Login from "../pages/Login/Login";
-import Overview from "../pages/Dashboard/Overview";
+
 import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
@@ -21,6 +21,8 @@ import ReadNotice from "../components/Home/News/ReadNotice";
 import ApplyLoan from "../pages/Dashboard/ApplyLoan";
 import LoanManagement from "../pages/Dashboard/LoanManagement";
 import LoanDetailsAdmin from "../pages/Dashboard/LoanDetailsAdmin";
+import OverviewAdmin from "../pages/Dashboard/OverviewAdmin";
+import OverviewUser from "../pages/Dashboard/OverviewUser";
 
 const router = createBrowserRouter([
   {
@@ -68,8 +70,12 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "overview",
-        element: <Overview />,
+        path: "admin/overview",
+        element: <OverviewAdmin />,
+      },
+      {
+        path: "user/overview",
+        element: <OverviewUser />,
       },
       {
         path: "quickBanking",
@@ -92,7 +98,7 @@ const router = createBrowserRouter([
         element: <LoanManagement />,
       },
       {
-        path: "LoanDetailsAdmin",
+        path: "LoanDetailsAdmin/:id",
         element: <LoanDetailsAdmin />,
       },
       {

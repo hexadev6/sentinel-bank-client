@@ -7,7 +7,7 @@ const AdminSidbar = () => {
   return (
     <>
       <NavLink
-        to="/dashboard/overview"
+        to="/dashboard/admin/overview"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -48,7 +48,7 @@ const AdminSidbar = () => {
         </div>
       </NavLink>
       <NavLink
-        to="/dashboard/users"
+        to="/"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"

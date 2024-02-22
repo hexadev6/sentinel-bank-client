@@ -17,7 +17,7 @@ const useAllLoan = () => {
     },
   });
 
-  return [loan, isLoading, refetch];
+  return { loan, isLoading, refetch };
 };
 
 export default useAllLoan;

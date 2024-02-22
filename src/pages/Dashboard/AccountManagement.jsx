@@ -35,16 +35,16 @@ const AccountManagement = () => {
   const [allAcounts, isLoading, refetch] = useAllAccounts();
   const axiosPublic = useAxiosPublic();
   const [open, setOpen] = useState(false);
-  const [dialogId, setDialogId] = useState('');
+  const [dialogId, setDialogId] = useState("");
 
   const handleOpen = (id) => {
     setOpen(!open);
-    setDialogId(id)
+    setDialogId(id);
   };
   if (isLoading)
     return (
-      <div className='min-h-screen flex items-center justify-center'>
-        <Spinner color='blue' />
+      <div className="min-h-screen flex items-center justify-center">
+        <Spinner color="blue" />
       </div>
     );
 
@@ -73,33 +73,35 @@ const AccountManagement = () => {
   };
   // console.log(allAcounts);
   return (
-    <div className='px-8 py-8'>
+    <div className="px-8 py-8">
       {/* table */}
-      <Card className='h-full w-full'>
-        <CardHeader floated={false} shadow={false} className='rounded-none'>
-          <div className='mb-8 flex items-center justify-between gap-8'>
+      <Card className="h-full w-full">
+        <CardHeader floated={false} shadow={false} className="rounded-none">
+          <div className="mb-8 flex items-center justify-between gap-8">
             <div>
-              <Typography variant='h5' color='blue-gray'>
+              <Typography variant="h5" color="blue-gray">
                 All Account list
               </Typography>
-              <Typography color='gray' className='mt-1 font-normal'>
+              <Typography color="gray" className="mt-1 font-normal">
                 See information about all accounts
               </Typography>
             </div>
           </div>
         </CardHeader>
-        <CardBody className='overflow-scroll px-0'>
-          <table className='mt-4 w-full min-w-max table-auto text-left'>
+        <CardBody className="overflow-scroll px-0">
+          <table className="mt-4 w-full min-w-max table-auto text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className='border-y border-blue-gray-100 bg-blue-gray-50/50 p-4'>
+                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                  >
                     <Typography
-                      variant='small'
-                      color='blue-gray'
-                      className='font-normal leading-none opacity-70'>
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal leading-none opacity-70"
+                    >
                       {head}
                     </Typography>
                   </th>
@@ -129,59 +131,64 @@ const AccountManagement = () => {
                   return (
                     <tr key={_id}>
                       <td className={classes}>
-                        <div className='flex items-center gap-3'>
-                          <Avatar src={profileImg} alt={holderName} size='sm' />
-                          <div className='flex flex-col'>
+                        <div className="flex items-center gap-3">
+                          <Avatar src={profileImg} alt={holderName} size="sm" />
+                          <div className="flex flex-col">
                             <Typography
-                              variant='small'
-                              color='blue-gray'
-                              className='font-normal'>
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
                               {holderName}
                             </Typography>
                             <Typography
-                              variant='small'
-                              color='blue-gray'
-                              className='font-normal opacity-70'>
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal opacity-70"
+                            >
                               {holderEmail}
                             </Typography>
                           </div>
                         </div>
                       </td>
                       <td className={classes}>
-                        <div className='flex flex-col'>
+                        <div className="flex flex-col">
                           <Typography
-                            variant='small'
-                            color='blue-gray'
-                            className='font-normal'>
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
                             {acc_num}
                           </Typography>
                         </div>
                       </td>
                       <td className={classes}>
-                        <div className='flex flex-col'>
+                        <div className="flex flex-col">
                           <Typography
-                            variant='small'
-                            color='blue-gray'
-                            className='font-normal'>
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
                             {nidnumber}
                           </Typography>
                         </div>
                       </td>
                       <td className={classes}>
-                        <div className='flex flex-col'>
+                        <div className="flex flex-col">
                           <Typography
-                            variant='small'
-                            color='blue-gray'
-                            className='font-normal'>
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
                             {nominee}
                           </Typography>
                         </div>
                       </td>
                       <td className={classes}>
-                        <div className='w-max'>
+                        <div className="w-max">
                           <Chip
-                            variant='ghost'
-                            size='sm'
+                            variant="ghost"
+                            size="sm"
                             value={
                               status === "active" ? "Active" : "Not Active"
                             }
@@ -197,18 +204,20 @@ const AccountManagement = () => {
                               status === "active" ? "not-active" : "active"
                             );
                           }}
-                          color={status === "active" ? "red" : "green"}>
+                          color={status === "active" ? "red" : "green"}
+                        >
                           {status === "active" ? "Deactivate" : "Activate"}
                         </Button>
                       </td>
                       <td className={classes}>
-                        <Tooltip content='Details'>
+                        <Tooltip content="Details">
                           <IconButton
                             onClick={() => {
                               handleOpen(_id);
                             }}
-                            variant='text'>
-                            <CiMenuKebab className='h-6 w-6' />
+                            variant="text"
+                          >
+                            <CiMenuKebab className="h-6 w-6" />
                           </IconButton>
                         </Tooltip>
                       </td>
@@ -221,17 +230,18 @@ const AccountManagement = () => {
         </CardBody>
       </Card>
       {/* pop up menu */}
-      <Dialog size='xl' open={open} handler={handleOpen}>
+      <Dialog size="xl" open={open} handler={handleOpen}>
         <DialogHeader>Account Details</DialogHeader>
         <DialogBody>
           <AccountDetails id={dialogId} />
         </DialogBody>
         <DialogFooter>
           <Button
-            variant='text'
-            color='red'
+            variant="text"
+            color="red"
             onClick={handleOpen}
-            className='mr-1'>
+            className="mr-1"
+          >
             <span>Close</span>
           </Button>
         </DialogFooter>
