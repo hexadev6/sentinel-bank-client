@@ -63,7 +63,7 @@ const LoanManagement = () => {
               </tr>
             </thead>
             <tbody>
-              {loan.map(
+              {loan?.map(
                 (
                   { _id, name, status, acc_num, profileImg, loanAmount, email },
                   index
