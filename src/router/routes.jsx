@@ -92,7 +92,7 @@ const router = createBrowserRouter([
         element: <LoanManagement />,
       },
       {
-        path: "LoanDetailsAdmin",
+        path: "LoanDetailsAdmin/:id",
         element: <LoanDetailsAdmin />,
       },
       {

@@ -19,19 +19,20 @@ const CreateAcc = () => {
     isPending,
     error,
     data: allUsers,
-    refetch
+    refetch,
   } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
       try {
-        const res = await axiosPublic.get(`/allAccountUser?email=${user?.email}`);
+        const res = await axiosPublic.get(
+          `/allAccountUser?email=${user?.email}`
+        );
         return res.data.data;
       } catch (error) {
         console.log(error);
       }
     },
   });
-
 
   const HandleAge = (e) => {
     const holder_dob = e.target.value;
@@ -115,7 +116,7 @@ const CreateAcc = () => {
               "Your new account application are in process.You will be get notify after activated the account.",
               "success"
             );
-            refetch()
+            refetch();
           } else {
             swal("Sorry!", res.data.error.message, "error");
           }
@@ -129,7 +130,7 @@ const CreateAcc = () => {
   };
   return (
     <div className="p-4 flex flex-col-reverse md:grid grid-cols-7 gap-5">
-      <CreateAccLayout 
+      <CreateAccLayout
         HandleCreateAcc={HandleCreateAcc}
         HandleAge={HandleAge}
         minAge={minAge}
@@ -141,7 +142,7 @@ const CreateAcc = () => {
         setProfileImg={setProfileImg}
         HandleProfileImg={HandleProfileImg}
       />
-      <AllAccounts allUsers={allUsers} isPending={isPending}/>
+      <AllAccounts allUsers={allUsers} isPending={isPending} />
     </div>
   );
 };

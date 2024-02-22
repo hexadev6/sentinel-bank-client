@@ -80,7 +80,7 @@ const LoanManagement = () => {
                     >
                       <td className={classes}>
                         <Link
-                          to={"/dashboard/LoanDetailsAdmin"}
+                          to={`/dashboard/LoanDetailsAdmin/${_id}`}
                           className="flex items-center gap-3"
                         >
                           <Avatar src={profileImg} alt={name} size="sm" />
@@ -97,7 +97,7 @@ const LoanManagement = () => {
                       </td>
                       <td className={classes}>
                         <Link
-                          to={"/dashboard/LoanDetailsAdmin"}
+                          to={`/dashboard/LoanDetailsAdmin/${_id}`}
                           className="flex flex-col"
                         >
                           <Typography
@@ -111,7 +111,7 @@ const LoanManagement = () => {
                       </td>
                       <td className={classes}>
                         <Link
-                          to={"/dashboard/LoanDetailsAdmin"}
+                          to={`/dashboard/LoanDetailsAdmin/${_id}`}
                           className="flex flex-col"
                         >
                           <Typography
@@ -125,7 +125,7 @@ const LoanManagement = () => {
                       </td>
                       <td className={classes}>
                         <Link
-                          to={"/dashboard/LoanDetailsAdmin"}
+                          to={`/dashboard/LoanDetailsAdmin/${_id}`}
                           className="flex flex-col"
                         >
                           <Typography
@@ -140,7 +140,7 @@ const LoanManagement = () => {
 
                       <td className={classes}>
                         <Link
-                          to={"/dashboard/LoanDetailsAdmin"}
+                          to={`/dashboard/LoanDetailsAdmin/${_id}`}
                           className="w-max"
                         >
                           <Chip
