@@ -4,7 +4,6 @@ import Home from "../pages/MainlayoutPages/Home/Home";
 import AboutUs from "../pages/MainlayoutPages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import Overview from "../pages/Dashboard/Overview";
 import QuickBank from "../pages/Dashboard/QuickBank";
@@ -19,6 +18,9 @@ import ApplicationCard from "../pages/Dashboard/ApplicationCard";
 import Notice from "../components/DashBoard/Notice/Notice";
 import BankUpdate from "../components/Home/News/BankUpdate";
 import ReadNotice from "../components/Home/News/ReadNotice";
+import ApplyLoan from "../pages/Dashboard/ApplyLoan";
+import LoanManagement from "../pages/Dashboard/LoanManagement";
+import LoanDetailsAdmin from "../pages/Dashboard/LoanDetailsAdmin";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +42,8 @@ const router = createBrowserRouter([
       {
         path: "/bankUpdate/:id",
         element: <ReadNotice />,
-        loader:({params})=>fetch(`http://localhost:5000/allNotice/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allNotice/${params.id}`),
       },
       {
         path: "contact/:section",
@@ -85,8 +88,20 @@ const router = createBrowserRouter([
         element: <CardManagement />,
       },
       {
+        path: "loanManagement",
+        element: <LoanManagement />,
+      },
+      {
+        path: "LoanDetailsAdmin",
+        element: <LoanDetailsAdmin />,
+      },
+      {
         path: "applicationCard",
         element: <ApplicationCard />,
+      },
+      {
+        path: "applyLoan",
+        element: <ApplyLoan />,
       },
       {
         path: "applicationCard/debit",
