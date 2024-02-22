@@ -146,8 +146,8 @@ const LoanManagement = () => {
                           <Chip
                             variant="ghost"
                             size="sm"
-                            value={status === "issue" ? "issue" : "Panding.."}
-                            color={status === "issue" ? "green" : "blue-gray"}
+                            value={status === "active" ? "issue" : "Panding.."}
+                            color={status === "active" ? "green" : "blue-gray"}
                           />
                         </Link>
                       </td>
