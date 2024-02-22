@@ -21,8 +21,8 @@ const Overview = () => {
   const axiosPublic = useAxiosPublic();
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
-  const [getTotalBalance, setGetTotalBalance] = useState(0);
-  const { isPending, error, allDeposits } = useHistory();
+  // const [getTotalBalance, setGetTotalBalance] = useState(0);
+  // const { isPending, error, allDeposits } = useHistory();
   const [accountByNum, isLoading, refetch] = useFindByAccNum();
 
   useEffect(() => {
@@ -33,7 +33,9 @@ const Overview = () => {
   // Set userId and adminId dynamically
   const userId = normalUserInfo?._id;
   const adminId = "65c62bccbeb6949fbca80189";
-
+if(isLoading){
+  return <h1>Loading....</h1>
+}
   return (
     <>
      {normalUserInfo?.status== 'admin'?
