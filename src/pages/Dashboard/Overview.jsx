@@ -16,7 +16,7 @@ import ChatApp from "../../components/DashBoard/ChatApp/ChatApp";
 const Overview = () => {
   // const {darkMode, toggleDarkMode} = useDarkMode()
   const { user } = useAuth();
-  const { userinfo:normalUserInfo } = useStatus({ email: user?.email });
+  const { userinfo: normalUserInfo } = useStatus({ email: user?.email });
   // const { userinfo:adminInfo } = useStatus({ email: 'team.hexadev@gmail.com' });
   const axiosPublic = useAxiosPublic();
   const [totalDeposits, setTotalDeposits] = useState(0);
@@ -30,11 +30,9 @@ const Overview = () => {
     setTotalBalance(accountByNum);
   }, [totalDeposits]);
 
-  
   // Set userId and adminId dynamically
   const userId = normalUserInfo?._id;
-  const adminId = '65c62bccbeb6949fbca80189';
-
+  const adminId = "65c62bccbeb6949fbca80189";
 
   return (
     <>
@@ -43,7 +41,7 @@ const Overview = () => {
           <Transfer />
           <UserGraph />
           <Transaction />
-          <ChatApp  key={user?._id} userId={userId} adminId={adminId} />
+          <ChatApp key={user?._id} userId={userId} adminId={adminId} />
         </div>
         <Cards />
       </div>

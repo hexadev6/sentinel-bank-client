@@ -33,6 +33,21 @@ const AdminSidbar = () => {
         </div>
       </NavLink>
       <NavLink
+        to="notice"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <BsBank2 />
+          <span className="lg:flex hidden">Important Notice</span>
+        </div>
+      </NavLink>
+      <NavLink
         to="/dashboard/users"
         className={({ isActive, isPending }) =>
           isPending
@@ -58,21 +73,7 @@ const AdminSidbar = () => {
           <span className="lg:flex hidden">Users Management</span>
         </div>
       </NavLink>
-      <NavLink
-        to="notice"
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "text-white bg-nevy-blue w-full rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-        }
-      >
-        <div className="flex  items-center gap-3 px-2 py-1">
-          <BsBank2 />
-          <span className="lg:flex hidden">Important Notice</span>
-        </div>
-      </NavLink>
+
       <NavLink
         to="/dashboard/accountManagement"
         className={({ isActive, isPending }) =>
@@ -86,6 +87,21 @@ const AdminSidbar = () => {
         <div className="flex  items-center gap-3 px-2 py-1">
           <GrTransaction />
           <span className="lg:flex hidden">Account Management</span>
+        </div>
+      </NavLink>
+      <NavLink
+        to="/dashboard/loanManagement"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <GrTransaction />
+          <span className="lg:flex hidden">Loan Management</span>
         </div>
       </NavLink>
       <NavLink
