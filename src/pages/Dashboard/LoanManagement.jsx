@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const TABLE_HEAD = ["Account Holder", "Amount", "Acount", "Email", "Status"];
 
 const LoanManagement = () => {
-  const [loan, isLoading, refetch] = useAllLoan();
+  const { loan, isLoading, refetch } = useAllLoan();
   if (isLoading)
     return (
       <div className="min-h-screen flex items-center justify-center">
