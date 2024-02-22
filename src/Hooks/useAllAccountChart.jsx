@@ -11,7 +11,9 @@ const useAllAccountChart = () => {
             return res.data;
 
         }
+        
     })
+    console.log(allaccountChart);
     return [allaccountChart, isLoading, refetch];
 };
 

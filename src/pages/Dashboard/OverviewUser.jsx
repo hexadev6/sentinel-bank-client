@@ -27,7 +27,9 @@ const OverviewUser = () => {
   // Set userId and adminId dynamically
   const userId = normalUserInfo?._id;
   const adminId = "65c62bccbeb6949fbca80189";
-
+  if (isLoading) {
+    return <h1>Loading....</h1>;
+  }
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
