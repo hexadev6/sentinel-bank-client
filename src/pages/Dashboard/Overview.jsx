@@ -36,7 +36,18 @@ const Overview = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
+     {normalUserInfo?.status== 'admin'?
+     <> <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
+     <div className="col-span-2 space-y-6">
+      
+       <UserGraph />
+       
+       <ChatApp  key={user?._id} userId={userId} adminId={adminId} />
+     </div>
+     
+   </div></>  : <>
+     
+     <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
         <div className="col-span-2 space-y-6">
           <Transfer />
           <UserGraph />
@@ -45,6 +56,17 @@ const Overview = () => {
         </div>
         <Cards />
       </div>
+     
+     
+     
+     </>
+    
+    
+    
+    
+    
+    
+    }
     </>
   );
 };
