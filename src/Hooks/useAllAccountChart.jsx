@@ -8,7 +8,7 @@ const useAllAccountChart = () => {
         queryKey:['allAccountChart'],
         queryFn: async()=>{
             const res= await axiosPublic.get('/getAccountChart')
-            return res.data
+            return res.data;
 
         }
     })

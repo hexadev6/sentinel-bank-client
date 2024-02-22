@@ -3,6 +3,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import ApexChart from "./ApexChart";
 import useAllAccountChart from "../../../../Hooks/useAllAccountChart";
 import CardApply from "./CardApply";
+import NewChart from "./NewChart";
 
 
 
@@ -10,27 +11,35 @@ const UserGraph = () => {
 
   const {user} = useAuth()
   const { userinfo } = useStatus({ email: user?.email }) || {};
-  const [allaccountChart, isLoading, refetch]= useAllAccountChart()
-  const total = parseFloat(allaccountChart?.reduce((acc, item) => acc + item.count, 0))
+  const [allaccountChart, isLoading, refetch]= useAllAccountChart([]) 
+  const total =(allaccountChart?.reduce((acc, item) => acc + item?.count, 0))
+
+  console.log('allacc',allaccountChart);
+  console.log(total);
  
 
   return (
+
+    
   <div>
-      {
-        userinfo?.status == 'admin'? <>  <div style={{ width: "100%" }} className="px-2 py-7 rounded-lg shadow-lg">
+      {userinfo?.status === 'admin'?( <div> <div className="w-full px-2 py-7 rounded-lg shadow-lg">
         <h4 className="text-xl font-medium ml-2 py-4">Total Account of users : {total}</h4>
-        <ApexChart allaccountChart={allaccountChart}/>
+        {/* <ApexChart allaccountChart={allaccountChart}></ApexChart> */}
         
       
-      </div><div style={{ width: "100%" }} className="px-2 py-7 rounded-lg shadow-lg">
-        <h4 className="text-xl font-medium ml-2 py-4">Apply for Cards</h4>
+      </div><div className=" w-96 px-2 py-7 rounded-lg shadow-lg">
+        <h4 className="text-xl font-medium ml-2 py-4">Apply for Cards:</h4>
         <CardApply/>
         
       
-      </div></> : <>   <div style={{ width: "100%" }} className="px-2 py-7 rounded-lg shadow-lg">
+      </div></div> ): 
+      (
+      <div><div style={{ width: "100%" }} className="px-2 py-7 rounded-lg shadow-lg">
       <h4 className="text-xl font-medium ml-2 py-4">Available Balance</h4>
-     
-    </div></>
+      <NewChart allaccountChart={allaccountChart}/>
+    </div>
+   
+    </div>)
       }
 
 

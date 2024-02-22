@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 
-const ApexChart = ({allaccountChart}) => {
+const NewChart = ({allaccountChart}) => {
     
    
   const options = {
@@ -40,9 +40,9 @@ const ApexChart = ({allaccountChart}) => {
 
   return (
     <ReactApexChart
-    options={options} series={options.series} type="donut" 
+    options={options} series={options.series} type="line" 
     />
   );
 };
 
-export default ApexChart;
+export default NewChart;

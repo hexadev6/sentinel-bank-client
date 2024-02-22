@@ -1,24 +1,24 @@
 import ReactApexChart from "react-apexcharts";
 import useCardApply from "../../../../Hooks/useCardApply";
-import { useState } from "react";
+
 
 const CardApply = () => {
     const [CardApply, isLoading, refetch] = useCardApply()
 
     console.log(CardApply);
-    const [chartOptions, setChartOptions] = useState({
+    const chartOptions= ({
         series: CardApply?.map(item=> item?.count),
         chart: {
-          width: 380,
+          width: 100,
           type: 'pie',
         },
         labels:CardApply?.map(item=> item?._id) ,
         responsive: [
           {
-            breakpoint: 480,
+            breakpoint: 280,
             options: {
               chart: {
-                width: 200,
+                width: 100,
               },
               legend: {
                 position: 'bottom',
@@ -29,7 +29,7 @@ const CardApply = () => {
       });
     
     return (
-        <div id="chart">
+        <div className="w-80" id="chart">
         <ReactApexChart options={chartOptions} series={chartOptions.series} type="pie" height={350} />
       </div>
     );
