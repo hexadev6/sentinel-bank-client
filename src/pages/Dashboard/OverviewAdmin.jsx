@@ -5,7 +5,6 @@ import ChatApp from "../../components/DashBoard/ChatApp/ChatApp";
 import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
 import useFindByAccNum from "../../Hooks/useFindByAccNum";
 import Transfer from "../../components/DashBoard/Overview/MoneyTransfer/Transfer";
-import AdminTransafer from "../../components/DashBoard/Overview/MoneyTransfer/AdminTransafer";
 
 const OverviewAdmin = () => {
   const { user } = useAuth();
@@ -30,7 +29,7 @@ const OverviewAdmin = () => {
       {" "}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
         <div className="col-span-3 space-y-6">
-        <AdminTransafer/>
+        
           <UserGraph />
 
           <ChatApp key={user?._id} userId={userId} adminId={adminId} />

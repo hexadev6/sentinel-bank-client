@@ -2,21 +2,35 @@ import ReactApexChart from "react-apexcharts";
 import useCardApply from "../../../../Hooks/useCardApply";
 
 const CardApply = () => {
-  const [cardApplyData, isLoading, refetch] = useCardApply();
-
-  
+  const { CardApply: cardApplyObject, isLoading } = useCardApply();
 
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
 
+  const cardApplyArray = cardApplyObject.CardApply;
+  const loanCount = cardApplyObject.loan;
+
+  const chartData = [
+    ...cardApplyArray.map((item) => ({
+      id: item?._id,
+      count: item?.count,
+      type: "CardApply",
+    })),
+    {
+      id: "loan",
+      count: loanCount,
+      type: "Loan",
+    },
+  ];
+
   const chartOptions = {
-    series: cardApplyData?.map((item) => item?.count),
+    series: chartData.map((item) => item.count),
     chart: {
       width: 100,
       type: "pie",
     },
-    labels: cardApplyData?.map((item) => item?._id),
+    labels: chartData.map((item) => item.id),
     responsive: [
       {
         breakpoint: 280,
@@ -33,13 +47,15 @@ const CardApply = () => {
   };
 
   return (
-    <div className="w-96" id="chart">
-      <ReactApexChart
-        options={chartOptions}
-        series={chartOptions.series}
-        type="pie"
-        height={350}
-      />
+    <div>
+      <div className="w-80" id="chart">
+        <ReactApexChart
+          options={chartOptions}
+          series={chartOptions.series}
+          type="donut"
+          height={350}
+        />
+      </div>
     </div>
   );
 };
