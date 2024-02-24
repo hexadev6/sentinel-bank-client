@@ -28,7 +28,7 @@ const Chat = () => {
         role: userinfo?.status, // Assuming userinfo has a "status" property indicating user or admin
       };
 
-      console.log("Sending message:", messageData);
+      // console.log("Sending message:", messageData);
 
       await socket.emit("send_message", messageData);
       // setMessageList((list) => [...list, messageData]);

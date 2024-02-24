@@ -105,7 +105,7 @@ const Notice = () => {
 
   return (
     <div className="p-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 justify-between">
-      <div className=" rounded p-5 h-fit shadow-md shadow-gray-100 xl:col-span-2">
+      <div className=" rounded p-5 h-fit shadow-xl xl:col-span-2">
         <Typography
           variant="h4"
           color="blue-gray"
@@ -158,7 +158,7 @@ const Notice = () => {
           </div>
           <button
             variant="text"
-            className={`mt-28 md:mt-24 py-2 px-4 w-full sm:w-auto hover:text-white rounded bg-nevy-blue text-white  ${
+            className={`mt-36 sm:mt-24 py-2 px-4 w-full sm:w-auto hover:text-white rounded bg-nevy-blue text-white  ${
               darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
             }`}
           >

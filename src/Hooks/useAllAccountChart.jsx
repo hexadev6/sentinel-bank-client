@@ -13,7 +13,7 @@ const useAllAccountChart = () => {
         }
         
     })
-    console.log(allaccountChart);
+    // console.log(allaccountChart);
     return [allaccountChart, isLoading, refetch];
 };
 

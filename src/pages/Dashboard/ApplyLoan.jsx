@@ -226,7 +226,7 @@ const ApplyLoan = () => {
         </div>
         <button
           type="submit"
-          className={`px-4 md:px-8 py-2 border border-nevy-blue font-bold hover:bg-nevy-blue hover:text-white ease-linear duration-300 cursor-pointer flex items-center gap-3`}
+          className={`px-4 md:px-8 py-2 border border-nevy-blue font-bold hover:bg-nevy-blue hover:text-white ease-linear duration-300 cursor-pointer flex items-center gap-3 md:w-auto w-full justify-center`}
         >
           <MdRotateLeft className={`${!loading && "hidden"}`} />
 

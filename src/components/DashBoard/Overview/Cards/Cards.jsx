@@ -7,12 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import useStatus from "../../../../Hooks/useStatus";
 import useAuth from "../../../../Hooks/useAuth";
-import visa from '../../../../assets/image/visa.png'
+import visa from "../../../../assets/image/visa.png";
+import logo from "../../../../assets/icons/bank.svg";
+
 const Cards = () => {
   const { user } = useAuth() || {};
   const { userinfo } = useStatus({ email: user?.email }) || {};
   const axios = useAxiosSecure();
- 
+
   const {
     data: card,
     isLoading,
@@ -29,7 +31,7 @@ const Cards = () => {
 
   return (
     <>
-      <div className="lg:col-span-2 px-5 shadow-lg rounded max-h-fit ">
+      <div className="lg:col-span-2 px-5 rounded ">
         <h4 className="text-xl font-medium ml-2 py-4">My Cards</h4>
         <Swiper
           effect={"cards"}
@@ -50,7 +52,7 @@ const Cards = () => {
                       {item?.name}
                     </div>
                   </div>
-                  {item?.card_type == "MasterCard" && (
+                  {item?.card_type == "MasterCard" ? (
                     <svg
                       className="w-[60px]"
                       viewBox="0 -222 2000 2000"
@@ -97,8 +99,12 @@ const Cards = () => {
                         />
                       </g>
                     </svg>
+                  ) : item?.card_type == "Visa" ? (
+                    <img className="w-[60px]" src={visa} />
+                  ) : (
+                    <img className="w-[60px]" src={logo} />
                   )}
-                  {item?.card_type=='Visa' && <img className="w-[60px]" src={visa}/>}
+               
                 </div>
                 {/* User card information */}
                 <div className="mt-8">
@@ -147,107 +153,6 @@ const Cards = () => {
           ))}
         </Swiper>
       </div>
-
-      {/* <Card
-                key={indx}
-                className=" w-full lg:flex-shrink-0  text-white bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded"
-              >
-                <CardBody>
-                  <div className="flex  gap-2 flex-col justify-between ">
-                    <Typography className="flex justify-between items-center ">
-                      <Logo />
-                      <h2>{item?.card_type}</h2>
-                    </Typography>
-                    <Typography
-                      variant="h4"
-                      className="text-white mt-5 flex flex-shrink sm:flex-shrink-0 gap-1 sm:gap-3 sm:text-2xl justify-between font-bold "
-                    >
-                      
-                      <span> {item?.cardNumber}</span>
-                    </Typography>
-
-                    <div className="flex justify-between gap-5 items-end ">
-                      <div>
-                        <Typography className="text-white uppercase text-sm ">
-                          {item?.name}
-                        </Typography>
-                        <div className="flex gap-2 items-center">
-                          <Typography className="text-white  uppercase text-xs">
-                            Valid
-                          </Typography>
-                          <Typography className="text-white text-center text-base sm:text-xl ">
-                            {item?.cvv}
-                          </Typography>
-                        </div>
-                      </div>
-                      <div className="flex items-end">
-                        <Typography
-                          variant="h3"
-                          color="blue-gray"
-                          className="uppercase text-end text-white flex items-end"
-                        >
-                          {item?.card_type === "visa" ? (
-                            <RiVisaLine className="text-8xl" />
-                          ) : (
-                            <RiMastercardFill className="text-8xl" />
-                          )}
-                        </Typography>
-                      </div>
-                    </div>
-                  </div>
-                </CardBody>
-              </Card> */}
-      {/* <div className="flex md:flex-nowrap flex-wrap gap-3 justify-between xl:justify-start  overflow-auto mb-5">
-        {cardNumber.map((item, indx) => (
-          <Card
-            key={indx}
-            className=" w-full md:w-fit lg:flex-shrink-0  text-white opacity-80  bg-gradient-to-r from-nevy-blue to-light-blue-900 rounded"
-          >
-            <CardBody>
-              <div className="flex  gap-2 flex-col justify-between ">
-                <Logo />
-                <Typography
-                  variant="h3"
-                  className="text-white mt-5 font-medium flex flex-shrink sm:flex-shrink-0 gap-1 sm:gap-5 text-xl sm:text-2xl justify-between"
-                >
-                  {item.number.map((index, i) => (
-                    <span key={i}>{index}</span>
-                  ))}
-                </Typography>
-
-                <div className="flex justify-between gap-5 items-end ">
-                  <div>
-                    <Typography className="text-white uppercase text-sm ">
-                      {item.holder}
-                    </Typography>
-                    <div className="flex gap-2 items-center">
-                      <Typography className="text-white  uppercase text-xs">
-                        Valid
-                      </Typography>
-                      <Typography className="text-white text-center text-base sm:text-xl ">
-                        {item.valid}
-                      </Typography>
-                    </div>
-                  </div>
-                  <div className="flex items-end">
-                    <Typography
-                      variant="h3"
-                      color="blue-gray"
-                      className="uppercase text-end text-white flex items-end"
-                    >
-                      {item.name === "visa" ? (
-                        <RiVisaLine className="text-8xl" />
-                      ) : (
-                        <RiMastercardFill className="text-8xl" />
-                      )}
-                    </Typography>
-                  </div>
-                </div>
-              </div>
-            </CardBody>
-          </Card>
-        ))}
-      </div> */}
     </>
   );
 };

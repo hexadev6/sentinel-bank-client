@@ -13,32 +13,20 @@ const CardApply = () => {
   const chartOptions = {
     series: cardApplyData?.map((item) => item?.count),
     chart: {
-      width: 100,
+      width: 100, 
       type: "pie",
     },
     labels: cardApplyData?.map((item) => item?._id),
-    responsive: [
-      {
-        breakpoint: 280,
-        options: {
-          chart: {
-            width: 100,
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
+  
   };
 
   return (
-    <div className="w-96" id="chart">
+    <div className="w-full" id="chart">
       <ReactApexChart
         options={chartOptions}
         series={chartOptions.series}
         type="pie"
-        height={350}
+        height={200}
       />
     </div>
   );

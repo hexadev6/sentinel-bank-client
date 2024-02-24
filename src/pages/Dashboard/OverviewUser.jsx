@@ -8,7 +8,7 @@ import useFindByAccNum from "../../Hooks/useFindByAccNum";
 
 const OverviewUser = () => {
   const { user } = useAuth();
-  const { userinfo: normalUserInfo } = useStatus({ email: user?.email });
+  const { userinfo } = useStatus({ email: user?.email });
 
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
@@ -23,7 +23,7 @@ const OverviewUser = () => {
 
   return (
     <>
-      <div className=" grid grid-cols-1 lg:grid-cols-5 gap-y-3 md:gap-5 justify-between items-start p-5">
+      <div className="overflow-x-hidden grid grid-cols-1 lg:grid-cols-5 gap-y-3 md:gap-5 justify-between items-start p-5 h-full">
         <div className="lg:col-span-3 space-y-6">
           {userinfo?.status === "user" && <Transfer />}
           <UserGraph />

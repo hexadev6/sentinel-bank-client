@@ -24,11 +24,11 @@ const UserProfile = () => {
   const HandleImageChange = async (e) => {
     const profileImg = e.target.files[0];
     const photo = await multiImgUpload(profileImg);
-    console.log(photo);
+    // console.log(photo);
     await axiosSecure
       .patch(`/updateUser/${userinfo?._id}`, { image: photo })
       .then((res) => {
-        console.log("after patch", res?.data);
+        // console.log("after patch", res?.data);
         if (res?.data.message == "success") {
           Swal.fire({
             position: "center",
@@ -50,10 +50,8 @@ const UserProfile = () => {
     <div className=" mb-10">
       <div className="relative">
         <CommonBanner img={img1}></CommonBanner>
-      </div>
-      <Container>
-        <div >
-          <div className="flex md:flex-nowrap flex-wrap justify-between items-center gap-6 absolute w-full sm:w-fit p-5  mx-auto left-0 right-0 bottom-[-43rem] md:-bottom-56 rounded-md bg-blue-100 border mb-10">
+
+        <div className="flex md:flex-nowrap flex-wrap justify-between items-center gap-6 absolute w-full sm:w-fit p-5  mx-auto left-0 right-0 bottom-[-43rem] md:-bottom-80 rounded-md bg-blue-100 border mb-10">
             <div className="relative w-auto  md:w-full">
               <img className="w-80 h-96  " src={userinfo?.image} alt="" />
 
@@ -97,9 +95,6 @@ const UserProfile = () => {
             </div>
             <div className="py-10 space-y-3 w-full">
               <h2>
-                Account No: <span></span>{" "}
-              </h2>
-              <h2>
                 Name: <span> {userinfo?.name}</span>{" "}
               </h2>
               <h2>Date of Birth:{userinfo?.DOB} </h2>
@@ -118,8 +113,9 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-        </div>
-      </Container>
+
+      </div>
+      
     </div>
   );
 };

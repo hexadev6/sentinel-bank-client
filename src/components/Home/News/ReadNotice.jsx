@@ -16,7 +16,7 @@ import "./notice.css";
 
 const ReadNotice = () => {
   const data = useLoaderData();
-  console.log(data)
+  // console.log(data)
 
   const svgs = [
     {

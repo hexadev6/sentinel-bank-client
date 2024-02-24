@@ -56,7 +56,9 @@ const DebitCard = () => {
 
     axios
       .post(`/applicationCard`, cardinfo)
-      .then(() => notify())
+      .then(() => {
+        // console.log('posted')
+        notify()})
       .catch((err) => console.log(err));
   };
   return (
@@ -155,7 +157,7 @@ const DebitCard = () => {
 
         <button
           type="submit"
-          className="border font-medium sm:w-fit hover:bg-nevy-blue  hover:text-white  py-2 px-4 rounded  ease-linear duration-300"
+          className="border ease-linear duration-300 hover:bg-nevy-blue hover:text-white font-bold py-2 px-4 rounded md:w-auto w-full"
         >
           Submit
         </button>
