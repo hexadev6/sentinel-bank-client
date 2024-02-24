@@ -3,29 +3,46 @@ import ReactApexChart from "react-apexcharts";
 const ApexChart = ({ allaccountChart, isLoading }) => {
   // console.log(allaccountChart);
   if (isLoading) {
-    return <h1>lodding</h1>;
+    return <h1>Loading...</h1>;
   }
+
   const options = {
-    series: allaccountChart?.map((item) => item.count),
-    labels: allaccountChart?.map((item) => item._id),
     chart: {
-      width: 100, 
+      width: 100,
       type: "donut",
     },
 
     dataLabels: {
       enabled: true,
+      style: {
+        fontSize: "14px",
+        colors: ["#304758"],
+      },
+    },
+    xaxis: {
+      categories: allaccountChart?.map((item) => item._id),
     },
     fill: {
-      type: "gradient",
+      colors: ["#00A8FF"], // Customize the colors as needed
     },
     // height: 'auto',
   };
 
+  const series = [
+    {
+      name: "Count",
+      data: allaccountChart?.map((item) => item.count),
+    },
+  ];
+
   return (
-    <ReactApexChart  options={options} series={options.series} type="donut"         height={200}
+    <ReactApexChart
+      options={options}
+      series={options.series}
+      type="donut"
+      height={200}
     />
   );
 };
 
-export default ApexChart;
+export default ApexAreaChart;

@@ -11,7 +11,6 @@ const AdminChatApp = () => {
   const { userinfo: admin } = useStatus({ email: "team.hexadev@gmail.com" });
   const { isPending, error, allChat, refetch } = useGetChat();
   const [isAdmin, setIsAdmin] = useState(true);
-  const [openInbox, setOpenInbox] = useState(false);
 
   const userId = genaralUser?._id;
   const userImage = genaralUser?.image;
