@@ -8,7 +8,7 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
   const options = {
     chart: {
       type: "pie",
-      height: 500,
+      height: 450,
     },
     plotOptions: {
       pie: {
@@ -20,12 +20,13 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
       enabled: true,
       style: {
         fontSize: "14px",
-        colors: ["#304758"],
+        colors: ["#1CBDC1"],
       },
     },
     fill: {
-      colors: ["#00A8FF", "#70B420"], // Customize the colors as needed
+      colors: ["#8B5387", "#E3633A"],
     },
+    labels: ['Registered User', 'Users With Accounts'],
     responsive: [
       {
         breakpoint: 480,
@@ -39,13 +40,16 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
         },
       },
     ],
+    theme: {
+      palette: 'palette8' 
+    }
   };
 
   const series = [allAccountByUser?.countUsersWithAccount, allAccountByUser?.totalUsers];
 
   return (
     <ReactApexChart
-      className="w-full"
+      className="w-96"
       options={options}
       series={series}
       type="pie"
