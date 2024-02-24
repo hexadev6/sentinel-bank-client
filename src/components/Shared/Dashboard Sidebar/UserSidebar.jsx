@@ -2,6 +2,7 @@ import { BsBank2 } from "react-icons/bs";
 import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
 import { HiMiniBanknotes } from "react-icons/hi2";
+import { MdSupportAgent } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
 
@@ -119,6 +120,21 @@ const UserSidebar = () => {
         <div className="flex  items-center gap-3 px-2 py-1">
           <HiMiniBanknotes />
           <span className="lg:flex hidden">Loan</span>
+        </div>
+      </NavLink>
+      <NavLink
+        to="/dashboard/support"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+        <MdSupportAgent />
+          <span className="lg:flex hidden">Support</span>
         </div>
       </NavLink>
     </>

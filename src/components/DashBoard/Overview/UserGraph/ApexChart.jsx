@@ -40,7 +40,7 @@ const ApexChart = ({ allaccountChart, isLoading }) => {
   };
 
   return (
-    <ReactApexChart options={options} series={options.series} type="donut" />
+    <ReactApexChart className="w-3/4" options={options} series={options.series} type="donut" />
   );
 };
 
