@@ -37,7 +37,7 @@ const CardApply = () => {
       <ReactApexChart
         options={chartOptions}
         series={chartOptions.series}
-        type="pie"
+        type="donut"
         height={350}
       />
     </div>

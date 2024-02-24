@@ -1,19 +1,19 @@
 import ReactApexChart from "react-apexcharts";
 
-const ApexAreaChart = ({ allaccountChart, isLoading }) => {
+const ApexPieChart = ({ allAccountByUser, isLoading }) => {
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
 
   const options = {
     chart: {
-      type: "area", // Change type to "area" for an area chart
-      height: 380,
+      type: "pie",
+      height: 500,
     },
     plotOptions: {
-      area: {
-        fillTo: 'origin',
-        opacity: 0.5,
+      pie: {
+        startAngle: -90,
+        endAngle: 270,
       },
     },
     dataLabels: {
@@ -23,11 +23,8 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
         colors: ["#304758"],
       },
     },
-    xaxis: {
-      categories: allaccountChart?.map((item) => item._id),
-    },
     fill: {
-      colors: ["#00A8FF"], // Customize the colors as needed
+      colors: ["#00A8FF", "#70B420"], // Customize the colors as needed
     },
     responsive: [
       {
@@ -44,21 +41,16 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
     ],
   };
 
-  const series = [
-    {
-      name: "Count",
-      data: allaccountChart?.map((item) => item.count),
-    },
-  ];
+  const series = [allAccountByUser?.countUsersWithAccount, allAccountByUser?.totalUsers];
 
   return (
     <ReactApexChart
-      className="w-3/4"
+      className="w-full"
       options={options}
       series={series}
-      type="area"
+      type="pie"
     />
   );
 };
 
-export default ApexAreaChart;
+export default ApexPieChart;
