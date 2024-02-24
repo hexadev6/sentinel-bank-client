@@ -45,4 +45,4 @@ const ApexChart = ({ allaccountChart, isLoading }) => {
   );
 };
 
-export default ApexAreaChart;
+export default ApexChart;
