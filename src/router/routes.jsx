@@ -5,7 +5,7 @@ import AboutUs from "../pages/MainlayoutPages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Login from "../pages/Login/Login";
-import Overview from "../pages/Dashboard/Overview";
+
 import QuickBank from "../pages/Dashboard/QuickBank";
 import CreateAcc from "../pages/Dashboard/CreateAcc";
 import Stepper from "../components/Stepper/Stepper";
@@ -18,6 +18,13 @@ import ApplicationCard from "../pages/Dashboard/ApplicationCard";
 import Notice from "../components/DashBoard/Notice/Notice";
 import BankUpdate from "../components/Home/News/BankUpdate";
 import ReadNotice from "../components/Home/News/ReadNotice";
+import ApplyLoan from "../pages/Dashboard/ApplyLoan";
+import LoanManagement from "../pages/Dashboard/LoanManagement";
+import LoanDetailsAdmin from "../pages/Dashboard/LoanDetailsAdmin";
+import OverviewAdmin from "../pages/Dashboard/OverviewAdmin";
+import OverviewUser from "../pages/Dashboard/OverviewUser";
+import AdminChatApp from "../components/DashBoard/ChatApp/AdminChatApp";
+import UserChatApp from "../components/DashBoard/ChatApp/UserChatApp";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +47,7 @@ const router = createBrowserRouter([
         path: "/bankUpdate/:id",
         element: <ReadNotice />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allNotice/${params?.id}`),
+          fetch(`http://localhost:5000/allNotice/${params.id}`),
       },
       {
         path: "contact/:section",
@@ -65,8 +72,12 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "overview",
-        element: <Overview />,
+        path: "admin/overview",
+        element: <OverviewAdmin />,
+      },
+      {
+        path: "user/overview",
+        element: <OverviewUser />,
       },
       {
         path: "quickBanking",
@@ -85,8 +96,20 @@ const router = createBrowserRouter([
         element: <CardManagement />,
       },
       {
+        path: "loanManagement",
+        element: <LoanManagement />,
+      },
+      {
+        path: "LoanDetailsAdmin/:id",
+        element: <LoanDetailsAdmin />,
+      },
+      {
         path: "applicationCard",
         element: <ApplicationCard />,
+      },
+      {
+        path: "applyLoan",
+        element: <ApplyLoan />,
       },
       {
         path: "applicationCard/debit",
@@ -100,6 +123,15 @@ const router = createBrowserRouter([
         path: "notice",
         element: <Notice />,
       },
+      {
+        path: "chat",
+        element: <AdminChatApp/>,
+      },
+      {
+        path: "support",
+        element: <UserChatApp/>,
+      },
+
     ],
   },
 ]);

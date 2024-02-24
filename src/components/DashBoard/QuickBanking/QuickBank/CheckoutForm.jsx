@@ -14,7 +14,6 @@ const CheckoutForm = ({ userInfo, refetch }) => {
   const [accountByNum, isLoading] = useFindByAccNum();
   const axiosPublic = useAxiosPublic();
 
-
   const HandlePayment = (e) => {
     e.preventDefault();
     const paymentInfo = {
@@ -33,7 +32,6 @@ const CheckoutForm = ({ userInfo, refetch }) => {
       .then((res) => {
         // console.log("url====", res.data);
         window.location.replace(res.data.url);
-
       })
       .catch((err) => console.log(err));
   };

@@ -5,9 +5,11 @@ import Logo from "../../../utility/Logo";
 import Drawer from "../../Drawer/Drawer";
 import useAuth from "../../../Hooks/useAuth";
 import ProfileMenu from "./ProfileDropdown";
+import useStatus from "../../../Hooks/useStatus";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const { user, userLogOut } = useAuth();
+  const { userinfo } = useStatus({ email: user?.email });
   // console.log(user);
 
   const handleStickey = () => {
@@ -58,7 +60,11 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-5">
             {/* deshbord */}
             <Link
-              to={"/dashboard/overview"}
+              to={`${
+                userinfo?.status === "admin"
+                  ? "/dashboard/admin/overview"
+                  : "/dashboard/user/overview"
+              }`}
               className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
             >
               Dashboard

@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 import useStatus from "./useStatus";
@@ -27,7 +26,9 @@ const useGetChat = () => {
     },
   });
 
+
   return { isPending, error, allChat, refetch };
 };
+
 
 export default useGetChat;

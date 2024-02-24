@@ -1,6 +1,9 @@
 import { BsBank2 } from "react-icons/bs";
 import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
+import { HiMiniBanknotes } from "react-icons/hi2";
+import { MdSupportAgent } from "react-icons/md";
+
 import { NavLink } from "react-router-dom";
 import { FaSnapchat } from "react-icons/fa6";
 import { MdSupportAgent } from "react-icons/md";
@@ -9,7 +12,7 @@ const UserSidebar = () => {
   return (
     <>
       <NavLink
-        to="/dashboard/overview"
+        to="/dashboard/user/overview"
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"
@@ -34,32 +37,7 @@ const UserSidebar = () => {
           <span className="lg:flex hidden ">Overview</span>
         </div>
       </NavLink>
-      <NavLink
-        to="createAcc"
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "text-white bg-nevy-blue w-full rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-        }
-      >
-        <div className="flex  items-center gap-3 px-2 py-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <span className="lg:flex hidden">Create Bank Account</span>
-        </div>
-      </NavLink>
+
       <NavLink
         to="quickBanking"
         className={({ isActive, isPending }) =>
@@ -91,6 +69,32 @@ const UserSidebar = () => {
         </div>
       </NavLink>
       <NavLink
+        to="createAcc"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-5 w-5"
+          >
+            <path
+              fillRule="evenodd"
+              d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <span className="lg:flex hidden">Create Bank Account</span>
+        </div>
+      </NavLink>
+      <NavLink
         to="/dashboard/applicationCard"
         className={({ isActive, isPending }) =>
           isPending
@@ -105,7 +109,36 @@ const UserSidebar = () => {
           <span className="lg:flex hidden">Application Card</span>
         </div>
       </NavLink>
- 
+      <NavLink
+        to="/dashboard/applyLoan"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <HiMiniBanknotes />
+          <span className="lg:flex hidden">Loan</span>
+        </div>
+      </NavLink>
+      <NavLink
+        to="/dashboard/support"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+        <MdSupportAgent />
+          <span className="lg:flex hidden">Support</span>
+        </div>
+      </NavLink>
     </>
   );
 };

@@ -6,22 +6,20 @@ import useStatus from "../../Hooks/useStatus";
 import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
 import useFindByAccNum from "../../Hooks/useFindByAccNum";
 
-const Overview = () => {
-  // const {darkMode, toggleDarkMode} = useDarkMode()
+const OverviewUser = () => {
   const { user } = useAuth();
-  const { userinfo } = useStatus({ email: user?.email });
-  // const { userinfo:adminInfo } = useStatus({ email: 'team.hexadev@gmail.com' });
-  // const axiosPublic = useAxiosPublic();
+  const { userinfo: normalUserInfo } = useStatus({ email: user?.email });
+
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
-  // const [getTotalBalance, setGetTotalBalance] = useState(0);
-  // const { isPending, error, allDeposits } = useHistory();
+  const [getTotalBalance, setGetTotalBalance] = useState(0);
+
   const [accountByNum, isLoading, refetch] = useFindByAccNum();
 
   useEffect(() => {
     refetch();
     setTotalBalance(accountByNum);
-  }, [totalDeposits]);
+  }, [totalDeposits, refetch, accountByNum]);
 
   return (
     <>
@@ -29,7 +27,6 @@ const Overview = () => {
         <div className="lg:col-span-3 space-y-6">
           {userinfo?.status === "user" && <Transfer />}
           <UserGraph />
-          {/* {userinfo?.status === "user" && <Transaction />} */}
         </div>
         {userinfo?.status === "user" && <Cards />}
       </div>
@@ -37,4 +34,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default OverviewUser;
