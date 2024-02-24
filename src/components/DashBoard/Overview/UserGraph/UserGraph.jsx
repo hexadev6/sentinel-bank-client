@@ -44,7 +44,7 @@ const UserGraph = () => {
             className="px-2 py-7 rounded-lg shadow-lg"
           >
             <h4 className="text-xl font-medium ml-2 py-4">Available Balance</h4>
-            <NewChart allaccountChart={allaccountChart} />
+            <NewChart/>
           </div>
         </div>
       )}

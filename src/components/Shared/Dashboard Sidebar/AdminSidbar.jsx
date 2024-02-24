@@ -1,4 +1,5 @@
 import { BsBank2 } from "react-icons/bs";
+import { FaSnapchat } from "react-icons/fa6";
 import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
@@ -134,6 +135,22 @@ const AdminSidbar = () => {
           <span className="lg:flex hidden">Reports and Analytics</span>
         </div>
       </NavLink>
+      <NavLink
+        to="/dashboard/chat"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <FaSnapchat />
+          <span className="lg:flex hidden">Chat with Users</span>
+        </div>
+      </NavLink>
+
     </>
   );
 };
