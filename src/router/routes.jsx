@@ -23,6 +23,7 @@ import LoanManagement from "../pages/Dashboard/LoanManagement";
 import LoanDetailsAdmin from "../pages/Dashboard/LoanDetailsAdmin";
 import OverviewAdmin from "../pages/Dashboard/OverviewAdmin";
 import OverviewUser from "../pages/Dashboard/OverviewUser";
+import LoanOverview from "../pages/Dashboard/LoanOverview";
 import AdminChatApp from "../components/DashBoard/ChatApp/AdminChatApp";
 import UserChatApp from "../components/DashBoard/ChatApp/UserChatApp";
 
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
         element: <LoanDetailsAdmin />,
       },
       {
+        path: "loanOverview/:id",
+        element: <LoanOverview />,
+      },
+      {
         path: "applicationCard",
         element: <ApplicationCard />,
       },
@@ -125,13 +130,12 @@ const router = createBrowserRouter([
       },
       {
         path: "chat",
-        element: <AdminChatApp/>,
+        element: <AdminChatApp />,
       },
       {
         path: "support",
-        element: <UserChatApp/>,
+        element: <UserChatApp />,
       },
-
     ],
   },
 ]);

@@ -12,6 +12,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { MdRotateLeft } from "react-icons/md";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ApplyLoan = () => {
   const axios = useAxiosSecure();
@@ -26,7 +27,10 @@ const ApplyLoan = () => {
   const [duration, setDuration] = useState("");
   const [consent1, setConsent1] = useState(false);
   const [consent2, setConsent2] = useState(false);
-
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
+  console.log(navigate.state);
   const {
     register,
     handleSubmit,
@@ -53,7 +57,7 @@ const ApplyLoan = () => {
           const loanStatus = { loanId };
           axios
             .patch(`/updateUser/${userinfo._id}`, { loanStatus })
-            .then()
+            .then(navigate(`/dashboard/LoanOverview/${loanId}`))
             .catch();
           setLoading(false);
           toast.success("Success", { id: toastLoding });

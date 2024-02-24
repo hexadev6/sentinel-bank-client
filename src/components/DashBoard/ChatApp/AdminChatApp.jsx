@@ -4,7 +4,6 @@ import useAuth from "../../../Hooks/useAuth";
 import useStatus from "../../../Hooks/useStatus";
 import useGetChat from "../../../Hooks/useGetChat";
 
-
 const AdminChatApp = () => {
   const { user } = useAuth();
   const { userinfo: genaralUser } = useStatus({ email: user?.email });
@@ -12,18 +11,13 @@ const AdminChatApp = () => {
   const { isPending, error, allChat, refetch } = useGetChat();
   const [isAdmin, setIsAdmin] = useState(true);
 
-
-
-
   const userId = genaralUser?._id;
   const userImage = genaralUser?.image;
   const userName = genaralUser?.name;
   const adminId = admin?._id;
   const adminImage = admin?.image;
 
-
   const latestChatsMap = new Map();
-
 
   allChat?.forEach((chat) => {
     const senderId = chat.sender;
@@ -34,15 +28,12 @@ const AdminChatApp = () => {
     }
   });
 
-
   const latestChats = Array.from(latestChatsMap?.values());
   latestChats.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
 
   const [selectedUser, setSelectedUser] = useState(
     latestChats.length > 0 ? latestChats[0].sender : null
   );
-
 
   const HandleInbox = (inboxInfo) => {
     // inboxInfo.seen = true;
@@ -83,6 +74,5 @@ const AdminChatApp = () => {
     </div>
   );
 };
-
 
 export default AdminChatApp;
