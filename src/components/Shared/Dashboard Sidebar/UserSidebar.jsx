@@ -2,6 +2,8 @@ import { BsBank2 } from "react-icons/bs";
 import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
+import { FaSnapchat } from "react-icons/fa6";
+import { MdSupportAgent } from "react-icons/md";
 
 const UserSidebar = () => {
   return (
@@ -103,6 +105,7 @@ const UserSidebar = () => {
           <span className="lg:flex hidden">Application Card</span>
         </div>
       </NavLink>
+ 
     </>
   );
 };

@@ -3,8 +3,8 @@ import debit from "../../assets/image/debit.png";
 const ApplicationCard = () => {
   return (
     <>
-      <div className="xl:min-h-screen w-full flex flex-col-reverse xl:flex-row  justify-center items-center -mt-20 ">
-        <div className="flex-1 text-center px-10 lx:px-20">
+      <div className="p-5 xl:min-h-screen w-full flex flex-col-reverse xl:flex-row  justify-center items-center -mt-20 ">
+        <div className="flex-1 text-center ">
           <h1 className="text-3xl xl:text-6xl font-bold mb-10">
             Apply for Your Card-Carrying Adventures!
           </h1>
@@ -17,7 +17,7 @@ const ApplicationCard = () => {
           </p>
           <div className="mt-10">
             <p className=" font-bold">Apply now</p>
-            <div className="flex justify-center gap-8 mt-5 items-center">
+            <div className="flex sm:flex-nowrap flex-wrap  justify-center gap-4 mt-5 items-center">
               <Link to={"/dashboard/applicationCard/debit"}>
                 <button className="px-10 py-2 border hover:bg-nevy-blue hover:text-white font-bold ease-linear duration-200  border-nevy-blue">
                   Debit Card

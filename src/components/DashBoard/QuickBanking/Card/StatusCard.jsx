@@ -127,6 +127,7 @@ const StatusCard = () => {
         setWithdraw={setWithdraw}
         withdraw={withdraw}
         user={user}
+        getTotalBalance={getTotalBalance}
       />
     </>
   );

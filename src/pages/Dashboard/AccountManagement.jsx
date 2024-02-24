@@ -73,9 +73,9 @@ const AccountManagement = () => {
   };
   // console.log(allAcounts);
   return (
-    <div className='px-8 py-8'>
+    <div className='px-4 py-4 '>
       {/* table */}
-      <Card className='h-full w-full'>
+      <Card className='h-full w-full shadow-gray-100 rounded'>
         <CardHeader floated={false} shadow={false} className='rounded-none'>
           <div className='mb-8 flex items-center justify-between gap-8'>
             <div>
@@ -88,8 +88,8 @@ const AccountManagement = () => {
             </div>
           </div>
         </CardHeader>
-        <CardBody className='overflow-scroll px-0'>
-          <table className='mt-4 w-full min-w-max table-auto text-left'>
+        <CardBody className=' overflow-scroll px-0'>
+          <table className='mt-4 w-full table-auto text-left'>
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
@@ -190,7 +190,7 @@ const AccountManagement = () => {
                         </div>
                       </td>
                       <td className={classes}>
-                        <Button
+                        <Button 
                           onClick={() => {
                             handleUpdataStatus(
                               _id,

@@ -7,15 +7,9 @@ import useFindByAccNum from "../../../../Hooks/useFindByAccNum";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
 const CheckoutForm = ({ userInfo, refetch }) => {
-  // const stripe = useStripe();
-  // const elements = useElements();
   const { darkMode, toggleDarkMode } = useDarkMode();
 
   const currentDate = new Date(Date.now()).toLocaleString();
-  const [error, setError] = useState();
-  const [success, setSuccess] = useState();
-  const [clientSecret, setClientSecret] = useState("");
-
   const { userinfo } = useStatus({ email: userInfo?.userEmail });
   const [accountByNum, isLoading] = useFindByAccNum();
   const axiosPublic = useAxiosPublic();

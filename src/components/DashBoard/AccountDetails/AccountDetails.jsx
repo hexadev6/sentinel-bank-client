@@ -32,7 +32,7 @@ const AccountDetails = ({ id }) => {
     initial_deposit,
   } = account;
   return (
-    <div className="flex items-center justify-center gap-2 md:gap-16 flex-col md:flex-row w-full">
+    <div className="flex items-center justify-center gap-2 md:gap-16 flex-col md:flex-row w-full overflow-auto">
       <div className="text-center">
         <Avatar src={profileImg} size="xxl" />
 

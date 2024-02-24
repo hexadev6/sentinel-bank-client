@@ -4,7 +4,6 @@ import Home from "../pages/MainlayoutPages/Home/Home";
 import AboutUs from "../pages/MainlayoutPages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
-import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import Overview from "../pages/Dashboard/Overview";
 import QuickBank from "../pages/Dashboard/QuickBank";
@@ -40,7 +39,8 @@ const router = createBrowserRouter([
       {
         path: "/bankUpdate/:id",
         element: <ReadNotice />,
-        loader:({params})=>fetch(`http://localhost:5000/allNotice/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allNotice/${params?.id}`),
       },
       {
         path: "contact/:section",

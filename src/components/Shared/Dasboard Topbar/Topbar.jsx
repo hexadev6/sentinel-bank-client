@@ -52,34 +52,10 @@ const Topbar = () => {
             </Typography>
           )}
         </div>
-        {/* search bar */}
-        <div className="relative md:flex hidden gap-2 md:max-w">
-          <input
-            type="search"
-            color="white"
-            label="Search"
-            className={`focus:outline-0 text-black p-2 rounded  ${
-              darkMode == true ? "bg-blue-gray-800 " : "bg-transparent border"
-            } `}
-          />
-          <Button
-            size="sm"
-            color="white"
-            className="!absolute right-1 top-1 bg-transparent rounded hover:shadow-none shadow-none"
-          >
-            <IoSearch className="text-lg" />
-          </Button>
-        </div>
+   
         {/* bell icon & avatar */}
         <div className="flex gap-2 md:gap-5 items-center ">
-          {/* search icon for sm device */}
-          <IconButton
-            variant="text"
-            color="white"
-            className={`md:hidden flex text-black  rounded hover:bg-gray-400 `}
-          >
-            <IoSearch className="text-lg" />
-          </IconButton>
+       
           {/* bell icon */}
           <IconButton
             variant="text"
@@ -94,7 +70,7 @@ const Topbar = () => {
           </IconButton>
           {/* avatar */}
           <div className=" rounded-full ">
-            <Avatar src={user?.photoURL} alt="avatar" />
+            <Avatar src={userinfo?.image} alt="avatar" />
           </div>
         </div>
       </div>
