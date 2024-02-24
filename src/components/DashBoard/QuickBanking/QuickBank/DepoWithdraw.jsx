@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Input, Radio } from "@material-tailwind/react";
-import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import Transaction from "../../Overview/Transaction/Transaction";
 import useDarkMode from "../../../../Hooks/useDarkMode";
@@ -9,35 +8,17 @@ import swal from "sweetalert";
 
 
 const DepoWithdraw = ({
-  total,
-  setTotal,
-  setDeposit,
-  setWithdraw,
-  deposit,
-  withdraw,
-  totalDeposits,
-  isPending,
-  allDeposits,
   refetch,
   user,
+  getTotalBalance
 }) => {
   // state
-  const [depoMethod, setDepoMethod] = useState(false);
   const [depoAmount, setDepoAmount] = useState(0);
-  const [transactionHistory, setTransactionHistory] = useState([]);
-  const [depositBy, setDepositBy] = useState("");
+  // const [transactionHistory, setTransactionHistory] = useState([]);
+  // const [depositBy, setDepositBy] = useState("");
   const [isDepoTrue, setIsDepoTrue] = useState(false);
   const [isWDTrue, setIsWDTrue] = useState(false);
   const { darkMode, toggleDarkMode } = useDarkMode();
-
-  // history function
-  const recordTransaction = (type, amount) => {
-    const newTransaction = {
-      type,
-      amount,
-    };
-    setTransactionHistory((prevHistory) => [...prevHistory, newTransaction]);
-  };
 
   // deposit func
   const HandleDeposit = (e) => {
@@ -57,19 +38,18 @@ const DepoWithdraw = ({
   // withdraw func
   const HandleWithdraw = (e) => {
     e.preventDefault();
-    const newDeposit = e.target.elements.withdraw.value;
-    if (newDeposit > total) {
+    const newWithdraw = e.target.elements.withdraw.value;
+    if (newWithdraw > getTotalBalance) {
       setIsDepoTrue(false);
       swal("Your don't have sufficient balance");
       return;
     }
     else{
-      setDepoAmount(newDeposit);
+      setDepoAmount(newWithdraw);
       setIsWDTrue(true);
       setIsDepoTrue(false);
     }
   };
-
 
 
   return (

@@ -8,10 +8,10 @@ const EmailVerify = ({onComplete}) => {
         onComplete()
     }
     return (
-        <div className={`relative border border-nevy-blue rounded mt-10 w-full h-96 bg-blue-50 ${open === 1?'hidden':'' }`}>
+        <div className={`relative  rounded mt-10 w-full bg-gray-100 p-5  ${open === 1?'hidden':'' }`}>
             <h2 className='text-center py-40 text-xl text-red-500 '>Please check your email to Verify.</h2>
-            <div className='absolute right-0 px-6 bottom-2'>
-            <Button onClick={handleOpen} className='bg-nevy-blue '>Ok</Button>
+            <div className='text-end'>
+            <Button onClick={handleOpen} className='bg-nevy-blue rounded'>Ok</Button>
             </div>
             
         </div>

@@ -3,12 +3,10 @@ import useAxiosPublic from "./useAxiosPublic";
 import useStatus from "./useStatus";
 import useAuth from "./useAuth";
 
-
 const useGetChat = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
-
 
   const {
     isPending,

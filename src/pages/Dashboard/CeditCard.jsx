@@ -59,7 +59,7 @@ const CeditCard = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className=" mt-8 border border-black rounded-lg shadow-lg mx-2  md:mx-20 md:p-20 p-5">
+    <div className=" p-5 rounded-lg shadow-lg m-5 ">
       <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for Cedit Card
       </h2>
@@ -154,7 +154,7 @@ const CeditCard = () => {
 
         <button
           type="submit"
-          className="border border-nevy-blue ease-linear duration-300 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded"
+          className="border ease-linear duration-300 hover:bg-nevy-blue hover:text-white font-bold py-2 px-4 rounded md:w-auto w-full"
         >
           Submit
         </button>

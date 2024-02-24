@@ -48,11 +48,11 @@ const BankUpdate = () => {
             placeholder="Search Notice..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-gray-300 rounded outline-0"
+            className="p-2 border border-gray-300 rounded outline-0 w-full sm:w-auto"
           />
           <button
             onClick={HandleShort}
-            className="bg-gray-100 py-2  px-7 rounded"
+            className="bg-gray-100 py-2  px-7 rounded w-full sm:w-auto"
           >
             Sort by time {sortByTime ? "New to Old" : "Old to New"}
           </button>

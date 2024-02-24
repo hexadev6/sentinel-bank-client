@@ -74,9 +74,9 @@ const CardManagement = () => {
   };
 
   return (
-    <div className="px-8 py-8">
+    <div className="p-5">
       {/* table */}
-      <Card className="h-full w-full min-h-screen">
+      <Card className=" w-full min-h-screen shadow-gray-100 rounded">
         <CardHeader floated={false} shadow={false} className="rounded-none ">
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>
@@ -89,7 +89,7 @@ const CardManagement = () => {
             </div>
           </div>
         </CardHeader>
-        <CardBody className="overflow-x-scroll px-0 min-h-screen">
+        <CardBody className="overflow-x-scroll px-0 min-min-h-screen">
           <table className="mt-4 w-full min-w-max table-auto text-left">
             <thead>
               <tr>

@@ -131,7 +131,7 @@ const RegistrationForm = ({ onComplete }) => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className=" bg-white">
-            <div className="p-10">
+            <div className="p-5 sm:p-10">
               <h2 className="text-3xl font-semibold mb-4">
                 Welcome to Sentinel Trust Bank.
               </h2>

@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import useStatus from "../../../Hooks/useStatus";
 import useAuth from "../../../Hooks/useAuth";
 
-const socket = io.connect("http://localhost:5000", {
+const socket = io.connect("https://localhost:5000", {
   transports: ["websocket"],
 });
 
@@ -28,7 +28,7 @@ const Chat = () => {
         role: userinfo?.status, // Assuming userinfo has a "status" property indicating user or admin
       };
 
-      console.log("Sending message:", messageData);
+      // console.log("Sending message:", messageData);
 
       await socket.emit("send_message", messageData);
       // setMessageList((list) => [...list, messageData]);

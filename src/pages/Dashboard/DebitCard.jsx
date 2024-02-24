@@ -56,11 +56,13 @@ const DebitCard = () => {
 
     axios
       .post(`/applicationCard`, cardinfo)
-      .then(() => notify())
+      .then(() => {
+        // console.log('posted')
+        notify()})
       .catch((err) => console.log(err));
   };
   return (
-    <div className=" mt-8  border border-black rounded-lg shadow-lg mx-2 md:mx-20 p-5 md:p-20">
+    <div className="p-5 rounded-lg shadow-lg m-5 ">
       <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for debit Card
       </h2>
@@ -70,7 +72,7 @@ const DebitCard = () => {
             <Input
               type="text"
               name="name"
-              label="Name:"
+              label="Name"
               defaultValue={account[0]?.holderName}
               {...register("name", { required: true })}
               className="w-full border rounded px-4 py-2"
@@ -80,7 +82,7 @@ const DebitCard = () => {
             <Input
               type="text"
               name="address"
-              label="address:"
+              label="address"
               defaultValue={account[0]?.address}
               {...register("address", { required: true })}
               className="w-full border rounded px-4 py-2"
@@ -92,7 +94,7 @@ const DebitCard = () => {
             <Input
               type="text"
               name="city"
-              label="city :"
+              label="city "
               {...register("city", { required: true })}
               className="w-full border rounded px-4 py-2"
             />
@@ -101,7 +103,7 @@ const DebitCard = () => {
             <Input
               type="text"
               name="Nationality"
-              label="Nationality:"
+              label="Nationality"
               defaultValue={account[0]?.nationality}
               {...register("nationality", { required: true })}
               className="w-full border rounded px-4 py-2"
@@ -114,7 +116,7 @@ const DebitCard = () => {
             <Input
               type="number"
               name="phnNumber"
-              label="Phone:"
+              label="Phone"
               defaultValue={account[0]?.phnNumber}
               {...register("phnNumber", { required: true })}
               className="w-full border rounded px-4 py-2"
@@ -124,7 +126,7 @@ const DebitCard = () => {
             <Input
               type="text"
               name="zipCode"
-              label="ZIP Code:"
+              label="ZIP Code"
               {...register("zipCode", { required: true })}
               className="w-full border rounded px-4 py-2"
             />
@@ -135,7 +137,7 @@ const DebitCard = () => {
             <Input
               type="email"
               name="email"
-              label="Email:"
+              label="Email"
               defaultValue={account[0]?.holderEmail}
               {...register("email", { required: true })}
               className="w-full border rounded px-4 py-2"
@@ -144,7 +146,7 @@ const DebitCard = () => {
           <div className="flex-1">
             <select
               {...register("card_type", { required: true })}
-              className="w-full border py-2 rounded-md bg-transparent"
+              className="w-full border py-2 rounded bg-transparent"
             >
               <option value="MasterCard">MasterCard</option>
               <option value="Visa">Visa</option>
@@ -155,7 +157,7 @@ const DebitCard = () => {
 
         <button
           type="submit"
-          className="border border-nevy-blue hover:text-white hover:bg-blue-700  font-bold py-2 px-4 rounded  ease-linear duration-300"
+          className="border ease-linear duration-300 hover:bg-nevy-blue hover:text-white font-bold py-2 px-4 rounded md:w-auto w-full"
         >
           Submit
         </button>

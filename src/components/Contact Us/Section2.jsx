@@ -192,7 +192,7 @@ const Section2 = () => {
   return (
     <div
       id="information"
-      className="object-contain bg-cover bg-center bg-no-repeat py-10 "
+      className="object-contain bg-cover bg-center bg-no-repeat py-10 container mx-auto px-4"
       style={{ backgroundImage: `url("${bgContact}")` }}
     >
       <Container>
