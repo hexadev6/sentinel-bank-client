@@ -57,8 +57,6 @@ const FileInput = styled.input`
   outline: none;
   transition: border-color 0.3s;
   cursor: pointer;
-
-
 `;
 
 const PasswordInput = styled.input`
@@ -69,8 +67,6 @@ const PasswordInput = styled.input`
   outline: none;
   transition: border-color 0.3s;
   padding-right: 30px;
-
-
 `;
 
 const PasswordIcon = styled.span`
@@ -82,89 +78,93 @@ const PasswordIcon = styled.span`
 const RegistrationForm = ({ onComplete }) => {
   const { userSignUp, UserProfileUpdate } = useAuth();
   const { register, handleSubmit } = useForm();
-  const axiosPublic=useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const onSubmit = async (data) => {
     const accepted = data.terms.checked;
     // console.log(data);
 
-      userSignUp(data.email,data.password)
+    userSignUp(data.email, data.password)
       .then((result) => {
-              // console.log("user create", result.user);
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "User created Successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              if (result.user.emailVerified === false) {
-                sendEmailVerification(result.user)
-                  .then(() => {
-                    if (result.user) {
-                      // console.log("email verify", result.user);
-                      UserProfileUpdate(data.name, null)
-                                      .then(async (result) => {
-                                        // console.log('user Created regi',result);
-                                const res = await axiosPublic.post("/createUser", {
-                                          email: data.email,
-                                          name: data.name,
-                                          image: null,
-                                          acc_num: 0,
-                                        });
-                                        // console.log(res);
-                                        if (res.data.success) {
-                                          onComplete();
-                                        }
-                                      })
-                                      .catch((error) => console.log(error));
-                                  }
-                                })
-                                .catch((error) => console.log(error));
-                  }
-                })
-                .catch(err=>{
-                  console.log(err);
-                })
-    }
-  
+        // console.log("user create", result.user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User created Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        if (result.user.emailVerified === false) {
+          sendEmailVerification(result.user)
+            .then(() => {
+              if (result.user) {
+                // console.log("email verify", result.user);
+                UserProfileUpdate(data.name, null)
+                  .then(async (result) => {
+                    // console.log('user Created regi',result);
+                    const res = await axiosPublic.post("/createUser", {
+                      email: data.email,
+                      name: data.name,
+                      image: null,
+                      acc_num: 0,
+                    });
+                    // console.log(res);
+                    if (res.data.success) {
+                      onComplete();
+                    }
+                  })
+                  .catch((error) => console.log(error));
+              }
+            })
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-   <div  >
-
-
-
-
-
-<FormContainer   >
-     
-      <StyledForm className="rounded border border-nevy-blue" onSubmit={handleSubmit(onSubmit)}>
-        
-
-        <div className=" bg-white">
-        <div className="p-10">
-        <h2 className="text-3xl font-semibold mb-4">Welcome to Sentinel Trust Bank.</h2>
-        <h2 className="mb-4">Already have an account? please <Link className=' p-1 text-nevy-blue transition-all duration-300 rounded hover:underline' to='/login'>login</Link> </h2>
-        <InputContainer>
-          <Label htmlFor='name'>Name</Label>
-          <Input
-          className="focus:border-nevy-blue"
-            type='text'
-            id='name'
-            placeholder="Your name"
-            {...register("name", { required: "Name is required" })}
-          />
-          <PasswordIcon>
-            <FaUser />
-          </PasswordIcon>
-        </InputContainer>
+    <div>
+      <FormContainer>
+        <StyledForm
+          className="rounded border border-nevy-blue"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className=" bg-white">
+            <div className="p-10">
+              <h2 className="text-3xl font-semibold mb-4">
+                Welcome to Sentinel Trust Bank.
+              </h2>
+              <h2 className="mb-4">
+                Already have an account? please{" "}
+                <Link
+                  className=" p-1 text-nevy-blue transition-all duration-300 rounded hover:underline"
+                  to="/login"
+                >
+                  login
+                </Link>{" "}
+              </h2>
+              <InputContainer>
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  className="focus:border-nevy-blue"
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                  {...register("name", { required: "Name is required" })}
+                />
+                <PasswordIcon>
+                  <FaUser />
+                </PasswordIcon>
+              </InputContainer>
 
               <InputContainer>
                 <Label htmlFor="email">Email</Label>
                 <Input
-                className="focus:border-nevy-blue"
-                  type='email'
-                  id='email'
-                  placeholder='Your email'
+                  className="focus:border-nevy-blue"
+                  type="email"
+                  id="email"
+                  placeholder="Your email"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -181,10 +181,10 @@ const RegistrationForm = ({ onComplete }) => {
               <InputContainer>
                 <Label htmlFor="password">Password</Label>
                 <PasswordInput
-                className="focus:border-nevy-blue"
-                  type='password'
-                  id='password'
-                  placeholder='Your password'
+                  className="focus:border-nevy-blue"
+                  type="password"
+                  id="password"
+                  placeholder="Your password"
                   {...register("password", {
                     required: "Password is required",
                   })}
@@ -193,23 +193,27 @@ const RegistrationForm = ({ onComplete }) => {
                   <FaLock />
                 </PasswordIcon>
               </InputContainer>
-        <InputContainer>
-        <input type="checkbox" name="terms"  {...register("terms", {
-              required: "Accept terms and condition.",
-            })} id="terms" />
-        <label className="ml-2" htmlFor="terms">Accept our terms and conditions.</label>
-        </InputContainer>
-        <Button className="bg-nevy-blue w-full" type='submit'>
-          Registration
-        </Button>
-        </div>
-        
-        </div>
-      </StyledForm>
-    </FormContainer>
-   
-     
-   </div>
+              <InputContainer>
+                <input
+                  type="checkbox"
+                  name="terms"
+                  {...register("terms", {
+                    required: "Accept terms and condition.",
+                  })}
+                  id="terms"
+                />
+                <label className="ml-2" htmlFor="terms">
+                  Accept our terms and conditions.
+                </label>
+              </InputContainer>
+              <Button className="bg-nevy-blue w-full" type="submit">
+                Registration
+              </Button>
+            </div>
+          </div>
+        </StyledForm>
+      </FormContainer>
+    </div>
   );
 };
 

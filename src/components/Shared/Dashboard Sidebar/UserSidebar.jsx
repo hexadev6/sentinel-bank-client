@@ -4,8 +4,12 @@ import { TfiWrite } from "react-icons/tfi";
 import { HiMiniBanknotes } from "react-icons/hi2";
 
 import { NavLink } from "react-router-dom";
+import useStatus from "../../../Hooks/useStatus";
+import useAuth from "../../../Hooks/useAuth";
 
 const UserSidebar = () => {
+  const { user } = useAuth();
+  const { userinfo } = useStatus({ email: user?.email });
   return (
     <>
       <NavLink
@@ -107,7 +111,11 @@ const UserSidebar = () => {
         </div>
       </NavLink>
       <NavLink
-        to="/dashboard/applyLoan"
+        to={`${
+          userinfo?.loanStatus?.length === 1
+            ? `/dashboard/loanOverview/${userinfo?.loanStatus[0].loanId}`
+            : "/dashboard/applyLoan"
+        }`}
         className={({ isActive, isPending }) =>
           isPending
             ? "pending"

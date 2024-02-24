@@ -23,6 +23,7 @@ import LoanManagement from "../pages/Dashboard/LoanManagement";
 import LoanDetailsAdmin from "../pages/Dashboard/LoanDetailsAdmin";
 import OverviewAdmin from "../pages/Dashboard/OverviewAdmin";
 import OverviewUser from "../pages/Dashboard/OverviewUser";
+import LoanOverview from "../pages/Dashboard/LoanOverview";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "LoanDetailsAdmin/:id",
         element: <LoanDetailsAdmin />,
+      },
+      {
+        path: "loanOverview/:id",
+        element: <LoanOverview />,
       },
       {
         path: "applicationCard",
