@@ -14,7 +14,8 @@ const useCardApply = () => {
       return res?.data;
     },
   });
-  return [CardApply, isLoading, refetch];
+  console.log(CardApply);
+  return {CardApply, isLoading, refetch};
 };
 
 export default useCardApply;

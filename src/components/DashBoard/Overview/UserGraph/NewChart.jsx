@@ -1,9 +1,10 @@
 import React from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import Transaction from "../Transaction/Transaction";
 
-const NewChart = ({ Alltrasactions }) => {
-  console.log(Alltrasactions);
+import useAllTrasaction from "../../../../Hooks/useAllTrasaction";
+
+const NewChart = () => {
+ const [Alltrasactions, isLoading, refetch]=useAllTrasaction()
   const data = Alltrasactions?.depositSummary?.map((item, index) => ({
     name: new Date(item?.transactionDate).toLocaleDateString(),
     deposit: item?.amount,

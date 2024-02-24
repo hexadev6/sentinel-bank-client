@@ -9,6 +9,7 @@ import LoanChart from "../../components/DashBoard/Loan/LoanChart";
 const LoanOverview = () => {
   const axios = useAxiosSecure();
   const { id } = useParams();
+  console.log(id);
   const {
     data: singleLoan,
     isLoading,
@@ -29,10 +30,11 @@ const LoanOverview = () => {
     { _id: "loanCompRang", count: singleLoan?.loanCompRang },
     { _id: "loanDue", count: due },
   ];
+  console.log(chartArr);
 
   return (
     <div className="p-5">
-      <h2 className="mb-5 font-bold">Loan Status : {singleLoan.status}</h2>
+      <h2 className="mb-5 font-bold">Loan Status : {singleLoan?.status}</h2>
       <div className="flex justify-between  gap-5 text-white text-center">
         <div className="bg-nevy-blue p-8 rounded-md w-full">
           <p>{singleLoan?.loanAmount}</p>

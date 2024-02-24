@@ -1,13 +1,7 @@
 import ReactApexChart from "react-apexcharts";
-import useCardApply from "../../../Hooks/useCardApply";
 
 const LoanChart = ({ chartArr }) => {
-  const [CardApply, isLoading, refetch] = useCardApply();
   console.log(chartArr);
-  if (isLoading) {
-    return <h1>loading..</h1>;
-  }
-
   const chartOptions = {
     series: chartArr?.map((item) => item?.count),
     chart: {
