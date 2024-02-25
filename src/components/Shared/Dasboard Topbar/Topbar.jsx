@@ -12,6 +12,8 @@ import { Outlet } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import useStatus from "../../../Hooks/useStatus";
 import useDarkMode from "../../../Hooks/useDarkMode";
+import ProfileMenu from "../Navbar/ProfileDropdown";
+import Notification from "../../DashBoard/Nofication/Notification";
 
 const Topbar = () => {
   const { user } = useAuth();
@@ -90,11 +92,11 @@ const Topbar = () => {
                 : "text-black hover:bg-gray-300  "
             }`}
           >
-            <FaBell className="text-lg" />
+            <Notification/>
           </IconButton>
           {/* avatar */}
           <div className=" rounded-full ">
-            <Avatar src={user?.photoURL} alt="avatar" />
+            <Avatar src={userinfo?.image} alt="avatar" />
           </div>
         </div>
       </div>

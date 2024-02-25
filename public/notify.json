@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "label": "You deposited 500$",
+      "time": "1 Hour ago",
+      "read": false
+    },
+    {
+      "id": 2,
+      "label": "You withdraw 500$",
+      "time": "13 minutes ago",
+      "read": false
+    },
+    {
+      "id": 3,
+      "label": "You withdraw 500$",
+      "time": "13 minutes ago",
+      "read": true
+    },
+    {
+      "id": 4,
+      "label": "You withdraw 500$",
+      "time": "13 minutes ago",
+      "read": true
+    }
+  ]
+  
