@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Typography,
   IconButton,
@@ -19,6 +19,9 @@ const Topbar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email }) || {};
   const { darkMode, toggleDarkMode } = useDarkMode();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const HandleNotification = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     // topbar
@@ -54,12 +57,12 @@ const Topbar = () => {
             </Typography>
           )}
         </div>
-   
+
         {/* bell icon & avatar */}
-        <div className="flex gap-2 md:gap-5 items-center ">
-       
+        <div className="flex gap-2 md:gap-5 items-center relative">
           {/* bell icon */}
           <IconButton
+            onClick={HandleNotification}
             variant="text"
             color="white"
             className={` rounded  ${
@@ -68,8 +71,9 @@ const Topbar = () => {
                 : "text-black hover:bg-gray-300  "
             }`}
           >
-            <Notification/>
+            <FaBell className="text-lg"/>
           </IconButton>
+          {isMenuOpen && <Notification />}
           {/* avatar */}
           <div className=" rounded-full ">
             <Avatar src={userinfo?.image} alt="avatar" />

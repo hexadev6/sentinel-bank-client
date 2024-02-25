@@ -8,11 +8,11 @@ const CardApply = () => {
     return <h1>Loading...</h1>;
   }
 
-  const cardApplyArray = cardApplyObject.CardApply;
-  const loanCount = cardApplyObject.loan;
+  const cardApplyArray = cardApplyObject?.CardApply;
+  const loanCount = cardApplyObject?.loan;
 
   const chartData = [
-    ...cardApplyArray.map((item) => ({
+    ...cardApplyArray?.map((item) => ({
       id: item?._id,
       count: item?.count,
       type: "CardApply",
@@ -25,7 +25,7 @@ const CardApply = () => {
   ];
 
   const chartOptions = {
-    series: chartData.map((item) => item.count),
+    series: chartData?.map((item) => item.count),
     chart: {
       width: 100, 
       type: "pie",
