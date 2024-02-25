@@ -26,7 +26,7 @@ const LoanChart = ({ chartArr }) => {
   };
 
   return (
-    <div className="w-full  border h-full rounded-xl" id="chart">
+    <div className="w-full  border h-full rounded-xl shadow-md" id="chart">
       <ReactApexChart
         options={chartOptions}
         series={chartOptions.series}

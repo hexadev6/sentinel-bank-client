@@ -32,7 +32,7 @@ const TABLE_ROWS = [
 
 const LoanDocTab = () => {
   return (
-    <Card className="h-[350px] w-full overflow-y-scroll rounded-xl">
+    <Card className="h-[350px] w-full overflow-y-scroll rounded-xl shadow-md">
       <table className="w-full min-w-max table-auto text-left ">
         <thead>
           <tr>
