@@ -24,11 +24,11 @@ const UserProfile = () => {
   const HandleImageChange = async (e) => {
     const profileImg = e.target.files[0];
     const photo = await multiImgUpload(profileImg);
-    console.log(photo);
+    // console.log(photo);
     await axiosSecure
       .patch(`/updateUser/${userinfo?._id}`, { image: photo })
       .then((res) => {
-        console.log("after patch", res?.data);
+        // console.log("after patch", res?.data);
         if (res?.data.message == "success") {
           Swal.fire({
             position: "center",
@@ -47,17 +47,15 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="min-h-screen mb-10">
+    <div className=" mb-10">
       <div className="relative">
         <CommonBanner img={img1}></CommonBanner>
-      </div>
-      <Container>
-        <div>
-          <div className="flex gap-6 absolute mx-44 -mt-60 w-2/3 h-[450px] rounded-md bg-blue-100 border mb-10">
-            <div>
-              <img className="w-80 h-96 " src={userinfo?.image} alt="" />
 
-              <div className="relative ml-64 -mt-12" onClick={handleImageClick}>
+        <div className="flex md:flex-nowrap flex-wrap justify-between items-center gap-6 absolute w-full sm:w-fit p-5  mx-auto left-0 right-0 bottom-[-43rem] md:-bottom-80 rounded-md bg-blue-100 border mb-10">
+            <div className="relative w-auto  md:w-full">
+              <img className="w-80 h-96  " src={userinfo?.image} alt="" />
+
+              <div className="absolute bottom-2 right-4  " onClick={handleImageClick}>
                 {/* Icon for image upload */}
                 <svg
                   className="w-10 h-10"
@@ -95,12 +93,9 @@ const UserProfile = () => {
                 />
               </div>
             </div>
-            <div className="py-10 space-y-3">
+            <div className="py-10 space-y-3 w-full">
               <h2>
-                Account No: <span></span>{" "}
-              </h2>
-              <h2>
-                Username: <span> {userinfo?.name}</span>{" "}
+                Name: <span> {userinfo?.name}</span>{" "}
               </h2>
               <h2>Date of Birth:{userinfo?.DOB} </h2>
               <h2>
@@ -113,15 +108,14 @@ const UserProfile = () => {
                 Location: <span>{userinfo?.location} </span>{" "}
               </h2>
               <h2>Nationality: {userinfo?.nationality} </h2>
-              <div className=" pt-24 pl-16">
+              <div className="  ">
                 <UserDialog userinfo={userinfo} refetch={refetch}></UserDialog>
               </div>
-
-              {/* <Support></Support> */}
             </div>
           </div>
-        </div>
-      </Container>
+
+      </div>
+      
     </div>
   );
 };

@@ -105,7 +105,7 @@ const Notice = () => {
 
   return (
     <div className="p-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 justify-between">
-      <div className=" xl:col-span-2">
+      <div className=" rounded p-5 h-fit shadow-xl xl:col-span-2">
         <Typography
           variant="h4"
           color="blue-gray"
@@ -115,7 +115,7 @@ const Notice = () => {
         </Typography>
 
         <form action="" onSubmit={HandleNotice}>
-          <div className="grid grid-cols-2 gap-3 justify-between items-center mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 justify-between items-center mt-10">
             {/* account holder name */}
             <div className="flex flex-col ">
               <label htmlFor="name">Notice Title</label>
@@ -158,7 +158,7 @@ const Notice = () => {
           </div>
           <button
             variant="text"
-            className={`mt-20 py-2 px-4 hover:text-white rounded bg-nevy-blue text-white  ${
+            className={`mt-36 sm:mt-24 py-2 px-4 w-full sm:w-auto hover:text-white rounded bg-nevy-blue text-white  ${
               darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
             }`}
           >
@@ -167,23 +167,26 @@ const Notice = () => {
         </form>
       </div>
 
-      <div className="flex flex-col xl:col-span-1 gap-4 h-screen overflow-auto scrollbar">
-      <Typography
+     <div>
+     <Typography
           variant="h4"
           color="blue-gray"
-          className={` ${darkMode ? "text-blue-gray-400" : "text-nevy-blue"} text-end`}
+          className={`py-4 bg-gray-200 ${
+            darkMode ? "text-blue-gray-400" : "text-nevy-blue"
+          } text-center`}
         >
           All Notices
         </Typography>
+      <div className=" bg-gray-50 p-5 pt-0 rounded flex flex-col xl:col-span-1 gap-4 min-h-screen overflow-auto scrollbar">
         {allnotice?.map((notice) => (
-          <div className="flex items-center justify-between gap-4 shadow-md  p-5 w-full">
-            <div className="flex gap-3 items-center ">
+          <div className="flex items-center justify-between bg-gray-100 rounded gap-4 shadow-md shadow-gray-100  p-5 w-full">
+            <div className="flex gap-3 items-center w-full">
               <img
                 className="w-[75px] h-[75px] rounded-lg bg-slate-500"
                 src={notice?.image}
                 alt=""
               />
-              <div className="flex flex-col">
+              <div className="flex flex-col w-full">
                 <h5 className="text-sm overflow-hidden break-words">
                   {notice?.title}
                 </h5>
@@ -191,22 +194,23 @@ const Notice = () => {
                   Published on:
                   {new Date(notice?.createdAt).toISOString().split("T")[0]}
                 </p>
-              </div>
-            </div>
 
-            <div className="flex gap-2 items-center justify-between">
-              <MdEdit
-                className="bg-gray-100 w-8 h-8 rounded p-1 text-blue-gray-700"
-                onClick={() => HandleEdit(notice)}
-              />
-              <MdDelete
-                className="bg-gray-100 w-8 h-8 rounded p-1 text-blue-gray-700"
-                onClick={() => HandleDelete(notice._id)}
-              />
+                <div className="flex gap-2 items-center  mt-3 w-full">
+                  <MdEdit
+                    className="bg-gray-200 w-6 h-6 rounded p-1 text-blue-gray-700"
+                    onClick={() => HandleEdit(notice)}
+                  />
+                  <MdDelete
+                    className="bg-gray-200 w-6 h-6 rounded p-1 text-blue-gray-700"
+                    onClick={() => HandleDelete(notice._id)}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         ))}
       </div>
+     </div>
     </div>
   );
 };

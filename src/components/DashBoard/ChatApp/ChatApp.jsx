@@ -6,7 +6,6 @@ const socket = io("http://localhost:5000");
 import { IoIosSend } from "react-icons/io";
 import { Badge, IconButton, Avatar } from "@material-tailwind/react";
 
-
 const ChatApp = ({
   userId,
   adminId,
@@ -18,39 +17,31 @@ const ChatApp = ({
 }) => {
   const { user } = useAuth();
   const [senderId, setSenderId] = useState("");
-   const { isPending, error, allChat, refetch }= useGetChat()
-
-
-
+  const { isPending, error, allChat, refetch } = useGetChat();
 
   useEffect(() => {
     const socket = io("http://localhost:5000");
     socket.emit("joinRoom", userId);
 
-
     socket.on("connect", () => {
       console.log("Connected to Socket.IO server");
     });
 
-
-   
     socket.on("receiveMessage", (msg) => {
       const senderId = msg.sender;
       setSenderId(senderId);
       refetch();
     });
-   
+
     return () => {
       socket.disconnect();
     };
   }, [userId, senderId, refetch]);
 
-
   const sendMessage = (e) => {
     e.preventDefault();
     let msgObject;
     const newMessageText = e.target.newmsg.value;
-
 
     if (userId == "65c62bccbeb6949fbca80189") {
       msgObject = {
@@ -70,17 +61,17 @@ const ChatApp = ({
       };
     }
 
-
-    socket.emit("sendMessage", msgObject);
-    console.log(msgObject);
-    refetch();
+    socket.emit("sendMessage", msgObject, () => {
+      refetch();
+    });
+    
+    // console.log(msgObject);
+    // refetch();
     e.target.reset();
   };
 
-
   const filteredMessages = allChat?.filter((msg) => {
     if (isAdmin) {
-      // Only show messages for the selected user
       return (
         ((msg.sender === userId && msg.receiver === selectedUser) ||
           (msg.sender === selectedUser && msg.receiver === userId)) &&
@@ -89,13 +80,11 @@ const ChatApp = ({
     }
   });
 
-
   const receiverInfo = filteredMessages?.[0];
 
-
-  console.log("userid===>", userId);
+  // console.log("userid===>", userId);
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 rounded">
       {isAdmin == true ? (
         <div className=" flex items-center gap-3 mb-2 px-5 py-2 bg-nevy-blue text-white">
           <Badge overlap="circular" placement="bottom-end" color="green">
@@ -105,7 +94,7 @@ const ChatApp = ({
         </div>
       ) : (
         <>
-          <div className=" rounded  flex items-center gap-3 mb-2 px-5 py-2 bg-nevy-blue text-white">
+          <div className="rounded  flex items-center gap-3 mb-2 px-5 py-2 bg-nevy-blue text-white">
             <Badge overlap="circular" placement="bottom-end" color="green">
               <Avatar
                 src={
@@ -221,7 +210,7 @@ const ChatApp = ({
       </div>
       <form
         onSubmit={sendMessage}
-        className="mt-5 sticky  bottom-0 bg-gray-100 p-5 flex w-full "
+        className="mt-5 sticky  bottom-0 bg-gray-100 p-5 flex w-full rounded "
       >
         <input
           type="text"
@@ -235,6 +224,5 @@ const ChatApp = ({
     </div>
   );
 };
-
 
 export default ChatApp;

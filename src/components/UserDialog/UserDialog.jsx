@@ -53,11 +53,11 @@ const UserDialog = ({ userinfo, refetch }) => {
 
   return (
     <>
-      <div className="flex gap-1 justify-between">
+      <div className="flex sm:flex-nowrap flex-wrap gap-3 mt-16 justify-end">
         <Link to="/">
-          <Button variant="outlined">Go Home</Button>
+          <Button variant="outlined" className="rounded">Go Home</Button>
         </Link>
-        <Button onClick={handleOpen} className="text-blue-700" variant="text">
+        <Button onClick={handleOpen}  variant="outlined" className=" rounded " >
           Edit Profile
         </Button>
       </div>

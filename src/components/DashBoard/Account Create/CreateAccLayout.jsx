@@ -12,6 +12,8 @@ import {
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import useDarkMode from "../../../Hooks/useDarkMode";
+import useStatus from "../../../Hooks/useStatus";
+import useAuth from "../../../Hooks/useAuth";
 
 const CreateAccLayout = ({
   HandleCreateAcc,
@@ -27,6 +29,9 @@ const CreateAccLayout = ({
 }) => {
   const [isClicked, setIsClicked] = useState(true);
   const { darkMode, toggleDarkMode } = useDarkMode();
+  const { user } = useAuth();
+  const { userinfo } = useStatus({ email: user?.email }) ;
+
 
   const handleTerms = () => {
     setIsClicked(!isClicked);
@@ -76,6 +81,7 @@ const CreateAccLayout = ({
                   name="holder_name"
                   type="text"
                   required
+                  defaultValue={userinfo?.name}
                   placeholder="account holder name"
                   className={` py-2 px-4 rounded outline-0 ${
                     darkMode ? "bg-[#25324b]" : "border "
@@ -90,6 +96,7 @@ const CreateAccLayout = ({
                   color="indigo"
                   name="dob"
                   type="date"
+                  defaultValue={userinfo?.DOB}
                   placeholder="NID DOB"
                   className={` py-2 px-4 rounded outline-0 ${
                     darkMode ? "bg-[#25324b]" : "border "
@@ -129,6 +136,7 @@ const CreateAccLayout = ({
                   color="indigo"
                   type="text"
                   name="nationality"
+                  defaultValue={userinfo?.nationality}
                   placeholder="nationality e.g. Bangladeshi"
                   className={` py-2 px-4 rounded outline-0 ${
                     darkMode ? "bg-[#25324b]" : "border "
@@ -171,6 +179,7 @@ const CreateAccLayout = ({
                   color="indigo"
                   name="address"
                   type="text"
+                  defaultValue={userinfo?.location}
                   placeholder="residential address e.g Mirpur,Dhaka"
                   className={` py-2 px-4 rounded outline-0 ${
                     darkMode ? "bg-[#25324b]" : "border "
@@ -185,6 +194,7 @@ const CreateAccLayout = ({
                   color="indigo"
                   name="phnNumber"
                   type="number"
+                  defaultValue={userinfo?.mobile}
                   placeholder="phone number e.g 017XXXXXXX"
                   className={` py-2 px-4 rounded outline-0 ${
                     darkMode ? "bg-[#25324b]" : "border "
@@ -499,7 +509,7 @@ const CreateAccLayout = ({
                 <button
                   variant="text"
                   disabled
-                  className={` py-2 px-4 hover:text-white mt-3  rounded  text-white ${
+                  className={`w-full sm:w-auto  py-2 px-4 hover:text-white mt-3  rounded  text-white ${
                     darkMode ? "bg-[#25324b]" : "bg-gray-400 border"
                   }`}
                 >
@@ -509,7 +519,7 @@ const CreateAccLayout = ({
               ) : (
                 <button
                   variant="text"
-                  className={`  py-2 px-4 hover:text-white mt-3  rounded bg-nevy-blue text-white  ${darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
+                  className={`w-full sm:w-auto  py-2 px-4 hover:text-white mt-3  rounded bg-nevy-blue text-white  ${darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
                   }`}
                  
                 >
@@ -520,7 +530,7 @@ const CreateAccLayout = ({
               <button
                 variant="text"
                 disabled
-                className={` py-2 px-4 hover:text-white mt-3  rounded  text-white ${
+                className={`w-full sm:w-auto py-2 px-4 hover:text-white mt-3  rounded  text-white ${
                   darkMode ? "bg-[#25324b]" : "bg-gray-400 border"
                 }`}
               >

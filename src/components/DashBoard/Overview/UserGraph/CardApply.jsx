@@ -8,11 +8,11 @@ const CardApply = () => {
     return <h1>Loading...</h1>;
   }
 
-  const cardApplyArray = cardApplyObject.CardApply;
-  const loanCount = cardApplyObject.loan;
+  const cardApplyArray = cardApplyObject?.CardApply;
+  const loanCount = cardApplyObject?.loan;
 
   const chartData = [
-    ...cardApplyArray.map((item) => ({
+    ...cardApplyArray?.map((item) => ({
       id: item?._id,
       count: item?.count,
       type: "CardApply",
@@ -25,37 +25,23 @@ const CardApply = () => {
   ];
 
   const chartOptions = {
-    series: chartData.map((item) => item.count),
+    series: chartData?.map((item) => item.count),
     chart: {
-      width: 100,
+      width: 100, 
       type: "pie",
     },
-    labels: chartData.map((item) => item.id),
-    responsive: [
-      {
-        breakpoint: 280,
-        options: {
-          chart: {
-            width: 100,
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
+    labels: cardApplyData?.map((item) => item?._id),
+  
   };
 
   return (
-    <div>
-      <div className="w-80" id="chart">
-        <ReactApexChart
-          options={chartOptions}
-          series={chartOptions.series}
-          type="donut"
-          height={350}
-        />
-      </div>
+    <div className="w-full" id="chart">
+      <ReactApexChart
+        options={chartOptions}
+        series={chartOptions.series}
+        type="pie"
+        height={200}
+      />
     </div>
   );
 };
