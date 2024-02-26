@@ -58,11 +58,11 @@ const LoanOverview = () => {
 
       {/* Loan details table & Chart */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 my-10">
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-6">
           {" "}
           <LoanDocTab />
         </div>
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-6">
           <LoanChart chartArr={chartArr} />
         </div>
       </div>

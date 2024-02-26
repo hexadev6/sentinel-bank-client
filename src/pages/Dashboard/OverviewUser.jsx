@@ -23,7 +23,7 @@ const OverviewUser = () => {
 
   return (
     <>
-      <div className="overflow-x-hidden grid grid-cols-1 lg:grid-cols-5 gap-y-3 md:gap-5 justify-between items-start p-5 h-full">
+      <div className="overflow-x-hidden grid grid-cols-1 lg:grid-cols-5 gap-y-3 md:gap-5 justify-between items-start p-5 ">
         <div className="lg:col-span-3 space-y-6">
           {userinfo?.status === "user" && <Transfer />}
           <UserGraph />
