@@ -1,57 +1,65 @@
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-import useAllTrasaction from "../../../../Hooks/useAllTrasaction";
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
+import useAllTrasaction from '../../../../Hooks/useAllTrasaction';
 
-const NewChart = () => {
+const AreaChart = () => {
   const [Alltrasactions, isLoading, refetch] = useAllTrasaction();
+
   const data = Alltrasactions?.depositSummary?.map((item, index) => ({
     name: new Date(item?.transactionDate).toLocaleDateString(),
     deposit: item?.amount,
-    withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount,
+    withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount
   }));
 
+  const series = [
+    {
+      name: 'Withdraw',
+      data: data?.map(item => item.withdraw)
+    },
+    {
+      name: 'Deposit',
+      data: data?.map(item => item.deposit)
+    }
+  ];
+
+  const options = {
+    chart: {
+      height: 300,
+      type: 'area'
+    },
+    xaxis: {
+      type: 'category',
+      categories: data?.map(item => item.name)
+    },
+    yaxis: [
+      {
+        title: {
+          text: 'Withdraw',
+          style: {
+            color: '#8884d8'
+          }
+        }
+      },
+      {
+        opposite: true,
+        title: {
+          text: 'Deposit',
+          style: {
+            color: '#82ca9d'
+          }
+        }
+      }
+    ]
+  };
+
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis yAxisId="left" />
-        <YAxis yAxisId="right" orientation="right" />
-        <Tooltip />
-        <Legend />
-        <Line
-          yAxisId="left"
-          type="monotone"
-          dataKey="withdraw"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          yAxisId="right"
-          type="monotone"
-          dataKey="deposit"
-          stroke="#82ca9d"
-        />
-      </LineChart>
-    </ResponsiveContainer>
+    <ReactApexChart
+      options={options}
+      series={series}
+      type="area"
+      height={300}
+    />
   );
 };
 
-export default NewChart;
+export default AreaChart;

@@ -1,6 +1,7 @@
 
 import UserGraph from "../../components/DashBoard/Overview/UserGraph/UserGraph";
 import AdminTransafer from "../../components/DashBoard/Overview/MoneyTransfer/AdminTransafer";
+import ChatApp from "../../components/DashBoard/ChatApp/ChatApp";
 
 const OverviewAdmin = () => {
 
@@ -8,8 +9,8 @@ const OverviewAdmin = () => {
     <>
       <div className=" justify-between items-start p-5">
         <div className=" space-y-6">
-          <AdminTransafer />
           <UserGraph />
+          <ChatApp/>
         </div>
       </div>
     </>
