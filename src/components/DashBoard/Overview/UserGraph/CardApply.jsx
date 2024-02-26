@@ -12,7 +12,7 @@ const CardApply = () => {
   const loanCount = cardApplyObject?.loan;
 
   const chartData = [
-    ...cardApplyArray?.map((item) => ({
+    ...cardApplyArray.map((item) => ({
       id: item?._id,
       count: item?.count,
       type: "CardApply",
@@ -27,11 +27,10 @@ const CardApply = () => {
   const chartOptions = {
     series: chartData?.map((item) => item.count),
     chart: {
-      width: 100, 
+      width: 100,
       type: "pie",
     },
-    labels: cardApplyData?.map((item) => item?._id),
-  
+    labels: chartData?.map((item) => item?._id),
   };
 
   return (

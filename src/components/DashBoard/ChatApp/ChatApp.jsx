@@ -3,6 +3,7 @@ import io from "socket.io-client";
 import useAuth from "../../../Hooks/useAuth";
 import useGetChat from "../../../Hooks/useGetChat";
 const socket = io("http://localhost:5000");
+// const socket = io("https://sentinel-bank-server-six.vercel.app");
 import { IoIosSend } from "react-icons/io";
 import { Badge, IconButton, Avatar } from "@material-tailwind/react";
 
@@ -21,6 +22,7 @@ const ChatApp = ({
 
   useEffect(() => {
     const socket = io("http://localhost:5000");
+    // const socket = io("https://sentinel-bank-server-six.vercel.app");
     socket.emit("joinRoom", userId);
 
     socket.on("connect", () => {
@@ -64,7 +66,7 @@ const ChatApp = ({
     socket.emit("sendMessage", msgObject, () => {
       refetch();
     });
-    
+
     // console.log(msgObject);
     // refetch();
     e.target.reset();
@@ -121,7 +123,7 @@ const ChatApp = ({
                   <img
                     src={msg?.senderImage}
                     alt="avatar"
-                    class="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
+                    className="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
                   />
                 )}
                 <div
@@ -151,7 +153,7 @@ const ChatApp = ({
                   <img
                     src={msg?.senderImage}
                     alt="avatar"
-                    class="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
+                    className="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
                   />
                 )}
               </div>
@@ -170,7 +172,7 @@ const ChatApp = ({
                   <img
                     src={msg?.senderImage}
                     alt="avatar"
-                    class="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
+                    className="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
                   />
                 )}
                 <div
@@ -200,7 +202,7 @@ const ChatApp = ({
                   <img
                     src={msg?.senderImage}
                     alt="avatar"
-                    class="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
+                    className="relative inline-block h-6 w-6 !rounded-full object-cover object-center"
                   />
                 )}
               </div>
