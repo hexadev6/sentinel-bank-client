@@ -58,3 +58,4 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
 };
 
 export default ApexPieChart;
+

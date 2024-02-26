@@ -1,17 +1,21 @@
 import ReactApexChart from "react-apexcharts";
 
-const ApexChart = ({ allaccountChart, isLoading }) => {
-  // console.log(allaccountChart);
+const ApexAreaChart = ({ allaccountChart, isLoading }) => {
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
 
   const options = {
     chart: {
-      width: 100,
-      type: "donut",
+      type: "area", // Change type to "area" for an area chart
+      height: 380,
     },
-
+    plotOptions: {
+      area: {
+        fillTo: 'origin',
+        opacity: 0.5,
+      },
+    },
     dataLabels: {
       enabled: true,
       style: {
@@ -25,7 +29,19 @@ const ApexChart = ({ allaccountChart, isLoading }) => {
     fill: {
       colors: ["#00A8FF"], // Customize the colors as needed
     },
-    // height: 'auto',
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    ],
   };
 
   const series = [
@@ -37,12 +53,12 @@ const ApexChart = ({ allaccountChart, isLoading }) => {
 
   return (
     <ReactApexChart
+      className="w-full"
       options={options}
-      series={options.series}
-      type="donut"
-      height={200}
+      series={series}
+      type="area"
     />
   );
 };
 
-export default ApexChart;
+export default ApexAreaChart;
