@@ -4,24 +4,23 @@ import useStatus from "../../../Hooks/useStatus";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
-function Notification() {
-  const { user } = useAuth();
-  const { userinfo } = useStatus({ email: user?.email });
+const Notification = ({ notifications }) => {
+  console.log(notifications);
+  // const { user } = useAuth();
+  // const { userinfo } = useStatus({ email: user?.email });
 
-  const axiosPublic = useAxiosPublic();
-  const {
-    data: notifications,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["notifications"],
-    queryFn: async () => {
-      const res = await axiosPublic.get(`/notification/${userinfo?.email}`);
-      return res.data;
-    },
-  });
-
-  console.log(notifications)
+  // const axiosPublic = useAxiosPublic();
+  // const {
+  //   data: notifications,
+  //   isLoading,
+  //   refetch,
+  // } = useQuery({
+  //   queryKey: ["notificatons"],
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get(`/notification/${userinfo?.email}`);
+  //     return res.data;
+  //   },
+  // });
 
   function formatTimeAgo(timestamp) {
     const currentTime = new Date();
@@ -49,14 +48,17 @@ function Notification() {
       <h1 className="px-3 text-lg font-semibold text-nevy-blue tracking-wider">
         Notification
       </h1>
-      {notifications?.map(({ message, createdAt }) => (
-        <div className="flex flex-col px-3 py-2 rounded hover:bg-gray-100 duration-300 transition-all ">
+      {notifications?.map(({ message, createdAt, _id }) => (
+        <div
+          key={_id}
+          className="flex flex-col px-3 py-2 rounded hover:bg-gray-100 duration-300 transition-all "
+        >
           <p className="text-sm">{message}</p>
           <p className="text-xs">{formatTimeAgo(createdAt)}</p>
         </div>
       ))}
     </div>
   );
-}
+};
 
 export default Notification;

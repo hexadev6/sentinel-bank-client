@@ -157,7 +157,6 @@ const Notice = () => {
             />
           </div>
           <button
-            variant="text"
             className={`mt-36 sm:mt-24 py-2 px-4 w-full sm:w-auto hover:text-white rounded bg-nevy-blue text-white  ${
               darkMode ? "hover:bg-[#25324b]" : "hover:bg-black "
             }`}
@@ -167,8 +166,8 @@ const Notice = () => {
         </form>
       </div>
 
-     <div>
-     <Typography
+      <div>
+        <Typography
           variant="h4"
           color="blue-gray"
           className={`py-4 bg-gray-200 ${
@@ -177,40 +176,43 @@ const Notice = () => {
         >
           All Notices
         </Typography>
-      <div className=" bg-gray-50 p-5 pt-0 rounded flex flex-col xl:col-span-1 gap-4 min-h-screen overflow-auto scrollbar">
-        {allnotice?.map((notice) => (
-          <div className="flex items-center justify-between bg-gray-100 rounded gap-4 shadow-md shadow-gray-100  p-5 w-full">
-            <div className="flex gap-3 items-center w-full">
-              <img
-                className="w-[75px] h-[75px] rounded-lg bg-slate-500"
-                src={notice?.image}
-                alt=""
-              />
-              <div className="flex flex-col w-full">
-                <h5 className="text-sm overflow-hidden break-words">
-                  {notice?.title}
-                </h5>
-                <p className="text-xs text-gray-400 ">
-                  Published on:
-                  {new Date(notice?.createdAt).toISOString().split("T")[0]}
-                </p>
+        <div className=" bg-gray-50 p-5 pt-0 rounded flex flex-col xl:col-span-1 gap-4 min-h-screen overflow-auto scrollbar">
+          {allnotice?.map((notice, i) => (
+            <div
+              key={i}
+              className="flex items-center justify-between bg-gray-100 rounded gap-4 shadow-md shadow-gray-100  p-5 w-full"
+            >
+              <div className="flex gap-3 items-center w-full">
+                <img
+                  className="w-[75px] h-[75px] rounded-lg bg-slate-500"
+                  src={notice?.image}
+                  alt=""
+                />
+                <div className="flex flex-col w-full">
+                  <h5 className="text-sm overflow-hidden break-words">
+                    {notice?.title}
+                  </h5>
+                  <p className="text-xs text-gray-400 ">
+                    Published on:
+                    {new Date(notice?.createdAt).toISOString().split("T")[0]}
+                  </p>
 
-                <div className="flex gap-2 items-center  mt-3 w-full">
-                  <MdEdit
-                    className="bg-gray-200 w-6 h-6 rounded p-1 text-blue-gray-700"
-                    onClick={() => HandleEdit(notice)}
-                  />
-                  <MdDelete
-                    className="bg-gray-200 w-6 h-6 rounded p-1 text-blue-gray-700"
-                    onClick={() => HandleDelete(notice._id)}
-                  />
+                  <div className="flex gap-2 items-center  mt-3 w-full">
+                    <MdEdit
+                      className="bg-gray-200 w-6 h-6 rounded p-1 text-blue-gray-700"
+                      onClick={() => HandleEdit(notice)}
+                    />
+                    <MdDelete
+                      className="bg-gray-200 w-6 h-6 rounded p-1 text-blue-gray-700"
+                      onClick={() => HandleDelete(notice._id)}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-     </div>
     </div>
   );
 };

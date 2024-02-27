@@ -14,15 +14,32 @@ import useStatus from "../../../Hooks/useStatus";
 import useDarkMode from "../../../Hooks/useDarkMode";
 import ProfileMenu from "../Navbar/ProfileDropdown";
 import Notification from "../../DashBoard/Nofication/Notification";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Topbar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email }) || {};
+  const axiosPublic = useAxiosPublic();
+  const {
+    data: notifications,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["notificatons"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/notification/${userinfo?.email}`);
+      return res.data;
+    },
+  });
+
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const HandleNotification = () => setIsMenuOpen(!isMenuOpen);
-
+  const HandleNotification = () => {
+    refetch();
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     // topbar
 
@@ -71,9 +88,9 @@ const Topbar = () => {
                 : "text-black hover:bg-gray-300  "
             }`}
           >
-            <FaBell className="text-lg"/>
+            <FaBell className="text-lg" />
           </IconButton>
-          {isMenuOpen && <Notification />}
+          {isMenuOpen && <Notification notifications={notifications} />}
           {/* avatar */}
           <div className=" rounded-full ">
             <Avatar src={userinfo?.image} alt="avatar" />
