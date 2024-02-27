@@ -8,11 +8,11 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
   const options = {
     chart: {
       type: "area", // Change type to "area" for an area chart
-      height: 380,
+      // height: 380,
     },
     plotOptions: {
       area: {
-        fillTo: 'origin',
+        fillTo: "origin",
         opacity: 0.5,
       },
     },
@@ -53,7 +53,7 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
 
   return (
     <ReactApexChart
-      className="w-full"
+      className="w-full max-h-96"
       options={options}
       series={series}
       type="area"
