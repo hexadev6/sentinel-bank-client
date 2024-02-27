@@ -7,7 +7,6 @@ import NewChart from "./NewChart";
 import useGetAccountByUser from "../../../../Hooks/useGetAccountByUser";
 import UserChart from "./UserChart";
 import AdminTransafer from "../MoneyTransfer/AdminTransafer";
-import useCardApply from "../../../../Hooks/useCardApply";
 
 const UserGraph = () => {
   const { user } = useAuth();
@@ -39,8 +38,8 @@ const UserGraph = () => {
           <div className="my-6">
            <AdminTransafer/>
            </div>
-         <div className="grid grid-cols-2">
-         <div className="px-2 py-7 rounded-lg shadow-lg">
+         <div className="grid grid-cols-1 lg:grid-cols-2 ">
+         <div className=" px-2 py-7 rounded-lg shadow-lg">
             <h4 className="text-xl font-medium ml-2 py-4">Apply for Loan & Cards</h4>
             <CardApply ></CardApply>
           </div>

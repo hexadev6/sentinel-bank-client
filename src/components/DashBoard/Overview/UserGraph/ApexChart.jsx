@@ -7,12 +7,11 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
 
   const options = {
     chart: {
-      type: "area", // Change type to "area" for an area chart
-      height: 380,
+      type: "area",
     },
     plotOptions: {
       area: {
-        fillTo: 'origin',
+        fillTo: "origin",
         opacity: 0.5,
       },
     },
@@ -27,11 +26,11 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
       categories: allaccountChart?.map((item) => item._id),
     },
     fill: {
-      colors: ["#00A8FF"], // Customize the colors as needed
+      colors: ["#00A8FF"],
     },
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 280,
         options: {
           chart: {
             width: 200,
@@ -53,7 +52,7 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
 
   return (
     <ReactApexChart
-      className="w-2/3"
+      className="w-[600px]"
       options={options}
       series={series}
       type="area"
