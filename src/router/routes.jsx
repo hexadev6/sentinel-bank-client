@@ -48,9 +48,7 @@ const router = createBrowserRouter([
         path: "/bankUpdate/:id",
         element: <ReadNotice />,
         loader: ({ params }) =>
-          fetch(
-            `https://ornate-kulfi-347059.netlify.app/allNotice/${params.id}`
-          ),
+          fetch(`http://localhost:5000/allNotice/${params.id}`),
       },
       {
         path: "contact/:section",
