@@ -7,8 +7,8 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
 
   const options = {
     chart: {
-      type: "pie",
-      height: 450,
+      height: 300,
+      type: 'area'
     },
     plotOptions: {
       pie: {
@@ -29,7 +29,7 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
     labels: ['Registered User', 'Users With Accounts'],
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 200,
         options: {
           chart: {
             width: 200,
@@ -45,11 +45,11 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
     }
   };
 
-  const series = [allAccountByUser?.countUsersWithAccount, allAccountByUser?.totalUsers];
+  const series = [allAccountByUser?.totalUsers, allAccountByUser?.countUsersWithAccount];
 
   return (
     <ReactApexChart
-      className="w-96"
+      height={300}
       options={options}
       series={series}
       type="pie"
