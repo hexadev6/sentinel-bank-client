@@ -45,11 +45,11 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
     }
   };
 
-  const series = [allAccountByUser?.countUsersWithAccount, allAccountByUser?.totalUsers];
+  const series = [allAccountByUser?.totalUsers, allAccountByUser?.countUsersWithAccount];
 
   return (
     <ReactApexChart
-      className="w-96"
+      className="w-full"
       options={options}
       series={series}
       type="pie"
