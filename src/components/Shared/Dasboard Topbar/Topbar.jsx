@@ -21,6 +21,7 @@ const Topbar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email }) || {};
   const axiosPublic = useAxiosPublic();
+  
   const {
     data: notifications,
     isLoading,
@@ -40,6 +41,9 @@ const Topbar = () => {
     refetch();
     setIsMenuOpen(!isMenuOpen);
   };
+  const unreadNotifications = notifications?.filter((notification) => !notification?.status);
+
+  
   return (
     // topbar
 
@@ -88,7 +92,16 @@ const Topbar = () => {
                 : "text-black hover:bg-gray-300  "
             }`}
           >
-            <FaBell className="text-lg" />
+            <div className="text-xl text-black">
+            <FaBell />
+          </div>
+          
+          {/* In the badge it'll show how many notification I have */}
+          {unreadNotifications?.length > 0 && (
+            <div className="bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center -mt-6 ml-3">
+              {unreadNotifications?.length}
+            </div>
+          )}
           </IconButton>
           {isMenuOpen && <Notification notifications={notifications} />}
           {/* avatar */}
