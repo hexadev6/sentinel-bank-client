@@ -10,7 +10,7 @@ const OverviewAdmin = () => {
       <div className=" justify-between items-start p-5">
         <div className=" space-y-6">
           <UserGraph />
-          <ChatApp/>
+          {/* <ChatApp/> */}
         </div>
       </div>
     </>
