@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <ReadNotice />,
         loader: ({ params }) =>
           fetch(
-            `https://ornate-kulfi-347059.netlify.app/allNotice/${params.id}`
+            `https://sentinel-bank-server-six.vercel.app/allNotice/${params?.id}`
           ),
       },
       {
