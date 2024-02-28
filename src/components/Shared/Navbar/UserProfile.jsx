@@ -1,6 +1,6 @@
 import useAuth from "../../../Hooks/useAuth";
 import CommonBanner from "../CommonBanner/CommonBanner";
-import Container from "../container/Container";
+import empty from '../../../assets/banner/empty image.jpg'
 import useStatus from "../../../Hooks/useStatus";
 import UserDialog from "../../UserDialog/UserDialog";
 import img1 from "../../../assets/banner/debit.jpg";
@@ -53,7 +53,9 @@ const UserProfile = () => {
 
         <div className="flex md:flex-nowrap flex-wrap justify-between items-center gap-6 absolute w-full sm:w-fit p-5  mx-auto left-0 right-0 bottom-[-43rem] md:-bottom-80 rounded-md bg-blue-100 border mb-10">
             <div className="relative w-auto  md:w-full">
-              <img className="w-80 h-96  " src={userinfo?.image} alt="" />
+              {
+                userinfo? <img className="w-80 h-96  " src={userinfo?.image} alt="" /> : <img className="w-80 h-96  " src={empty} alt="" />
+              }
 
               <div className="absolute bottom-2 right-4  " onClick={handleImageClick}>
                 {/* Icon for image upload */}

@@ -34,7 +34,7 @@ function ProfileMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { user, userLogOut } = useAuth();
   const userEmail = user?.email;
-  const { userinfo } = useStatus({ email: userEmail });
+  const { userinfo,isloading } = useStatus({ email: userEmail });
 
   const closeMenu = () => setIsMenuOpen(false);
   const Logout = () => {
@@ -49,6 +49,10 @@ function ProfileMenu() {
 
   // console.log(userinfo);
 
+  if(isloading){
+    <p>Loading...</p>
+  }
+
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
@@ -57,13 +61,13 @@ function ProfileMenu() {
           color="blue-gray"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
         >
-          {userinfo ? (
+          {!userinfo ? (
             <Avatar
               variant="circular"
               size="sm"
               alt="tania andrew"
               className="border w-12 h-12 border-gray-900"
-              src={userinfo?.image}
+              src={empty}
             />
           ) : (
             <Avatar
@@ -71,7 +75,7 @@ function ProfileMenu() {
               size="sm"
               alt="tania andrew"
               className="border w-12 h-12 border-gray-900"
-              src={empty}
+              src={userinfo?.image}
             />
           )}
           <ChevronDownIcon
