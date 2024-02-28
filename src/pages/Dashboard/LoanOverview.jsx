@@ -35,7 +35,7 @@ const LoanOverview = () => {
   return (
     <div className="p-5">
       <h2 className="mb-5 font-bold">Loan Status : {singleLoan?.status}</h2>
-      <div className="flex justify-between  gap-5 text-white text-center">
+      <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1  justify-between  gap-5 text-white text-center">
         <div className="bg-nevy-blue p-8 rounded-md w-full">
           <p>{singleLoan?.loanAmount}</p>
           <p>Total Loan</p>

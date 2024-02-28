@@ -70,7 +70,7 @@ const LoanSubForm = () => {
         </div>
         <button
           type="submit"
-          className="px-4 py-5 bg-green-300 text-white rounded-md"
+          className=" col-span-1 md:col-span-2 lg:col-span-1 px-4 py-5 bg-green-300 text-white rounded-md"
         >
           Submit
         </button>

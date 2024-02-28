@@ -38,23 +38,7 @@ const UserSidebar = () => {
           <span className="lg:flex hidden ">Overview</span>
         </div>
       </NavLink>
-
-      <NavLink
-        to="quickBanking"
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "text-white bg-nevy-blue w-full rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-        }
-      >
-        <div className="flex  items-center gap-3 px-2 py-1">
-          <BsBank2 />
-          <span className="lg:flex hidden">Quick Banking</span>
-        </div>
-      </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/"
         className={({ isActive, isPending }) =>
           isPending
@@ -68,7 +52,7 @@ const UserSidebar = () => {
           <GrTransaction />
           <span className="lg:flex hidden">Transaction</span>
         </div>
-      </NavLink>
+      </NavLink> */}
       <NavLink
         to="createAcc"
         className={({ isActive, isPending }) =>
@@ -93,6 +77,22 @@ const UserSidebar = () => {
             />
           </svg>
           <span className="lg:flex hidden">Create Bank Account</span>
+        </div>
+      </NavLink>
+      
+      <NavLink
+        to="quickBanking"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-white bg-nevy-blue w-full rounded"
+            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+        }
+      >
+        <div className="flex  items-center gap-3 px-2 py-1">
+          <BsBank2 />
+          <span className="lg:flex hidden">Quick Banking</span>
         </div>
       </NavLink>
       <NavLink
