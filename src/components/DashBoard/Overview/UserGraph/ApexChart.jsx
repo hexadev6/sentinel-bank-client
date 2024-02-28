@@ -52,7 +52,7 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
 
   return (
     <ReactApexChart
-      className="w-[600px]"
+      className="w-full"
       options={options}
       series={series}
       type="area"

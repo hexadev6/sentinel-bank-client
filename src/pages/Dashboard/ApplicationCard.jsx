@@ -3,7 +3,7 @@ import debit from "../../assets/image/debit.png";
 const ApplicationCard = () => {
   return (
     <>
-      <div className="p-5 xl:min-h-screen w-full flex flex-col-reverse xl:flex-row  justify-center items-center -mt-20 ">
+      <div className="p-5  w-full flex flex-col-reverse xl:flex-row  justify-center items-center -mt-20 ">
         <div className="flex-1 text-center ">
           <h1 className="text-3xl xl:text-6xl font-bold mb-10">
             Apply for Your Card-Carrying Adventures!

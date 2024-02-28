@@ -16,6 +16,7 @@ import ProfileMenu from "../Navbar/ProfileDropdown";
 import Notification from "../../DashBoard/Nofication/Notification";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import HidedMenuAdmin from "./HidedMenuAdmin";
 
 const Topbar = () => {
   const { user } = useAuth();
@@ -55,7 +56,8 @@ const Topbar = () => {
         } rounded-none px-4 py-3 items-center justify-between gap-y-4 `}
       >
         {/* side bar will open  */}
-        <HidedMenu />
+        {userinfo?.status === "user" && <HidedMenu />}
+        {userinfo?.status === "admin" && <HidedMenuAdmin />}
         {/* top menu start from here  */}
         <div>
           <Typography

@@ -90,8 +90,8 @@ const LoanDetailsAdmin = () => {
       {/* user info */}
       <div className="mt-20 ">
         {/* profile */}
-        <div className="flex items-center gap-5">
-          <img src={singleLoan?.profileImg} className="w-20 rounded-full" />
+        <div className="flex flex-wrap items-center gap-5">
+          <img src={singleLoan?.profileImg} className="w-40 h-40 rounded-full" />
           <div>
             <h2>Name : {singleLoan?.name}</h2>
             <h3>Account No. : {singleLoan?.acc_num}</h3>
@@ -101,7 +101,7 @@ const LoanDetailsAdmin = () => {
         {/*bio information */}
         <div className="mt-10">
           <h1 className="my-5">Information :</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 border rounded-xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 border rounded-xl overflow-x-scroll sm:overflow-hidden">
             <div className="flex border ">
               <p className="border-r p-2 w-[150px]">Email</p>
               <p className=" p-2">{singleLoan?.email}</p>
@@ -144,7 +144,7 @@ const LoanDetailsAdmin = () => {
             </div>
           </div>
           <h1 className="my-5">Address :</h1>
-          <div className="grid grid-cols-2 border rounded-xl overflow-hidden">
+          <div className="grid grid-cols-2 border rounded-xl overflow-x-scroll sm:overflow-hidden">
             <div className="flex border">
               <p className="border-r p-2 w-[150px]">city</p>
               <p className=" p-2">{singleLoan?.city}</p>
