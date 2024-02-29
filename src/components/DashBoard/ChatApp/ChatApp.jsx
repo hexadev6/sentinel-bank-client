@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import useAuth from "../../../Hooks/useAuth";
 import useGetChat from "../../../Hooks/useGetChat";
-const socket = io("http://localhost:5000");
-// const socket = io("https://sentinel-bank-server-six.vercel.app");
+// const socket = io("http://localhost:5000");
+const socket = io("https://sentinel-bank-server-six.vercel.app");
 import { IoIosSend } from "react-icons/io";
 import { Badge, IconButton, Avatar } from "@material-tailwind/react";
 
