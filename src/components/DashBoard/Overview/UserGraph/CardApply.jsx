@@ -48,7 +48,7 @@ const CardApply = () => {
 
   return (
     <div>
-      <div className="w-80" id="chart">
+      <div className="w-full" id="chart">
         <ReactApexChart
           options={chartOptions}
           series={chartOptions.series}

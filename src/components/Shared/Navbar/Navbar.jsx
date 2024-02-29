@@ -6,11 +6,14 @@ import Drawer from "../../Drawer/Drawer";
 import useAuth from "../../../Hooks/useAuth";
 import ProfileMenu from "./ProfileDropdown";
 import useStatus from "../../../Hooks/useStatus";
+import useSingleAccount from "../../../Hooks/useSingleAccount";
 const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const { user, userLogOut } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
+  // const {Account} = useSingleAccount()
   // console.log(user);
+  // console.log(Account);
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
@@ -59,16 +62,21 @@ const Navbar = () => {
         {user?.emailVerified === true ? (
           <div className="hidden lg:flex items-center gap-5">
             {/* deshbord */}
-            <Link
-              to={`${
-                userinfo?.status === "admin"
-                  ? "/dashboard/admin/overview"
-                  : "/dashboard/user/overview"
-              }`}
-              className="bg-green-500 text-white font-medium font-cinzel  px-4 py-2  rounded-md"
-            >
-              Dashboard
-            </Link>
+            {userinfo?.status === "admin" ? (
+  <Link
+    to="/dashboard/admin/overview"
+    className="bg-green-500 text-white font-medium font-cinzel px-4 py-2 rounded-md"
+  >
+    Dashboard
+  </Link>
+) : (
+  <Link
+    to={userinfo?.acc_num ? "/dashboard/user/overview" : "/dashboard/createAcc"}
+    className="bg-green-500 text-white font-medium font-cinzel px-4 py-2 rounded-md"
+  >
+    {userinfo?.acc_num ? "Dashboard" : "Account"}
+  </Link>
+)}
 
             <div className=" rounded-full ">
               <ProfileMenu />

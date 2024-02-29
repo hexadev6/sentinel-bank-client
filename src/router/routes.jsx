@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         path: "/bankUpdate/:id",
         element: <ReadNotice />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allNotice/${params.id}`),
+          fetch(`${import.meta.env.VITE_SERVER_URL}/allNotice/${params?.id}`),
       },
       {
         path: "contact/:section",

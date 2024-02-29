@@ -5,22 +5,9 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
 const Notification = ({ notifications }) => {
+  const [notification, setNotification] = useState([]);
+  const axiosPublic= useAxiosPublic()
   console.log(notifications);
-  // const { user } = useAuth();
-  // const { userinfo } = useStatus({ email: user?.email });
-
-  // const axiosPublic = useAxiosPublic();
-  // const {
-  //   data: notifications,
-  //   isLoading,
-  //   refetch,
-  // } = useQuery({
-  //   queryKey: ["notificatons"],
-  //   queryFn: async () => {
-  //     const res = await axiosPublic.get(`/notification/${userinfo?.email}`);
-  //     return res.data;
-  //   },
-  // });
 
   function formatTimeAgo(timestamp) {
     const currentTime = new Date();
@@ -43,15 +30,41 @@ const Notification = ({ notifications }) => {
     }
   }
 
+// after clicking this if the status will true then it will show update notification
+  const handleNotificationClick = async (id) => {
+    const clickedNotification = notifications?.find((noti) => noti._id === id);
+  
+    if (clickedNotification && !clickedNotification.status) {
+      try {
+        const res = await axiosPublic.put(`/notification/${id}`)
+        .then(res=>{
+          console.log(res.data);
+        })
+        console.log(res.data);
+        const updatedNotifications = notifications?.map((noti) =>
+          noti._id === id ? { ...noti, status: true } : noti
+        );
+        setNotification(updatedNotifications);
+      } catch (error) {
+        console.error('Failed to update notification status:', error);
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col max-h-[500px] overflow-y-scroll gap-1 absolute top-14 right-1 w-96 bg-white px-2 py-5 rounded shadow-xl">
       <h1 className="px-3 text-lg font-semibold text-nevy-blue tracking-wider">
         Notification
       </h1>
-      {notifications?.map(({ message, createdAt, _id }) => (
+      {notifications?.map(({ message, createdAt, _id, status }) => (
         <div
           key={_id}
-          className="flex flex-col px-3 py-2 rounded hover:bg-gray-100 duration-300 transition-all "
+          onClick={() => {
+            handleNotificationClick(_id);
+          }}
+          className={`flex flex-col px-3 py-2 rounded hover:bg-gray-100 duration-300 transition-all ${
+            !status ? "bg-blue-100" : ""
+          }`}
         >
           <p className="text-sm">{message}</p>
           <p className="text-xs">{formatTimeAgo(createdAt)}</p>
