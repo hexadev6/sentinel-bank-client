@@ -27,7 +27,7 @@ const StatusCard = () => {
     error,
     data: allDeposits,
   } = useQuery({
-    queryKey: ["allDeposits"],
+    queryKey: ["allsits"],
     queryFn: async () => {
       try {
         const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
@@ -42,7 +42,6 @@ const StatusCard = () => {
     refetch();
     setTotalBalance(accountByNum);
   }, [totalDeposits]);
-
 
   useEffect(() => {
     const depositsForAccount = allDeposits?.filter(

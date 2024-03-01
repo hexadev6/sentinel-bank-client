@@ -107,15 +107,7 @@ const ApplyLoan = () => {
           </Select>
           <Select label="Loan Submit">
             <Option onClick={() => setLoanSubmit("weekly")}> weekly </Option>
-            <Option onClick={() => setLoanSubmit("three monthsMonthly")}>
-              Monthly
-            </Option>
-            <Option onClick={() => setLoanSubmit("three months")}>
-              three months
-            </Option>
-            <Option onClick={() => setLoanSubmit("six months")}>
-              six months
-            </Option>
+            <Option onClick={() => setLoanSubmit("monthly")}>Monthly</Option>
           </Select>
         </div>
         <p className="mt-5">Loan will be used for</p>

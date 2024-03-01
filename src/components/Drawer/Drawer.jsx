@@ -19,8 +19,10 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import ProfileMenu from "../Shared/Navbar/ProfileDropdown";
 import { MdDashboardCustomize } from "react-icons/md";
+import useStatus from "../../Hooks/useStatus";
 const Dawer = () => {
   const { user } = useAuth();
+  const { userinfo } = useStatus({ email: user?.email });
   const [open, setOpen] = React.useState(false);
 
   const openDrawer = () => setOpen(true);
@@ -64,19 +66,24 @@ const Dawer = () => {
         {/* all Link above card section */}
         <Card className="shadow-none bg-transparent mt-20 ">
           <List className="text-white ">
-            {user && (
-              <ListItem className="hover:bg-opacity-10 hover:text-white">
-                <ListItemPrefix>
-                  <MdDashboardCustomize />
-                </ListItemPrefix>
-
-                <Link
-                  to={"/dashboard/overview"}
-                  className=" text-white font-medium font-cinzel py-2  rounded-md"
-                >
-                  Dashboard
-                </Link>
-              </ListItem>
+            {userinfo?.status === "admin" ? (
+              <Link
+                to="/dashboard/admin/overview"
+                className=" text-white font-medium font-cinzel px-4 py-2 rounded-md"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Link
+                to={
+                  userinfo?.acc_num
+                    ? "/dashboard/user/overview"
+                    : "/dashboard/createAcc"
+                }
+                className=" text-white font-medium font-cinzel px-4 py-2 rounded-md"
+              >
+                {userinfo?.acc_num ? "Dashboard" : "Account"}
+              </Link>
             )}
             <AboutLink closeDrawer={closeDrawer} />
             <ContactUsLink closeDrawer={closeDrawer} />

@@ -7,7 +7,7 @@ import useAuth from "./useAuth";
 const useHistory = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const { userinfo } = useStatus({ email: user?.email });
+  const { userinfo } = useStatus({ email: user?.email }) || {};
 
   const {
     isPending,
@@ -15,7 +15,7 @@ const useHistory = () => {
     data: allDeposits,
     refetch,
   } = useQuery({
-    queryKey: ["allDeposits", userinfo],
+    queryKey: ["allDepo", userinfo],
     queryFn: async () => {
       try {
         const res = await axiosPublic.get(`/getDeposit/${userinfo?.acc_num}`);
