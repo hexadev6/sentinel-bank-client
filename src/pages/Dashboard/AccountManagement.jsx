@@ -21,6 +21,7 @@ import { CiMenuKebab } from "react-icons/ci";
 import { useState } from "react";
 import AccountDetails from "../../components/DashBoard/AccountDetails/AccountDetails";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useDarkMode from "../../Hooks/useDarkMode";
 const TABLE_HEAD = [
   "Account Holder",
   "Account Number",
@@ -36,6 +37,7 @@ const AccountManagement = () => {
   const axiosPublic = useAxiosPublic();
   const [open, setOpen] = useState(false);
   const [dialogId, setDialogId] = useState("");
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const handleOpen = (id) => {
     setOpen(!open);
@@ -95,7 +97,9 @@ const AccountManagement = () => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                    className={`border-y border-blue-gray-100  p-4 ${darkMode ? "text-white bg-[#25324b]" : "bg-blue-gray-50/50 "}`} 
+
+                  
                   >
                     <Typography
                       variant="small"

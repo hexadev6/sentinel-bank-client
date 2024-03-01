@@ -5,9 +5,12 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import LoanDocTab from "../../components/DashBoard/Loan/LoanDocTab";
 import LoanSubForm from "../../components/DashBoard/Loan/LoanSubForm";
 import LoanChart from "../../components/DashBoard/Loan/LoanChart";
+import useDarkMode from "../../Hooks/useDarkMode";
 
 const LoanOverview = () => {
   const axios = useAxiosSecure();
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   const { id } = useParams();
   console.log(id);
   const {

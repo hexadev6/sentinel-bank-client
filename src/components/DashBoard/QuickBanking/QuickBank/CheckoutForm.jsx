@@ -17,20 +17,21 @@ const CheckoutForm = ({ userInfo, refetch }) => {
   const HandlePayment = (e) => {
     e.preventDefault();
     const paymentInfo = {
-      amount: userInfo.depoAmount,
-      userEmail: accountByNum.holderEmail,
-      userName: accountByNum.holderName,
-      address: accountByNum.address,
-      number: accountByNum.phnNumber,
-      acc_Num: userinfo.acc_num,
+      amount: userInfo?.depoAmount,
+      userEmail: accountByNum?.holderEmail,
+      userName: accountByNum?.holderName,
+      address: accountByNum?.address,
+      number: accountByNum?.phnNumber,
+      acc_Num: userinfo?.acc_num,
       transactionType: "deposit",
       transactionDate: currentDate,
     };
+console.log(paymentInfo )
 
-    axiosPublic
-      .post("/ssl-payment", paymentInfo)
+    axiosPublic.post("/ssl-banking", paymentInfo)
       .then((res) => {
-        // console.log("url====", res.data);
+        console.log("url====", res.data.url);
+        console.log(res.data)
         window.location.replace(res.data.url);
       })
       .catch((err) => console.log(err));
@@ -56,36 +57,9 @@ const CheckoutForm = ({ userInfo, refetch }) => {
       <Typography variant="h6" className=" text-lg font-normal mb-5">
         Deposit Date: {currentDate}
       </Typography>
-      {/*  <CardElement
-      className={`text-white p-3 rounded${
-        darkMode ? "" : "border"
-      }`} 
     
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "blue-gray",
-              "::placeholder": {
-                color: "#aab7c4",
-              },
-            },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />  */}
-
-      {/* {error != "" && <p className="font-roboto my-2">{error}</p>}
-      {success != "" && (
-        <p className="text-black font-roboto my-2">{success}</p>
-      )} */}
-      {/* ------------- */}
-
       <div className="text-right">
         <button
-          // disabled={!stripe || !clientSecret}
           type="submit"
           className="uppercase w-full mt-2 py-2 px-5 tracking-widest text-white btn border-none btn-outline bg-nevy-blue rounded"
         >

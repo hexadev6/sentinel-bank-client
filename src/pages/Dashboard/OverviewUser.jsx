@@ -32,7 +32,7 @@ const OverviewUser = () => {
   }
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-y-3 md:gap-5 justify-between items-start p-5 overflow-x-hidden">
         <div className="xl:col-span-2 space-y-6">
           <Transfer />
           <UserGraph />
