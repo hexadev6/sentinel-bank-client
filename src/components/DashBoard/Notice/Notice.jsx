@@ -20,6 +20,7 @@ const Notice = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { isPending, refetch, error, allnotice } = useAllNotice();
 
+
   // post
   const HandleNotice = async (e) => {
     e.preventDefault();
@@ -170,17 +171,18 @@ const Notice = () => {
         <Typography
           variant="h4"
           color="blue-gray"
-          className={`py-4 bg-gray-200 ${
-            darkMode ? "text-blue-gray-400" : "text-nevy-blue"
+          className={`py-4  ${
+            darkMode ? "text-blue-gray-400 bg-[#25324b]" : "text-nevy-blue bg-gray-200"
           } text-center`}
         >
           All Notices
         </Typography>
-        <div className=" bg-gray-50 p-5 pt-0 rounded flex flex-col xl:col-span-1 gap-4 min-h-screen overflow-auto scrollbar">
+        <div  className={` p-5 pt-0 rounded flex flex-col xl:col-span-1 gap-4 min-h-screen overflow-auto scrollbar ${darkMode ? "bg-[#25324b]" : "bg-gray-50"}`}>
           {allnotice?.map((notice, i) => (
             <div
               key={i}
-              className="flex items-center justify-between bg-gray-100 rounded gap-4 shadow-md shadow-gray-100  p-5 w-full"
+              className={`flex items-center justify-between rounded gap-4 shadow-md  p-5 w-full${darkMode ? "bg-[#25324b]" : "bg-gray-100 shadow-gray-100  "}`}
+
             >
               <div className="flex gap-3 items-center w-full">
                 <img

@@ -4,6 +4,7 @@ import {
   IconButton,
   Button,
   Avatar,
+  Badge,
 } from "@material-tailwind/react";
 import { IoSearch } from "react-icons/io5";
 import { FaBell } from "react-icons/fa";
@@ -22,7 +23,7 @@ const Topbar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email }) || {};
   const axiosPublic = useAxiosPublic();
-  
+
   const {
     data: notifications,
     isLoading,
@@ -42,9 +43,10 @@ const Topbar = () => {
     refetch();
     setIsMenuOpen(!isMenuOpen);
   };
-  const unreadNotifications = notifications?.filter((notification) => !notification?.status);
+  const unreadNotifications = notifications?.filter(
+    (notification) => !notification?.status
+  );
 
-  
   return (
     // topbar
 
@@ -66,7 +68,7 @@ const Topbar = () => {
             variant="h6"
             className="mr-4 ml-2 cursor-pointer py-1.5 hidden sm:flex capitalize font-light text-xl"
           >
-            {user?.displayName}
+            {userinfo?.name}
           </Typography>
 
           {userinfo?.status === "user" && (
@@ -84,28 +86,28 @@ const Topbar = () => {
         {/* bell icon & avatar */}
         <div className="flex gap-2 md:gap-5 items-center relative">
           {/* bell icon */}
-          <IconButton
-            onClick={HandleNotification}
-            variant="text"
-            color="white"
-            className={` rounded  ${
-              darkMode == true
-                ? "text-blue-gray-300 hover:text-black hover:bg-blue-gray-800 "
-                : "text-black hover:bg-gray-300  "
-            }`}
-          >
-            <div className="text-xl text-black">
-            <FaBell />
-          </div>
-          
-          {/* In the badge it'll show how many notification I have */}
-          {unreadNotifications?.length > 0 && (
-            <div className="bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center -mt-6 ml-3">
-              {unreadNotifications?.length}
-            </div>
+          <Badge content={unreadNotifications?.length}>
+            {" "}
+            <IconButton
+              onClick={HandleNotification}
+              variant="text"
+              color="white"
+              className={` rounded   ${
+                darkMode == true
+                  ? "text-blue-gray-300 hover:text-black hover:bg-blue-gray-800 "
+                  : "text-black hover:bg-gray-300  "
+              }`}
+            >
+              <div className="text-xl text-black z-10 ">
+                <FaBell />
+              </div>
+              {/* In the badge it'll show how many notification I have */}
+            </IconButton>{" "}
+          </Badge>
+       
+          {isMenuOpen && (
+            <Notification notifications={notifications} refetch={refetch} />
           )}
-          </IconButton>
-          {isMenuOpen && <Notification notifications={notifications} />}
           {/* avatar */}
           <div className=" rounded-full ">
             <Avatar src={userinfo?.image} alt="avatar" />

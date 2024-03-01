@@ -20,7 +20,7 @@ const Sidebar = () => {
     // sidebar
     <div data-theme={ darkMode==true  ? "night" : 'light'}
     className={`hidden sticky top-0 sm:w-fit lg:w-96
-     shadow-xl bg-white h-[100vh] sm:flex flex-col items-center justify-center p-4`}
+     shadow-xl ${darkMode ? 'bg-[#25324b]"': 'bg-white' } h-[100vh] sm:flex flex-col items-center justify-center p-4`}
   >
       {/* top logo */}
       <div className="">

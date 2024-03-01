@@ -16,8 +16,10 @@ const UserGraph = () => {
   const total = allaccountChart?.reduce((acc, item) => acc + item?.count, 0);
   const { allAccountByUser } = useGetAccountByUser();
 
+  // console.log(allaccountChart)
+
   if (isLoading) {
-    return <h1>loadding...</h1>;
+    return <h1>loading...</h1>;
   }
 
   return (

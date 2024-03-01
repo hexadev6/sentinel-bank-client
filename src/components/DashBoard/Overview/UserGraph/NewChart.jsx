@@ -7,9 +7,11 @@ const AreaChart = () => {
 
   const data = Alltrasactions?.depositSummary?.map((item, index) => ({
     name: new Date(item?.transactionDate).toLocaleDateString(),
-    deposit: item?.amount,
-    withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount
+    deposit: item?.amount || 0,
+    withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount || 0
   }));
+
+  console.log(data)
 
   const series = [
     {
