@@ -4,6 +4,7 @@ import useStatus from "../../../../Hooks/useStatus";
 import useFindByAccNum from "../../../../Hooks/useFindByAccNum";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Button, Input, Typography } from "@material-tailwind/react";
+
 const WithdrawForm = ({ userInfo, refetch }) => {
   const { darkMode, toggleDarkMode } = useDarkMode();
 
@@ -26,8 +27,9 @@ const WithdrawForm = ({ userInfo, refetch }) => {
       transactionDate: currentDate,
     };
 
+    console.log(paymentInfo);
     axiosPublic
-      .post("/ssl-payment", paymentInfo)
+      .post("/ssl-banking", paymentInfo)
       .then((res) => {
         // console.log("url====", res.data);
         window.location.replace(res.data.url);

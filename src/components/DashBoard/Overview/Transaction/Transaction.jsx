@@ -75,10 +75,10 @@ const Transaction = () => {
               </thead>
               <tbody>
                 {isPending ? (
-                  <Spinner />
+                  <Spinner className="text-center"/>
                 ) : (
                   <>
-                    {allDeposits &&
+                    {allDeposits?.length==0 ? <h1 className="p-4 text-gray-400 text-center">You don't have any transaction yet.</h1> :
                       allDeposits?.map((deposit) => (
                         <tr
                           key={deposit._id}
