@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import useAuth from "../../../Hooks/useAuth";
 import useGetChat from "../../../Hooks/useGetChat";
-const socket = io(import.meta.env.VITE_SERVER_URL);
+// const socket = io(import.meta.env.VITE_SERVER_URL);
+const socket = io("http://localhost:5000");
 
 import { IoIosSend } from "react-icons/io";
 import { Badge, IconButton, Avatar } from "@material-tailwind/react";
