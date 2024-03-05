@@ -28,7 +28,8 @@ const Awards = () => {
   ];
 
   return (
-    <Container>
+    <div id="awards">
+      <Container>
       <SubHeading title={"Our Achievements"}></SubHeading>
 
       <div className="w-full py-4 mx-auto grid grid-cols-1 lg:grid-cols-3">
@@ -68,9 +69,9 @@ const Awards = () => {
         </div>
         </div>
 
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col items-center">
           <img
-            className="w-64 h-64 rounded-full border"
+            className="w-64 h-64 rounded-full "
             src={selectedAward ? selectedAward.pic : emptyTrophy}
             alt=""
           />
@@ -79,7 +80,7 @@ const Awards = () => {
 
         </div>
 
-       <div>
+       <div className="">
        <div className="flex items-center justify-center">
         <img className="w-60 h-10" src={arrow} alt="" />
           <div className="flex gap-2">
@@ -123,6 +124,7 @@ const Awards = () => {
        </div>
       </div>
     </Container>
+    </div>
   );
 };
 

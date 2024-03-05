@@ -1,51 +1,50 @@
 [
-    {
-      "id": 1,
-      "district": "District A",
-      "branch": "Main Branch",
-      "branch_code": "MB001",
-      "address": "123 Main Street, Cityville",
-      "mobile": "111-222-3333"
-    },
-    {
-      "id": 2,
-      "district": "District B",
-      "branch": "North Branch",
-      "branch_code": "NB002",
-      "address": "456 North Avenue, Townsville",
-      "mobile": "444-555-6666"
-    },
-    {
-      "id": 3,
-      "district": "District C",
-      "branch": "South Branch",
-      "branch_code": "SB003",
-      "address": "789 South Road, Villagetown",
-      "mobile": "777-888-9999"
-    },
-    {
-      "id": 4,
-      "district": "District D",
-      "branch": "East Branch",
-      "branch_code": "EB004",
-      "address": "101 East Lane, Hamlet City",
-      "mobile": "123-456-7890"
-    },
-    {
-      "id": 5,
-      "district": "District E",
-      "branch": "West Branch",
-      "branch_code": "WB005",
-      "address": "202 West Street, Suburbia",
-      "mobile": "987-654-3210"
-    },
-    {
-      "id": 6,
-      "district": "District F",
-      "branch": "Central Branch",
-      "branch_code": "CB006",
-      "address": "303 Central Avenue, Metropolis",
-      "mobile": "555-123-4567"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "district": "Dhaka",
+    "branch": "Dhaka Branch",
+    "branch_code": "DB001",
+    "address": "123 Main Street, Dhaka City",
+    "mobile": "111-222-3333"
+  },
+  {
+    "id": 2,
+    "district": "Chittagong",
+    "branch": "Chittagong Branch",
+    "branch_code": "CB002",
+    "address": "456 Chittagong Avenue, Chittagong Town",
+    "mobile": "444-555-6666"
+  },
+  {
+    "id": 3,
+    "district": "Rajshahi",
+    "branch": "Rajshahi Branch",
+    "branch_code": "RB003",
+    "address": "789 Rajshahi Road, Rajshahi Town",
+    "mobile": "777-888-9999"
+  },
+  {
+    "id": 4,
+    "district": "Sylhet",
+    "branch": "Sylhet Branch",
+    "branch_code": "SB004",
+    "address": "101 Sylhet Lane, Sylhet City",
+    "mobile": "123-456-7890"
+  },
+  {
+    "id": 5,
+    "district": "Khulna",
+    "branch": "Khulna Branch",
+    "branch_code": "KB005",
+    "address": "202 Khulna Street, Khulna Suburbia",
+    "mobile": "987-654-3210"
+  },
+  {
+    "id": 6,
+    "district": "Barisal",
+    "branch": "Barisal Branch",
+    "branch_code": "BB006",
+    "address": "303 Barisal Avenue, Barisal Metropolis",
+    "mobile": "555-123-4567"
+  }
+]
