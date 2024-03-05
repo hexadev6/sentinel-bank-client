@@ -11,9 +11,6 @@ const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const { user, userLogOut } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
-  // const {Account} = useSingleAccount()
-  // console.log(user);
-  // console.log(Account);
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
