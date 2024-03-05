@@ -31,7 +31,7 @@ const Awards = () => {
     <Container>
       <SubHeading title={"Team Achievements"}></SubHeading>
 
-      <div className="w-full mx-auto grid grid-cols-3">
+      <div className="w-full mx-auto grid grid-cols-1 lg:grid-cols-3">
         <div className="">
         <div className="flex items-center justify-center">
           <div className="flex gap-2">
