@@ -6,7 +6,7 @@ import { FaUser } from "react-icons/fa6";
 import { PiWaveSineBold } from "react-icons/pi";
 
 const AdminTransafer = () => {
-  const { totalTransaction } = useTransaction();
+  const { totalTransaction} = useTransaction();
   return (
     <div>
       <h2 className="text-2xl py-4">General Statistics</h2>

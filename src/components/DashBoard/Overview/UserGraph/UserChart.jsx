@@ -1,6 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 
 const ApexPieChart = ({ allAccountByUser }) => {
+  const {countUsersWithAccount,totalUsers} = allAccountByUser;
   const options = {
     chart: {
       width: 100,
@@ -42,19 +43,12 @@ const ApexPieChart = ({ allAccountByUser }) => {
   };
 
   const series = [
-    allAccountByUser?.totalUsers,
-    allAccountByUser?.countUsersWithAccount,
+   totalUsers,
+  countUsersWithAccount,
   ];
 
   return (
     <div className="w-full">
-      {/* <ReactApexChart
-        height={350}
-       
-        options={options}
-        series={series}
-        type="pie"
-      /> */}
 
       <ReactApexChart
         options={options}

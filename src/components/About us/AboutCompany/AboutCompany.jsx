@@ -5,7 +5,8 @@ import Container from "../../Shared/container/Container";
 
 const AboutCompany = () => {
     return (
-        <Container>
+       <div id="aboutCompany">
+         <Container>
             <SubHeading title={'About Company'}></SubHeading>
           
            <div className='flex flex-col items-center lg:flex-row mx-6 justify-evenly gap-6'>
@@ -28,6 +29,7 @@ const AboutCompany = () => {
             </div>
            </div>
         </Container>
+       </div>
     );
 };
 

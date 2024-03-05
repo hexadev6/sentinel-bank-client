@@ -8,7 +8,7 @@ const useTransaction = () => {
         queryKey:['allAccountByUser'],
         queryFn: async()=>{
             const res= await axiosPublic.get('/statistics')
-            return res.data;
+            return res?.data;
 
         }
         

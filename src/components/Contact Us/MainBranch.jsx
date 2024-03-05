@@ -22,12 +22,12 @@ const MainBranch = () => {
           <div className="flex items-center gap-5 ">
             <MdAddLocationAlt className="text-3xl" />
 
-            <p>123 Main Street, Cityville</p>
+            <p>123 Main Street, Dhaka City</p>
           </div>
           <div className="flex items-center gap-5 ">
             <MdOutlinePermPhoneMsg className="text-3xl" />
 
-            <p>+1 (800) 123-4567 </p>
+            <p>111-222-3333 </p>
           </div>
           <div className="flex items-center gap-5 ">
             <SiMinutemailer className="text-3xl" />
