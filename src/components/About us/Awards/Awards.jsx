@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Container from "../../Shared/container/Container";
 import SubHeading from "../../Shared/Heading Title/SubHeading";
-import empty from '../../../assets/banner/empty image.jpg'
+import emptyTrophy from '../../../assets/banner/empty trophy.jpg'
 import arrow from '../../../assets/icons/right-arrow-icon-114837-11.png'
 import arrow2 from '../../../assets/icons/right-arrow-icon-114837-11 - Copy.png'
 import award1 from "../../../assets/banner/award1 - Copy.jpeg";
@@ -29,9 +29,9 @@ const Awards = () => {
 
   return (
     <Container>
-      <SubHeading title={"Team Achievements"}></SubHeading>
+      <SubHeading title={"Our Achievements"}></SubHeading>
 
-      <div className="w-full mx-auto grid grid-cols-1 lg:grid-cols-3">
+      <div className="w-full py-4 mx-auto grid grid-cols-1 lg:grid-cols-3">
         <div className="">
         <div className="flex items-center justify-center">
           <div className="flex gap-2">
@@ -71,7 +71,7 @@ const Awards = () => {
         <div className="flex flex-col justify-center items-center">
           <img
             className="w-64 h-64 rounded-full border"
-            src={selectedAward ? selectedAward.pic : empty}
+            src={selectedAward ? selectedAward.pic : emptyTrophy}
             alt=""
           />
           <p className="text-xl font-semibold">{selectedAward ? selectedAward.title :""}</p>
