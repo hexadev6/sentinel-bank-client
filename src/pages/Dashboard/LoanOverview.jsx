@@ -5,11 +5,14 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import LoanDocTab from "../../components/DashBoard/Loan/LoanDocTab";
 import LoanSubForm from "../../components/DashBoard/Loan/LoanSubForm";
 import LoanChart from "../../components/DashBoard/Loan/LoanChart";
+import useDarkMode from "../../Hooks/useDarkMode";
 
 const LoanOverview = () => {
   const axios = useAxiosSecure();
-  const { id } = useParams();
-  console.log(id);
+  const { id } = useParams() || {};
+
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   const {
     data: singleLoan,
     isLoading,
@@ -24,28 +27,27 @@ const LoanOverview = () => {
   if (isLoading) {
     return <h1>loading....</h1>;
   }
-  console.log(singleLoan);
+
   const due = singleLoan?.loanAmount - singleLoan?.loanCompRang;
   const chartArr = [
     { _id: "loanCompRang", count: singleLoan?.loanCompRang },
     { _id: "loanDue", count: due },
   ];
-  console.log(chartArr);
 
   return (
     <div className="p-5">
       <h2 className="mb-5 font-bold">Loan Status : {singleLoan?.status}</h2>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1  justify-between  gap-5 text-white text-center">
         <div className="bg-nevy-blue p-8 rounded-md w-full">
-          <p>{singleLoan?.loanAmount}</p>
+          <p>$ {singleLoan?.loanAmount}</p>
           <p>Total Loan</p>
         </div>
         <div className="bg-nevy-blue p-8 rounded-md w-full">
-          <p>{singleLoan?.loanCompRang}</p>
+          <p>$ {singleLoan?.loanCompRang}</p>
           <p>loan Complete</p>
         </div>
         <div className="bg-nevy-blue p-8 rounded-md w-full">
-          <p>{due}</p>
+          <p>$ {singleLoan?.loanDue}</p>
           <p>Loan Due</p>
         </div>
         <div className="bg-nevy-blue p-8 rounded-md w-full">
@@ -54,7 +56,7 @@ const LoanOverview = () => {
         </div>
       </div>
       {/* Loan submit Form */}
-      <LoanSubForm />
+      <LoanSubForm loan={singleLoan} id={id} refetch={refetch} />
 
       {/* Loan details table & Chart */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 my-10">

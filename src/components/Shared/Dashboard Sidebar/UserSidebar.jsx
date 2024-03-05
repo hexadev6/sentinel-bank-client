@@ -10,6 +10,7 @@ import useAuth from "../../../Hooks/useAuth";
 const UserSidebar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
+  console.log(userinfo?.loanStatus?.length);
   return (
     <>
       <NavLink
@@ -38,21 +39,7 @@ const UserSidebar = () => {
           <span className="lg:flex hidden ">Overview</span>
         </div>
       </NavLink>
-      {/* <NavLink
-        to="/"
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "text-white bg-nevy-blue w-full rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-        }
-      >
-        <div className="flex  items-center gap-3 px-2 py-1">
-          <GrTransaction />
-          <span className="lg:flex hidden">Transaction</span>
-        </div>
-      </NavLink> */}
+
       <NavLink
         to="createAcc"
         className={({ isActive, isPending }) =>
@@ -79,7 +66,7 @@ const UserSidebar = () => {
           <span className="lg:flex hidden">Create Bank Account</span>
         </div>
       </NavLink>
-      
+
       <NavLink
         to="quickBanking"
         className={({ isActive, isPending }) =>
@@ -112,7 +99,7 @@ const UserSidebar = () => {
       </NavLink>
       <NavLink
         to={`${
-          userinfo?.loanStatus?.length === 1
+          userinfo?.loanStatus?.length >= 1
             ? `/dashboard/loanOverview/${userinfo?.loanStatus[0].loanId}`
             : "/dashboard/applyLoan"
         }`}
@@ -140,7 +127,7 @@ const UserSidebar = () => {
         }
       >
         <div className="flex  items-center gap-3 px-2 py-1">
-        <MdSupportAgent />
+          <MdSupportAgent />
           <span className="lg:flex hidden">Support</span>
         </div>
       </NavLink>

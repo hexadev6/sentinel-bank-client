@@ -4,10 +4,9 @@ import useStatus from "../../../Hooks/useStatus";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
-const Notification = ({ notifications }) => {
+const Notification = ({ notifications,refetch }) => {
   const [notification, setNotification] = useState([]);
   const axiosPublic= useAxiosPublic()
-  console.log(notifications);
 
   function formatTimeAgo(timestamp) {
     const currentTime = new Date();
@@ -32,23 +31,17 @@ const Notification = ({ notifications }) => {
 
 // after clicking this if the status will true then it will show update notification
   const handleNotificationClick = async (id) => {
-    const clickedNotification = notifications?.find((noti) => noti._id === id);
-  
-    if (clickedNotification && !clickedNotification.status) {
-      try {
-        const res = await axiosPublic.put(`/notification/${id}`)
-        .then(res=>{
-          console.log(res.data);
-        })
-        console.log(res.data);
-        const updatedNotifications = notifications?.map((noti) =>
-          noti._id === id ? { ...noti, status: true } : noti
-        );
-        setNotification(updatedNotifications);
-      } catch (error) {
-        console.error('Failed to update notification status:', error);
-      }
-    }
+    // const clickedNotification = notifications?.find((noti) => noti._id === id);
+  // console.log(id)
+  await axiosPublic
+  .patch(`/notification/${id}`, { status: true })
+  .then((res) => {
+    refetch()
+    // console.log(res.data)
+  })
+  .catch((err) => {
+    console.log(err);
+  });
   };
 
   return (

@@ -1,7 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 
 const LoanChart = ({ chartArr }) => {
-  console.log(chartArr);
   const chartOptions = {
     series: chartArr?.map((item) => item?.count),
     chart: {

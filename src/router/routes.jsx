@@ -48,9 +48,7 @@ const router = createBrowserRouter([
         path: "/bankUpdate/:id",
         element: <ReadNotice />,
         loader: ({ params }) =>
-          fetch(
-            `https://sentinel-bank-server-six.vercel.app/allNotice/${params?.id}`
-          ),
+          fetch(`${import.meta.env.VITE_SERVER_URL}/allNotice/${params?.id}`),
       },
       {
         path: "contact/:section",
