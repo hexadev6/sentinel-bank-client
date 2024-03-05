@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import useAuth from "../../../Hooks/useAuth";
 import useGetChat from "../../../Hooks/useGetChat";
-// const socket = io(import.meta.env.VITE_SERVER_URL);
-const socket = io("http://localhost:5000");
+const socket = io(import.meta.env.VITE_SERVER_URL);
+// const socket = io("http://localhost:5000");
 
 import { IoIosSend } from "react-icons/io";
 import { Badge, IconButton, Avatar } from "@material-tailwind/react";
@@ -88,9 +88,7 @@ const ChatApp = ({
   const receiverInfo = filteredMessages?.[0];
 
   return (
-    <div
-      className={`rounded-lg ${darkMode ? "bg-[#25324b]" : "bg-gray-100 "}`}
-    >
+    <div className={`rounded-lg ${darkMode ? "bg-[#25324b]" : "bg-gray-100 "}`}>
       {isAdmin == true ? (
         <div className=" flex items-center gap-3 mb-2 px-5 py-2 bg-nevy-blue text-white">
           <Badge overlap="circular" placement="bottom-end" color="green">
