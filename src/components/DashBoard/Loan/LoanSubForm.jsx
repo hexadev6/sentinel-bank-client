@@ -52,6 +52,7 @@ const LoanSubForm = ({ loan, id, refetch }) => {
           )
           .catch();
       }
+      refetch();
     });
   };
 

@@ -56,6 +56,7 @@ const LoanDetailsAdmin = () => {
           )
           .catch();
       }
+      refetch();
     });
   };
   return (

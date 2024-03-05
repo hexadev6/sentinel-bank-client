@@ -27,10 +27,9 @@ const ApplyLoan = () => {
   const [duration, setDuration] = useState("");
   const [consent1, setConsent1] = useState(false);
   const [consent2, setConsent2] = useState(false);
-  const location = useLocation();
-  console.log(location);
+
   const navigate = useNavigate();
-  console.log(navigate.state);
+
   const {
     register,
     handleSubmit,

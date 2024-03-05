@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import useStatus from "../../../Hooks/useStatus";
 import useAuth from "../../../Hooks/useAuth";
 
-const socket = io.connect("http://localhost:5000", {
+const socket = io.connect(import.meta.env.VITE_SERVER_URL, {
   transports: ["websocket"],
 });
 

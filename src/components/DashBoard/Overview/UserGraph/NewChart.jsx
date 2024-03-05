@@ -5,11 +5,12 @@ import useAllTrasaction from "../../../../Hooks/useAllTrasaction";
 const AreaChart = () => {
   const [Alltrasactions, isLoading, refetch] = useAllTrasaction();
 
-  const data = Alltrasactions?.depositSummary?.map((item, index) => ({
-    name: new Date(item?.transactionDate).toLocaleDateString(),
-    deposit: item?.amount || 0,
-    withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount || 0,
-  }));
+  const data =
+    Alltrasactions?.depositSummary?.map((item, index) => ({
+      name: new Date(item?.transactionDate).toLocaleDateString(),
+      deposit: item?.amount || 0,
+      withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount || 0,
+    })) || [];
 
   const series = [
     {
