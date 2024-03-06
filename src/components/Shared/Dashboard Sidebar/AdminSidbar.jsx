@@ -1,8 +1,10 @@
 import { BsBank2 } from "react-icons/bs";
-import { FaSnapchat } from "react-icons/fa6";
+import { FaRegCreditCard, FaSnapchat } from "react-icons/fa6";
 import { GrTransaction } from "react-icons/gr";
 import { TfiWrite } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
+import { MdAccountCircle } from "react-icons/md";
+import { IoIosPaper } from "react-icons/io";
 
 const AdminSidbar = () => {
   return (
@@ -30,7 +32,7 @@ const AdminSidbar = () => {
               clipRule="evenodd"
             />
           </svg>
-          <span className="lg:flex hidden ">Dashboard</span>
+          <span className="lg:flex hidden ">Reports and Analytics</span>
         </div>
       </NavLink>
       <NavLink
@@ -48,7 +50,7 @@ const AdminSidbar = () => {
           <span className="lg:flex hidden">Important Notice</span>
         </div>
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/"
         className={({ isActive, isPending }) =>
           isPending
@@ -73,7 +75,7 @@ const AdminSidbar = () => {
           </svg>
           <span className="lg:flex hidden">Users Management</span>
         </div>
-      </NavLink>
+      </NavLink> */}
 
       <NavLink
         to="/dashboard/accountManagement"
@@ -86,7 +88,7 @@ const AdminSidbar = () => {
         }
       >
         <div className="flex  items-center gap-3 px-2 py-1">
-          <GrTransaction />
+          <MdAccountCircle />
           <span className="lg:flex hidden">Account Management</span>
         </div>
       </NavLink>
@@ -101,7 +103,7 @@ const AdminSidbar = () => {
         }
       >
         <div className="flex  items-center gap-3 px-2 py-1">
-          <GrTransaction />
+          <IoIosPaper />
           <span className="lg:flex hidden">Loan Management</span>
         </div>
       </NavLink>
@@ -116,25 +118,11 @@ const AdminSidbar = () => {
         }
       >
         <div className="flex  items-center gap-3 px-2 py-1">
-          <GrTransaction />
+          <FaRegCreditCard />
           <span className="lg:flex hidden">Card Management</span>
         </div>
       </NavLink>
-      <NavLink
-        to="/"
-        className={({ isActive, isPending }) =>
-          isPending
-            ? "pending"
-            : isActive
-            ? "text-white bg-nevy-blue w-full rounded"
-            : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-        }
-      >
-        <div className="flex  items-center gap-3 px-2 py-1">
-          <TfiWrite />
-          <span className="lg:flex hidden">Reports and Analytics</span>
-        </div>
-      </NavLink>
+
       <NavLink
         to="/dashboard/chat"
         className={({ isActive, isPending }) =>
@@ -150,7 +138,6 @@ const AdminSidbar = () => {
           <span className="lg:flex hidden">Chat with Users</span>
         </div>
       </NavLink>
-
     </>
   );
 };

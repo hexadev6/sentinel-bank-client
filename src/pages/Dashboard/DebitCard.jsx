@@ -62,7 +62,7 @@ const DebitCard = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="p-5 rounded-lg shadow-lg m-5 ">
+    <div className="p-5 rounded-lg shadow-lg m-5 min-h-screen ">
       <h2 className="text-2xl font-bold mb-10 text-center">
         Apply for debit Card
       </h2>

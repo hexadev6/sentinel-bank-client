@@ -26,6 +26,8 @@ import OverviewUser from "../pages/Dashboard/OverviewUser";
 import LoanOverview from "../pages/Dashboard/LoanOverview";
 import AdminChatApp from "../components/DashBoard/ChatApp/AdminChatApp";
 import UserChatApp from "../components/DashBoard/ChatApp/UserChatApp";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import AdminRoute from "../components/PrivateRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -68,7 +70,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/my-profile",
-    element: <UserProfile></UserProfile>,
+    element: (
+      <PrivateRoute>
+        <UserProfile></UserProfile>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/dashboard",
@@ -76,67 +82,145 @@ const router = createBrowserRouter([
     children: [
       {
         path: "admin/overview",
-        element: <OverviewAdmin />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <OverviewAdmin />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "user/overview",
-        element: <OverviewUser />,
+        element: (
+          <PrivateRoute>
+            <OverviewUser />
+          </PrivateRoute>
+        ),
       },
       {
         path: "quickBanking",
-        element: <QuickBank />,
+        element: (
+          <PrivateRoute>
+            <QuickBank />
+          </PrivateRoute>
+        ),
       },
       {
         path: "createAcc",
-        element: <CreateAcc />,
+        element: (
+          <PrivateRoute>
+            <CreateAcc />
+          </PrivateRoute>
+        ),
       },
       {
         path: "accountManagement",
-        element: <AccountManagement />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AccountManagement />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "cardManagement",
-        element: <CardManagement />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <CardManagement />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "loanManagement",
-        element: <LoanManagement />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <LoanManagement />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "LoanDetailsAdmin/:id",
-        element: <LoanDetailsAdmin />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <LoanDetailsAdmin />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "loanOverview/:id",
-        element: <LoanOverview />,
+        element: (
+          <PrivateRoute>
+              <LoanOverview />
+          </PrivateRoute>
+        ),
       },
       {
         path: "applicationCard",
-        element: <ApplicationCard />,
+        element: (
+          <PrivateRoute>
+            <ApplicationCard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "applyLoan",
-        element: <ApplyLoan />,
+        element: (
+          <PrivateRoute>
+            <ApplyLoan />
+          </PrivateRoute>
+        ),
       },
       {
         path: "applicationCard/debit",
-        element: <DebitCard />,
+        element: (
+          <PrivateRoute>
+            <DebitCard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "applicationCard/cedit",
-        element: <CeditCard />,
+        element: (
+          <PrivateRoute>
+            <CeditCard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "notice",
-        element: <Notice />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Notice />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "chat",
-        element: <AdminChatApp />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AdminChatApp />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "support",
-        element: <UserChatApp />,
+        element: (
+          <PrivateRoute>
+            <UserChatApp />
+          </PrivateRoute>
+        ),
       },
     ],
   },
