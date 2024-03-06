@@ -59,11 +59,12 @@ const CardManagement = () => {
       buttons: true,
       dangerMode: true,
     }).then(async (willUpdate) => {
+      refetch();
       if (willUpdate) {
         const res = await axios.patch(`/updateCard/${id}`, {
           status: status,
         });
-        if (res?.data.success) {
+        if (res?.data?.success) {
           refetch();
           swal("Poof! The account status is updated", {
             icon: "success",
@@ -72,6 +73,7 @@ const CardManagement = () => {
       } else {
         swal("Account status is not updated!");
       }
+      refetch();
     });
   };
 

@@ -21,7 +21,8 @@ const WhatOffer = () => {
     });
   }, []);
   return (
-    <Container>
+    <div id="branch">
+      <Container>
       <SubHeading title={"Our Branches"}></SubHeading>
       <div id="branch">
         <Card className="h-full my-6 w-full overflow-scroll">
@@ -121,6 +122,7 @@ const WhatOffer = () => {
         </Card>
       </div>
     </Container>
+    </div>
   );
 };
 

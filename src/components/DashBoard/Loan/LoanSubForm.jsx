@@ -8,13 +8,67 @@ import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-
-const LoanSubForm = () => {
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+const LoanSubForm = ({ loan, id, refetch }) => {
+  const axios = useAxiosPublic();
+  console.log(id);
   const [date, setDate] = useState();
+  const handleDateSelect = (selectedDate) => {
+    setDate(selectedDate);
+  };
+  const perLoan = parseInt(loan?.perLoan);
+
+  let submitDate = date?.toLocaleDateString("en-US");
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    let updateInfo = {
+      ...data,
+      submitDate,
+    };
+    console.log(updateInfo);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Submite Loan!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .patch(`/updateLoan/${id}`, updateInfo)
+          .then(
+            Swal.fire({
+              title: "Approved!",
+              text: "Your file has been Submite.",
+              icon: "success",
+            })
+              .then(refetch())
+              .catch()
+          )
+          .catch();
+      }
+      refetch();
+    });
+  };
+
   return (
     <div className="my-10 bg-nevy-blue p-10 text-white">
-      <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-10">
-        <Input label="Amount" placeholder={15000} className="bg-white py-8" />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-10"
+      >
+        <Input
+          defaultValue={perLoan}
+          {...register("perLoan", { required: true })}
+          label="Amount"
+          placeholder={15000}
+          className="bg-white py-8"
+        />
         <div className="">
           <Popover placement="bottom">
             <PopoverHandler>
@@ -29,7 +83,7 @@ const LoanSubForm = () => {
               <DayPicker
                 mode="single"
                 selected={date}
-                onSelect={setDate}
+                onSelect={handleDateSelect}
                 showOutsideDays
                 className="border-0"
                 classNames={{

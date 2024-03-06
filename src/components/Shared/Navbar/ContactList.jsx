@@ -36,40 +36,16 @@ const ContactList = () => {
       icon: UserGroupIcon,
     },
     {
-      title: "Blog",
-      link: "contact",
-      description: "Find the perfect solution for your needs.",
-      icon: Bars4Icon,
-    },
-    {
-      title: "Services",
-      link: "contact",
-      description: "Learn how we can help you achieve your goals.",
-      icon: SunIcon,
-    },
-    {
       title: "Support",
       link: "contact",
       description: "Reach out to us for assistance or inquiries",
       icon: GlobeAmericasIcon,
     },
     {
-      title: "Contact",
-      link: "contact",
-      description: "Find the perfect solution for your needs.",
-      icon: PhoneIcon,
-    },
-    {
       title: "Contact from",
       link: "contactfrom",
       description: "Read insightful articles",
       icon: NewspaperIcon,
-    },
-    {
-      title: "Products",
-      link: "contact",
-      description: "Find the perfect solution for your needs.",
-      icon: RectangleGroupIcon,
     },
     {
       title: "Main Branch",

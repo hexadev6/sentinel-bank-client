@@ -11,9 +11,6 @@ const Navbar = () => {
   const [issticky, setSticky] = useState(false);
   const { user, userLogOut } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
-  // const {Account} = useSingleAccount()
-  // console.log(user);
-  // console.log(Account);
 
   const handleStickey = () => {
     clearTimeout(window.scroolTimeout);
@@ -63,20 +60,24 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-5">
             {/* deshbord */}
             {userinfo?.status === "admin" ? (
-  <Link
-    to="/dashboard/admin/overview"
-    className="bg-green-500 text-white font-medium font-cinzel px-4 py-2 rounded-md"
-  >
-    Dashboard
-  </Link>
-) : (
-  <Link
-    to={userinfo?.acc_num ? "/dashboard/user/overview" : "/dashboard/createAcc"}
-    className="bg-green-500 text-white font-medium font-cinzel px-4 py-2 rounded-md"
-  >
-    {userinfo?.acc_num ? "Dashboard" : "Account"}
-  </Link>
-)}
+              <Link
+                to="/dashboard/admin/overview"
+                className="bg-green-500 text-white font-medium font-cinzel px-4 py-2 rounded-md"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Link
+                to={
+                  userinfo?.acc_num
+                    ? "/dashboard/user/overview"
+                    : "/dashboard/createAcc"
+                }
+                className="bg-green-500 text-white font-medium font-cinzel px-4 py-2 rounded-md"
+              >
+                {userinfo?.acc_num ? "Dashboard" : "Account"}
+              </Link>
+            )}
 
             <div className=" rounded-full ">
               <ProfileMenu />

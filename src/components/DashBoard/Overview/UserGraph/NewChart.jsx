@@ -1,57 +1,56 @@
-import React from 'react';
-import ReactApexChart from 'react-apexcharts';
-import useAllTrasaction from '../../../../Hooks/useAllTrasaction';
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import useAllTrasaction from "../../../../Hooks/useAllTrasaction";
 
 const AreaChart = () => {
   const [Alltrasactions, isLoading, refetch] = useAllTrasaction();
 
-  const data = Alltrasactions?.depositSummary?.map((item, index) => ({
-    name: new Date(item?.transactionDate).toLocaleDateString(),
-    deposit: item?.amount || 0,
-    withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount || 0
-  }));
-
-  console.log(data)
+  const data =
+    Alltrasactions?.depositSummary?.map((item, index) => ({
+      name: new Date(item?.transactionDate).toLocaleDateString(),
+      deposit: item?.amount || 0,
+      withdraw: Alltrasactions?.withdrawSummary?.[index]?.amount || 0,
+    })) || [];
 
   const series = [
     {
-      name: 'Withdraw',
-      data: data?.map(item => item.withdraw)
+      name: "Withdraw",
+      data: data?.map((item) => item.withdraw),
     },
     {
-      name: 'Deposit',
-      data: data?.map(item => item.deposit)
-    }
+      name: "Deposit",
+      data: data?.map((item) => item.deposit),
+    },
   ];
 
   const options = {
     chart: {
       height: 300,
-      type: 'area'
+      type: "area",
     },
     xaxis: {
-      type: 'category',
-      categories: data?.map(item => item.name)
+      type: "category",
+      categories: data?.map((item) => item.name),
     },
     yaxis: [
       {
         title: {
-          text: 'Withdraw',
+          text: "Withdraw",
           style: {
-            color: '#8884d8'
-          }
-        }
+            color: "#8884d8",
+          },
+        },
       },
       {
         opposite: true,
         title: {
-          text: 'Deposit',
+          text: "Deposit",
           style: {
-            color: '#82ca9d'
-          }
-        }
-      }
-    ]
+            color: "#82ca9d",
+          },
+        },
+      },
+    ],
   };
 
   return (

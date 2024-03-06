@@ -60,18 +60,18 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
 
-      if (currentUser) {
-        try {
-          axios
-            .post("/jwt", emailuser)
-            .then()
-            .catch((error) => console.log(error));
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        axios.post("/logout").then().catch();
-      }
+      // if (currentUser) {
+      //   try {
+      //     axios
+      //       .post("/jwt", emailuser)
+      //       .then()
+      //       .catch((error) => console.log(error));
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // } else {
+      //   axios.post("/logout").then().catch();
+      // }
     });
     return () => {
       return unsubscribe();

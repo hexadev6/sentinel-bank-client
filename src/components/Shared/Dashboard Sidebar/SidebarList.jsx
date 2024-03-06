@@ -19,7 +19,8 @@ const SidebarList = () => {
       });
   };
   return (
-    <div className="w-full flex flex-col gap-2 items-center lg:items-start">
+    <div>
+      <div className="w-full flex flex-col gap-2 items-center lg:items-start">
       {/* admin route */}
       {userinfo?.status === "admin" && <AdminSidbar />}
 
@@ -59,6 +60,13 @@ const SidebarList = () => {
           <span className="lg:flex hidden">Log out</span>
         </div>
       </NavLink>
+
+     
+    </div>
+    <div className="border-black border-2 my-2"></div>
+        <NavLink className="flex my-6 mx-2 items-center gap-2" to='/'>
+        <FaHome/>
+        Home</NavLink>
     </div>
   );
 };

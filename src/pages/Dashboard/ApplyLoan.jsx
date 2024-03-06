@@ -27,10 +27,9 @@ const ApplyLoan = () => {
   const [duration, setDuration] = useState("");
   const [consent1, setConsent1] = useState(false);
   const [consent2, setConsent2] = useState(false);
-  const location = useLocation();
-  console.log(location);
+
   const navigate = useNavigate();
-  console.log(navigate.state);
+
   const {
     register,
     handleSubmit,
@@ -107,15 +106,7 @@ const ApplyLoan = () => {
           </Select>
           <Select label="Loan Submit">
             <Option onClick={() => setLoanSubmit("weekly")}> weekly </Option>
-            <Option onClick={() => setLoanSubmit("three monthsMonthly")}>
-              Monthly
-            </Option>
-            <Option onClick={() => setLoanSubmit("three months")}>
-              three months
-            </Option>
-            <Option onClick={() => setLoanSubmit("six months")}>
-              six months
-            </Option>
+            <Option onClick={() => setLoanSubmit("monthly")}>Monthly</Option>
           </Select>
         </div>
         <p className="mt-5">Loan will be used for</p>

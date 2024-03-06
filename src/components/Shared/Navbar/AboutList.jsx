@@ -22,7 +22,13 @@ const AboutList = () => {
   const location = useLocation();
   const navListMenuItems = [
     {
-      title: "Awards",
+      title: "About Company",
+      link: "aboutCompany",
+      description: "Find the perfect solution for your needs.",
+      icon: SquaresPlusIcon,
+    },
+    {
+      title: "Achivements",
       link: "awards",
       description: "Find the perfect solution for your needs.",
       icon: SquaresPlusIcon,
@@ -50,31 +56,7 @@ const AboutList = () => {
       link: "branch",
       description: "Reach out to us for assistance or inquiries",
       icon: GlobeAmericasIcon,
-    },
-    {
-      title: "aboutus",
-      link: "aboutus",
-      description: "Find the perfect solution for your needs.",
-      icon: PhoneIcon,
-    },
-    {
-      title: "News",
-      link: "aboutus",
-      description: "Read insightful articles, tips, and expert opinions.",
-      icon: NewspaperIcon,
-    },
-    {
-      title: "Products",
-      link: "aboutus",
-      description: "Find the perfect solution for your needs.",
-      icon: RectangleGroupIcon,
-    },
-    {
-      title: "Special Offers",
-      link: "aboutus",
-      description: "Explore limited-time deals and bundles",
-      icon: TagIcon,
-    },
+    }
   ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

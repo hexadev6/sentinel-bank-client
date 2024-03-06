@@ -6,10 +6,12 @@ import { MdSupportAgent } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import useStatus from "../../../Hooks/useStatus";
 import useAuth from "../../../Hooks/useAuth";
+import SubHeading from "../Heading Title/SubHeading";
 
 const UserSidebar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
+  console.log(userinfo?.loanStatus?.length);
   return (
     <>
       <NavLink
@@ -98,7 +100,7 @@ const UserSidebar = () => {
       </NavLink>
       <NavLink
         to={`${
-          userinfo?.loanStatus?.length === 1
+          userinfo?.loanStatus?.length >= 1
             ? `/dashboard/loanOverview/${userinfo?.loanStatus[0].loanId}`
             : "/dashboard/applyLoan"
         }`}

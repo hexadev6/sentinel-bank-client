@@ -43,7 +43,7 @@ const Transfer = () => {
   useEffect(() => {
     refetch();
     setTotalBalance(accountByNum);
-  }, [totalDeposits]);
+  }, [totalDeposits, refetch, accountByNum]);
 
   useEffect(() => {
     const depositsForAccount = allDeposits?.filter(

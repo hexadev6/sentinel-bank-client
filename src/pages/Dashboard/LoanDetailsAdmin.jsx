@@ -24,7 +24,7 @@ const LoanDetailsAdmin = () => {
   if (isLoading) {
     return <h1>loading....</h1>;
   }
-  console.log(singleLoan);
+
   const due = singleLoan?.loanAmount - singleLoan?.loanCompRang;
   const chartArr = [
     { _id: "loanCompRang", count: singleLoan?.loanCompRang },
@@ -51,24 +51,27 @@ const LoanDetailsAdmin = () => {
               text: "Your file has been deleted.",
               icon: "success",
             })
+              .then(refetch())
+              .catch()
           )
           .catch();
       }
+      refetch();
     });
   };
   return (
     <div className="p-5">
       <div className="grid grid-cols-2 lg:grid-cols-4 justify-between  gap-5 text-white text-center">
         <div className="bg-nevy-blue p-16 rounded-md w-full">
-          <p>{singleLoan?.loanAmount}</p>
+          <p>$ {singleLoan?.loanAmount}</p>
           <p>Total Loan</p>
         </div>
         <div className="bg-nevy-blue p-16 rounded-md w-full">
-          <p>{singleLoan?.loanCompRang}</p>
+          <p>$ {singleLoan?.loanCompRang}</p>
           <p>loan Complete</p>
         </div>
         <div className="bg-nevy-blue p-16 rounded-md w-full">
-          <p>{due}</p>
+          <p>$ {singleLoan?.loanDue}</p>
           <p>Loan Due</p>
         </div>
         <div className="bg-nevy-blue p-16 rounded-md w-full">
@@ -91,7 +94,10 @@ const LoanDetailsAdmin = () => {
       <div className="mt-20 ">
         {/* profile */}
         <div className="flex flex-wrap items-center gap-5">
-          <img src={singleLoan?.profileImg} className="w-40 h-40 rounded-full" />
+          <img
+            src={singleLoan?.profileImg}
+            className="w-40 h-40 rounded-full"
+          />
           <div>
             <h2>Name : {singleLoan?.name}</h2>
             <h3>Account No. : {singleLoan?.acc_num}</h3>
@@ -124,7 +130,7 @@ const LoanDetailsAdmin = () => {
             </div>
             <div className="flex border">
               <p className="border-r  p-2 w-[150px]">interest</p>
-              <p className="  p-2">{singleLoan?.interest}</p>
+              <p className="  p-2">{singleLoan?.interest}%</p>
             </div>
             <div className="flex border">
               <p className="border-r p-2 w-[150px]">Loan Purpose</p>
@@ -132,7 +138,7 @@ const LoanDetailsAdmin = () => {
             </div>
             <div className="flex border">
               <p className="border-r  p-2 w-[150px]">Monthly Income</p>
-              <p className="  p-2">{singleLoan?.mnIncome}</p>
+              <p className="  p-2">$ {singleLoan?.mnIncome}</p>
             </div>
             <div className="flex border">
               <p className="border-r p-2 w-[150px]">Duration</p>
@@ -140,7 +146,7 @@ const LoanDetailsAdmin = () => {
             </div>
             <div className="flex border">
               <p className="border-r  p-2 w-[150px]">Annual Income</p>
-              <p className="  p-2">{singleLoan?.anIncome}</p>
+              <p className="  p-2">$ {singleLoan?.anIncome}</p>
             </div>
           </div>
           <h1 className="my-5">Address :</h1>
@@ -158,8 +164,8 @@ const LoanDetailsAdmin = () => {
               <p className=" p-2">{singleLoan?.streetAd}</p>
             </div>
             <div className="flex border">
-              <p className="border-r  p-2 w-[150px]">loanSubmit</p>
-              <p className="  p-2">{singleLoan?.loanSubmit}</p>
+              <p className="border-r  p-2 w-[150px]">Per Loan</p>
+              <p className="  p-2">$ {singleLoan?.perLoan}</p>
             </div>
           </div>
         </div>
@@ -167,7 +173,9 @@ const LoanDetailsAdmin = () => {
       <div className="my-10">
         <button
           onClick={handleApprove}
-          className={`px-4 md:px-8 py-2 border border-nevy-blue font-bold hover:bg-nevy-blue hover:text-white ease-linear duration-300 cursor-pointer flex items-center gap-3`}
+          className={`px-4 md:px-8 py-2 border border-nevy-blue font-bold hover:bg-nevy-blue hover:text-white ease-linear duration-300 cursor-pointer flex items-center gap-3 ${
+            singleLoan?.status === "active" && "hidden"
+          }`}
         >
           Approve
         </button>

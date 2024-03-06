@@ -5,10 +5,11 @@ import { useForm } from "react-hook-form";
 import useStatus from "../../Hooks/useStatus";
 import useAuth from "../../Hooks/useAuth";
 import useFindsingleByAC from "../../Hooks/useFindsingleByAC";
+import { useNavigate } from "react-router-dom";
 
 const CeditCard = () => {
   const axios = useAxiosSecure();
-
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
 
@@ -55,7 +56,10 @@ const CeditCard = () => {
     // console.log(cardinfo);
     axios
       .post(`/applicationCard`, cardinfo)
-      .then(() => notify())
+      .then(() => {
+        notify();
+        navigate(`/dashboard/user/overview`);
+      })
       .catch((err) => console.log(err));
   };
   return (

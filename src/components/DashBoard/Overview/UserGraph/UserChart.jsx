@@ -1,14 +1,11 @@
 import ReactApexChart from "react-apexcharts";
 
-const ApexPieChart = ({ allAccountByUser, isLoading }) => {
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
+const ApexPieChart = ({ allAccountByUser }) => {
+  const {countUsersWithAccount,totalUsers} = allAccountByUser;
   const options = {
     chart: {
-      height: 350,
-      type: "pie",
+      width: 100,
+      type: "area",
     },
     plotOptions: {
       pie: {
@@ -27,39 +24,38 @@ const ApexPieChart = ({ allAccountByUser, isLoading }) => {
       colors: ["#8B5387", "#E3633A"],
     },
     labels: ["Registered User", "Users With Accounts"],
-    // responsive: [
-    //   {
-    //     breakpoint: 280,
-    //     options: {
-    //       chart: {
-    //         width: 350,
-    //       },
-    //       legend: {
-    //         position: "bottom",
-    //       },
-    //     },
-    //   },
-    // ],
+    responsive: [
+      {
+        breakpoint: 280,
+        options: {
+          chart: {
+            width: 100,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    ],
     theme: {
       palette: "palette8",
     },
   };
 
   const series = [
-    allAccountByUser?.totalUsers,
-    allAccountByUser?.countUsersWithAccount,
+   totalUsers,
+  countUsersWithAccount,
   ];
 
   return (
-    <div>
-      <div className="w-full" id="pie">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="pie"
-          height={350}
-        />
-      </div>
+    <div className="w-full">
+
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="pie"
+        height={350}
+      />
     </div>
   );
 };
