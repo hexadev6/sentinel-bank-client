@@ -40,7 +40,7 @@ const Team = () => {
 
   return (
    <div id="team">
-     <Container>
+     <div className="container mx-auto px-4">
     <div className=" px-2 py-20">
       <SubHeading title="Meet Our Team" />
 
@@ -91,7 +91,7 @@ const Team = () => {
         ))}
       </div>
     </div>
-    </Container>
+    </div>
    </div>
   );
 };
