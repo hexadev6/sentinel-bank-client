@@ -20,6 +20,7 @@ import AccountDetails from "../../components/DashBoard/AccountDetails/AccountDet
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAllCard from "../../Hooks/useallCard";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useDarkMode from "../../Hooks/useDarkMode";
 
 const TABLE_HEAD = [
   "Account Holder",
@@ -37,6 +38,7 @@ const CardManagement = () => {
   // const axios = useAxiosPublic();
   const [open, setOpen] = useState(false);
   const [dialogId, setDialogId] = useState("");
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const handleOpen = (id) => {
     setOpen(!open);
@@ -78,19 +80,31 @@ const CardManagement = () => {
   return (
     <div className="p-5">
       {/* table */}
-      <Card className=" w-full min-h-screen shadow-gray-100 rounded">
-        <CardHeader floated={false} shadow={false} className="rounded-none ">
-          <div className="mb-8 flex items-center justify-between gap-8">
-            <div>
-              <Typography variant="h5" color="blue-gray">
-                All Card list
-              </Typography>
-              <Typography color="gray" className="mt-1 font-normal">
-                See information about all Card
-              </Typography>
-            </div>
+      <Card
+        className={`h-full w-full  rounded ${
+          darkMode ? "text-gray-400 bg-[#25324b]" : "bg-white shadow-gray-100"
+        }`}
+      >
+        <div
+          className={`mb-8 flex items-center p-10 pb-0 justify-between gap-8${
+            darkMode ? "text-gray-300 bg-[#25324b]" : "bg-white"
+          }`}
+        >
+          <div>
+            <Typography
+              variant="h5"
+              //  color="blue-gray"
+            >
+              All Card list
+            </Typography>
+            <Typography
+              // color="gray"
+              className="mt-1 font-normal"
+            >
+              See information about all Card
+            </Typography>
           </div>
-        </CardHeader>
+        </div>
         <CardBody className="overflow-x-scroll px-0 min-min-h-screen">
           <table className="mt-4 w-full min-w-max table-auto text-left">
             <thead>
@@ -98,11 +112,16 @@ const CardManagement = () => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                    className={`border-y  p-4 ${
+                      darkMode
+                        ? "text-white border-blue-gray-400 "
+                        : "bg-blue-gray-50/50 border-blue-gray-100 "
+                    }`}
+                    // className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
                   >
                     <Typography
                       variant="small"
-                      color="blue-gray"
+                      // color="blue-gray"
                       className="font-normal leading-none opacity-70"
                     >
                       {head}
@@ -131,7 +150,11 @@ const CardManagement = () => {
                   const isLast = index === card?.length - 1;
                   const classes = isLast
                     ? "p-4"
-                    : "p-4 border-b border-blue-gray-50";
+                    : `${
+                        darkMode
+                          ? "p-4 border-b border-blue-gray-400"
+                          : "p-4 border-b border-blue-gray-50"
+                      }`;
 
                   return (
                     <tr key={_id}>
@@ -141,7 +164,7 @@ const CardManagement = () => {
                           <div className="flex flex-col">
                             <Typography
                               variant="small"
-                              color="blue-gray"
+                              // color="blue-gray"
                               className="font-normal"
                             >
                               {name}
@@ -153,7 +176,7 @@ const CardManagement = () => {
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            // color="blue-gray"
                             className="font-normal"
                           >
                             {acc_num}
@@ -164,7 +187,7 @@ const CardManagement = () => {
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            // color="blue-gray"
                             className="font-normal"
                           >
                             {card}
@@ -175,7 +198,7 @@ const CardManagement = () => {
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            // color="blue-gray"
                             className="font-normal"
                           >
                             {card_type}
@@ -214,8 +237,13 @@ const CardManagement = () => {
           </table>
         </CardBody>
       </Card>
-      {/* pop up menu */}
-      <Dialog size="xl" open={open} handler={handleOpen}>
+      {/* pop up menu
+      <Dialog
+        size="xl"
+        open={open}
+        handler={handleOpen}
+        className={` ${darkMode ? "text-gray-300 bg-[#25324b]" : "bg-white"} `}
+      >
         <DialogHeader>Account Details</DialogHeader>
         <DialogBody>
           <AccountDetails id={dialogId} />
@@ -230,7 +258,7 @@ const CardManagement = () => {
             <span>Close</span>
           </Button>
         </DialogFooter>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useStatus from "../../../Hooks/useStatus";
 import useGetChat from "../../../Hooks/useGetChat";
 import { FiMessageCircle } from "react-icons/fi";
+import useDarkMode from "../../../Hooks/useDarkMode";
 
 const AdminChatApp = () => {
   const { user } = useAuth();
@@ -11,6 +12,7 @@ const AdminChatApp = () => {
   const { userinfo: admin } = useStatus({ email: "team.hexadev@gmail.com" });
   const { isPending, error, allChat, refetch } = useGetChat();
   const [isAdmin, setIsAdmin] = useState(true);
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const userId = genaralUser?._id;
   const userImage = genaralUser?.image;
@@ -40,23 +42,20 @@ const AdminChatApp = () => {
     setSelectedUser(inboxInfo.sender);
   };
 
-
   return (
     <div className="p-5 grid grid-cols-1 md:grid-cols-7 gap-5  relative">
-     
-     <div className="md:hidden p-2 rounded-badge flex hover:h-auto h-15 w-15 flex-col justify-center items-center gap-2 z-50 fixed top-[100px] right-10 bg-white shadow-lg group duration-300 transition-all ease-in-out" >
+      <div className="md:hidden p-2 rounded-badge flex hover:h-auto h-15 w-15 flex-col justify-center items-center gap-2 z-50 fixed top-[100px] right-10 bg-white shadow-lg group duration-300 transition-all ease-in-out">
         <div className="text-end flex justify-end">
-        <FiMessageCircle className="text-nevy-blue  h-8 w-8 rounded-full text-lg " />
+          <FiMessageCircle className="text-nevy-blue  h-8 w-8 rounded-full text-lg " />
         </div>
 
-   
-       {latestChats?.map((inbox) => (
+        {latestChats?.map((inbox) => (
           <div
             key={inbox.sender}
             onClick={() => HandleInbox(inbox)}
-      className=" group-hover:flex hidden group-hover:opacity-100 opacity-0 transition-all ease-in-out duration-700"
+            className=" group-hover:flex hidden group-hover:opacity-100 opacity-0 transition-all ease-in-out duration-700"
           >
-            <div key={inbox._id} >
+            <div key={inbox._id}>
               <img
                 src={inbox.senderImage}
                 alt="avatar"
@@ -65,8 +64,6 @@ const AdminChatApp = () => {
             </div>
           </div>
         ))}
-    
-
       </div>
 
       <div className="hidden md:flex col-span-2  flex-col gap-2 overflow-y-auto ">
@@ -74,7 +71,9 @@ const AdminChatApp = () => {
           <div
             key={inbox.sender}
             onClick={() => HandleInbox(inbox)}
-            className="bg-gray-300  py-3 px-5 rounded hover:bg-gray-400 transition-all"
+            className={`  py-3 px-5 rounded  hover:bg-gray-400 transition-all ${
+              darkMode ? "bg-[#25324b] hover:text-black" : "bg-gray-300"
+            } `}
           >
             <div key={inbox._id} className="flex gap-3 items-center ">
               <img

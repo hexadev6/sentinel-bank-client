@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "sentinel-bank-client-8a418"
-  }
+    "default": "sentinel-trust-bank",
+    "prod": "sentinel-trust-bank"
+  },
+  "targets": {},
+  "etags": {}
 }

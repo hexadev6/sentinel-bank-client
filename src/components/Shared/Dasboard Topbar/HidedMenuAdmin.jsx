@@ -6,7 +6,7 @@ import {
   IconButton,
   Switch,
 } from "@material-tailwind/react";
-import { FaBarsStaggered, FaSnapchat } from "react-icons/fa6";
+import { FaBarsStaggered, FaRegCreditCard, FaSnapchat } from "react-icons/fa6";
 import { IoDownloadOutline, IoLogOutOutline } from "react-icons/io5";
 import { TfiWrite } from "react-icons/tfi";
 import { GrTransaction } from "react-icons/gr";
@@ -19,7 +19,9 @@ import TransactionPDF from "../../DashBoard/HistoryDownload/TransactionPDF";
 import useDarkMode from "../../../Hooks/useDarkMode";
 import useStatus from "../../../Hooks/useStatus";
 import { HiMiniBanknotes } from "react-icons/hi2";
-import { MdSupportAgent } from "react-icons/md";
+import { MdAccountCircle, MdSupportAgent } from "react-icons/md";
+import { IoIosPaper } from "react-icons/io";
+import { FaHome } from "react-icons/fa";
 
 const HidedMenuAdmin = () => {
   const [open, setOpen] = React.useState(false);
@@ -115,7 +117,7 @@ const HidedMenuAdmin = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="flex  ">Dashboard</span>
+                <span className="flex ">Reports and Analytics</span>
               </div>
             </NavLink>
             <NavLink
@@ -133,32 +135,6 @@ const HidedMenuAdmin = () => {
                 <span className="flex ">Important Notice</span>
               </div>
             </NavLink>
-            <NavLink
-              to="/"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-white bg-nevy-blue w-full rounded"
-                  : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
-              }
-            >
-              <div className="flex  items-center gap-3 px-2 py-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="flex ">Users Management</span>
-              </div>
-            </NavLink>
 
             <NavLink
               to="/dashboard/accountManagement"
@@ -171,7 +147,7 @@ const HidedMenuAdmin = () => {
               }
             >
               <div className="flex  items-center gap-3 px-2 py-1">
-                <GrTransaction />
+                <MdAccountCircle />
                 <span className="flex ">Account Management</span>
               </div>
             </NavLink>
@@ -186,7 +162,7 @@ const HidedMenuAdmin = () => {
               }
             >
               <div className="flex  items-center gap-3 px-2 py-1">
-                <GrTransaction />
+                <IoIosPaper />
                 <span className="flex ">Loan Management</span>
               </div>
             </NavLink>
@@ -201,11 +177,11 @@ const HidedMenuAdmin = () => {
               }
             >
               <div className="flex  items-center gap-3 px-2 py-1">
-                <GrTransaction />
+                <FaRegCreditCard />
                 <span className="flex ">Card Management</span>
               </div>
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/"
               className={({ isActive, isPending }) =>
                 isPending
@@ -219,7 +195,7 @@ const HidedMenuAdmin = () => {
                 <TfiWrite />
                 <span className="flex ">Reports and Analytics</span>
               </div>
-            </NavLink>
+            </NavLink> */}
             <NavLink
               to="/dashboard/chat"
               className={({ isActive, isPending }) =>
@@ -233,6 +209,22 @@ const HidedMenuAdmin = () => {
               <div className="flex  items-center gap-3 px-2 py-1">
                 <FaSnapchat />
                 <span className="flex">Chat with Users</span>
+              </div>
+            </NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "text-white bg-nevy-blue w-full rounded"
+                  : "hover:bg-gray-200 rounded ease-in duration-500 w-full"
+              }
+            >
+              <div className="flex  items-center gap-3 px-2 py-1">
+                <FaHome />
+
+                <span className="flex">Home</span>
               </div>
             </NavLink>
             <NavLink
@@ -256,7 +248,7 @@ const HidedMenuAdmin = () => {
 
         {/* bottom menu*/}
         <div className="w-full">
-          {/* bank statement download */}
+          {/* bank statement download
           <div>
             <h1 className="flex font-semibold my-2 ">Bank Statement</h1>
             <button
@@ -267,7 +259,7 @@ const HidedMenuAdmin = () => {
               <span className="flex">Dowonload pdf</span>
             </button>
           </div>
-          <hr className="w-full bg-gray-500 my-5" />
+          <hr className="w-full bg-gray-500 my-5" /> */}
           {/* dark mode */}
           <div className=" flex justify-between gap-2 items-center">
             <h1 className="flex ">Dark mode</h1>

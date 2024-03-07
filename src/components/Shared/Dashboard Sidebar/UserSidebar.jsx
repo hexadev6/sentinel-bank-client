@@ -11,7 +11,7 @@ import SubHeading from "../Heading Title/SubHeading";
 const UserSidebar = () => {
   const { user } = useAuth();
   const { userinfo } = useStatus({ email: user?.email });
-  console.log(userinfo?.loanStatus?.length);
+  // console.log(userinfo?.loanStatus?.length);
   return (
     <>
       <NavLink
@@ -132,7 +132,7 @@ const UserSidebar = () => {
           <span className="lg:flex hidden">Support</span>
         </div>
       </NavLink>
-
+     
     </>
   );
 };

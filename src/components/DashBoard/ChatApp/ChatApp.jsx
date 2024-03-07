@@ -111,7 +111,7 @@ const ChatApp = ({
           </div>
         </>
       )}
-      <div className={`p-4  ${darkMode ? "bg-[#25324b]" : "bg-gray-100 "}`}>
+      <div className={`p-4 min-h-screen   ${darkMode ? "bg-[#25324b]" : "bg-gray-100 "}`}>
         {isAdmin == true ? (
           <>
             {filteredMessages?.map((msg) => (
@@ -214,7 +214,7 @@ const ChatApp = ({
       </div>
       <form
         onSubmit={sendMessage}
-        className={`mt-5 sticky  bottom-0 p-5 flex w-full rounded${
+        className={`mt-5 sticky  bottom-0 p-5 flex w-full rounded ${
           darkMode ? "bg-[#25324b]" : "bg-gray-100 "
         }`}
       >

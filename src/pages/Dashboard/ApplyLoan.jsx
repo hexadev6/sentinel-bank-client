@@ -46,12 +46,12 @@ const ApplyLoan = () => {
     data.loanSubmit = loanSubmit;
     const toastLoding = toast.loading("Loding...");
     if (consent1 && consent2) {
-      console.log(data);
+      // console.log(data);
       setError("");
       axios
         .post("/applyLoan", data)
         .then((result) => {
-          console.log(result?.data?.result?._id);
+          // console.log(result?.data?.result?._id);
           const loanId = result?.data?.result?._id;
           const loanStatus = { loanId };
           axios
@@ -68,7 +68,7 @@ const ApplyLoan = () => {
         });
     } else {
       setLoading(false);
-      console.log("please select Consent");
+      // console.log("please select Consent");
       setError("Please file input file");
     }
   };

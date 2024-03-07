@@ -98,13 +98,19 @@ const Topbar = () => {
                   : "text-black hover:bg-gray-300  "
               }`}
             >
-              <div className="text-xl text-black z-10 ">
+              <div
+                className={` text-xl text-black z-10  ${
+                  darkMode == true
+                    ? "text-blue-gray-200 "
+                    : "text-black "
+                }`}
+              >
                 <FaBell />
               </div>
               {/* In the badge it'll show how many notification I have */}
             </IconButton>{" "}
           </Badge>
-       
+
           {isMenuOpen && (
             <Notification notifications={notifications} refetch={refetch} />
           )}

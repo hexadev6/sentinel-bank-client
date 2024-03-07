@@ -28,19 +28,19 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
     fill: {
       colors: ["#00A8FF"],
     },
-    responsive: [
-      {
-        breakpoint: 280,
-        options: {
-          chart: {
-            width: 200,
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 280,
+    //     options: {
+    //       chart: {
+    //         width: 350,
+    //       },
+    //       legend: {
+    //         position: "bottom",
+    //       },
+    //     },
+    //   },
+    // ],
   };
 
   const series = [
@@ -56,6 +56,7 @@ const ApexAreaChart = ({ allaccountChart, isLoading }) => {
       options={options}
       series={series}
       type="area"
+      height={350}
     />
   );
 };

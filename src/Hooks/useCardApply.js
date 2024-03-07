@@ -14,7 +14,7 @@ const useCardApply = () => {
       return res?.data;
     },
   });
-  console.log(CardApply);
+  // console.log(CardApply);
   return {CardApply, isLoading, refetch};
 };
 

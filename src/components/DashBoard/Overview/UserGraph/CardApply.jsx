@@ -27,23 +27,23 @@ const CardApply = () => {
   const chartOptions = {
     series: chartData.map((item) => item.count),
     chart: {
-      width: 100,
-      type: "pie",
+      height: 350,
+      type: "donut",
     },
     labels: chartData.map((item) => item.id),
-    responsive: [
-      {
-        breakpoint: 280,
-        options: {
-          chart: {
-            width: 100,
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 280,
+    //     options: {
+    //       chart: {
+    //         width: 350,
+    //       },
+    //       legend: {
+    //         position: "bottom",
+    //       },
+    //     },
+    //   },
+    // ],
   };
 
   return (
@@ -53,7 +53,7 @@ const CardApply = () => {
           options={chartOptions}
           series={chartOptions.series}
           type="donut"
-          height={350}
+          height={350} // Set the height to the same value
         />
       </div>
     </div>
@@ -61,4 +61,3 @@ const CardApply = () => {
 };
 
 export default CardApply;
-

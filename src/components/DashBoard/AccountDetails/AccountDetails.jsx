@@ -1,12 +1,21 @@
 import React, { useEffect } from "react";
 import useSingleAccount from "../../../Hooks/useSingleAccount";
-import { Avatar, Card, Spinner, Typography } from "@material-tailwind/react";
+import {
+  Avatar,
+  Card,
+  DialogHeader,
+  Spinner,
+  Typography,
+} from "@material-tailwind/react";
 import PropTypes from "prop-types";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import useDarkMode from "../../../Hooks/useDarkMode";
 
 const AccountDetails = ({ id }) => {
   const [account, isLoading, refetch] = useSingleAccount(id);
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   if (isLoading)
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -32,20 +41,24 @@ const AccountDetails = ({ id }) => {
     initial_deposit,
   } = account;
   return (
-    <div className="flex items-center justify-center gap-2 md:gap-16 flex-col md:flex-row w-full overflow-auto">
+    <div
+      className={` items-center justify-center gap-2 md:gap-16 w-full h-full`}
+    >
       <div className="text-center">
-        <Avatar src={profileImg} size="xxl" />
-
+        <img src={profileImg} className="w-52 h-52 rounded mx-auto" />
         <div>
-          <h1 className="text-2xl font-bold text-nevy-blue mt-4">
+          <h1
+            className={`text-2xl font-bold  mt-4 ${
+              darkMode ? "text-gray-300" : "text-nevy-blue"
+            }`}
+          >
             Important Documents
           </h1>
-          <hr className="my-2 border-1 border-green-600" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+          <div className="flex flex-wrap justify-center gap-5 mt-6 mb-24">
             {documents.map((document, idx) => (
               <Zoom key={idx}>
                 <img
-                  className='w-20 h-20 rounded-md border-2 border-black cursor-pointer'
+                  className="w-20 h-20 rounded-md cursor-pointer"
                   src={document}
                 />
               </Zoom>
@@ -53,24 +66,45 @@ const AccountDetails = ({ id }) => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center ">
-        <Card className="h-full w-full">
+      <DialogHeader
+        className={` py-5 text-center  ${
+          darkMode ? "text-gray-300" : "text-nevy-blue"
+        } `}
+      >
+        Account Details
+      </DialogHeader>
+      <div className={`flex items-center justify-center `}>
+        <Card
+          className={`h-full w-full rounded border ${
+            darkMode
+              ? "text-gray-300 bg-[#25324b] border  border-blue-gray-400"
+              : "bg-white"
+          }`}
+        >
           <table className="w-full min-w-max table-auto text-left">
             <tbody>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Account Holder
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {holderName}
@@ -78,19 +112,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Holder Email
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {holderEmail}
@@ -98,19 +140,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Account Number
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {acc_num}
@@ -118,19 +168,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Account Type
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {type}
@@ -138,19 +196,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Account Status
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {status}
@@ -158,19 +224,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Account Balance
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {initial_deposit}
@@ -178,19 +252,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Nominee Name
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {nominee}
@@ -198,19 +280,27 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     NID
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-normal"
                   >
                     {nidnumber}
@@ -218,16 +308,24 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    // color="blue-gray"
                     className="font-semibold"
                   >
                     Phone Number
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -238,7 +336,11 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -247,7 +349,11 @@ const AccountDetails = ({ id }) => {
                     Holder Date of Birth
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -258,7 +364,11 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -267,7 +377,11 @@ const AccountDetails = ({ id }) => {
                     Address
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -278,7 +392,11 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -287,7 +405,11 @@ const AccountDetails = ({ id }) => {
                     Nationality
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -298,7 +420,11 @@ const AccountDetails = ({ id }) => {
                 </td>
               </tr>
               <tr className="w-full">
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -307,7 +433,11 @@ const AccountDetails = ({ id }) => {
                     Occupation
                   </Typography>
                 </td>
-                <td className="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 border-b ${
+                    darkMode ? " border-blue-gray-400 " : "border-blue-gray-50 "
+                  }}`}
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"

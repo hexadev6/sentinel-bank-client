@@ -28,7 +28,7 @@ const LoanSubForm = ({ loan, id, refetch }) => {
       ...data,
       submitDate,
     };
-    console.log(updateInfo);
+    // console.log(updateInfo);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

@@ -26,13 +26,14 @@ const CheckoutForm = ({ userInfo, refetch }) => {
       transactionType: "deposit",
       transactionDate: currentDate,
     };
-console.log(paymentInfo )
+// console.log(paymentInfo )
 
     axiosPublic.post("/ssl-banking", paymentInfo)
       .then((res) => {
-        console.log("url====", res.data.url);
-        console.log(res.data)
+        // console.log("url====", res.data.url);
+        // console.log(res.data)
         window.location.replace(res.data.url);
+        refetch()
       })
       .catch((err) => console.log(err));
   };

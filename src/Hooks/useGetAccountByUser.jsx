@@ -13,7 +13,7 @@ const useGetAccountByUser = () => {
         }
         
     })
-    console.log(allAccountByUser);
+    // console.log(allAccountByUser);
     return {allAccountByUser, isLoading, refetch};
 }
 export default useGetAccountByUser;

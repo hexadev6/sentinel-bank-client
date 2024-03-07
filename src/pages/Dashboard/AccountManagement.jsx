@@ -75,35 +75,50 @@ const AccountManagement = () => {
   };
   // console.log(allAcounts);
   return (
-    <div className='px-4 py-4 '>
+    <div className="px-4 py-4 ">
       {/* table */}
-      <Card className='h-full w-full shadow-gray-100 rounded'>
-        <CardHeader floated={false} shadow={false} className='rounded-none'>
-          <div className='mb-8 flex items-center justify-between gap-8'>
-            <div>
-              <Typography variant="h5" color="blue-gray">
-                All Account list
-              </Typography>
-              <Typography color="gray" className="mt-1 font-normal">
-                See information about all accounts
-              </Typography>
-            </div>
+      <Card
+        className={`h-full w-full  rounded ${
+          darkMode ? "text-gray-400 bg-[#25324b]" : "bg-white shadow-gray-100"
+        }`}
+      >
+        <div
+          className={`mb-8 flex items-center p-10 pb-0 justify-between gap-8${
+            darkMode ? "text-gray-300 bg-[#25324b]" : "bg-white"
+          }`}
+        >
+          <div>
+            <Typography
+              variant="h5"
+              // color="blue-gray"
+            >
+              All Account list
+            </Typography>
+            <Typography
+              // color="gray"
+              className="mt-1 font-normal"
+            >
+              See information about all accounts
+            </Typography>
           </div>
-        </CardHeader>
-        <CardBody className=' overflow-scroll px-0'>
-          <table className='mt-4 w-full table-auto text-left'>
+        </div>
+
+        <CardBody className=" overflow-auto px-0">
+          <table className="mt-4 w-full table-auto text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className={`border-y border-blue-gray-100  p-4 ${darkMode ? "text-white bg-[#25324b]" : "bg-blue-gray-50/50 "}`} 
-
-                  
+                    className={`border-y  p-4 ${
+                      darkMode
+                        ? "text-white border-blue-gray-400 "
+                        : "bg-blue-gray-50/50 border-blue-gray-100 "
+                    }`}
                   >
                     <Typography
                       variant="small"
-                      color="blue-gray"
+                      // color="blue-gray"
                       className="font-normal leading-none opacity-70"
                     >
                       {head}
@@ -130,7 +145,11 @@ const AccountManagement = () => {
                   const isLast = index === allAcounts.length - 1;
                   const classes = isLast
                     ? "p-4"
-                    : "p-4 border-b border-blue-gray-50";
+                    : `${
+                        darkMode
+                          ? "p-4 border-b border-blue-gray-400"
+                          : "p-4 border-b border-blue-gray-50"
+                      }`;
 
                   return (
                     <tr key={_id}>
@@ -140,14 +159,14 @@ const AccountManagement = () => {
                           <div className="flex flex-col">
                             <Typography
                               variant="small"
-                              color="blue-gray"
+                              // color="blue-gray"
                               className="font-normal"
                             >
                               {holderName}
                             </Typography>
                             <Typography
                               variant="small"
-                              color="blue-gray"
+                              // color="blue-gray"
                               className="font-normal opacity-70"
                             >
                               {holderEmail}
@@ -159,7 +178,7 @@ const AccountManagement = () => {
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            // color="blue-gray"
                             className="font-normal"
                           >
                             {acc_num}
@@ -170,7 +189,7 @@ const AccountManagement = () => {
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            // color="blue-gray"
                             className="font-normal"
                           >
                             {nidnumber}
@@ -181,7 +200,7 @@ const AccountManagement = () => {
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
-                            color="blue-gray"
+                            // color="blue-gray"
                             className="font-normal"
                           >
                             {nominee}
@@ -201,7 +220,7 @@ const AccountManagement = () => {
                         </div>
                       </td>
                       <td className={classes}>
-                        <Button 
+                        <Button
                           onClick={() => {
                             handleUpdataStatus(
                               _id,
@@ -234,8 +253,12 @@ const AccountManagement = () => {
         </CardBody>
       </Card>
       {/* pop up menu */}
-      <Dialog size="xl" open={open} handler={handleOpen}>
-        <DialogHeader>Account Details</DialogHeader>
+      <Dialog
+        size="xl"
+        open={open}
+        handler={handleOpen}
+        className={` ${darkMode ? "text-gray-300 bg-[#25324b]" : "bg-white"} `}
+      >
         <DialogBody>
           <AccountDetails id={dialogId} />
         </DialogBody>
