@@ -29,7 +29,7 @@ const LoanManagement = () => {
   return (
     <div className="px-8 py-8">
       {/* table */}
-      <Card className="h-full w-full min-h-screen">
+      <Card className="w-full min-h-screen">
         <CardHeader floated={false} shadow={false} className="rounded-none ">
           <div className="mb-8 flex items-center justify-between gap-8">
             <div>

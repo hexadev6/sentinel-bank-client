@@ -202,24 +202,24 @@ const Section2 = () => {
         <Tabs>
           <TabList className="flex flex-col md:flex-row md:w-[700px] mx-auto  justify-center gap-5 my-10">
             <Tab
-              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
-                activ === "Employee" ? "bg-green-500" : "bg-white"
+              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-nevy-blue ease-linear duration-500 outline-none ${
+                activ === "Employee" ? "bg-nevy-blue text-white" : "bg-white"
               } `}
               onClick={() => setActive("Employee")}
             >
               Branch Locator
             </Tab>
             <Tab
-              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none  ${
-                activ === "Branch Manager" ? "bg-green-500" : "bg-white"
+              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-nevy-blue ease-linear duration-500 outline-none  ${
+                activ === "Branch Manager" ? "bg-nevy-blue text-white" : "bg-white"
               } `}
               onClick={() => setActive("Branch Manager")}
             >
               Branch Manager
             </Tab>
             <Tab
-              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-green-500 ease-linear duration-500 outline-none ${
-                activ === "Loan Officer" ? "bg-green-500" : "bg-white"
+              className={` px-6 py-2 border rounded-full cursor-pointer font-bold focus:bg-nevy-blue ease-linear duration-500 outline-none ${
+                activ === "Loan Officer" ? "bg-nevy-blue text-white" : "bg-white"
               } `}
               onClick={() => setActive("Loan Officer")}
             >
