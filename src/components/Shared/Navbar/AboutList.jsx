@@ -104,7 +104,7 @@ const AboutList = () => {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium ">
             <div
-              className={`flex items-center gap-3 text-sm font-bold     capitalize  hover:bg-none hover:border-b hover:border-b-green-400 ease-in duration-500 rounded-none  p-0 pb-1 cursor-pointer ${
+              className={`flex items-center gap-3 text-sm font-bold  capitalize  hover:bg-none hover:border-b hover:border-b-green-400 ease-in duration-500 rounded-none  p-0 pb-1 cursor-pointer ${
                 location.pathname.includes("about")
                   ? "border-b border-green-400 text-green-400"
                   : ""
@@ -116,7 +116,7 @@ const AboutList = () => {
             </div>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-screen mt-3  lg:block rounded-none  pb-20 px-20 ease-linear duration-200 min-h-96  z-50">
+        <MenuList className="hidden w-screen mt-3  lg:block rounded-none  pb-20 px-20 ease-linear duration-200  z-50">
           <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
             {renderItems}
           </ul>

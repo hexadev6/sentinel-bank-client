@@ -6,29 +6,27 @@ import Container from "../../Shared/container/Container";
 const AboutCompany = () => {
     return (
        <div id="aboutCompany">
-         <Container>
-            <SubHeading title={'About Company'}></SubHeading>
+         <div className="container mx-auto px-4 mt-10">
+            {/* <SubHeading title={'About Company'}></SubHeading> */}
           
-           <div className='flex flex-col items-center lg:flex-row mx-6 justify-evenly gap-6'>
+           <div className='grid grid-cols-1 md:grid-cols-2 items-center  justify-between gap-6'>
            
-           
-           <div  className='sm:mx-10'>
-                <div className='relative'>
-                <img className='h-60 w-96' src={img2} alt="" />
-                <img className='lg:ml-40 lg:-mt-32 mt-4 h-60 w-96' src={img1} alt="" />
-                </div>
-                <div className='lg:absolute hover:scale-110 lg:-mt-32 lg:mx-6 mx-auto mt-4 flex gap-2 p-6 bg-white border-4 w-60 lg:w-1/4 border-l-nevy-blue'>
+                <div className='w-full relative left-0 right-0 mx-auto '>
+                <img className='h-60 w-2/3' src={img2} alt="" />
+                <img className='ml-20 sm:ml-40 -mt-32 h-60 w-2/3' src={img1} alt="" />
+                <div className='absolute hover:scale-110 -mt-32  ml-6 flex gap-2 px-10 py-2 sm:py-6 bg-white border-4 w-fit border-l-nevy-blue duration-500 transition-all sm:flex-nowrap sm:flex-row flex-col'>
                     <h2 className='text-3xl text-red-600 font-bold' >25</h2>
-                    <h2 className='w-40 text-center'>We Have More Than years of Experience</h2>
+                    <h2 className=' '>We Have More Than years of Experience</h2>
+                </div>
                 </div>
 
-            </div>
-            <div className='w-full lg:w-96 px-10'>
-                  <h2 className='text-2xl font-bold mb-4'>Crafting Excellence Since 25 Years</h2>
-                  <p className='text-xl font-medium'>For 25 years, Sentinel Trust Bank has been synonymous with excellence. Since our inception, we have continually evolved to meet the dynamic needs. Our seasoned team of professionals brings a wealth of experience, ensuring that every project we undertake is executed with precision, creativity, and a commitment to surpassing expectations.</p>
+     
+            <div className=' px-10  mt-10 sm:mt-0'>
+                  <h2 className='text-2xl font-semibold uppercase mb-4'>Crafting Excellence Since 25 Years</h2>
+                  <p className='text-xl '>For 25 years, Sentinel Trust Bank has been synonymous with excellence. Since our inception, we have continually evolved to meet the dynamic needs. Our seasoned team of professionals brings a wealth of experience, ensuring that every project we undertake is executed with precision, creativity, and a commitment to surpassing expectations.</p>
             </div>
            </div>
-        </Container>
+        </div>
        </div>
     );
 };

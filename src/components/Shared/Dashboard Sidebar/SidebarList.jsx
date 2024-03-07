@@ -63,10 +63,7 @@ const SidebarList = () => {
 
      
     </div>
-    <div className="border-black border-2 my-2"></div>
-        <NavLink className="flex my-6 mx-2 items-center gap-2" to='/'>
-        <FaHome/>
-        Home</NavLink>
+
     </div>
   );
 };
