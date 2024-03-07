@@ -22,10 +22,10 @@ const WhatOffer = () => {
   }, []);
   return (
     <div id="branch">
-      <Container>
+      <div className="container mx-auto px-4 mt-10">
       <SubHeading title={"Our Branches"}></SubHeading>
-      <div id="branch">
-        <Card className="h-full my-6 w-full overflow-scroll">
+      <div id="branch ">
+        <Card className="h-full mt-20 w-full overflow-scroll">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr>
@@ -121,7 +121,7 @@ const WhatOffer = () => {
           </table>
         </Card>
       </div>
-    </Container>
+    </div>
     </div>
   );
 };

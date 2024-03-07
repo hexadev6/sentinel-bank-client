@@ -16,22 +16,18 @@ const Sponsor = () => {
       });
   }, []);
   return (
-    <Container>
-      <div id="sponsors">
-        <SubHeading title={"Our Sponsors"} />
-        <div className="grid mt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mx-16">
+    <div className="container mx-auto px-4">
+      <SubHeading title={"Trusted by"} />
+        <div className="grid mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 ">
           {sponsor.map((item) => (
-            <h2 key={item.id}>
-              <img
-                className="text-xl  shadow-md  p-2 mx-6 rounded-lg w-32 h-20"
-                src={item.image}
-                alt=""
-              />
-            </h2>
+             <img key={item?.id}
+             className="text-xl  shadow-md  p-2 rounded-lg w-full h-44 filter grayscale"
+             src={item.image}
+             alt=""
+           />
           ))}
         </div>
-      </div>
-    </Container>
+    </div>
   );
 };
 
