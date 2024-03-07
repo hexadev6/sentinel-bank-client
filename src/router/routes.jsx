@@ -82,9 +82,7 @@ const router = createBrowserRouter([
         path: "admin/overview",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <OverviewAdmin />
-            </AdminRoute>
+            <OverviewAdmin />
           </PrivateRoute>
         ),
       },
@@ -116,9 +114,8 @@ const router = createBrowserRouter([
         path: "accountManagement",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <AccountManagement />
-            </AdminRoute>
+            {" "}
+            <AccountManagement />{" "}
           </PrivateRoute>
         ),
       },
@@ -126,9 +123,7 @@ const router = createBrowserRouter([
         path: "cardManagement",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <CardManagement />
-            </AdminRoute>
+            <CardManagement />
           </PrivateRoute>
         ),
       },
@@ -136,9 +131,8 @@ const router = createBrowserRouter([
         path: "loanManagement",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <LoanManagement />
-            </AdminRoute>
+            {" "}
+            <LoanManagement />{" "}
           </PrivateRoute>
         ),
       },
@@ -146,9 +140,7 @@ const router = createBrowserRouter([
         path: "LoanDetailsAdmin/:id",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <LoanDetailsAdmin />
-            </AdminRoute>
+            <LoanDetailsAdmin />
           </PrivateRoute>
         ),
       },
@@ -156,7 +148,7 @@ const router = createBrowserRouter([
         path: "loanOverview/:id",
         element: (
           <PrivateRoute>
-              <LoanOverview />
+            <LoanOverview />
           </PrivateRoute>
         ),
       },
@@ -196,9 +188,7 @@ const router = createBrowserRouter([
         path: "notice",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <Notice />
-            </AdminRoute>
+            <Notice />
           </PrivateRoute>
         ),
       },
@@ -206,9 +196,7 @@ const router = createBrowserRouter([
         path: "chat",
         element: (
           <PrivateRoute>
-            <AdminRoute>
-              <AdminChatApp />
-            </AdminRoute>
+            <AdminChatApp />
           </PrivateRoute>
         ),
       },

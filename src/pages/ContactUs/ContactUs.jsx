@@ -57,61 +57,15 @@ const ContactUs = () => {
           </div>
 
           {/* Part 2: Form */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">Form</h2>
-            <form>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-600"
-                >
-                  Name:
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="mt-1 p-2 w-full border rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-600"
-                >
-                  Email:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="mt-1 p-2 w-full border rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-600"
-                >
-                  Message:
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  className="mt-1 p-2 w-full border rounded-md"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-              >
-                Submit
-              </button>
-            </form>
+          <div className="rounded-lg shadow-md">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14601.45970074155!2d90.34742493812453!3d23.80561909032643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0de6f4efc59%3A0x3e55d7eb9a03385d!2sMirpur%202%20Water%20Tank!5e0!3m2!1sen!2sbd!4v1709800319376!5m2!1sen!2sbd"
+              allowfullscreen=""
+              width='100%'
+              height='100%'
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </div>

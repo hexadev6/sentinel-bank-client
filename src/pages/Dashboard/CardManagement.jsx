@@ -81,7 +81,7 @@ const CardManagement = () => {
     <div className="p-5">
       {/* table */}
       <Card
-        className={`h-full w-full  rounded ${
+        className={` w-full  rounded ${
           darkMode ? "text-gray-400 bg-[#25324b]" : "bg-white shadow-gray-100"
         }`}
       >
